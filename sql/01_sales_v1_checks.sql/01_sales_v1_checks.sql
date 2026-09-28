@@ -141,20 +141,66 @@ budget AS (
     GROUP BY 1, 2, 3
 )
 
+
+-- Sales Actual vs Budget by year, plant and product
+-- with product descriptions
+
+WITH actual AS (
+    SELECT
+        EXTRACT(YEAR FROM sales_date)::int AS year,
+        plant_id,
+        product_id,
+        SUM(quantity_t) AS actual_t
+    FROM gold.fact_sales
+    GROUP BY 1, 2, 3
+),
+
+budget AS (
+    SELECT
+        EXTRACT(YEAR FROM budget_date)::int AS year,
+        plant_id,
+        product_id,
+        SUM(budget_t) AS budget_t
+    FROM gold.fact_sales_budget
+    GROUP BY 1, 2, 3
+)
+
 SELECT
     COALESCE(a.year, b.year) AS year,
     COALESCE(a.plant_id, b.plant_id) AS plant_id,
     COALESCE(a.product_id, b.product_id) AS product_id,
+
+    p.product_name,
+    p.product_class,
+    p.quality_class,
+    p.package_type,
+    p.diameter_mm,
+
     ROUND(a.actual_t::numeric, 1) AS actual_t,
     ROUND(b.budget_t::numeric, 1) AS budget_t,
-    ROUND((a.actual_t - b.budget_t)::numeric, 1) AS variance_t,
+
+    ROUND(
+        (a.actual_t - b.budget_t)::numeric,
+        1
+    ) AS variance_t,
+
     ROUND(
         (a.actual_t / NULLIF(b.budget_t, 0) * 100)::numeric,
         1
     ) AS budget_fill_pct
+
 FROM actual a
+
 FULL OUTER JOIN budget b
     ON a.year = b.year
    AND a.plant_id = b.plant_id
    AND a.product_id = b.product_id
-ORDER BY year, plant_id, product_id;
+
+LEFT JOIN gold.dim_product p
+    ON COALESCE(a.product_id, b.product_id) = p.product_id
+
+ORDER BY
+    year,
+    plant_id,
+    product_id;
+
