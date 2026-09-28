@@ -50,7 +50,7 @@ FULL OUTER JOIN budget b
 ORDER BY month_date;
 
 
--- Sales Actual vs Budget by year ----aasta põhine  Actual sales ja Budget võrdlus ja budgeti täituvuse %  
+-- Sales Actual vs Budget by year ----aastapõhine  Actual sales ja Budget võrdlus ja budgeti täituvuse %  
 
 WITH actual AS (
     SELECT
@@ -81,3 +81,80 @@ FROM actual a
 FULL OUTER JOIN budget b
     ON a.year = b.year
 ORDER BY year;
+
+
+-- Sales Actual vs Budget by year and plant --- -aastapõhine  Actual sales ja Budget võrdlus ja budgeti täituvuse % ning juurde on lisatud tehas
+
+WITH actual AS (
+    SELECT
+        EXTRACT(YEAR FROM sales_date)::int AS year,
+        plant_id,
+        SUM(quantity_t) AS actual_t
+    FROM gold.fact_sales
+    GROUP BY 1, 2
+),
+
+budget AS (
+    SELECT
+        EXTRACT(YEAR FROM budget_date)::int AS year,
+        plant_id,
+        SUM(budget_t) AS budget_t
+    FROM gold.fact_sales_budget
+    GROUP BY 1, 2
+)
+
+SELECT
+    COALESCE(a.year, b.year) AS year,
+    COALESCE(a.plant_id, b.plant_id) AS plant_id,
+    ROUND(a.actual_t::numeric, 1) AS actual_t,
+    ROUND(b.budget_t::numeric, 1) AS budget_t,
+    ROUND((a.actual_t - b.budget_t)::numeric, 1) AS variance_t,
+    ROUND(
+        (a.actual_t / NULLIF(b.budget_t, 0) * 100)::numeric,
+        1
+    ) AS budget_fill_pct
+FROM actual a
+FULL OUTER JOIN budget b
+    ON a.year = b.year
+   AND a.plant_id = b.plant_id
+ORDER BY year, plant_id;
+
+-- Sales Actual vs Budget by year, plant and product ---  -aastapõhine  Actual sales ja Budget võrdlus ja budgeti täituvuse % ning juurde on lisatud tehas ja toote_id
+
+WITH actual AS (
+    SELECT
+        EXTRACT(YEAR FROM sales_date)::int AS year,
+        plant_id,
+        product_id,
+        SUM(quantity_t) AS actual_t
+    FROM gold.fact_sales
+    GROUP BY 1, 2, 3
+),
+
+budget AS (
+    SELECT
+        EXTRACT(YEAR FROM budget_date)::int AS year,
+        plant_id,
+        product_id,
+        SUM(budget_t) AS budget_t
+    FROM gold.fact_sales_budget
+    GROUP BY 1, 2, 3
+)
+
+SELECT
+    COALESCE(a.year, b.year) AS year,
+    COALESCE(a.plant_id, b.plant_id) AS plant_id,
+    COALESCE(a.product_id, b.product_id) AS product_id,
+    ROUND(a.actual_t::numeric, 1) AS actual_t,
+    ROUND(b.budget_t::numeric, 1) AS budget_t,
+    ROUND((a.actual_t - b.budget_t)::numeric, 1) AS variance_t,
+    ROUND(
+        (a.actual_t / NULLIF(b.budget_t, 0) * 100)::numeric,
+        1
+    ) AS budget_fill_pct
+FROM actual a
+FULL OUTER JOIN budget b
+    ON a.year = b.year
+   AND a.plant_id = b.plant_id
+   AND a.product_id = b.product_id
+ORDER BY year, plant_id, product_id;
