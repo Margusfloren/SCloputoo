@@ -2,126 +2,150 @@
 
 ## Projekti eesmärk
 
-Projekti eesmärk on luua pelletitööstuse Supply Chain Management juhtimisvaade, mis ühendab müügi, tootmise ja tarnekindluse juhtimiseks vajaliku info ühte vaatesse.
+Projekti eesmärk on luua pelletitööstuse Supply Chain Management juhtimisvaade, mis ühendab müügi, tootmise ja tarneahela juhtimiseks vajaliku info ühte tervikusse.
 
-Juhtimisvaate eesmärk ei ole ainult näidata tulemusi, vaid aidata vastata küsimustele:
+Juhtimisvaate eesmärk ei ole ainult näidata tulemusi, vaid aidata vastata juhtimisküsimustele:
 
 - Kas müük liigub eelarve järgi?
+- Millised tehased, tooted ja müügikanalid mõjutavad kõrvalekaldeid?
 - Kas tootmine täidab plaani?
-- Kas klienditellimused täidetakse õigel ajal ja täies mahus?
-- Kus tekivad kõrvalekalded plaanist?
-- Millised teemad vajavad juhi tähelepanu?
+- Kas tootmine ja müük on omavahel tasakaalus?
+- Millised on tootmise ja tarneahela võimalikud pudelikaelad?
+- Kas toorme saadavus toetab tootmisplaani?
+- Milline on valmistoodangu varude seis?
+- Kas klientidele tarnitakse õigel ajal ja kokkulepitud koguses?
 
 ---
 
-## Äriprobleem
+## Projekti ulatus
 
-Pelletitööstuses on müük, tootmine, tooraine ja varud omavahel tugevalt seotud.
+Projekt kasutab nelja pelletitehase näidisandmeid.
 
-Kui müügiplaan, tootmisplaan ja tegelikud tulemused paiknevad erinevates süsteemides või failides, on keeruline saada kiiresti terviklikku pilti ettevõtte olukorrast.
+Peamised analüüsivaldkonnad on:
 
-Juhtimisvaade koondab olulise info ühte keskkonda ning võimaldab võrrelda plaani ja tegelikku tulemust.
+1. **Sales & Demand**
+   - Sales Actual
+   - Sales Budget
+   - Variance
+   - Budget Fulfilment %
+   - analüüs aasta, kuu, tehase ja toote lõikes
 
----
+2. **Production**
+   - tootmisplaan
+   - tegelik tootmine
+   - tootmisplaani täitmine
+   - tootmise ja müügi võrdlus
 
-## Sihtkasutaja
+3. **Raw Materials**
+   - peamised toormeliigid
+   - toorme vajadus
+   - toorme mix
+   - tootmisplaani ja toorme vajaduse seos
 
-Juhtimisvaade on eelkõige mõeldud:
+4. **Inventory**
+   - valmistoodangu varud
+   - varude muutus
+   - lao kasutus ja võimalikud piirangud
 
-- Supply Chain Managerile
-- tehase- ja tootmisjuhtidele
-- müügi- ja planeerimisfunktsioonile
-- ettevõtte juhtkonnale
-
-Vaate eesmärk on toetada operatiivset ja taktikalist juhtimist.
-
----
-
-# V1 – lõputöö kaitsmise versioon
-
-V1 eesmärk on luua töötav juhtimisvaate põhiversioon, millega saab demonstreerida kogu lahenduse loogikat andmetest kuni Power BI raportini.
-
-## V1 põhifookus
-
-### Müük
-
-- Sales Budget
-- Sales Actual
-- Budget vs Actual
-- Budget Achievement %
-
-### Tootmine
-
-- Production Plan
-- Production Actual
-- Production Plan Achievement %
-
-### Tarnekindlus
-
-- OTIF %
-
-V1 võimaldab hinnata, kas müük ja tootmine liiguvad plaani järgi ning kas klienditellimused täidetakse kokkulepitud tingimustel.
-
----
-
-# Full Version – laiendatud juhtimisvaade
-
-Pärast lõputöö kaitsmist jätkub projekti arendus täielikuks Supply Chain juhtimisvaateks.
-
-Planeeritud laiendused hõlmavad muu hulgas:
-
-- Sales Budget vs Forecast vs Actual
-- snapshot / as-of date analüüsi
-- kuu täitmise tempo analüüsi
-- valmistoodangu varude juhtimist
-- Min Stock ja Max Stock / Capacity loogikat
-- lao täituvust
-- tootmisvõimsuse kasutust
-- tootmise pudelikaelte analüüsi
-- toorme mix'i
-- müügimix'i
-- detailsemat OTIF analüüsi
-- tooraine juhtimisvaadet
-
-Täisversiooni eesmärk on siduda omavahel:
-
-**müük → tootmine → tooraine → varud → tarnekindlus**
+5. **Delivery Performance**
+   - OTIF
+   - tellimuste täitmine
+   - klienditeeninduse KPI-d
 
 ---
 
 ## Tehniline lahendus
 
-Projekti põhiline tehniline töövoog:
+Projekti andmevoog:
 
-**Andmeallikad → PostgreSQL → Power BI**
+**Source data → PostgreSQL → Bronze → Gold → SQL validation → Power BI**
 
-PostgreSQL-is kasutatakse andmete töötlemiseks kihilist ülesehitust:
+### PostgreSQL
 
-- Bronze – algandmed
-- Silver – puhastatud ja standardiseeritud andmed
-- Gold – analüüsiks ja Power BI jaoks ettevalmistatud andmed
+Andmemudel on ehitatud PostgreSQL-is.
 
-Power BI-s luuakse juhtimisvaade, KPI-d ja visualiseeringud.
+Peamised Gold-kihi tabelid:
+
+- `gold.fact_sales`
+- `gold.fact_sales_budget`
+- `gold.fact_production`
+- `gold.fact_production_budget`
+- `gold.fact_purchase_invoice`
+- `gold.dim_date`
+- `gold.dim_plant`
+- `gold.dim_product`
+- `gold.dim_customer`
+- `gold.dim_channel`
+- `gold.dim_raw`
+- `gold.dim_supplier`
+
+Gold-kiht on mõeldud Power BI jaoks analüüsivalmis andmestikuks.
 
 ---
 
-## Edasiarendus
+## SQL valideerimine
 
-Pärast Power BI täisversiooni valmimist on plaan luua samast juhtimisloogikast ka Pythonil põhinev veebiversioon.
+Power BI tulemusi kontrollitakse SQL-päringutega.
 
-Planeeritud tehnoloogia:
+Näiteks Sales Actual vs Sales Budget kontrollitakse:
 
-**Python + Streamlit**
+- kuu tasemel
+- aasta tasemel
+- tehase tasemel
+- tehase ja toote tasemel
 
-See võimaldab võrrelda Power BI ja Pythonil põhineva veebirakenduse võimalusi ning arendada projektist tervikliku portfooliotöö.
+Kontrollitavad KPI-d:
+
+- Actual Sales
+- Sales Budget
+- Variance
+- Budget Fulfilment %
+
+SQL-i ja Power BI tulemused peavad andma sama tulemuse.
 
 ---
 
-## Projekti arendusloogika
+## Power BI
 
-Projekt areneb etapiviisiliselt:
+Power BI juhtimisvaate eesmärk on võimaldada kasutajal liikuda üldiselt detailsemale tasemele.
 
-1. V1 – lõputöö kaitsmise versioon
-2. Power BI täisversioon
-3. GitHubi portfoolio korrastamine
-4. Python / Streamlit veebiversioon
+Näiteks:
+
+**Year → Month → Plant → Product**
+
+Juhtimisvaade keskendub eelkõige kõrvalekallete tuvastamisele ning nende põhjuste analüüsimisele.
+
+---
+
+## V1 eesmärk
+
+V1 on lõputöö kaitsmiseks loodav töötav juhtimisvaade.
+
+V1 sisaldab:
+
+- PostgreSQL andmemudelit
+- Gold-kihi analüüsitabeleid
+- Sales Actual vs Budget analüüsi
+- Production vs Plan analüüsi
+- põhilisi Supply Chain KPI-sid
+- Power BI juhtimisvaadet
+- SQL-põhist tulemuste valideerimist
+
+Pärast V1 kaitsmist jätkub projekt laiendatud versioonina.
+
+---
+
+## Projekti edasiarendus
+
+Pikas versioonis on plaanis lisada:
+
+- detailsem toormeplaneerimine
+- pelletite BOM ja kuivainemassibilanss
+- toorme niiskuse mõju tegelikule sisendkogusele
+- lao min/max tasemed ja füüsilised mahupiirangud
+- täiendavad OTIF ja delivery KPI-d
+- forecast ja snapshot loogika
+- automatiseeritud andmevoog
+- Python / Streamlit veebipõhine juhtimisvaade
+
+Eesmärk on arendada lõputööst edasi terviklik Supply Chain Analytics portfoolioprojekt.
