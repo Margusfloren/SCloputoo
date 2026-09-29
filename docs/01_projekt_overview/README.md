@@ -58,7 +58,10 @@ Peamised analüüsivaldkonnad on:
 
 Projekti andmevoog:
 
-**Source data → PostgreSQL → Bronze → Gold → SQL validation → Python analysis → Power BI**
+ 
+→ PostgreSQL → Bronze → Silver → Gold  → SQL validation → Python analysis → Power BI**
+
+Lähteandmed on sünteetilised, kuid nende struktuur järgib Directo ERP andmemudeli loogikat. Kasutatud on Directo-laadseid müügi-, tootmis-, ostu-, toote- ja objektitabeleid, et simuleerida realistlikku ettevõtte andmevoogu.
 
 ### PostgreSQL
 
