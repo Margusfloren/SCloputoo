@@ -58,7 +58,7 @@ Peamised analüüsivaldkonnad on:
 
 Projekti andmevoog:
 
-**Source data → PostgreSQL → Bronze → Gold → SQL validation → Power BI**
+**Source data → PostgreSQL → Bronze → Gold → SQL validation → Python analysis → Power BI**
 
 ### PostgreSQL
 
@@ -79,7 +79,7 @@ Peamised Gold-kihi tabelid:
 - `gold.dim_raw`
 - `gold.dim_supplier`
 
-Gold-kiht on mõeldud Power BI jaoks analüüsivalmis andmestikuks.
+Gold-kiht on mõeldud Power BI ja analüüsi jaoks ettevalmistatud andmekihiks.
 
 ---
 
@@ -105,6 +105,27 @@ SQL-i ja Power BI tulemused peavad andma sama tulemuse.
 
 ---
 
+## Python
+
+Pythonit kasutatakse V1-s andmete analüüsimiseks ja tulemuste valideerimiseks.
+
+Python / pandas abil:
+
+- loetakse andmed PostgreSQL-ist
+- analüüsitakse Actual vs Budget tulemusi
+- arvutatakse kõrvalekaldeid ja täituvust
+- kontrollitakse tulemusi SQL-i vastu
+- võrreldakse Pythonis saadud tulemusi Power BI tulemustega
+- luuakse valitud analüüside jaoks visualiseeringuid
+
+Python lisab projektile sõltumatu analüüsikihi, mille abil saab kontrollida, et sama äriloogika annab eri tööriistades sama tulemuse.
+
+Eesmärk on:
+
+**SQL = Python = Power BI**
+
+---
+
 ## Power BI
 
 Power BI juhtimisvaate eesmärk on võimaldada kasutajal liikuda üldiselt detailsemale tasemele.
@@ -115,6 +136,8 @@ Näiteks:
 
 Juhtimisvaade keskendub eelkõige kõrvalekallete tuvastamisele ning nende põhjuste analüüsimisele.
 
+Power BI kasutab PostgreSQL Gold-kihi andmeid ning kuvab juhtimiseks vajalikud KPI-d ja drill-down vaated.
+
 ---
 
 ## V1 eesmärk
@@ -124,14 +147,17 @@ V1 on lõputöö kaitsmiseks loodav töötav juhtimisvaade.
 V1 sisaldab:
 
 - PostgreSQL andmemudelit
-- Gold-kihi analüüsitabeleid
+- Bronze ja Gold andmekihte
 - Sales Actual vs Budget analüüsi
 - Production vs Plan analüüsi
 - põhilisi Supply Chain KPI-sid
-- Power BI juhtimisvaadet
 - SQL-põhist tulemuste valideerimist
+- Python / pandas analüüsi ja tulemuste kontrolli
+- valitud Python visualiseeringuid
+- Power BI juhtimisvaadet
+- tulemuste kontrolli SQL-i, Pythoni ja Power BI vahel
 
-Pärast V1 kaitsmist jätkub projekt laiendatud versioonina.
+V1 eesmärk on näidata terviklikku analüüsiprotsessi alates andmete ettevalmistamisest kuni juhtimisvaate ja tulemuste valideerimiseni.
 
 ---
 
@@ -146,6 +172,7 @@ Pikas versioonis on plaanis lisada:
 - täiendavad OTIF ja delivery KPI-d
 - forecast ja snapshot loogika
 - automatiseeritud andmevoog
-- Python / Streamlit veebipõhine juhtimisvaade
+- Python-põhine täiendav analüüs
+- Streamlit veebipõhine juhtimisvaade
 
-Eesmärk on arendada lõputööst edasi terviklik Supply Chain Analytics portfoolioprojekt.
+Pika versiooni eesmärk on arendada lõputööst edasi terviklik Supply Chain Analytics portfoolioprojekt.
