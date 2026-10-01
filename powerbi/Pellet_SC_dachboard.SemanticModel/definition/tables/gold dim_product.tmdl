@@ -1,0 +1,109 @@
+table 'gold dim_product'
+	lineageTag: be9bbf84-9787-495f-921b-ebc6ca1874d7
+
+	column product_id
+		dataType: string
+		lineageTag: c290f4ca-a6d8-493d-8717-10d7f21f18bb
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: 94ba84aa-061d-44ab-916f-5ed5c400c026
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_class
+		dataType: string
+		lineageTag: 30efd97c-b1f4-445b-b30e-35a89bde90ca
+		summarizeBy: none
+		sourceColumn: product_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column quality_class
+		dataType: string
+		lineageTag: 2936492b-7daa-41af-958e-7deea11b1397
+		summarizeBy: none
+		sourceColumn: quality_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column package_type
+		dataType: string
+		lineageTag: 8defa933-685c-48a6-8ad8-7ce9b1907f6d
+		summarizeBy: none
+		sourceColumn: package_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column diameter_mm
+		dataType: int64
+		formatString: 0
+		lineageTag: 2fe3c509-46c5-46b8-af03-22e07349ce81
+		summarizeBy: sum
+		sourceColumn: diameter_mm
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_packaged
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6446f9d3-439c-4bda-8d2f-7fe3c808ccf3
+		summarizeBy: none
+		sourceColumn: is_packaged
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: 920005f9-5fd9-4883-bb42-f2738e9593ee
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column standard_cost_eur
+		dataType: double
+		lineageTag: 4cffb678-6120-4083-9348-291364d72790
+		summarizeBy: sum
+		sourceColumn: standard_cost_eur
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sales_price_eur
+		dataType: double
+		lineageTag: e6058cf3-91d2-47f7-967a-75f7ad6083b1
+		summarizeBy: sum
+		sourceColumn: sales_price_eur
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column active_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3f75913a-d203-437c-b573-9cc233efb43f
+		summarizeBy: none
+		sourceColumn: active_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold dim_product' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    gold_dim_product = Source{[Schema="gold",Item="dim_product"]}[Data]
+				in
+				    gold_dim_product
+
+	annotation PBI_ResultType = Table
+

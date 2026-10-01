@@ -1,0 +1,47 @@
+table 'gold dim_plant'
+	lineageTag: 922af567-d222-474d-a526-b4bc8eb59589
+
+	column plant_id
+		dataType: string
+		lineageTag: 3a637e24-20f0-49ac-be30-d0a1570b1926
+		summarizeBy: none
+		sourceColumn: plant_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column plant_name
+		dataType: string
+		lineageTag: 7a7456dc-eaba-4224-a7e2-eb0dffe3ed3e
+		summarizeBy: none
+		sourceColumn: plant_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column plant_type
+		dataType: string
+		lineageTag: 6740f7b5-4866-48c0-ae81-7c561abf3f19
+		summarizeBy: none
+		sourceColumn: plant_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_flag
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 63e61862-94d7-4977-adc6-040652f905d2
+		summarizeBy: none
+		sourceColumn: active_flag
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold dim_plant' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    gold_dim_plant = Source{[Schema="gold",Item="dim_plant"]}[Data]
+				in
+				    gold_dim_plant
+
+	annotation PBI_ResultType = Table
+

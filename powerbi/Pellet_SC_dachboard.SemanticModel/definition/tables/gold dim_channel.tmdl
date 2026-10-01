@@ -1,0 +1,30 @@
+table 'gold dim_channel'
+	lineageTag: fd8adc0a-6e3b-4de4-bf69-cbf2cb51acd2
+
+	column channel_id
+		dataType: string
+		lineageTag: 5e3ed4f5-0901-48e6-8170-9fef1ac0d289
+		summarizeBy: none
+		sourceColumn: channel_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel_name
+		dataType: string
+		lineageTag: 0915ddd1-19f5-4355-811b-8b5e287e322b
+		summarizeBy: none
+		sourceColumn: channel_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold dim_channel' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    gold_dim_channel = Source{[Schema="gold",Item="dim_channel"]}[Data]
+				in
+				    gold_dim_channel
+
+	annotation PBI_ResultType = Table
+

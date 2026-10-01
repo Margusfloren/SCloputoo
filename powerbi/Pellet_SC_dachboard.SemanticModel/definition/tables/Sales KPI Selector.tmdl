@@ -1,0 +1,50 @@
+table 'Sales KPI Selector'
+	lineageTag: 96c689d4-86fe-4c9f-9af0-b235b21c222e
+
+	column 'Sales KPI Selector'
+		lineageTag: d05051b1-e00d-4f49-b236-ef6f30cf04e3
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Sales KPI Selector Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Sales KPI Selector Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales KPI Selector Fields'
+		isHidden
+		lineageTag: f704ba3b-4682-46d7-a19a-06b5138bc90c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Sales KPI Selector Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales KPI Selector Order'
+		isHidden
+		formatString: 0
+		lineageTag: 4b718375-f0c6-4aea-8215-8c312c252f25
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sales KPI Selector' = calculated
+		mode: import
+		source =
+				{
+				    ("Sales Actual Selected Period", NAMEOF('_Measures'[Sales Actual Selected Period]), 0),
+				    ("Sales Budget Selected Period", NAMEOF('_Measures'[Sales Budget Selected Period]), 1),
+				    ("Sales Variance Selected Period", NAMEOF('_Measures'[Sales Variance Selected Period]), 2),
+				    ("Budget Attainment Selected Period %", NAMEOF('_Measures'[Sales Attainment Selected Period %] ), 3)
+				}
+
+	annotation PBI_Id = db4838324d2b47dc882d30916f9d69c2
+

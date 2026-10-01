@@ -1,0 +1,48 @@
+table 'Production View Selector'
+	lineageTag: 58b1ff1d-a22e-4e87-b8d0-681dd9381fab
+
+	column 'Production View Selector'
+		lineageTag: a237872e-aeec-4952-9636-60ba816105ee
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Production View Selector Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Production View Selector Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production View Selector Fields'
+		isHidden
+		lineageTag: 5df7fe7d-8673-4fed-9d9d-72992ec2d373
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Production View Selector Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production View Selector Order'
+		isHidden
+		formatString: 0
+		lineageTag: 51a72bac-3319-4b8e-9f64-0ba001257122
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Production View Selector' = calculated
+		mode: import
+		source =
+				{
+				    ("plant_name", NAMEOF('gold dim_plant'[plant_name]), 0),
+				    ("product_name", NAMEOF('gold dim_product'[product_name]), 1)
+				}
+
+	annotation PBI_Id = 822c8530f2454daba5e169b16b884d22
+

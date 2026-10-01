@@ -1,0 +1,197 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "c98d2a73c1a5035e50a0",
+  "position": {
+    "x": 827.14285714285722,
+    "y": 1077.1428571428571,
+    "z": 16000,
+    "height": 322.92490118577075,
+    "width": 1123.4782608695652,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_plant"
+                    }
+                  },
+                  "Property": "plant_name"
+                }
+              },
+              "queryRef": "gold dim_plant.plant_name",
+              "nativeQueryRef": "plant_name",
+              "active": true,
+              "displayName": "plant_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_product"
+                    }
+                  },
+                  "Property": "product_name"
+                }
+              },
+              "queryRef": "gold dim_product.product_name",
+              "nativeQueryRef": "product_name",
+              "active": true,
+              "displayName": "product_name"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Production View Selector"
+                    }
+                  },
+                  "Property": "Production View Selector"
+                }
+              },
+              "index": 0,
+              "length": 2
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Production Actual Selected Period"
+                }
+              },
+              "queryRef": "_Measures.Production Actual Selected Period",
+              "nativeQueryRef": "Production Actual Selected Period",
+              "displayName": "Production Actual Selected Period"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Production Budget Selected Period"
+                }
+              },
+              "queryRef": "_Measures.Production Budget Selected Period",
+              "nativeQueryRef": "Production Budget Selected Period",
+              "displayName": "Production Budget Selected Period"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Production Variance Selected Period"
+                }
+              },
+              "queryRef": "_Measures.Production Variance Selected Period",
+              "nativeQueryRef": "Production Variance Selected Period",
+              "displayName": "Production Variance Selected Period"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Production Attainment Selected Period %"
+                }
+              },
+              "queryRef": "_Measures.Production Attainment Selected Period %",
+              "nativeQueryRef": "Production Attainment Selected Period %",
+              "displayName": "Production Attainment Selected Period %"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Production KPI Selector"
+                    }
+                  },
+                  "Property": "Production KPI Selector"
+                }
+              },
+              "index": 0,
+              "length": 4
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "gold dim_plant.plant_name"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "gold dim_product.product_name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Production View '"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

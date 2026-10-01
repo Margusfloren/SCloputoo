@@ -1,0 +1,221 @@
+table _Measures
+	lineageTag: 4b5ba0f4-1d73-42ad-908c-4fb04578680e
+
+	measure 'Sales Actual' = SUM('gold fact_sales'[quantity_t])
+		formatString: 0
+		lineageTag: b7670af3-9855-4e4c-975f-92a8b86dc259
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Sales Budget' = ```
+			SUM('gold fact_sales_budget'[budget_t]) 
+			```
+		formatString: 0
+		lineageTag: bc9b224e-eea4-41a0-98d9-2894c0385f66
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Sales Variance' = ```
+			[Sales Actual]-[Sales Budget] 
+			```
+		formatString: 0
+		lineageTag: b71384e3-e25b-4947-bd5d-bb8a4955101b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Production Actual' = SUM('gold fact_production'[quantity_t])
+		formatString: 0
+		lineageTag: e08d7648-bcdf-471e-b391-27242a4bd9d8
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Production Budget' = SUM('gold fact_production_budget'[budget_t])
+		formatString: 0
+		lineageTag: e78776ec-e739-4587-ad18-0b479e3df60e
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Production Variance' = [Production Actual]-[Production Budget]
+		formatString: 0
+		lineageTag: 3b183e9e-1497-40a3-868f-b63a0b8f5d00
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Production vs Sales' = [Production Actual]-[Sales Actual]
+		formatString: 0
+		lineageTag: b4e6295e-a3ff-4da3-b909-f6e5f8390b5d
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Sales Actual YTD' =
+			
+			COALESCE(
+			    TOTALYTD(
+			        [Sales Actual],
+			        'gold dim_date'[date]
+			    ),
+			    0
+			)
+		lineageTag: fb2084be-0df2-4b6d-9ead-0f445cca637b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Budget YTD' =
+			
+			COALESCE(
+			    TOTALYTD(
+			        [Sales Budget],
+			        'gold dim_date'[date]
+			    ),
+			    0
+			)
+		lineageTag: 71466149-0204-4f97-ad92-6e392e86e350
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Variance YTD' = [Sales Actual YTD]-[Sales Budget YTD]
+		formatString: 0.00
+		lineageTag: 7bc9d6a0-2fda-4c25-bc13-c4b886bc463d
+
+	measure 'Budget Attainment YTD %' =
+			
+			VAR Actual = [Sales Actual Selected Period]
+			VAR Budget = [Sales Budget Selected Period]
+			
+			RETURN
+			IF(
+			    Budget = 0,
+			    BLANK(),
+			    DIVIDE(Actual, Budget)
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 6dd75860-a00c-4b8d-887e-829ac01eaeb3
+
+	measure 'Budget Attainment Status' =
+			VAR Actual = [Sales Actual YTD]
+			VAR Budget = [Sales Budget YTD]
+			
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    Budget = 0 && Actual = 0, "No plan / no sales",
+			    Budget = 0 && Actual > 0, "Unbudgeted sales",
+			    BLANK()
+			)
+		lineageTag: c3937e9d-d59b-477e-b024-dd83022f2484
+
+	measure 'Sales Actual Selected Period' =
+			
+			COALESCE(
+			    [Sales Actual],
+			    0
+			)
+		lineageTag: 6ab7087a-7710-4665-88fc-ef102d236f58
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Budget Selected Period' =
+			
+			COALESCE(
+			    [Sales Budget],
+			    0
+			)
+		lineageTag: 5dd9fa41-553e-456d-883c-16f226181d29
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Variance Selected Period' =
+			
+			[Sales Actual Selected Period]
+			    - [Sales Budget Selected Period]
+		lineageTag: 83fc7162-e94c-48e1-abcc-89f7573e6854
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Attainment Selected Period %' =
+			
+			VAR Budget = [Sales Budget Selected Period]
+			
+			RETURN
+			IF(
+			    Budget = 0,
+			    BLANK(),
+			    DIVIDE(
+			        [Sales Actual Selected Period],
+			        Budget
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: ce1bbde2-ab65-428b-a2d2-89d14b19e7e2
+
+	measure 'Production Actual Selected Period' =
+			
+			COALESCE(
+			    [Production Actual],
+			    0
+			)
+		lineageTag: 0a6fc72c-0eab-4d57-afda-467d3dfb1190
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Production Budget Selected Period' =
+			
+			COALESCE(
+			    [Production Budget],
+			    0
+			)
+		lineageTag: 45e81f3a-5f4d-4e9a-87db-4b520e070a9a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Production Variance Selected Period' =
+			
+			[Production Actual Selected Period]
+			    - [Production Budget Selected Period]
+		lineageTag: f97fae30-c2b1-4a70-8553-018ddf292561
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Production Attainment Selected Period %' =
+			
+			VAR Budget = [Production Budget Selected Period]
+			
+			RETURN
+			IF(
+			    Budget = 0,
+			    BLANK(),
+			    DIVIDE(
+			        [Production Actual Selected Period],
+			        Budget
+			    )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: b23d6104-4eae-47bb-bcaf-7652d03f04b5
+
+	measure 'Sales Actual Selected Period All Channels' =
+			
+			CALCULATE(
+			    [Sales Actual Selected Period],
+			    REMOVEFILTERS('gold dim_channel'),
+			    REMOVEFILTERS('gold fact_sales'[channel_id])
+			)
+		lineageTag: cd8300af-b9c4-499c-a42f-0fa3f597e486
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Value
+		isHidden
+		formatString: 0
+		lineageTag: 09c32387-ff74-4945-9cb2-9a8b38d847f0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = { BLANK() }
+
+	annotation PBI_Id = eb1b31d710974761b3307dca0fb4f70c
+

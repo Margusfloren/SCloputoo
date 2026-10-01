@@ -1,0 +1,95 @@
+table 'gold fact_production'
+	lineageTag: 3da44eec-3f79-4e01-a78c-051c13f63a81
+
+	column production_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6f793a41-f6ec-40bf-9b36-e7a84e946ad0
+		summarizeBy: none
+		sourceColumn: production_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column production_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e274f15-7bd8-434e-937d-a9ce1775bac6
+		summarizeBy: sum
+		sourceColumn: production_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column production_row_no
+		dataType: int64
+		formatString: 0
+		lineageTag: f01e2d64-6551-42f0-9ad4-e01164d36c8e
+		summarizeBy: sum
+		sourceColumn: production_row_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column plant_id
+		dataType: string
+		lineageTag: 32ff7f0d-e4ad-45d3-8238-731036df5bc1
+		summarizeBy: none
+		sourceColumn: plant_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: string
+		lineageTag: c172eeff-ebcd-49ab-9510-436b8b42ae49
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity_t
+		dataType: double
+		lineageTag: 6225e1a5-964b-49f9-95ae-4ebfafc95736
+		summarizeBy: sum
+		sourceColumn: quantity_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column scrap_t
+		dataType: double
+		lineageTag: 1a1eece3-9899-439d-b596-e450faa26225
+		summarizeBy: sum
+		sourceColumn: scrap_t
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column workcenter
+		dataType: string
+		lineageTag: b3d20db2-87c0-4728-bcc7-1d3b6e3a7815
+		summarizeBy: none
+		sourceColumn: workcenter
+
+		annotation SummarizationSetBy = Automatic
+
+	column version_id
+		dataType: string
+		lineageTag: cd99da87-7740-4775-8646-c6c435d0c65a
+		summarizeBy: none
+		sourceColumn: version_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_production' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    gold_fact_production = Source{[Schema="gold",Item="fact_production"]}[Data]
+				in
+				    gold_fact_production
+
+	annotation PBI_ResultType = Table
+
