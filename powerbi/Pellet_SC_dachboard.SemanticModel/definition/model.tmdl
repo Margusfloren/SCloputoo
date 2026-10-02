@@ -25,11 +25,11 @@ ref table 'gold fact_sales_budget'
 ref table 'gold fact_production'
 ref table 'gold fact_production_budget'
 ref table _Measures
-ref table 'Sales KPI Selector'
 ref table 'Sales View Selector'
 ref table 'Production KPI Selector'
 ref table 'Production View Selector'
 ref table 'Production Chart Selector'
+ref table 'Sales KPI Selector'
 
 ref cultureInfo en-US
 

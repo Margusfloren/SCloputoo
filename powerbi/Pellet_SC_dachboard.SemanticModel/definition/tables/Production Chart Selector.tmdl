@@ -40,11 +40,16 @@ table 'Production Chart Selector'
 		mode: import
 		source =
 				{
-				    ("Production Budget Selected Period",
-				        NAMEOF('_Measures'[Production Budget Selected Period]), 0),
-				
-				    ("Sales Actual Selected Period",
-				        NAMEOF('_Measures'[Sales Actual Selected Period All Channels]), 1)
+				    (
+				        "Production Budget",
+				        NAMEOF('_Measures'[Production Budget Selected Period]),
+				        0
+				    ),
+				    (
+				        "Sales Actual",
+				        NAMEOF('_Measures'[Sales Actual Selected Period All Channels]),
+				        1
+				    )
 				}
 
 	annotation PBI_Id = 7fda760db5f147d896ef752f4b59ae4b

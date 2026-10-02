@@ -134,7 +134,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Sales KPI Selector"
+                      "Entity": "Sales KPI Selector Old"
                     }
                   },
                   "Property": "Sales KPI Selector"

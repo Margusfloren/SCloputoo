@@ -20,7 +20,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Sales KPI Selector"
+                      "Entity": "Sales KPI Selector Old"
                     }
                   },
                   "Property": "Sales KPI Selector"
@@ -57,7 +57,7 @@
                 "From": [
                   {
                     "Name": "s",
-                    "Entity": "Sales KPI Selector",
+                    "Entity": "Sales KPI Selector Old",
                     "Type": 0
                   }
                 ],
@@ -144,7 +144,7 @@
                             "Column": {
                               "Expression": {
                                 "SourceRef": {
-                                  "Entity": "Sales KPI Selector"
+                                  "Entity": "Sales KPI Selector Old"
                                 }
                               },
                               "Property": "Sales KPI Selector"
@@ -248,7 +248,7 @@
                                 "Column": {
                                   "Expression": {
                                     "SourceRef": {
-                                      "Entity": "Sales KPI Selector"
+                                      "Entity": "Sales KPI Selector Old"
                                     }
                                   },
                                   "Property": "Sales KPI Selector Fields"

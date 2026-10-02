@@ -209,6 +209,27 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Production Chart Title' =
+			
+			VAR SelectedChart =
+			    MAXX(
+			        SUMMARIZE(
+			            'Production Chart Selector',
+			            'Production Chart Selector'[Production Chart Selector],
+			            'Production Chart Selector'[Production Chart Selector Fields]
+			        ),
+			        'Production Chart Selector'[Production Chart Selector]
+			    )
+			
+			RETURN
+			    SWITCH(
+			        SelectedChart,
+			        "Production Budget", "Production Actual vs Budget",
+			        "Sales Actual", "Production Actual vs Sales",
+			        "Production Actual"
+			    )
+		lineageTag: c36c883a-369a-400b-a3c1-14d3f69d59c2
+
 	column Value
 		isHidden
 		formatString: 0

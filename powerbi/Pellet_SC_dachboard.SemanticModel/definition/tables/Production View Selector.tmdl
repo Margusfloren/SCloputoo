@@ -40,8 +40,8 @@ table 'Production View Selector'
 		mode: import
 		source =
 				{
-				    ("plant_name", NAMEOF('gold dim_plant'[plant_name]), 0),
-				    ("product_name", NAMEOF('gold dim_product'[product_name]), 1)
+				    ("Plant", NAMEOF('gold dim_plant'[plant_name]), 0),
+				    ("Product", NAMEOF('gold dim_product'[product_name]), 1)
 				}
 
 	annotation PBI_Id = 822c8530f2454daba5e169b16b884d22

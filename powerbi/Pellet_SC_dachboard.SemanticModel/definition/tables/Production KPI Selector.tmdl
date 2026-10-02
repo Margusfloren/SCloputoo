@@ -40,10 +40,10 @@ table 'Production KPI Selector'
 		mode: import
 		source =
 				{
-				    ("Production Actual Selected Period", NAMEOF('_Measures'[Production Actual Selected Period]), 0),
-				    ("Production Budget Selected Period", NAMEOF('_Measures'[Production Budget Selected Period]), 1),
-				    ("Production Variance Selected Period", NAMEOF('_Measures'[Production Variance Selected Period]), 2),
-				    ("Production Attainment Selected Period %", NAMEOF('_Measures'[Production Attainment Selected Period %]), 3)
+				    ("Production Actual ", NAMEOF('_Measures'[Production Actual Selected Period]), 0),
+				    ("Production Budget ", NAMEOF('_Measures'[Production Budget Selected Period]), 1),
+				    ("Production Variance ", NAMEOF('_Measures'[Production Variance Selected Period]), 2),
+				    ("Production Attainment ", NAMEOF('_Measures'[Production Attainment Selected Period %]), 3)
 				}
 
 	annotation PBI_Id = db78b8f44d08496dbe89cfd867c28a50

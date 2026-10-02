@@ -1,0 +1,73 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "f0fdeb581b88e1512aac",
+  "position": {
+    "x": 0,
+    "y": 735.71428571428578,
+    "z": 17001,
+    "height": 60.000000000000007,
+    "width": 184.28571428571431,
+    "tabOrder": 17001
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sales KPI Selector"
+                    }
+                  },
+                  "Property": "Sales KPI Selector ver 2"
+                }
+              },
+              "queryRef": "Sales KPI Selector ver 2.Sales KPI Selector ver 2",
+              "nativeQueryRef": "Sales KPI Selector",
+              "active": true,
+              "displayName": "Sales KPI Selector"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "selection": [
+        {
+          "properties": {
+            "singleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

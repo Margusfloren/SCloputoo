@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
+        "x": 1136.482699639771,
         "y": 0
       },
       "nodes": [
@@ -114,19 +114,6 @@
         },
         {
           "location": {
-            "x": 2264.1210919034111,
-            "y": 967.80540922333967
-          },
-          "nodeIndex": "Sales KPI Selector",
-          "nodeLineageTag": "96c689d4-86fe-4c9f-9af0-b235b21c222e",
-          "size": {
-            "height": 152,
-            "width": 234
-          },
-          "zIndex": 0
-        },
-        {
-          "location": {
             "x": 2509.005080594281,
             "y": 967.80540922333967
           },
@@ -183,6 +170,18 @@
           },
           "nodeIndex": "Production Chart Selector",
           "nodeLineageTag": "d0fe157e-359c-4127-a423-8519db0bfa8e",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3488.5410353577608,
+            "y": 967.80540922333967
+          },
+          "nodeIndex": "Sales KPI Selector",
           "size": {
             "height": 152,
             "width": 234
