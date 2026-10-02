@@ -128,9 +128,8 @@ table _Measures
 			
 			[Sales Actual Selected Period]
 			    - [Sales Budget Selected Period]
+		formatString: 0.00
 		lineageTag: 83fc7162-e94c-48e1-abcc-89f7573e6854
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Sales Attainment Selected Period %' =
 			
@@ -200,6 +199,13 @@ table _Measures
 			    REMOVEFILTERS('gold fact_sales'[channel_id])
 			)
 		lineageTag: cd8300af-b9c4-499c-a42f-0fa3f597e486
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Variance KPI' =
+			
+			[Sales Variance Selected Period]
+		lineageTag: ad793090-5bd2-4cb1-9c31-99811608f036
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 

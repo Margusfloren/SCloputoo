@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "a849bf4d47b2e6136d30",
+  "position": {
+    "x": 1386.6666666666667,
+    "y": 1183.3333333333335,
+    "z": 13000,
+    "height": 101.66666666666667,
+    "width": 195,
+    "tabOrder": 13000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Production KPI Selector"
+                    }
+                  },
+                  "Property": "Production KPI Selector"
+                }
+              },
+              "queryRef": "Production KPI Selector.Production KPI Selector",
+              "nativeQueryRef": "Production KPI Selector",
+              "active": true
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
