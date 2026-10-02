@@ -138,10 +138,10 @@
                         },
                         "valueMap": [
                           {
-                            "0": "plant_name"
+                            "0": "Plant"
                           },
                           {
-                            "0": "product_name"
+                            "0": "Product"
                           }
                         ]
                       }

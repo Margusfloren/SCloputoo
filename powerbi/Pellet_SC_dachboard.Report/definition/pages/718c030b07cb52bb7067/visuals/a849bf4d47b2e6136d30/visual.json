@@ -4,10 +4,10 @@
   "position": {
     "x": 953.33333333333337,
     "y": 735,
-    "z": 13000,
+    "z": 12000,
     "height": 95,
     "width": 191.66666666666669,
-    "tabOrder": 13000
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "slicer",
@@ -75,13 +75,6 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''_Measures''[Production Variance Selected Period]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
                                 "Value": "'''_Measures''[Production Actual Selected Period]'"
                               }
                             }
@@ -90,6 +83,13 @@
                             {
                               "Literal": {
                                 "Value": "'''_Measures''[Production Budget Selected Period]'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'''_Measures''[Production Variance Selected Period]'"
                               }
                             }
                           ],
@@ -124,17 +124,6 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''_Measures''[Production Variance Selected Period]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
                                       "Value": "'''_Measures''[Production Actual Selected Period]'"
                                     }
                                   }
@@ -147,6 +136,17 @@
                                   {
                                     "Literal": {
                                       "Value": "'''_Measures''[Production Budget Selected Period]'"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'''_Measures''[Production Variance Selected Period]'"
                                     }
                                   }
                                 ]
@@ -181,13 +181,13 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Production Variance "
-                          },
-                          {
                             "0": "Production Actual "
                           },
                           {
                             "0": "Production Budget "
+                          },
+                          {
+                            "0": "Production Variance "
                           },
                           {
                             "0": "Production Attainment "

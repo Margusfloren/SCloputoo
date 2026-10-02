@@ -110,9 +110,8 @@ table _Measures
 			    [Sales Actual],
 			    0
 			)
+		formatString: 0.00
 		lineageTag: 6ab7087a-7710-4665-88fc-ef102d236f58
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Sales Budget Selected Period' =
 			
@@ -229,6 +228,36 @@ table _Measures
 			        "Production Actual"
 			    )
 		lineageTag: c36c883a-369a-400b-a3c1-14d3f69d59c2
+
+	measure 'Sales Actual KPI' =
+			
+			[Sales Actual Selected Period]
+		lineageTag: ae8b2317-56b9-4607-ba25-648d2b18b213
+
+		formatStringDefinition =
+				VAR v = [Sales Actual KPI]
+				
+				RETURN
+				    SWITCH(
+				        TRUE(),
+				        ABS(v) >= 1000000, "0.00,, ""M""",
+				        ABS(v) >= 1000,    "0, ""K""",
+				        "0"
+				    )
+
+	measure 'Sales Actual KPI Display' =
+			
+			VAR v = [Sales Actual Selected Period]
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ABS(v) >= 1000000,
+			            FORMAT(v / 1000000, "0.00") & "M",
+			        ABS(v) >= 1000,
+			            FORMAT(v / 1000, "0") & "K",
+			        FORMAT(v, "0")
+			    )
+		lineageTag: 7244fdd4-29ae-4c0e-98d6-ce41ac179b4c
 
 	column Value
 		isHidden

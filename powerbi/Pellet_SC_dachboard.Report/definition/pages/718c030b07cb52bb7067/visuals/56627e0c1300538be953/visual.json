@@ -3,10 +3,10 @@
   "name": "56627e0c1300538be953",
   "position": {
     "x": 20,
-    "y": 23.333333333333336,
+    "y": 22.857142857142858,
     "z": 0,
-    "height": 135,
-    "width": 170,
+    "height": 135.71428571428572,
+    "width": 185.71428571428572,
     "tabOrder": 0
   },
   "visual": {
@@ -23,32 +23,17 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sales Actual Selected Period"
+                  "Property": "Sales Actual KPI Display"
                 }
               },
-              "queryRef": "_Measures.Sales Actual Selected Period",
+              "queryRef": "_Measures.Sales Actual KPI Display",
               "nativeQueryRef": "Sales Actual Selected Period",
-              "format": "0"
+              "displayName": "Sales Actual Selected Period"
             }
           ]
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "_Measures"
-                  }
-                },
-                "Property": "Sales Actual Selected Period"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
         "isDefaultSort": true
       }
     },
@@ -135,6 +120,17 @@
           },
           "selector": {
             "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
           }
         }
       ],

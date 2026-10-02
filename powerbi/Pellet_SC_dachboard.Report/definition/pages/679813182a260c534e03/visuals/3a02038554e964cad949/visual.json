@@ -27,9 +27,9 @@
                 }
               },
               "queryRef": "gold dim_plant.plant_name",
-              "nativeQueryRef": "plant_name",
+              "nativeQueryRef": "Plant",
               "active": true,
-              "displayName": "plant_name"
+              "displayName": "Plant"
             },
             {
               "field": {
@@ -43,9 +43,9 @@
                 }
               },
               "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "product_name",
+              "nativeQueryRef": "Product",
               "active": false,
-              "displayName": "product_name"
+              "displayName": "Product"
             }
           ],
           "fieldParameters": [
@@ -79,8 +79,8 @@
                 }
               },
               "queryRef": "_Measures.Production Actual Selected Period",
-              "nativeQueryRef": "Production Actual Selected Period",
-              "displayName": "Production Actual Selected Period"
+              "nativeQueryRef": "Production Actual ",
+              "displayName": "Production Actual "
             },
             {
               "field": {
@@ -94,8 +94,8 @@
                 }
               },
               "queryRef": "_Measures.Production Budget Selected Period",
-              "nativeQueryRef": "Production Budget Selected Period",
-              "displayName": "Production Budget Selected Period"
+              "nativeQueryRef": "Production Budget ",
+              "displayName": "Production Budget "
             },
             {
               "field": {
@@ -109,8 +109,8 @@
                 }
               },
               "queryRef": "_Measures.Production Variance Selected Period",
-              "nativeQueryRef": "Production Variance Selected Period",
-              "displayName": "Production Variance Selected Period"
+              "nativeQueryRef": "Production Variance ",
+              "displayName": "Production Variance "
             },
             {
               "field": {
@@ -124,8 +124,8 @@
                 }
               },
               "queryRef": "_Measures.Production Attainment Selected Period %",
-              "nativeQueryRef": "Production Attainment Selected Period %",
-              "displayName": "Production Attainment Selected Period %"
+              "nativeQueryRef": "Production Attainment ",
+              "displayName": "Production Attainment "
             }
           ],
           "fieldParameters": [

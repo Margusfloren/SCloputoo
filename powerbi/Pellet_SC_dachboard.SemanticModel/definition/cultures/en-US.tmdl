@@ -1116,16 +1116,6 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Sales Actual Selected Period": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        },
-			        {
 			          "Sales Actual": {
 			            "State": "Suggested",
 			            "Source": {
@@ -10839,42 +10829,304 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
-			    }
-			  },
-			  "Relationships": {
-			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_day": {
-			      "Binding": {
-			        "ConceptualEntity": "gold dim_date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_dim_date.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "gold_dim_date.date.date_hierarchy"
-			          }
-			        },
-			        "gold_dim_date.date.day": {
-			          "Target": {
-			            "Entity": "gold_dim_date.date.day"
-			          }
+			    },
+			    "entity__measure.sales_actual_KPI": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Sales Actual KPI"
 			        }
 			      },
-			      "Phrasings": [
+			      "State": "Generated",
+			      "Terms": [
 			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "gold_dim_date.date.date_hierarchy"
+			          "sales actual KPI": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "KPI": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "actual KPI": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "sale actual kpi": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
 			            },
-			            "Object": {
-			              "Role": "gold_dim_date.date.day"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_hierarchies_have_days"
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "sale real kpi": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "sale existent kpi": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "sale tangible kpi": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "real kpi": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "existent kpi": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "tangible kpi": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
 			        }
 			      ]
 			    },
+			    "entity__measure.sales_actual_KPI_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Sales Actual KPI Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "sales actual KPI display": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "actual KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "sale actual kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "sale real kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "sale existent kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "sale tangible kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "real kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "existent kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "tangible kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "sale actual kpi exhibition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "sale actual kpi presentation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "sale actual kpi demonstration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "Sales Actual Selected Period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__sales_actual_KPI_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Sales Actual KPI FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_sales actual KPI FormatString": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "_ sale actual kpi formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "_sale real kpi formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "_sale existent kpi formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "_sale tangible kpi formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
 			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_month": {
 			      "Binding": {
 			        "ConceptualEntity": "gold dim_date"
@@ -11676,6 +11928,72 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "gold_dim_dates_have_gold_fact_sales"
+			        }
+			      ]
+			    },
+			    "gold_fact_sale_has_entity__measure_sales_actual_KPI_display": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_sales"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_sale": {
+			          "Target": {
+			            "Entity": "gold_fact_sale"
+			          }
+			        },
+			        "entity__measure.sales_actual_KPI_display": {
+			          "Target": {
+			            "Entity": "entity__measure.sales_actual_KPI_display"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_sale"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.sales_actual_KPI_display"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_sales_have_sales_actual_KPI_display"
+			        }
+			      ]
+			    },
+			    "gold_fact_sale_has_entity__measure_sales_actual_KPI": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_sales"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_sale": {
+			          "Target": {
+			            "Entity": "gold_fact_sale"
+			          }
+			        },
+			        "entity__measure.sales_actual_KPI": {
+			          "Target": {
+			            "Entity": "entity__measure.sales_actual_KPI"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_sale"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.sales_actual_KPI"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_sales_have_sales_actual_KPI"
 			        }
 			      ]
 			    },
@@ -15199,6 +15517,39 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.75,
 			          "ID": "sales_view_selectors_select"
+			        }
+			      ]
+			    },
+			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "gold dim_date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_dim_date.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "gold_dim_date.date.date_hierarchy"
+			          }
+			        },
+			        "gold_dim_date.date.day": {
+			          "Target": {
+			            "Entity": "gold_dim_date.date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_dim_date.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "gold_dim_date.date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_days"
 			        }
 			      ]
 			    },
