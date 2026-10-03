@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "95abd03eebd4ca0a0203",
+  "name": "87e315241947b2e32005",
   "position": {
-    "x": 225.71428571428572,
-    "y": 735.71428571428578,
-    "z": 10000,
+    "x": 538.33333333333337,
+    "y": 250,
+    "z": 2007,
     "height": 93.333333333333343,
-    "width": 186.66666666666669,
-    "tabOrder": 10000
+    "width": 190,
+    "tabOrder": 2007
   },
   "visual": {
     "visualType": "slicer",
@@ -68,14 +68,14 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''gold dim_product''[product_name]'"
+                                "Value": "'''gold fact_sales''[channel_id]'"
                               }
                             }
                           ],
                           [
                             {
                               "Literal": {
-                                "Value": "'''gold fact_sales''[channel_id]'"
+                                "Value": "'''gold dim_product''[product_name]'"
                               }
                             }
                           ],
@@ -110,7 +110,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''gold dim_product''[product_name]'"
+                                      "Value": "'''gold fact_sales''[channel_id]'"
                                     }
                                   }
                                 ]
@@ -121,7 +121,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''gold fact_sales''[channel_id]'"
+                                      "Value": "'''gold dim_product''[product_name]'"
                                     }
                                   }
                                 ]
@@ -156,10 +156,10 @@
                         },
                         "valueMap": [
                           {
-                            "0": "product_name"
+                            "0": "channel_id"
                           },
                           {
-                            "0": "channel_id"
+                            "0": "product_name"
                           },
                           {
                             "0": "plant_name"

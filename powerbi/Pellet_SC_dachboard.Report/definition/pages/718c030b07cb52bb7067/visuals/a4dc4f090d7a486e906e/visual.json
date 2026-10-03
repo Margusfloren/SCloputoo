@@ -30,6 +30,22 @@
               "nativeQueryRef": "Product",
               "active": true,
               "displayName": "Product"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_plant"
+                    }
+                  },
+                  "Property": "plant_name"
+                }
+              },
+              "queryRef": "gold dim_plant.plant_name",
+              "nativeQueryRef": "Plant",
+              "active": false,
+              "displayName": "Plant"
             }
           ],
           "fieldParameters": [
@@ -45,7 +61,7 @@
                 }
               },
               "index": 0,
-              "length": 1
+              "length": 2
             }
           ]
         },

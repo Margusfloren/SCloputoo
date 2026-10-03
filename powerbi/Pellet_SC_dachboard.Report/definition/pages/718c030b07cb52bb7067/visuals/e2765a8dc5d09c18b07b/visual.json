@@ -3,7 +3,7 @@
   "name": "e2765a8dc5d09c18b07b",
   "position": {
     "x": 951.66666666666674,
-    "y": 266.66666666666669,
+    "y": 338.33333333333337,
     "z": 16000,
     "height": 408.33333333333337,
     "width": 1010,
@@ -79,12 +79,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sales Actual Selected Period All Channels"
+                  "Property": "Production Budget Selected Period"
                 }
               },
-              "queryRef": "_Measures.Sales Actual Selected Period All Channels",
-              "nativeQueryRef": "Sales Actual",
-              "displayName": "Sales Actual"
+              "queryRef": "_Measures.Production Budget Selected Period",
+              "nativeQueryRef": "Production Budget",
+              "displayName": "Production Budget"
             },
             {
               "field": {

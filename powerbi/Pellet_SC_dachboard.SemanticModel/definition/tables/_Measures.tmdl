@@ -152,9 +152,8 @@ table _Measures
 			    [Production Actual],
 			    0
 			)
+		formatString: 0.00
 		lineageTag: 0a6fc72c-0eab-4d57-afda-467d3dfb1190
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Production Budget Selected Period' =
 			
@@ -247,47 +246,161 @@ table _Measures
 
 	measure 'Sales Actual KPI Display' =
 			
-			VAR v = [Sales Actual Selected Period]
+			VAR _Value =
+			    [Sales Actual Selected Period]
+			
 			RETURN
-			    SWITCH(
-			        TRUE(),
-			        ABS(v) >= 1000000,
-			            FORMAT(v / 1000000, "0.00") & "M",
-			        ABS(v) >= 1000,
-			            FORMAT(v / 1000, "0") & "K",
-			        FORMAT(v, "0")
+			    IF (
+			        ISBLANK ( _Value ),
+			        BLANK(),
+			        SWITCH (
+			            TRUE(),
+			            ABS ( _Value ) < 10000,
+			                FORMAT ( _Value / 1000, "0.00" ) & "K",
+			
+			            ABS ( _Value ) < 100000,
+			                FORMAT ( _Value / 1000, "0.0" ) & "K",
+			
+			            ABS ( _Value ) < 1000000,
+			                FORMAT ( _Value / 1000, "0" ) & "K",
+			
+			            FORMAT ( _Value / 1000000, "0.00" ) & "M"
+			        )
 			    )
 		lineageTag: 7244fdd4-29ae-4c0e-98d6-ce41ac179b4c
 
 	measure 'Sales Budget KPI Display' =
 			
-			VAR v = [Sales Budget Selected Period]
+			VAR _Value =
+			    [Sales Budget Selected Period]
 			
 			RETURN
-			    SWITCH(
-			        TRUE(),
-			        ABS(v) >= 1000000,
-			            FORMAT(v / 1000000, "0.00") & "M",
-			        ABS(v) >= 1000,
-			            FORMAT(v / 1000, "0") & "K",
-			        FORMAT(v, "0")
+			    IF (
+			        ISBLANK ( _Value ),
+			        BLANK(),
+			        SWITCH (
+			            TRUE(),
+			            ABS ( _Value ) < 10000,
+			                FORMAT ( _Value / 1000, "0.00" ) & "K",
+			
+			            ABS ( _Value ) < 100000,
+			                FORMAT ( _Value / 1000, "0.0" ) & "K",
+			
+			            ABS ( _Value ) < 1000000,
+			                FORMAT ( _Value / 1000, "0" ) & "K",
+			
+			            FORMAT ( _Value / 1000000, "0.00" ) & "M"
+			        )
 			    )
 		lineageTag: ca82b735-6f1c-4212-9e56-843438596f0e
 
 	measure 'Sales Variance KPI Display' =
 			
-			VAR v = [Sales Variance Selected Period]
+			VAR _Value =
+			    [Sales Variance Selected Period]
 			
 			RETURN
-			    SWITCH(
-			        TRUE(),
-			        ABS(v) >= 1000000,
-			            FORMAT(v / 1000000, "0.00") & "M",
-			        ABS(v) >= 1000,
-			            FORMAT(v / 1000, "0") & "K",
-			        FORMAT(v, "0")
+			    IF (
+			        ISBLANK ( _Value ),
+			        BLANK(),
+			        SWITCH (
+			            TRUE(),
+			            ABS ( _Value ) < 10000,
+			                FORMAT ( _Value / 1000, "0.00" ) & "K",
+			
+			            ABS ( _Value ) < 100000,
+			                FORMAT ( _Value / 1000, "0.0" ) & "K",
+			
+			            ABS ( _Value ) < 1000000,
+			                FORMAT ( _Value / 1000, "0" ) & "K",
+			
+			            FORMAT ( _Value / 1000000, "0.00" ) & "M"
+			        )
 			    )
 		lineageTag: 2eb75327-bc2a-48a5-8e69-98c5310e68f8
+
+	measure 'Production Variance KPI Display' =
+			
+			VAR _Value =
+			    [Production Variance Selected Period]
+			
+			RETURN
+			    IF (
+			        ISBLANK ( _Value ),
+			        BLANK(),
+			        SWITCH (
+			            TRUE(),
+			            ABS ( _Value ) < 10000,
+			                FORMAT ( _Value / 1000, "0.00" ) & "K",
+			
+			            ABS ( _Value ) < 100000,
+			                FORMAT ( _Value / 1000, "0.0" ) & "K",
+			
+			            ABS ( _Value ) < 1000000,
+			                FORMAT ( _Value / 1000, "0" ) & "K",
+			
+			            FORMAT ( _Value / 1000000, "0.00" ) & "M"
+			        )
+			    )
+		lineageTag: 78f1c0af-d57b-4e1c-b1c5-148442f7b2e3
+
+		formatStringDefinition = "0.00K"
+
+	measure 'Production Actual KPI Display' =
+			
+			VAR _Value =
+			    [Production Actual Selected Period]
+			
+			RETURN
+			    IF (
+			        ISBLANK ( _Value ),
+			        BLANK(),
+			        SWITCH (
+			            TRUE(),
+			            ABS ( _Value ) < 1000000,
+			                DIVIDE ( _Value, 1000 ),
+			            DIVIDE ( _Value, 1000000 )
+			        )
+			    )
+		lineageTag: c723a8a5-a5fa-479e-b21f-6d44902d2adf
+
+		formatStringDefinition =
+				VAR _Value =
+				    ABS ( [Production Actual Selected Period] )
+				
+				RETURN
+				    SWITCH (
+				        TRUE(),
+				        _Value < 10000,   "0.00""K""",
+				        _Value < 100000,  "0.0""K""",
+				        _Value < 1000000, "0""K""",
+				                          "0.00""M"""
+				    )
+
+	measure 'Production Budget KPI Display' =
+			
+			VAR _Value =
+			    [Production Budget Selected Period]
+			
+			RETURN
+			    IF (
+			        ISBLANK ( _Value ),
+			        BLANK(),
+			        SWITCH (
+			            TRUE(),
+			            ABS ( _Value ) < 10000,
+			                FORMAT ( _Value / 1000, "0.00" ) & "K",
+			
+			            ABS ( _Value ) < 100000,
+			                FORMAT ( _Value / 1000, "0.0" ) & "K",
+			
+			            ABS ( _Value ) < 1000000,
+			                FORMAT ( _Value / 1000, "0" ) & "K",
+			
+			            FORMAT ( _Value / 1000000, "0.00" ) & "M"
+			        )
+			    )
+		lineageTag: 00121b44-5308-4c6a-a532-e340105143a3
 
 	column Value
 		isHidden

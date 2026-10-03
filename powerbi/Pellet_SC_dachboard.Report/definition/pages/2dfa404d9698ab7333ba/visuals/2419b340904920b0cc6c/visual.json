@@ -1,0 +1,226 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "name": "2419b340904920b0cc6c",
+  "position": {
+    "x": 433.33333333333337,
+    "y": 343.33333333333337,
+    "z": 2008,
+    "height": 473.33333333333337,
+    "width": 920,
+    "tabOrder": 2008
+  },
+  "visual": {
+    "visualType": "pivotTable",
+    "query": {
+      "queryState": {
+        "Rows": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold fact_sales"
+                    }
+                  },
+                  "Property": "channel_id"
+                }
+              },
+              "queryRef": "gold fact_sales.channel_id",
+              "nativeQueryRef": "channel_id",
+              "active": true,
+              "displayName": "channel_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_product"
+                    }
+                  },
+                  "Property": "product_name"
+                }
+              },
+              "queryRef": "gold dim_product.product_name",
+              "nativeQueryRef": "product_name",
+              "active": true,
+              "displayName": "product_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_plant"
+                    }
+                  },
+                  "Property": "plant_name"
+                }
+              },
+              "queryRef": "gold dim_plant.plant_name",
+              "nativeQueryRef": "plant_name",
+              "active": true,
+              "displayName": "plant_name"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sales View Selector"
+                    }
+                  },
+                  "Property": "Sales View Selector"
+                }
+              },
+              "index": 0,
+              "length": 3
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales Actual"
+                }
+              },
+              "queryRef": "_Measures.Sales Actual",
+              "nativeQueryRef": "Sales Actual",
+              "displayName": "Sales Actual"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales Budget"
+                }
+              },
+              "queryRef": "_Measures.Sales Budget",
+              "nativeQueryRef": "Sales Budget",
+              "displayName": "Sales Budget"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales Variance"
+                }
+              },
+              "queryRef": "_Measures.Sales Variance",
+              "nativeQueryRef": "Sales Variance",
+              "displayName": "Sales Variance"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales Attainment Selected Period %"
+                }
+              },
+              "queryRef": "_Measures.Sales Attainment Selected Period %",
+              "nativeQueryRef": "Sales Attainment",
+              "displayName": "Sales Attainment"
+            }
+          ],
+          "fieldParameters": [
+            {
+              "parameterExpr": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sales KPI Selector"
+                    }
+                  },
+                  "Property": "Sales KPI Selector ver 2"
+                }
+              },
+              "index": 0,
+              "length": 4
+            }
+          ]
+        }
+      }
+    },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "gold fact_sales.channel_id"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "gold dim_product.product_name"
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "gold dim_plant.plant_name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Sales View '"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

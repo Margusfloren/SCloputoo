@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "41e4447c2506beed91a2",
   "position": {
-    "x": 0,
-    "y": 841.66666666666674,
+    "x": 31.666666666666668,
+    "y": 825,
     "z": 11000,
-    "height": 385,
-    "width": 928.33333333333337,
+    "height": 266.66666666666669,
+    "width": 621.66666666666674,
     "tabOrder": 11000
   },
   "visual": {
@@ -15,6 +15,22 @@
       "queryState": {
         "Rows": {
           "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_plant"
+                    }
+                  },
+                  "Property": "plant_name"
+                }
+              },
+              "queryRef": "gold dim_plant.plant_name",
+              "nativeQueryRef": "plant_name",
+              "active": false,
+              "displayName": "plant_name"
+            },
             {
               "field": {
                 "Column": {
@@ -46,22 +62,6 @@
               "nativeQueryRef": "channel_id",
               "active": false,
               "displayName": "channel_id"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_plant"
-                    }
-                  },
-                  "Property": "plant_name"
-                }
-              },
-              "queryRef": "gold dim_plant.plant_name",
-              "nativeQueryRef": "plant_name",
-              "active": false,
-              "displayName": "plant_name"
             }
           ],
           "fieldParameters": [
@@ -163,48 +163,6 @@
         }
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Rows"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "gold dim_product.product_name"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
-                    }
-                  },
-                  "Property": "product_name"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "gold fact_sales.channel_id"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "gold dim_plant.plant_name"
-            ],
-            "isCollapsed": true
-          }
-        ],
-        "root": {}
-      }
-    ],
     "objects": {
       "general": [
         {

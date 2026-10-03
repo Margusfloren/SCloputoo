@@ -233,6 +233,11 @@
         }
       ]
     },
+    "syncGroup": {
+      "groupName": "plant_id",
+      "fieldChanges": true,
+      "filterChanges": true
+    },
     "drillFilterOtherVisuals": true
   }
 }
