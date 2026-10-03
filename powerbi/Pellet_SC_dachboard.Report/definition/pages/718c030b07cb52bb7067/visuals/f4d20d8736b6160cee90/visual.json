@@ -23,33 +23,17 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sales Variance KPI"
+                  "Property": "Sales Variance KPI Display"
                 }
               },
-              "queryRef": "_Measures.Sales Variance KPI",
+              "queryRef": "_Measures.Sales Variance KPI Display",
               "nativeQueryRef": "Sales Variance Selected Period",
-              "displayName": "Sales Variance Selected Period",
-              "format": "0"
+              "displayName": "Sales Variance Selected Period"
             }
           ]
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "_Measures"
-                  }
-                },
-                "Property": "Sales Variance KPI"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
         "isDefaultSort": true
       }
     },

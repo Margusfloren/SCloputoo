@@ -8675,16 +8675,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.591
 			          }
-			        },
-			        {
-			          "Sales Variance Selected Period": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -11124,9 +11114,351 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.sales_budget_KPI_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Sales Budget KPI Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "sales budget KPI display": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "budget KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "sale budget kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "sale account kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "sale cost kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "sale finance kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "account kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "cost kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "finance kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "sale budget kpi exhibition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "sale budget kpi presentation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "sale budget kpi demonstration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "Sales Budget Selected Period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.sales_variance_KPI_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Sales Variance KPI Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "sales variance KPI display": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "variance KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "sale variance kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "sale variance kpi exhibition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "sale variance kpi presentation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "sale variance kpi demonstration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "sale variance kpi spectacle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "sale variance kpi ceremony": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "sale variance kpi pageant": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "variance kpi exhibition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "variance kpi presentation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "variance kpi demonstration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "Sales Variance Selected Period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
+			    "gold_dim_date_month_start_date_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "gold dim_date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_dim_date.month_start_date": {
+			          "Target": {
+			            "Entity": "gold_dim_date.month_start_date"
+			          }
+			        },
+			        "gold_dim_date.month_start_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "gold_dim_date.month_start_date.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_dim_date.month_start_date"
+			            },
+			            "Object": {
+			              "Role": "gold_dim_date.month_start_date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "month_start_dates_have_month_start_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "gold dim_date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_dim_date.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "gold_dim_date.date.date_hierarchy"
+			          }
+			        },
+			        "gold_dim_date.date.day": {
+			          "Target": {
+			            "Entity": "gold_dim_date.date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_dim_date.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "gold_dim_date.date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_days"
+			        }
+			      ]
+			    },
 			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_month": {
 			      "Binding": {
 			        "ConceptualEntity": "gold dim_date"
@@ -11928,6 +12260,105 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "gold_dim_dates_have_gold_fact_sales"
+			        }
+			      ]
+			    },
+			    "gold_fact_sales_budget_has_entity__measure_sales_variance_KPI_display": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_sales_budget"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_sales_budget": {
+			          "Target": {
+			            "Entity": "gold_fact_sales_budget"
+			          }
+			        },
+			        "entity__measure.sales_variance_KPI_display": {
+			          "Target": {
+			            "Entity": "entity__measure.sales_variance_KPI_display"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_sales_budget"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.sales_variance_KPI_display"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_sales_budgets_have_sales_variance_KPI_display"
+			        }
+			      ]
+			    },
+			    "gold_fact_sale_has_entity__measure_sales_variance_KPI_display": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_sales"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_sale": {
+			          "Target": {
+			            "Entity": "gold_fact_sale"
+			          }
+			        },
+			        "entity__measure.sales_variance_KPI_display": {
+			          "Target": {
+			            "Entity": "entity__measure.sales_variance_KPI_display"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_sale"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.sales_variance_KPI_display"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_sales_have_sales_variance_KPI_display"
+			        }
+			      ]
+			    },
+			    "gold_fact_sales_budget_has_entity__measure_sales_budget_KPI_display": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_sales_budget"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_sales_budget": {
+			          "Target": {
+			            "Entity": "gold_fact_sales_budget"
+			          }
+			        },
+			        "entity__measure.sales_budget_KPI_display": {
+			          "Target": {
+			            "Entity": "entity__measure.sales_budget_KPI_display"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_sales_budget"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.sales_budget_KPI_display"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_sales_budgets_have_sales_budget_KPI_display"
 			        }
 			      ]
 			    },
@@ -15517,72 +15948,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.75,
 			          "ID": "sales_view_selectors_select"
-			        }
-			      ]
-			    },
-			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_day": {
-			      "Binding": {
-			        "ConceptualEntity": "gold dim_date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_dim_date.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "gold_dim_date.date.date_hierarchy"
-			          }
-			        },
-			        "gold_dim_date.date.day": {
-			          "Target": {
-			            "Entity": "gold_dim_date.date.day"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "gold_dim_date.date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "gold_dim_date.date.day"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_hierarchies_have_days"
-			        }
-			      ]
-			    },
-			    "gold_dim_date_month_start_date_has_date_hierarchy": {
-			      "Binding": {
-			        "ConceptualEntity": "gold dim_date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_dim_date.month_start_date": {
-			          "Target": {
-			            "Entity": "gold_dim_date.month_start_date"
-			          }
-			        },
-			        "gold_dim_date.month_start_date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "gold_dim_date.month_start_date.date_hierarchy"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "gold_dim_date.month_start_date"
-			            },
-			            "Object": {
-			              "Role": "gold_dim_date.month_start_date.date_hierarchy"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "month_start_dates_have_month_start_date_hierarchies"
 			        }
 			      ]
 			    },

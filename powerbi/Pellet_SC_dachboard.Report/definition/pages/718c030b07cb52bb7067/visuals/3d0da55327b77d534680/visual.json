@@ -75,13 +75,6 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''gold dim_plant''[plant_name]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
                                 "Value": "'''gold dim_product''[product_name]'"
                               }
                             }
@@ -110,17 +103,6 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''gold dim_plant''[plant_name]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
                                       "Value": "'''gold dim_product''[product_name]'"
                                     }
                                   }
@@ -144,9 +126,6 @@
                           ]
                         },
                         "valueMap": [
-                          {
-                            "0": "Plant"
-                          },
                           {
                             "0": "Product"
                           }

@@ -23,32 +23,17 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sales Budget Selected Period"
+                  "Property": "Sales Budget KPI Display"
                 }
               },
-              "queryRef": "_Measures.Sales Budget Selected Period",
+              "queryRef": "_Measures.Sales Budget KPI Display",
               "nativeQueryRef": "Sales Budget Selected Period",
-              "format": "0"
+              "displayName": "Sales Budget Selected Period"
             }
           ]
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "_Measures"
-                  }
-                },
-                "Property": "Sales Budget Selected Period"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
         "isDefaultSort": true
       }
     },

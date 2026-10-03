@@ -20,22 +20,6 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "gold dim_plant"
-                    }
-                  },
-                  "Property": "plant_name"
-                }
-              },
-              "queryRef": "gold dim_plant.plant_name",
-              "nativeQueryRef": "Plant",
-              "active": true,
-              "displayName": "Plant"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
                       "Entity": "gold dim_product"
                     }
                   },
@@ -44,7 +28,7 @@
               },
               "queryRef": "gold dim_product.product_name",
               "nativeQueryRef": "Product",
-              "active": false,
+              "active": true,
               "displayName": "Product"
             }
           ],
@@ -61,7 +45,7 @@
                 }
               },
               "index": 0,
-              "length": 2
+              "length": 1
             }
           ]
         },
@@ -147,42 +131,6 @@
         }
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Rows"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "gold dim_plant.plant_name"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_plant"
-                    }
-                  },
-                  "Property": "plant_name"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "gold dim_product.product_name"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          }
-        ],
-        "root": {}
-      }
-    ],
     "visualContainerObjects": {
       "title": [
         {

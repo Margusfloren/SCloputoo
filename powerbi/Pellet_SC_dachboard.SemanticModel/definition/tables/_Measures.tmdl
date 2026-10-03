@@ -259,6 +259,36 @@ table _Measures
 			    )
 		lineageTag: 7244fdd4-29ae-4c0e-98d6-ce41ac179b4c
 
+	measure 'Sales Budget KPI Display' =
+			
+			VAR v = [Sales Budget Selected Period]
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ABS(v) >= 1000000,
+			            FORMAT(v / 1000000, "0.00") & "M",
+			        ABS(v) >= 1000,
+			            FORMAT(v / 1000, "0") & "K",
+			        FORMAT(v, "0")
+			    )
+		lineageTag: ca82b735-6f1c-4212-9e56-843438596f0e
+
+	measure 'Sales Variance KPI Display' =
+			
+			VAR v = [Sales Variance Selected Period]
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ABS(v) >= 1000000,
+			            FORMAT(v / 1000000, "0.00") & "M",
+			        ABS(v) >= 1000,
+			            FORMAT(v / 1000, "0") & "K",
+			        FORMAT(v, "0")
+			    )
+		lineageTag: 2eb75327-bc2a-48a5-8e69-98c5310e68f8
+
 	column Value
 		isHidden
 		formatString: 0
