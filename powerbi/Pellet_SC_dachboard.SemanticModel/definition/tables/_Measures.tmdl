@@ -2,15 +2,13 @@ table _Measures
 	lineageTag: 4b5ba0f4-1d73-42ad-908c-4fb04578680e
 
 	measure 'Sales Actual' = SUM('gold fact_sales'[quantity_t])
-		formatString: 0
+		formatString: #,0
 		lineageTag: b7670af3-9855-4e4c-975f-92a8b86dc259
-
-		annotation PBI_FormatHint = {"isDecimal":true}
 
 	measure 'Sales Budget' = ```
 			SUM('gold fact_sales_budget'[budget_t]) 
 			```
-		formatString: 0
+		formatString: #,0
 		lineageTag: bc9b224e-eea4-41a0-98d9-2894c0385f66
 
 		annotation PBI_FormatHint = {"isDecimal":true}
@@ -18,7 +16,7 @@ table _Measures
 	measure 'Sales Variance' = ```
 			[Sales Actual]-[Sales Budget] 
 			```
-		formatString: 0
+		formatString: #,0
 		lineageTag: b71384e3-e25b-4947-bd5d-bb8a4955101b
 
 		annotation PBI_FormatHint = {"isDecimal":true}

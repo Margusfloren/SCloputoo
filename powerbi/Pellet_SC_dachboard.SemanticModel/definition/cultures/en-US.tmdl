@@ -656,7 +656,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Budget Attainment Selected Period %": {
+			          "Sales Attainment": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -666,7 +666,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Sales Attainment": {
+			          "Budget Attainment Selected Period %": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -1087,6 +1087,16 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "Production Attainment Selected Period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        },
 			        {
@@ -8501,7 +8511,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Budget Attainment": {
+			          "Budget Attainment Selected Period": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -11390,6 +11400,458 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.production_variance_KPI_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Production Variance KPI Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "production variance KPI display": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "variance KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "production variance kpi exhibition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production variance kpi presentation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production variance kpi demonstration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production variance kpi spectacle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production variance kpi ceremony": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production variance kpi pageant": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "variance kpi exhibition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "variance kpi presentation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "variance kpi demonstration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "variance kpi spectacle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "Production Variance Selected Period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.production_actual_KPI_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Production Actual KPI Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "production actual KPI display": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "actual KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "production real kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "production existent kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "production tangible kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "real kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "existent kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "tangible kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "production actual kpi exhibition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production actual kpi presentation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production actual kpi demonstration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production actual kpi spectacle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "Production Actual Selected Period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.production_budget_KPI_display": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Production Budget KPI Display"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "production budget KPI display": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "budget KPI display": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "production account kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "production cost kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "production finance kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "account kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "cost kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "finance kpi display": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "production budget kpi exhibition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production budget kpi presentation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production budget kpi demonstration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "production budget kpi spectacle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "Production Budget Selected Period": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__production_variance_KPI_display_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Production Variance KPI Display FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_production variance KPI display FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__production_actual_KPI_display_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Production Actual KPI Display FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_production actual KPI display FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
@@ -12260,6 +12722,138 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "gold_dim_dates_have_gold_fact_sales"
+			        }
+			      ]
+			    },
+			    "gold_fact_production_budget_has_entity__measure_production_budget_KPI_display": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_production_budget"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_production_budget": {
+			          "Target": {
+			            "Entity": "gold_fact_production_budget"
+			          }
+			        },
+			        "entity__measure.production_budget_KPI_display": {
+			          "Target": {
+			            "Entity": "entity__measure.production_budget_KPI_display"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_production_budget"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.production_budget_KPI_display"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_production_budgets_have_production_budget_KPI_display"
+			        }
+			      ]
+			    },
+			    "gold_fact_production_has_entity__measure_production_actual_KPI_display": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_production"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_production": {
+			          "Target": {
+			            "Entity": "gold_fact_production"
+			          }
+			        },
+			        "entity__measure.production_actual_KPI_display": {
+			          "Target": {
+			            "Entity": "entity__measure.production_actual_KPI_display"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_production"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.production_actual_KPI_display"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_productions_have_production_actual_KPI_display"
+			        }
+			      ]
+			    },
+			    "gold_fact_production_budget_has_entity__measure_production_variance_KPI_display": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_production_budget"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_production_budget": {
+			          "Target": {
+			            "Entity": "gold_fact_production_budget"
+			          }
+			        },
+			        "entity__measure.production_variance_KPI_display": {
+			          "Target": {
+			            "Entity": "entity__measure.production_variance_KPI_display"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_production_budget"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.production_variance_KPI_display"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_production_budgets_have_production_variance_KPI_display"
+			        }
+			      ]
+			    },
+			    "gold_fact_production_has_entity__measure_production_variance_KPI_display": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_production"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_production": {
+			          "Target": {
+			            "Entity": "gold_fact_production"
+			          }
+			        },
+			        "entity__measure.production_variance_KPI_display": {
+			          "Target": {
+			            "Entity": "entity__measure.production_variance_KPI_display"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_production"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.production_variance_KPI_display"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_productions_have_production_variance_KPI_display"
 			        }
 			      ]
 			    },

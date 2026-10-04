@@ -4,10 +4,10 @@
   "position": {
     "x": 215,
     "y": 158.33333333333334,
-    "z": 16002,
+    "z": 17000,
     "height": 135,
     "width": 195,
-    "tabOrder": 16002
+    "tabOrder": 17000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "_Measures.Production Budget KPI Display",
-              "nativeQueryRef": "Production Budget KPI Display"
+              "nativeQueryRef": "Production Budget Selected Period",
+              "displayName": "Production Budget Selected Period"
             }
           ]
         }
@@ -44,9 +45,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#A8C9A0'"
                     }
                   }
                 }
@@ -55,7 +55,7 @@
             "weight": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "4D"
                 }
               }
             }
@@ -143,6 +143,22 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "12L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ]

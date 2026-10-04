@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "12773d356e18a7d208a2",
   "position": {
-    "x": 605,
+    "x": 621.66666666666674,
     "y": 158.33333333333334,
-    "z": 16004,
+    "z": 19000,
     "height": 135,
-    "width": 195,
-    "tabOrder": 16004
+    "width": 223.33333333333334,
+    "tabOrder": 19000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "_Measures.Production Attainment Selected Period %",
-              "nativeQueryRef": "Production Attainment Selected Period %"
+              "nativeQueryRef": "Production Attainment Selected Period ",
+              "displayName": "Production Attainment Selected Period "
             }
           ]
         }
@@ -108,7 +109,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#000000'"
+                      "Value": "'#A8C9A0'"
                     }
                   }
                 }
@@ -117,7 +118,7 @@
             "weight": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "4D"
                 }
               }
             }
@@ -160,6 +161,22 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "12L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ]

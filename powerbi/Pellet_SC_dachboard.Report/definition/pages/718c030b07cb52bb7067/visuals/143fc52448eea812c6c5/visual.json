@@ -89,7 +89,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#000000'"
+                      "Value": "'#D6A84B'"
                     }
                   }
                 }
@@ -98,7 +98,7 @@
             "weight": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "4D"
                 }
               }
             }
@@ -118,6 +118,22 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "12L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ]

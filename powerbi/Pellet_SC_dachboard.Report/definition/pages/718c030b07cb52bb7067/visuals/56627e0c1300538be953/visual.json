@@ -3,10 +3,10 @@
   "name": "56627e0c1300538be953",
   "position": {
     "x": 20,
-    "y": 22.857142857142858,
+    "y": 23.333333333333336,
     "z": 0,
-    "height": 135.71428571428572,
-    "width": 195,
+    "height": 135,
+    "width": 208.33333333333334,
     "tabOrder": 0
   },
   "visual": {
@@ -45,9 +45,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#D6A84B'"
                     }
                   }
                 }
@@ -56,7 +55,7 @@
             "weight": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "4D"
                 }
               }
             }
@@ -144,6 +143,22 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "12L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ]

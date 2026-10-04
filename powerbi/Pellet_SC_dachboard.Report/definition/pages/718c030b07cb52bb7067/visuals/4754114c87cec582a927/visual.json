@@ -4,10 +4,10 @@
   "position": {
     "x": 20,
     "y": 158.33333333333334,
-    "z": 16001,
+    "z": 16000,
     "height": 135,
     "width": 208.33333333333334,
-    "tabOrder": 16001
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "_Measures.Production Actual KPI Display",
-              "nativeQueryRef": "Production Actual KPI Display"
+              "nativeQueryRef": "Production Actual Selected Period",
+              "displayName": "Production Actual Selected Period"
             }
           ]
         }
@@ -59,9 +60,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#A8C9A0'"
                     }
                   }
                 }
@@ -70,7 +70,7 @@
             "weight": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "4D"
                 }
               }
             }
@@ -158,6 +158,22 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "12L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ]

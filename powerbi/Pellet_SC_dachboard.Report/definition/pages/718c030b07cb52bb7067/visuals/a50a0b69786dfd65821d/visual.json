@@ -4,10 +4,10 @@
   "position": {
     "x": 410,
     "y": 158.33333333333334,
-    "z": 16003,
+    "z": 18000,
     "height": 135,
-    "width": 195,
-    "tabOrder": 16003
+    "width": 211.66666666666669,
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -27,7 +27,8 @@
                 }
               },
               "queryRef": "_Measures.Production Variance KPI Display",
-              "nativeQueryRef": "Production Variance KPI Display"
+              "nativeQueryRef": "Production Variance Selected Period",
+              "displayName": "Production Variance Selected Period"
             }
           ]
         }
@@ -59,9 +60,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
+                    "Literal": {
+                      "Value": "'#A8C9A0'"
                     }
                   }
                 }
@@ -70,7 +70,7 @@
             "weight": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "4D"
                 }
               }
             }
@@ -158,6 +158,22 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "12L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ]

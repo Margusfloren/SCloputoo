@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "87e315241947b2e32005",
   "position": {
-    "x": 538.33333333333337,
-    "y": 250,
-    "z": 2007,
-    "height": 93.333333333333343,
+    "x": 1620,
+    "y": 170,
+    "z": 7000,
+    "height": 81.666666666666671,
     "width": 190,
-    "tabOrder": 2007
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "slicer",
@@ -38,6 +38,13 @@
       "general": [
         {
           "properties": {
+            "orientation": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
             "filter": {
               "filter": {
                 "Version": 2,
@@ -170,13 +177,6 @@
                   }
                 ]
               }
-            },
-            "orientation": {
-              "expr": {
-                "Literal": {
-                  "Value": "0D"
-                }
-              }
             }
           }
         }
@@ -201,6 +201,46 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F6E8C5'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
                 }
               }
             }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "9d8d82065575701d3bce",
   "position": {
-    "x": 605,
+    "x": 621.66666666666674,
     "y": 23.333333333333336,
     "z": 3000,
     "height": 135,
-    "width": 195,
+    "width": 223.33333333333334,
     "tabOrder": 3000
   },
   "visual": {
@@ -27,8 +27,8 @@
                 }
               },
               "queryRef": "_Measures.Budget Attainment YTD %",
-              "nativeQueryRef": "Budget Attainment",
-              "displayName": "Budget Attainment",
+              "nativeQueryRef": "Budget Attainment Selected Period",
+              "displayName": "Budget Attainment Selected Period",
               "format": "0.0%;-0.0%;0.0%"
             }
           ]
@@ -110,7 +110,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#000000'"
+                      "Value": "'#D6A84B'"
                     }
                   }
                 }
@@ -119,7 +119,7 @@
             "weight": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "4D"
                 }
               }
             }
@@ -162,6 +162,22 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "12L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ]

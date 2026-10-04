@@ -5,8 +5,8 @@
     "x": 0,
     "y": 31.428571428571431,
     "z": 0,
-    "height": 1048.5714285714287,
-    "width": 1241.4285714285716,
+    "height": 291.42857142857144,
+    "width": 1202.8571428571429,
     "tabOrder": 0
   },
   "visual": {
@@ -150,7 +150,6 @@
             "queryRefs": [
               "gold dim_date.date.Variation.Date Hierarchy.Year"
             ],
-            "isCollapsed": true,
             "identityKeys": [
               {
                 "Column": {
@@ -169,7 +168,6 @@
             "queryRefs": [
               "gold dim_product.package_type"
             ],
-            "isCollapsed": true,
             "identityKeys": [
               {
                 "Column": {
@@ -192,62 +190,7 @@
             "isPinned": true
           }
         ],
-        "root": {
-          "children": [
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "2023L"
-                  }
-                }
-              ],
-              "isToggled": true,
-              "children": [
-                {
-                  "identityValues": [
-                    {
-                      "Literal": {
-                        "Value": "'15 kg'"
-                      }
-                    }
-                  ],
-                  "isToggled": true
-                },
-                {
-                  "identityValues": [
-                    {
-                      "Literal": {
-                        "Value": "'Bulk'"
-                      }
-                    }
-                  ],
-                  "isToggled": true
-                }
-              ]
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "2024L"
-                  }
-                }
-              ],
-              "isToggled": true
-            },
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "2025L"
-                  }
-                }
-              ],
-              "isToggled": true
-            }
-          ]
-        }
+        "root": {}
       }
     ],
     "objects": {
