@@ -28,7 +28,8 @@
               },
               "queryRef": "_Measures.Production Attainment Selected Period %",
               "nativeQueryRef": "Production Attainment Selected Period ",
-              "displayName": "Production Attainment Selected Period "
+              "displayName": "Production Attainment Selected Period ",
+              "format": "0.00%;-0.00%;0.00%"
             }
           ]
         }

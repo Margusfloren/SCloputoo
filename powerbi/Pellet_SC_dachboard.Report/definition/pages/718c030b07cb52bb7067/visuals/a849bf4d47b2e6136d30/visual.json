@@ -6,7 +6,7 @@
     "y": 755,
     "z": 11000,
     "height": 95,
-    "width": 191.66666666666669,
+    "width": 233.33333333333334,
     "tabOrder": 11000
   },
   "visual": {
@@ -75,7 +75,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''_Measures''[Production Actual Selected Period]'"
+                                "Value": "'''_Measures''[Production Actual View]'"
                               }
                             }
                           ],
@@ -124,7 +124,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''_Measures''[Production Actual Selected Period]'"
+                                      "Value": "'''_Measures''[Production Actual View]'"
                                     }
                                   }
                                 ]
