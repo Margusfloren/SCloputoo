@@ -1,181 +1,285 @@
-# Project Overview
+# SC lõputöö – pelletitööstuse juhtimisvaade
 
-## Projekti eesmärk
+Pelletitööstuse Supply Chain Management juhtimisvaate arendusprojekt.
 
-Projekti eesmärk on luua pelletitööstuse Supply Chain Management juhtimisvaade, mis ühendab müügi, tootmise ja tarneahela juhtimiseks vajaliku info ühte tervikusse.
+**Status:** Power BI V1 development in progress  
+**Last updated:** 04.10.2026
 
-Juhtimisvaate eesmärk ei ole ainult näidata tulemusi, vaid aidata vastata juhtimisküsimustele:
+## Project Overview
 
-- Kas müük liigub eelarve järgi?
-- Millised tehased, tooted ja müügikanalid mõjutavad kõrvalekaldeid?
-- Kas tootmine täidab plaani?
-- Kas tootmine ja müük on omavahel tasakaalus?
-- Millised on tootmise ja tarneahela võimalikud pudelikaelad?
-- Kas toorme saadavus toetab tootmisplaani?
-- Milline on valmistoodangu varude seis?
-- Kas klientidele tarnitakse õigel ajal ja kokkulepitud koguses?
+Projekti eesmärk on luua Supply Chain Managerile juhtimisvaade, mis seob müügi, tootmise ja nende omavahelise takti ühtseks analüüsiks. V1 keskendub sellele, et oleks kiiresti nähtav:
 
----
+- kas müük täidab eelarvet;
+- kas tootmine täidab tootmisplaani;
+- millisel perioodil, tehases või tootel kõrvalekalle tekib;
+- kas tootmine ja müük liiguvad samas taktis;
+- milline müügikanal, toode või tehas mõjutab tulemust.
 
-## Projekti ulatus
+Projekt kasutab sünteetilisi 2023–2025 andmeid nelja pelletitehase kohta.
 
-Projekt kasutab nelja pelletitehase näidisandmeid.
+## Source data
 
-Peamised analüüsivaldkonnad on:
+Lähteandmete struktuur on üles ehitatud **Directo ERP andmemudeli põhimõtteid** järgides. Andmed liiguvad PostgreSQL-i kihilise mudeli kaudu ning neid valideeritakse enne visualiseerimist.
 
-1. **Sales & Demand**
-   - Sales Actual
-   - Sales Budget
-   - Variance
-   - Budget Fulfilment %
-   - analüüs aasta, kuu, tehase ja toote lõikes
+## Technical flow
 
-2. **Production**
-   - tootmisplaan
-   - tegelik tootmine
-   - tootmisplaani täitmine
-   - tootmise ja müügi võrdlus
+```text
+Source data
+   ↓
+PostgreSQL
+   ↓
+Bronze
+   ↓
+Silver / Gold
+   ↓
+SQL validation
+   ↓
+Python / pandas validation
+   ↓
+Power BI
+```
 
-3. **Raw Materials**
-   - peamised toormeliigid
-   - toorme vajadus
-   - toorme mix
-   - tootmisplaani ja toorme vajaduse seos
+Põhimõte on, et sama äriloogika peab andma sama tulemuse eri tööriistades:
 
-4. **Inventory**
-   - valmistoodangu varud
-   - varude muutus
-   - lao kasutus ja võimalikud piirangud
+**SQL = Python = Power BI**
 
-5. **Delivery Performance**
-   - OTIF
-   - tellimuste täitmine
-   - klienditeeninduse KPI-d
+## Data model
 
----
+Power BI kasutab tähtskeemi / galaxy-modeli põhimõtet. Müügi ja tootmise fact-tabelid on seotud ühiste dimensioonidega.
 
-## Tehniline lahendus
+Peamised dimensioonid:
 
-Projekti andmevoog:
+- `gold.dim_date`
+- `gold.dim_plant`
+- `gold.dim_product`
+- `gold.dim_channel`
 
-**Synthetic source data based on the Directo ERP data model 
-→ PostgreSQL → Bronze → Silver → Gold  → SQL validation → Python analysis → Power BI**
-
-Lähteandmed on sünteetilised, kuid nende struktuur järgib Directo ERP andmemudeli loogikat. Kasutatud on Directo-laadseid müügi-, tootmis-, ostu-, toote- ja objektitabeleid, et simuleerida realistlikku ettevõtte andmevoogu.
-
-### PostgreSQL
-
-Andmemudel on ehitatud PostgreSQL-is.
-
-Peamised Gold-kihi tabelid:
+Peamised fact-tabelid:
 
 - `gold.fact_sales`
 - `gold.fact_sales_budget`
 - `gold.fact_production`
 - `gold.fact_production_budget`
-- `gold.fact_purchase_invoice`
-- `gold.dim_date`
-- `gold.dim_plant`
-- `gold.dim_product`
-- `gold.dim_customer`
-- `gold.dim_channel`
-- `gold.dim_raw`
-- `gold.dim_supplier`
 
-Gold-kiht on mõeldud Power BI ja analüüsi jaoks ettevalmistatud andmekihiks.
+## SQL validation
 
----
+SQL-kontrollidega valideeritakse vähemalt:
 
-## SQL valideerimine
-
-Power BI tulemusi kontrollitakse SQL-päringutega.
-
-Näiteks Sales Actual vs Sales Budget kontrollitakse:
-
-- kuu tasemel
-- aasta tasemel
-- tehase tasemel
-- tehase ja toote tasemel
-
-Kontrollitavad KPI-d:
-
-- Actual Sales
+- Sales Actual
 - Sales Budget
-- Variance
-- Budget Fulfilment %
+- Sales Variance
+- Budget Attainment %
+- Production Actual
+- Production Budget
+- Production Variance
+- Production Attainment %
 
-SQL-i ja Power BI tulemused peavad andma sama tulemuse.
-
----
+Kontrolle tehakse perioodi, tehase ja toote tasemel.
 
 ## Python
 
-Pythonit kasutatakse V1-s andmete analüüsimiseks ja tulemuste valideerimiseks.
+Pythoni V1 notebook:
 
-Python / pandas abil:
+```text
+python/01_sales_analysis.ipynb
+```
 
-- loetakse andmed PostgreSQL-ist
-- analüüsitakse Actual vs Budget tulemusi
-- arvutatakse kõrvalekaldeid ja täituvust
-- kontrollitakse tulemusi SQL-i vastu
-- võrreldakse Pythonis saadud tulemusi Power BI tulemustega
-- luuakse valitud analüüside jaoks visualiseeringuid
+Python loeb Gold-kihi andmeid PostgreSQL-ist ning arvutab samad põhimõõdikud, mida kasutatakse SQL-is ja Power BI-s. Pythonit kasutatakse sõltumatu kontrollkihina, et veenduda tulemuste õigsuses.
 
-Python lisab projektile sõltumatu analüüsikihi, mille abil saab kontrollida, et sama äriloogika annab eri tööriistades sama tulemuse.
+Pikemas versioonis on plaan luua samast äriloogikast Python / Streamlit veebivaade.
 
-Eesmärk on:
+## Power BI V1
 
-**SQL = Python = Power BI**
+### SC Overview
 
----
+Overview-leht annab juhtimiseks kiire tervikpildi.
 
-## Power BI
+Praegu on realiseeritud:
 
-Power BI juhtimisvaate eesmärk on võimaldada kasutajal liikuda üldiselt detailsemale tasemele.
+- Sales KPI rida: Actual, Budget, Variance, Budget Attainment;
+- Production KPI rida: Actual, Budget, Variance, Production Attainment;
+- globaalsed slicerid: Year, Month, Plant, Product, Channel;
+- Sales Actual vs Budget graafik;
+- Production Actual vs Budget graafik;
+- dünaamiline Sales View;
+- dünaamiline Production View;
+- slicerite sünkroniseerimine lehtede vahel.
+
+Sales ja Production KPI-d kasutavad sama visuaalset loogikat, kuid eristuvad värviga:
+
+- Sales – sinepitoon;
+- Production – heleroheline.
+
+### Sales Analysis
+
+Sales Analysis leht võimaldab liikuda üldvaatest detaili.
+
+Realiseeritud:
+
+- Selected Period Sales KPI-d;
+- Sales Actual vs Budget ajateljel;
+- dünaamiline `Sales View Selector`;
+- analüüs tehase, toote ja kanali lõikes;
+- Sales Actual vs Budget by Selected View;
+- detailne Sales Matrix;
+- negatiivse Sales Variance väärtuse tingimusvärvimine punaseks;
+- tuhandete eraldajaga tabeliformaat.
+
+`Sales View Selector` võimaldab sama Matrixi ja graafikut ümber lülitada näiteks:
+
+- `plant_name`
+- `product_name`
+- `channel_id`
+
+### Product Analysis
+
+Tootepõhine detailvaade Production Actual ↔ Sales Actual võrdluseks.
+
+### Plant Analysis
+
+Tehasepõhine detailvaade, mis aitab tuvastada, millises tehases kõrvalekalle tekkis.
+
+## KPI display formatting
+
+KPI-kaartidel kasutatakse dünaamilist K/M formaati, et väärtused oleksid kompaktsed ja üheselt loetavad.
+
+Reegel:
+
+- alla 10K → 2 kohta pärast koma;
+- 10K kuni alla 100K → 1 koht pärast koma;
+- 100K kuni alla 1M → 0 kohta pärast koma;
+- 1M ja rohkem → 2 kohta pärast koma.
+
+Näited:
+
+```text
+8 680      → 8,68K
+68 300     → 68,3K
+142 000    → 142K
+1 630 000  → 1,63M
+```
+
+Oluline tehniline põhimõte: KPI Display measure'id jäävad numbriliseks ning `K` / `M` lisatakse **Dynamic format string** abil. See säilitab lokaadipõhise komakohavormingu ja väldib `FORMAT()`-iga tekstiks muutmist.
+
+Budget Attainment ja Production Attainment kuvatakse ühtselt kahe komakohaga.
+
+## Field parameters and Matrix formatting
+
+Power BI dünaamilised Matrixid kasutavad field parameter'eid:
+
+- `Sales KPI Selector`
+- `Sales View Selector`
+- `Production KPI Selector`
+- `Production View Selector`
+
+Üheks tehniliseks erijuhuks oli `Production Actual` kuvamine `Production KPI Selector` kaudu. Otse tabelisse lisatud `Production Actual` kasutas tuhandete eraldajat korrektselt, kuid field parameteri kaudu Matrixis vana vormingut ei rakendatud õigesti.
+
+Lahendus:
+
+```DAX
+Production Actual View =
+[Production Actual]
+```
+
+Uus helper-measure vormindati Whole Number + Thousands Separator kujul ning `Production KPI Selector` esimene viide muudeti:
+
+```DAX
+("Production Actual", NAMEOF('_Measures'[Production Actual View]), 0)
+```
+
+Pärast field parameteri sliceri valikute uuesti aktiveerimist kuvab Production View Matrix väärtused ühtselt:
+
+```text
+911 100
+140 773
+1 622 765
+```
+
+See lahendus jätab alusmeasure'i arvutusloogika puutumata ning lahendab ainult visuali / field parameteri vorminduskihi.
+
+## V1 validation principle
+
+V1-s kasutatakse eri lahendusi sama tulemuse kontrollimiseks.
 
 Näiteks:
 
-**Year → Month → Plant → Product**
+1. PostgreSQL arvutab Actual / Budget / Variance / Attainment.
+2. Python loeb sama Gold-andmestikku ja teeb sõltumatu kontrolli.
+3. Power BI kasutab sama Gold-andmestikku visualiseerimiseks.
 
-Juhtimisvaade keskendub eelkõige kõrvalekallete tuvastamisele ning nende põhjuste analüüsimisele.
+Kui tulemused kattuvad, suureneb kindlus, et juhtimisvaate andmeid saab usaldada.
 
-Power BI kasutab PostgreSQL Gold-kihi andmeid ning kuvab juhtimiseks vajalikud KPI-d ja drill-down vaated.
+## Current V1 status
 
----
+Seisuga 04.10.2026:
 
-## V1 eesmärk
+- PostgreSQL Bronze / Silver / Gold mudel töötab;
+- DIM / FACT mudel on loodud;
+- SQL-kontrollid töötavad;
+- Python ↔ PostgreSQL Gold ühendus töötab;
+- Power BI ühendus töötab;
+- SC Overview põhiloogika töötab;
+- Sales Analysis põhiloogika töötab;
+- Product Analysis ja Plant Analysis vaated on olemas;
+- globaalsed slicerid on sünkroniseeritud;
+- KPI-de K/M vorming on standardiseeritud;
+- Sales ja Production Matrixite arvuvorming on ühtlustatud;
+- negatiivsed variance-väärtused on analüüsivaadetes esile tõstetavad.
 
-V1 on lõputöö kaitsmiseks loodav töötav juhtimisvaade.
+Järgmine V1 etapp on Production Analysis lehe viimistlemine, navigation, QA ja dokumentatsiooni lõppkontroll.
 
-V1 sisaldab:
+## Long version backlog
 
-- PostgreSQL andmemudelit
-- Bronze ja Gold andmekihte
-- Sales Actual vs Budget analüüsi
-- Production vs Plan analüüsi
-- põhilisi Supply Chain KPI-sid
-- SQL-põhist tulemuste valideerimist
-- Python / pandas analüüsi ja tulemuste kontrolli
-- valitud Python visualiseeringuid
-- Power BI juhtimisvaadet
-- tulemuste kontrolli SQL-i, Pythoni ja Power BI vahel
+Pärast V1 kaitsmist jätkub projekt täisversioonina.
 
-V1 eesmärk on näidata terviklikku analüüsiprotsessi alates andmete ettevalmistamisest kuni juhtimisvaate ja tulemuste valideerimiseni.
+Planeeritud laiendused:
 
----
+- finished-goods inventory: opening / closing stock;
+- Min Stock / Target / Max / Physical Capacity;
+- inventory utilization % ja coverage;
+- BOM / dry-matter raw-material mix;
+- niiskuse põhine wet-tonnage conversion;
+- packaging capacity ja backlog;
+- bulk silo / port storage / vessel schedule;
+- forecast snapshots, forecast accuracy ja bias;
+- OTIF order / delivery grain;
+- exception-based management view;
+- Python / Streamlit veebivaade.
 
-## Projekti edasiarendus
+### Sales Channel Budget / Channel Mix
 
-Pikas versioonis on plaanis lisada:
+V1-s on Actual Sales kanalite lõikes olemas, kuid Sales Budget ei ole veel kanalitele eraldi jaotatud. Seetõttu ei käsitleta channel-tasemel praegust Budget Attainment väärtust kanali enda eelarve täitmisena.
 
-- detailsem toormeplaneerimine
-- pelletite BOM ja kuivainemassibilanss
-- toorme niiskuse mõju tegelikule sisendkogusele
-- lao min/max tasemed ja füüsilised mahupiirangud
-- täiendavad OTIF ja delivery KPI-d
-- forecast ja snapshot loogika
-- automatiseeritud andmevoog
-- Python-põhine täiendav analüüs
-- Streamlit veebipõhine juhtimisvaade
+Pikas versioonis lisatakse:
 
-Pika versiooni eesmärk on arendada lõputööst edasi terviklik Supply Chain Analytics portfoolioprojekt.
+- Budget tonnes by channel: B2B / DIST / IND / RET;
+- Actual Share %;
+- Budget Share %;
+- Channel Variance;
+- Channel Attainment %;
+- Actual vs Budget channel mix.
+
+Eesmärk on näha mitte ainult kanalite tegelikku müügijaotust, vaid ka seda, kas müügimix vastab planeeritud kanalistruktuurile.
+
+## Repository structure
+
+```text
+README.md
+
+docs/
+
+sql/
+
+python/
+
+powerbi/
+```
+
+- `docs/` – projekti vahedokumendid ja kirjeldused
+- `sql/` – PostgreSQL skriptid ja kontrollpäringud
+- `python/` – Python / pandas analüüs ja valideerimine
+- `powerbi/` – Power BI Project (PBIP) failid
+
+## Scope principle
+
+V1 eesmärk ei ole realiseerida kogu pelletitööstuse Supply Chain mudelit korraga. V1 lukustab müügi, tootmise ja nende omavahelise takti analüüsiloogika ning loob usaldusväärse tehnilise vundamendi pikemale projektile.
