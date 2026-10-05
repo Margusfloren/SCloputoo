@@ -163,6 +163,40 @@ Oluline tehniline põhimõte: KPI Display measure'id jäävad numbriliseks ning 
 
 Budget Attainment ja Production Attainment kuvatakse ühtselt kahe komakohaga.
 
+
+## KPI status logic / conditional formatting
+
+Budget Attainment ja Production Attainment puhul ei kasutata loogikat **"mida kõrgem, seda parem"**. Juhtimisvaates on eesmärk püsida sihtvahemikus, sest liiga suur üle- või alatäitmine võib viidata ebatäpsele eelarvele / tootmisplaanile ning tekitada lisapingeid tootmises, varudes ja logistikas.
+
+Kasutatav staatuseloogika:
+
+- alla 90% → **Critical** / punane;
+- 90% kuni alla 95% → **Attention** / sinep;
+- 95% kuni 105% → **OK** / roheline;
+- üle 105% kuni 110% → **Attention** / sinep;
+- üle 110% → **Critical** / punane.
+
+Power BI conditional formatting `Rules` kasutab protsendi alusväärtust kümnendmurruna. Seetõttu sisestatakse piirid reeglitesse kujul:
+
+```text
+0.00 – < 0.90   → Critical
+0.90 – < 0.95   → Attention
+0.95 – <= 1.05  → OK
+> 1.05 – <= 1.10 → Attention
+> 1.10           → Critical
+```
+
+Näiteks `101,4%` alusväärtus on Power BI-s `1.014`, mistõttu kuulub see vahemikku `0.95–1.05` ja kuvatakse rohelisena.
+
+Kasutatav värvipalett:
+
+- OK / roheline: `#A8C9A0`
+- Attention / sinep: `#D6A84B`
+- Critical / punane: `#C94C4C`
+
+Sama põhimõte rakendub nii Sales Budget Attainment kui ka Production Attainment KPI-dele.
+
+
 ## Field parameters and Matrix formatting
 
 Power BI dünaamilised Matrixid kasutavad field parameter'eid:
