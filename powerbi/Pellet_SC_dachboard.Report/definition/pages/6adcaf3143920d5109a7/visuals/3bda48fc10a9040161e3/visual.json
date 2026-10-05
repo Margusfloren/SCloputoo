@@ -76,7 +76,8 @@
                 }
               },
               "queryRef": "_Measures.Production Actual",
-              "nativeQueryRef": "Production Actual"
+              "nativeQueryRef": "Production Actual",
+              "format": "#,0"
             },
             {
               "field": {
@@ -90,7 +91,8 @@
                 }
               },
               "queryRef": "_Measures.Production Budget",
-              "nativeQueryRef": "Production Budget"
+              "nativeQueryRef": "Production Budget",
+              "format": "#,0"
             },
             {
               "field": {
@@ -104,7 +106,8 @@
                 }
               },
               "queryRef": "_Measures.Production Variance",
-              "nativeQueryRef": "Production Variance"
+              "nativeQueryRef": "Production Variance",
+              "format": "#,0"
             }
           ]
         }
@@ -265,6 +268,29 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Production Actual"
           }
         }
       ]

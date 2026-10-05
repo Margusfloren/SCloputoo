@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "5f352ed4eca157268976",
+  "name": "743109a0c515ab8dbfe6",
   "position": {
-    "x": 1106.6666666666667,
-    "y": 778.33333333333337,
-    "z": 12000,
-    "height": 338.33333333333337,
-    "width": 656.66666666666674,
-    "tabOrder": 12000
+    "x": 71.428571428571431,
+    "y": 615.71428571428578,
+    "z": 19000,
+    "height": 311.42857142857144,
+    "width": 475.71428571428572,
+    "tabOrder": 19000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -89,6 +89,21 @@
               "queryRef": "gold dim_product.product_name",
               "nativeQueryRef": "product_name",
               "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_plant"
+                    }
+                  },
+                  "Property": "plant_name"
+                }
+              },
+              "queryRef": "gold dim_plant.plant_name",
+              "nativeQueryRef": "plant_name",
+              "active": true
             }
           ]
         },
@@ -150,6 +165,7 @@
             "queryRefs": [
               "gold dim_date.date.Variation.Date Hierarchy.Year"
             ],
+            "isCollapsed": true,
             "identityKeys": [
               {
                 "Column": {
@@ -168,6 +184,7 @@
             "queryRefs": [
               "gold dim_product.package_type"
             ],
+            "isCollapsed": true,
             "identityKeys": [
               {
                 "Column": {
@@ -187,10 +204,76 @@
               "gold dim_product.product_name"
             ],
             "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_product"
+                    }
+                  },
+                  "Property": "product_name"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "gold dim_plant.plant_name"
+            ],
+            "isCollapsed": true,
             "isPinned": true
           }
         ],
-        "root": {}
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "2025L"
+                  }
+                }
+              ],
+              "isToggled": true,
+              "children": [
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'15 kg'"
+                      }
+                    }
+                  ],
+                  "isToggled": true,
+                  "children": [
+                    {
+                      "identityValues": [
+                        {
+                          "Literal": {
+                            "Value": "'Premium pellet 15 kg 6 mm'"
+                          }
+                        }
+                      ],
+                      "isToggled": true
+                    }
+                  ]
+                },
+                {
+                  "identityValues": [
+                    {
+                      "Literal": {
+                        "Value": "'Bulk'"
+                      }
+                    }
+                  ],
+                  "isToggled": true
+                }
+              ]
+            }
+          ]
+        }
       }
     ],
     "objects": {
@@ -201,17 +284,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "backColorSecondary": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#E9F2E7'"
-                    }
-                  }
                 }
               }
             }
@@ -312,30 +384,6 @@
             "metadata": "_Measures.Production vs Sales"
           }
         }
-      ],
-      "grid": [
-        {
-          "properties": {
-            "outlineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#D6A84B'"
-                    }
-                  }
-                }
-              }
-            },
-            "outlineWeight": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
-              }
-            }
-          }
-        }
       ]
     },
     "visualContainerObjects": {
@@ -352,7 +400,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Production vs Sales'"
+                  "Value": "'Production vs Sales (tons)'"
                 }
               }
             }

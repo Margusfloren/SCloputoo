@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "633a70f67f5c8c495b19",
   "position": {
-    "x": 1305,
-    "y": 396.66666666666669,
-    "z": 11000,
-    "height": 288.33333333333337,
-    "width": 613.33333333333337,
-    "tabOrder": 11000
+    "x": 51.428571428571431,
+    "y": 792.85714285714289,
+    "z": 8000,
+    "height": 300,
+    "width": 747.14285714285722,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -30,38 +30,6 @@
               "nativeQueryRef": "Plant",
               "active": true,
               "displayName": "Plant"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
-                    }
-                  },
-                  "Property": "product_name"
-                }
-              },
-              "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "Product",
-              "active": false,
-              "displayName": "Product"
-            }
-          ],
-          "fieldParameters": [
-            {
-              "parameterExpr": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Production View Selector"
-                    }
-                  },
-                  "Property": "Production View Selector"
-                }
-              },
-              "index": 0,
-              "length": 2
             }
           ]
         },
@@ -161,12 +129,6 @@
             ],
             "isCollapsed": true,
             "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "gold dim_product.product_name"
-            ],
-            "isCollapsed": true
           }
         ],
         "root": {}
@@ -212,6 +174,109 @@
               }
             }
           }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "_Measures.Production Variance Selected Period"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "And": {
+                              "Left": {
+                                "Comparison": {
+                                  "ComparisonKind": 1,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_Measures"
+                                        }
+                                      },
+                                      "Property": "Production Variance Selected Period"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "-1e+26D"
+                                    }
+                                  }
+                                }
+                              },
+                              "Right": {
+                                "Comparison": {
+                                  "ComparisonKind": 3,
+                                  "Left": {
+                                    "Measure": {
+                                      "Expression": {
+                                        "SourceRef": {
+                                          "Entity": "_Measures"
+                                        }
+                                      },
+                                      "Property": "Production Variance Selected Period"
+                                    }
+                                  },
+                                  "Right": {
+                                    "Literal": {
+                                      "Value": "0D"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#C00000'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "_Measures.Production Variance Selected Period"
+          }
+        }
+      ],
+      "rowTotal": [
+        {
+          "properties": {
+            "applyToHeaders": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -229,7 +294,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Production View '"
+                  "Value": "'Plant production performance'"
                 }
               }
             }

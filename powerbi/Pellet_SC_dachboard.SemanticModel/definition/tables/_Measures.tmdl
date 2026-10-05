@@ -444,6 +444,18 @@ table _Measures
 		formatString: 0
 		lineageTag: 0bf06072-f365-40ef-8c59-fa2a22b6c255
 
+	measure 'Plant Production Share %' =
+			
+			DIVIDE(
+			    [Production Actual],
+			    CALCULATE(
+			        [Production Actual],
+			        ALLSELECTED('gold dim_plant'[plant_name])
+			    )
+			)
+		formatString: 0%;-0%;0%
+		lineageTag: cf5c5b78-61db-4a6e-a7a0-d2c2384ebc2e
+
 	column Value
 		isHidden
 		formatString: 0

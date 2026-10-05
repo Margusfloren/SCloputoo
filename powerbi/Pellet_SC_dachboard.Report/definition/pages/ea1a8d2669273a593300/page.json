@@ -8,17 +8,7 @@
   "visualInteractions": [
     {
       "source": "3165184177c91bbd885a",
-      "target": "691832ca064748e517dc",
-      "type": "DataFilter"
-    },
-    {
-      "source": "3165184177c91bbd885a",
       "target": "2f1fbb692ce01297a32a",
-      "type": "NoFilter"
-    },
-    {
-      "source": "691832ca064748e517dc",
-      "target": "3165184177c91bbd885a",
       "type": "NoFilter"
     },
     {

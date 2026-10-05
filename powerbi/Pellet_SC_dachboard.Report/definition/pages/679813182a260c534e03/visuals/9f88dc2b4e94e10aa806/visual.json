@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "5629a3d31c30767320d0",
+  "name": "9f88dc2b4e94e10aa806",
   "position": {
-    "x": 1145,
-    "y": 173.33333333333334,
-    "z": 9000,
+    "x": 1860.0000000000002,
+    "y": 108.57142857142858,
+    "z": 20000,
     "height": 81.666666666666671,
-    "width": 218.33333333333334,
-    "tabOrder": 9000
+    "width": 215,
+    "tabOrder": 20000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Production KPI Selector"
+                      "Entity": "Production View Selector"
                     }
                   },
-                  "Property": "Production KPI Selector"
+                  "Property": "Production View Selector"
                 }
               },
-              "queryRef": "Production KPI Selector.Production KPI Selector",
-              "nativeQueryRef": "Production KPI Selector",
+              "queryRef": "Production View Selector.Production View Selector",
+              "nativeQueryRef": "Production View Selector",
               "active": true
             }
           ]
@@ -52,6 +52,19 @@
             }
           }
         }
+      ],
+      "selection": [
+        {
+          "properties": {
+            "singleSelect": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -65,13 +78,6 @@
                 }
               }
             },
-            "radius": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
-                }
-              }
-            },
             "color": {
               "solid": {
                 "color": {
@@ -80,6 +86,13 @@
                       "Value": "'#A8C9A0'"
                     }
                   }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
                 }
               }
             },
@@ -95,7 +108,7 @@
       ]
     },
     "syncGroup": {
-      "groupName": "Production KPI Selector",
+      "groupName": "Production View Selector",
       "fieldChanges": true,
       "filterChanges": true
     },

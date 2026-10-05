@@ -76,7 +76,8 @@
                 }
               },
               "queryRef": "_Measures.Production Actual",
-              "nativeQueryRef": "Production Actual"
+              "nativeQueryRef": "Production Actual",
+              "format": "#,0"
             },
             {
               "field": {
@@ -90,7 +91,8 @@
                 }
               },
               "queryRef": "_Measures.Sales Actual",
-              "nativeQueryRef": "Sales Actual"
+              "nativeQueryRef": "Sales Actual",
+              "format": "#,0"
             },
             {
               "field": {
@@ -104,7 +106,8 @@
                 }
               },
               "queryRef": "_Measures.Production vs Sales",
-              "nativeQueryRef": "Production vs Sales"
+              "nativeQueryRef": "Production vs Sales",
+              "format": "#,0"
             }
           ]
         }

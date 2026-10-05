@@ -30,6 +30,22 @@
               "nativeQueryRef": "Plant",
               "active": true,
               "displayName": "Plant"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_product"
+                    }
+                  },
+                  "Property": "product_name"
+                }
+              },
+              "queryRef": "gold dim_product.product_name",
+              "nativeQueryRef": "Product",
+              "active": false,
+              "displayName": "Product"
             }
           ],
           "fieldParameters": [
@@ -45,7 +61,7 @@
                 }
               },
               "index": 0,
-              "length": 1
+              "length": 2
             }
           ]
         },
@@ -141,7 +157,14 @@
             "queryRefs": [
               "gold dim_plant.plant_name"
             ],
+            "isCollapsed": true,
             "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "gold dim_product.product_name"
+            ],
+            "isCollapsed": true
           }
         ],
         "root": {}

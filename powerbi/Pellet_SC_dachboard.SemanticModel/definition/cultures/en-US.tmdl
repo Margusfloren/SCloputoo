@@ -12201,9 +12201,210 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.plant_production_share_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Plant Production Share %"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "plant production share %": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "plant production share percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "plant production share pct": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        }
+			      ]
+			    },
+			    "gold_dim_product.product_short": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "gold dim_product",
+			          "ConceptualProperty": "Product Short"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "product short": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "short": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "artifact short": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "item short": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "merchandise short": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "produce short": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "small": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "little": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "petite": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "squat": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "diminutive": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "brief": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "Product": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
+			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "gold dim_date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_dim_date.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "gold_dim_date.date.date_hierarchy"
+			          }
+			        },
+			        "gold_dim_date.date.day": {
+			          "Target": {
+			            "Entity": "gold_dim_date.date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_dim_date.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "gold_dim_date.date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_days"
+			        }
+			      ]
+			    },
 			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_month": {
 			      "Binding": {
 			        "ConceptualEntity": "gold dim_date"
@@ -13005,6 +13206,72 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "gold_dim_dates_have_gold_fact_sales"
+			        }
+			      ]
+			    },
+			    "gold_dim_product_has_product_short": {
+			      "Binding": {
+			        "ConceptualEntity": "gold dim_product"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_dim_product": {
+			          "Target": {
+			            "Entity": "gold_dim_product"
+			          }
+			        },
+			        "gold_dim_product.product_short": {
+			          "Target": {
+			            "Entity": "gold_dim_product.product_short"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_dim_product"
+			            },
+			            "Object": {
+			              "Role": "gold_dim_product.product_short"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_dim_products_have_product_shorts"
+			        }
+			      ]
+			    },
+			    "gold_fact_production_has_entity__measure_plant_production_share_": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_production"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_production": {
+			          "Target": {
+			            "Entity": "gold_fact_production"
+			          }
+			        },
+			        "entity__measure.plant_production_share_": {
+			          "Target": {
+			            "Entity": "entity__measure.plant_production_share_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_production"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.plant_production_share_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_productions_have_plant_production_share_"
 			        }
 			      ]
 			    },
@@ -16891,39 +17158,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.75,
 			          "ID": "sales_view_selectors_select"
-			        }
-			      ]
-			    },
-			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_day": {
-			      "Binding": {
-			        "ConceptualEntity": "gold dim_date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_dim_date.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "gold_dim_date.date.date_hierarchy"
-			          }
-			        },
-			        "gold_dim_date.date.day": {
-			          "Target": {
-			            "Entity": "gold_dim_date.date.day"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "gold_dim_date.date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "gold_dim_date.date.day"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_hierarchies_have_days"
 			        }
 			      ]
 			    },

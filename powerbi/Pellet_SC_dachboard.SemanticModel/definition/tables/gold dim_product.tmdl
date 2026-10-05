@@ -96,6 +96,20 @@ table 'gold dim_product'
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Product Short' =
+			
+			TRIM(
+			    SUBSTITUTE(
+			        'gold dim_product'[product_name],
+			        "pellet",
+			        ""
+			    )
+			)
+		lineageTag: ebbae38a-3b1c-4bf4-904f-9ce5523588ab
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'gold dim_product' = m
 		mode: import
 		source =
