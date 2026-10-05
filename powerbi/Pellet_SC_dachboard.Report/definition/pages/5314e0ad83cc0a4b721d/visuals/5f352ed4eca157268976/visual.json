@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "ca532a0c274442950b05",
+  "name": "5f352ed4eca157268976",
   "position": {
-    "x": 28.333333333333336,
-    "y": 788.33333333333337,
-    "z": 2000,
-    "height": 291.66666666666669,
-    "width": 1001.6666666666667,
-    "tabOrder": 2000
+    "x": 1106.6666666666667,
+    "y": 778.33333333333337,
+    "z": 12000,
+    "height": 338.33333333333337,
+    "width": 656.66666666666674,
+    "tabOrder": 12000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -58,6 +58,36 @@
               },
               "queryRef": "gold dim_date.date.Variation.Date Hierarchy.Year",
               "nativeQueryRef": "date Year",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_product"
+                    }
+                  },
+                  "Property": "package_type"
+                }
+              },
+              "queryRef": "gold dim_product.package_type",
+              "nativeQueryRef": "package_type",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_product"
+                    }
+                  },
+                  "Property": "product_name"
+                }
+              },
+              "queryRef": "gold dim_product.product_name",
+              "nativeQueryRef": "product_name",
               "active": true
             }
           ]
@@ -110,6 +140,59 @@
         }
       }
     },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "gold dim_date.date.Variation.Date Hierarchy.Year"
+            ],
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "LocalDateTable_47c7e2c3-0098-484a-bf3d-2dc8bb2667c7"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "gold dim_product.package_type"
+            ],
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "gold dim_product"
+                    }
+                  },
+                  "Property": "package_type"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "gold dim_product.product_name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
     "objects": {
       "values": [
         {
@@ -118,6 +201,17 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E9F2E7'"
+                    }
+                  }
                 }
               }
             }
@@ -218,6 +312,30 @@
             "metadata": "_Measures.Production vs Sales"
           }
         }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D6A84B'"
+                    }
+                  }
+                }
+              }
+            },
+            "outlineWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -234,7 +352,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Production vs Sales (tons)'"
+                  "Value": "'Production vs Sales'"
                 }
               }
             }

@@ -4,10 +4,10 @@
   "position": {
     "x": 98.333333333333343,
     "y": 895,
-    "z": 10000,
+    "z": 5000,
     "height": 266.66666666666669,
     "width": 621.66666666666674,
-    "tabOrder": 10000
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -186,7 +186,7 @@
             "outlineWeight": {
               "expr": {
                 "Literal": {
-                  "Value": "3D"
+                  "Value": "2D"
                 }
               }
             }

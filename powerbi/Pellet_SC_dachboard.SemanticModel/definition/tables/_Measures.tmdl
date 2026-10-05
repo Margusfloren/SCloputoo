@@ -438,6 +438,12 @@ table _Measures
 		formatString: #,0
 		lineageTag: 05d15062-4f9e-4b40-8789-e4978cfd99fc
 
+	measure 'Sales Attainment Target %' =
+			
+			1
+		formatString: 0
+		lineageTag: 0bf06072-f365-40ef-8c59-fa2a22b6c255
+
 	column Value
 		isHidden
 		formatString: 0

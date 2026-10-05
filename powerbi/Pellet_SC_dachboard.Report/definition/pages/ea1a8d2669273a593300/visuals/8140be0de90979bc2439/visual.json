@@ -75,10 +75,10 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Production Actual Selected Period"
+                  "Property": "Production Actual View"
                 }
               },
-              "queryRef": "_Measures.Production Actual Selected Period",
+              "queryRef": "_Measures.Production Actual View",
               "nativeQueryRef": "Production Actual ",
               "displayName": "Production Actual "
             },

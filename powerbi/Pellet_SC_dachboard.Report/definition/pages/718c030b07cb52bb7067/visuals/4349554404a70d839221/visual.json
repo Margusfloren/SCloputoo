@@ -4,10 +4,10 @@
   "position": {
     "x": 953.33333333333337,
     "y": 185,
-    "z": 14000,
+    "z": 9000,
     "height": 81.666666666666671,
     "width": 298.33333333333337,
-    "tabOrder": 14000
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "slicer",
@@ -81,7 +81,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''_Measures''[Production Budget Selected Period]'"
+                                "Value": "'''_Measures''[Sales Actual Selected Period All Channels]'"
                               }
                             }
                           ]
@@ -109,7 +109,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''_Measures''[Production Budget Selected Period]'"
+                                      "Value": "'''_Measures''[Sales Actual Selected Period All Channels]'"
                                     }
                                   }
                                 ]
@@ -133,7 +133,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Production Budget"
+                            "0": "Sales Actual"
                           }
                         ]
                       }
@@ -234,23 +234,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "bf9a765741305e2daa88",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Production Chart Selector"
-              }
-            },
-            "Property": "Production Chart Selector"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

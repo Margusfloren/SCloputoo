@@ -54,6 +54,11 @@
         }
       ]
     },
+    "syncGroup": {
+      "groupName": "Production KPI Selector",
+      "fieldChanges": true,
+      "filterChanges": true
+    },
     "drillFilterOtherVisuals": true
   }
 }

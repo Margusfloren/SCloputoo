@@ -271,7 +271,7 @@
             "outlineWeight": {
               "expr": {
                 "Literal": {
-                  "Value": "3D"
+                  "Value": "2D"
                 }
               }
             },

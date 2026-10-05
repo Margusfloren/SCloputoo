@@ -4,10 +4,10 @@
   "position": {
     "x": 966.66666666666674,
     "y": 51.666666666666671,
-    "z": 19002,
+    "z": 16000,
     "height": 80,
     "width": 190,
-    "tabOrder": 19002
+    "tabOrder": 16000
   },
   "visual": {
     "visualType": "slicer",
@@ -178,6 +178,13 @@
                                 "Value": "2023L"
                               }
                             }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "2024L"
+                              }
+                            }
                           ]
                         ]
                       }
@@ -219,6 +226,17 @@
                                   }
                                 ]
                               }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "2024L"
+                                    }
+                                  }
+                                ]
+                              }
                             ]
                           ],
                           "columns": [
@@ -239,6 +257,9 @@
                         "valueMap": [
                           {
                             "0": "2023"
+                          },
+                          {
+                            "0": "2024"
                           }
                         ]
                       }
@@ -414,34 +435,5 @@
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "b1b0c2e086b24df2c0e0",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "PropertyVariationSource": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "gold dim_date"
-                      }
-                    },
-                    "Name": "Variation",
-                    "Property": "date"
-                  }
-                },
-                "Hierarchy": "Date Hierarchy"
-              }
-            },
-            "Level": "Year"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

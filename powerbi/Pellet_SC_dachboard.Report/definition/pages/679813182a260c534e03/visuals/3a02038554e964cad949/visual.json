@@ -30,22 +30,6 @@
               "nativeQueryRef": "Plant",
               "active": true,
               "displayName": "Plant"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
-                    }
-                  },
-                  "Property": "product_name"
-                }
-              },
-              "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "Product",
-              "active": false,
-              "displayName": "Product"
             }
           ],
           "fieldParameters": [
@@ -61,7 +45,7 @@
                 }
               },
               "index": 0,
-              "length": 2
+              "length": 1
             }
           ]
         },
@@ -75,10 +59,10 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Production Actual Selected Period"
+                  "Property": "Production Actual View"
                 }
               },
-              "queryRef": "_Measures.Production Actual Selected Period",
+              "queryRef": "_Measures.Production Actual View",
               "nativeQueryRef": "Production Actual ",
               "displayName": "Production Actual "
             },

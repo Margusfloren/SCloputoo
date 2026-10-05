@@ -450,23 +450,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "64b0da788fcace103955",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Budget Attainment YTD %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

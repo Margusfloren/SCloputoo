@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "c6dceda8234b4d50d75c",
+  "name": "9e37edb0e9a1f8293a81",
   "position": {
-    "x": 0,
-    "y": 31.428571428571431,
-    "z": 0,
-    "height": 291.42857142857144,
-    "width": 1202.8571428571429,
-    "tabOrder": 0
+    "x": 1241.6666666666667,
+    "y": 1115,
+    "z": 18000,
+    "height": 250,
+    "width": 696.66666666666674,
+    "tabOrder": 18000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -58,36 +58,6 @@
               },
               "queryRef": "gold dim_date.date.Variation.Date Hierarchy.Year",
               "nativeQueryRef": "date Year",
-              "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
-                    }
-                  },
-                  "Property": "package_type"
-                }
-              },
-              "queryRef": "gold dim_product.package_type",
-              "nativeQueryRef": "package_type",
-              "active": true
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
-                    }
-                  },
-                  "Property": "product_name"
-                }
-              },
-              "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "product_name",
               "active": true
             }
           ]
@@ -140,59 +110,6 @@
         }
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Rows"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "gold dim_date.date.Variation.Date Hierarchy.Year"
-            ],
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "LocalDateTable_47c7e2c3-0098-484a-bf3d-2dc8bb2667c7"
-                    }
-                  },
-                  "Property": "Year"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "gold dim_product.package_type"
-            ],
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
-                    }
-                  },
-                  "Property": "package_type"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "gold dim_product.product_name"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          }
-        ],
-        "root": {}
-      }
-    ],
     "objects": {
       "values": [
         {

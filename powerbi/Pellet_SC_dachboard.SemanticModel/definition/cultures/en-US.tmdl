@@ -1090,7 +1090,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Production Attainment": {
+			          "Production Attainment Selected Period": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -1100,7 +1100,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Production Attainment Selected Period": {
+			          "Production Attainment": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -11853,7 +11853,7 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "table_measures.production_actual_view": {
+			    "entity__measure.production_actual_view": {
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "_Measures",
@@ -11862,6 +11862,123 @@ cultureInfo en-US
 			      },
 			      "State": "Generated",
 			      "Terms": [
+			        {
+			          "production actual view": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "view": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "actual view": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "production real view": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "production existent view": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "production tangible view": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "real view": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "existent view": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "tangible view": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "production actual opinion": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "production actual interpretation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "production actual assessment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "actual opinion": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
 			        {
 			          "Production Actual": {
 			            "State": "Suggested",
@@ -11873,75 +11990,220 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.sales_attainment_target_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Sales Attainment Target %"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "sales attainment target %": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "sale attainment target percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "sale attainment target pct": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "sale attainment target %": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "sale attainment focus %": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "sale attainment goal %": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "sale attainment objective %": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "Target %": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__production_actual_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Production Actual FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_production actual FormatString": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "_production real formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "_production existent formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "_production tangible formatstring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__sales_actual_KPI_display_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Sales Actual KPI Display FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_sales actual KPI display FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__sales_budget_KPI_display_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Sales Budget KPI Display FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_sales budget KPI display FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__sales_variance_KPI_display_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Sales Variance KPI Display FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_sales variance KPI display FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.entity__production_budget_KPI_display_FormatString": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "_Production Budget KPI Display FormatString"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "_production budget KPI display FormatString": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
-			    "gold_dim_date_month_start_date_has_date_hierarchy": {
-			      "Binding": {
-			        "ConceptualEntity": "gold dim_date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_dim_date.month_start_date": {
-			          "Target": {
-			            "Entity": "gold_dim_date.month_start_date"
-			          }
-			        },
-			        "gold_dim_date.month_start_date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "gold_dim_date.month_start_date.date_hierarchy"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "gold_dim_date.month_start_date"
-			            },
-			            "Object": {
-			              "Role": "gold_dim_date.month_start_date.date_hierarchy"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "month_start_dates_have_month_start_date_hierarchies"
-			        }
-			      ]
-			    },
-			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_day": {
-			      "Binding": {
-			        "ConceptualEntity": "gold dim_date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_dim_date.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "gold_dim_date.date.date_hierarchy"
-			          }
-			        },
-			        "gold_dim_date.date.day": {
-			          "Target": {
-			            "Entity": "gold_dim_date.date.day"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "gold_dim_date.date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "gold_dim_date.date.day"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_hierarchies_have_days"
-			        }
-			      ]
-			    },
 			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_month": {
 			      "Binding": {
 			        "ConceptualEntity": "gold dim_date"
@@ -12743,6 +13005,72 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "gold_dim_dates_have_gold_fact_sales"
+			        }
+			      ]
+			    },
+			    "entity__measure_has_sales_attainment_target_": {
+			      "Binding": {
+			        "ConceptualEntity": "_Measures"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "entity__measure": {
+			          "Target": {
+			            "Entity": "entity__measure"
+			          }
+			        },
+			        "entity__measure.sales_attainment_target_": {
+			          "Target": {
+			            "Entity": "entity__measure.sales_attainment_target_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "entity__measure"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.sales_attainment_target_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "Phrasing_measures_have_sales_attainment_target_"
+			        }
+			      ]
+			    },
+			    "gold_fact_production_has_entity__measure_production_actual_view": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_production"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_production": {
+			          "Target": {
+			            "Entity": "gold_fact_production"
+			          }
+			        },
+			        "entity__measure.production_actual_view": {
+			          "Target": {
+			            "Entity": "entity__measure.production_actual_view"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_fact_production"
+			            },
+			            "Object": {
+			              "Role": "entity__measure.production_actual_view"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "gold_fact_productions_have_production_actual_view"
 			        }
 			      ]
 			    },
@@ -16563,6 +16891,72 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.75,
 			          "ID": "sales_view_selectors_select"
+			        }
+			      ]
+			    },
+			    "gold_dim_date_date_date_hierarchy_has_gold_dim_date_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "gold dim_date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_dim_date.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "gold_dim_date.date.date_hierarchy"
+			          }
+			        },
+			        "gold_dim_date.date.day": {
+			          "Target": {
+			            "Entity": "gold_dim_date.date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_dim_date.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "gold_dim_date.date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_days"
+			        }
+			      ]
+			    },
+			    "gold_dim_date_month_start_date_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "gold dim_date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_dim_date.month_start_date": {
+			          "Target": {
+			            "Entity": "gold_dim_date.month_start_date"
+			          }
+			        },
+			        "gold_dim_date.month_start_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "gold_dim_date.month_start_date.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "gold_dim_date.month_start_date"
+			            },
+			            "Object": {
+			              "Role": "gold_dim_date.month_start_date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "month_start_dates_have_month_start_date_hierarchies"
 			        }
 			      ]
 			    },

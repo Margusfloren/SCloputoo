@@ -4,10 +4,10 @@
   "position": {
     "x": 621.66666666666674,
     "y": 158.33333333333334,
-    "z": 19000,
+    "z": 14000,
     "height": 135,
     "width": 223.33333333333334,
-    "tabOrder": 19000
+    "tabOrder": 14000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -450,23 +450,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "39043546e13538f7f42c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "_Measures"
-              }
-            },
-            "Property": "Production Attainment Selected Period %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "3bda48fc10a9040161e3",
   "position": {
-    "x": 28.333333333333336,
-    "y": 376.66666666666669,
-    "z": 1000,
-    "height": 425.71428571428572,
-    "width": 1031.4285714285716,
-    "tabOrder": 1000
+    "x": 51.666666666666671,
+    "y": 778.33333333333337,
+    "z": 0,
+    "height": 376.66666666666669,
+    "width": 828.33333333333337,
+    "tabOrder": 0
   },
   "visual": {
     "visualType": "pivotTable",
@@ -120,6 +120,17 @@
                   "Value": "true"
                 }
               }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E9F2E7'"
+                    }
+                  }
+                }
+              }
             }
           }
         },
@@ -218,6 +229,44 @@
             "metadata": "_Measures.Production Variance"
           }
         }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D6A84B'"
+                    }
+                  }
+                }
+              }
+            },
+            "outlineWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -234,7 +283,20 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Production Budget vs Production Actual (tons)'"
+                  "Value": "'Production Actual vs Budget'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
