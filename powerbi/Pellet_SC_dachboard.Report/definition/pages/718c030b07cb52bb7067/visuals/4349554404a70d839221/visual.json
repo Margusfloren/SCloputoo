@@ -234,5 +234,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "bf9a765741305e2daa88",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Production Chart Selector"
+              }
+            },
+            "Property": "Production Chart Selector"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }
