@@ -1090,7 +1090,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Production Attainment Selected Period": {
+			          "Production Attainment": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -1100,7 +1100,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Production Attainment": {
+			          "Production Attainment Selected Period": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -11849,6 +11849,27 @@ cultureInfo en-US
 			        {
 			          "_production actual KPI display FormatString": {
 			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "table_measures.production_actual_view": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Production Actual View"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Production Actual": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]

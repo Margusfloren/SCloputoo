@@ -5,26 +5,5 @@
   "displayOption": "ActualSize",
   "height": 1400,
   "width": 2100,
-  "visualInteractions": [
-    {
-      "source": "3b1ccd1b5801e8da0492",
-      "target": "41e4447c2506beed91a2",
-      "type": "DataFilter"
-    },
-    {
-      "source": "3b1ccd1b5801e8da0492",
-      "target": "4349554404a70d839221",
-      "type": "NoFilter"
-    },
-    {
-      "source": "41e4447c2506beed91a2",
-      "target": "3b1ccd1b5801e8da0492",
-      "type": "NoFilter"
-    },
-    {
-      "source": "3b1ccd1b5801e8da0492",
-      "target": "e2765a8dc5d09c18b07b",
-      "type": "NoFilter"
-    }
-  ]
+  "visualInteractions": []
 }

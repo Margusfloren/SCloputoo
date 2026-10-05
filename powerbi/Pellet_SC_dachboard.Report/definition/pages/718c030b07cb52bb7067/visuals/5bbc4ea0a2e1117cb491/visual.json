@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "da180584d8862b0ed584",
+  "name": "5bbc4ea0a2e1117cb491",
   "position": {
-    "x": 1566.6666666666667,
-    "y": 45,
-    "z": 8000,
+    "x": 1195,
+    "y": 50,
+    "z": 19001,
     "height": 80,
-    "width": 223.33333333333334,
-    "tabOrder": 8000
+    "width": 190,
+    "tabOrder": 19001
   },
   "visual": {
     "visualType": "slicer",
@@ -17,19 +17,29 @@
           "projections": [
             {
               "field": {
-                "Column": {
+                "HierarchyLevel": {
                   "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
+                    "Hierarchy": {
+                      "Expression": {
+                        "PropertyVariationSource": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "gold dim_date"
+                            }
+                          },
+                          "Name": "Variation",
+                          "Property": "date"
+                        }
+                      },
+                      "Hierarchy": "Date Hierarchy"
                     }
                   },
-                  "Property": "product_name"
+                  "Level": "Month"
                 }
               },
-              "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "Product",
-              "active": true,
-              "displayName": "Product"
+              "queryRef": "gold dim_date.date.Variation.Date Hierarchy.Month",
+              "nativeQueryRef": "date Month",
+              "active": true
             }
           ]
         }
@@ -43,7 +53,7 @@
         "levels": [
           {
             "queryRefs": [
-              "gold dim_product.product_name"
+              "gold dim_date.date.Variation.Date Hierarchy.Month"
             ],
             "isCollapsed": true,
             "isPinned": true
@@ -75,63 +85,7 @@
       ],
       "general": [
         {
-          "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "g",
-                    "Entity": "gold dim_product",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "g"
-                                }
-                              },
-                              "Property": "product_name"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Premium pellet 15 kg 8 mm'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Premium pellet Big Bag 6 mm'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Premium pellet Big Bag 8 mm'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
+          "properties": {}
         }
       ],
       "data": [
@@ -143,6 +97,13 @@
                   "Value": "'Dropdown'"
                 }
               }
+            },
+            "isInvertedSelectionMode": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           }
         }
@@ -150,6 +111,13 @@
       "items": [
         {
           "properties": {
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
             "fontFamily": {
               "expr": {
                 "Literal": {
@@ -166,13 +134,6 @@
                       "Percent": 0.6
                     }
                   }
-                }
-              }
-            },
-            "textSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
                 }
               }
             },
@@ -232,7 +193,7 @@
             "width": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "4D"
                 }
               }
             },
@@ -240,11 +201,17 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.2
+                    "Literal": {
+                      "Value": "'#F6E8C5'"
                     }
                   }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
                 }
               }
             }
@@ -266,10 +233,39 @@
       ]
     },
     "syncGroup": {
-      "groupName": "product_name",
+      "groupName": "Month",
       "fieldChanges": true,
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "5b4dce5d86fa5137a111",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "PropertyVariationSource": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "gold dim_date"
+                      }
+                    },
+                    "Name": "Variation",
+                    "Property": "date"
+                  }
+                },
+                "Hierarchy": "Date Hierarchy"
+              }
+            },
+            "Level": "Month"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

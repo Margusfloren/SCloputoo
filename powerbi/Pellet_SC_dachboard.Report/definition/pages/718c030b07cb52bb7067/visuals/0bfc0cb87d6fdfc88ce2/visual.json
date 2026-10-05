@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "73ef510107a43562ba80",
+  "name": "0bfc0cb87d6fdfc88ce2",
   "position": {
-    "x": 1361.6666666666667,
-    "y": 45,
-    "z": 7000,
+    "x": 1830,
+    "y": 51.666666666666671,
+    "z": 19005,
     "height": 80,
     "width": 190,
-    "tabOrder": 7000
+    "tabOrder": 19005
   },
   "visual": {
     "visualType": "slicer",
@@ -20,22 +20,19 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "gold dim_plant"
+                      "Entity": "gold fact_sales"
                     }
                   },
-                  "Property": "plant_id"
+                  "Property": "channel_id"
                 }
               },
-              "queryRef": "gold dim_plant.plant_id",
-              "nativeQueryRef": "Plant",
+              "queryRef": "gold fact_sales.channel_id",
+              "nativeQueryRef": "Channel",
               "active": true,
-              "displayName": "Plant"
+              "displayName": "Channel"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "isDefaultSort": true
       }
     },
     "expansionStates": [
@@ -46,7 +43,7 @@
         "levels": [
           {
             "queryRefs": [
-              "gold dim_plant.plant_id"
+              "gold fact_sales.channel_id"
             ],
             "isCollapsed": true,
             "isPinned": true
@@ -78,7 +75,67 @@
       ],
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "orientation": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "g",
+                    "Entity": "gold fact_sales",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "Not": {
+                        "Expression": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "g"
+                                    }
+                                  },
+                                  "Property": "channel_id"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'RET'"
+                                  }
+                                }
+                              ],
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'B2B'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
         }
       ],
       "data": [
@@ -101,7 +158,7 @@
           }
         }
       ],
-      "items": [
+      "header": [
         {
           "properties": {
             "fontFamily": {
@@ -117,7 +174,7 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 1,
-                      "Percent": 0.6
+                      "Percent": 0
                     }
                   }
                 }
@@ -126,45 +183,7 @@
             "textSize": {
               "expr": {
                 "Literal": {
-                  "Value": "12D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "header": [
-        {
-          "properties": {
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'''Segoe UI'', wf_segoe-ui_normal, helvetica, arial, sans-serif'"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#000000'"
-                    }
-                  }
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+                  "Value": "13D"
                 }
               }
             }
@@ -173,6 +192,19 @@
       ]
     },
     "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
       "border": [
         {
           "properties": {
@@ -183,49 +215,46 @@
                 }
               }
             },
-            "width": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
-              }
-            },
             "color": {
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.2
+                    "Literal": {
+                      "Value": "'#F6E8C5'"
                     }
                   }
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "4D"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
                 }
               }
             }
           }
         }
       ],
-      "title": [
+      "background": [
         {
           "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "''"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             }
@@ -234,10 +263,28 @@
       ]
     },
     "syncGroup": {
-      "groupName": "plant_id",
+      "groupName": "channel_id",
       "fieldChanges": true,
       "filterChanges": true
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "0ec6ad5df0458aa0be7d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "gold fact_sales"
+              }
+            },
+            "Property": "channel_id"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }
