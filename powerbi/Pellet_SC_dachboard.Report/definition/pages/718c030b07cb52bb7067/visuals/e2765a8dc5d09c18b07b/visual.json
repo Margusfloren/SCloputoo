@@ -83,8 +83,8 @@
                 }
               },
               "queryRef": "_Measures.Sales Actual Selected Period All Channels",
-              "nativeQueryRef": "Sales Actual",
-              "displayName": "Sales Actual"
+              "nativeQueryRef": "Sales",
+              "displayName": "Sales"
             },
             {
               "field": {

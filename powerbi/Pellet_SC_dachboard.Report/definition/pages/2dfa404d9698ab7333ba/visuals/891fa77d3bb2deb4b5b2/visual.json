@@ -76,20 +76,6 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''_Measures''[Sales Budget]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''_Measures''[Sales Variance]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
                                 "Value": "'''_Measures''[Sales Attainment Selected Period %]'"
                               }
                             }
@@ -129,28 +115,6 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''_Measures''[Sales Budget]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''_Measures''[Sales Variance]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
                                       "Value": "'''_Measures''[Sales Attainment Selected Period %]'"
                                     }
                                   }
@@ -176,12 +140,6 @@
                         "valueMap": [
                           {
                             "0": "Sales Actual"
-                          },
-                          {
-                            "0": "Sales Budget"
-                          },
-                          {
-                            "0": "Sales Variance"
                           },
                           {
                             "0": "Sales Attainment"

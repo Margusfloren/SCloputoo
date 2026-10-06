@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "eab5f785724bae35e031",
   "position": {
-    "x": 1611.6666666666667,
+    "x": 1723.3333333333335,
     "y": 51.666666666666671,
     "z": 8000,
     "height": 80,
@@ -107,20 +107,6 @@
                             {
                               "Literal": {
                                 "Value": "'Premium pellet 15 kg 8 mm'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Premium pellet Big Bag 8 mm'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Industrial pellet Bulk 8 mm'"
                               }
                             }
                           ]

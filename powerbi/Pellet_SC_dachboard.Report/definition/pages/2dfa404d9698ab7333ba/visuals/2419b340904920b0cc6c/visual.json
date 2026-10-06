@@ -106,36 +106,6 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sales Budget"
-                }
-              },
-              "queryRef": "_Measures.Sales Budget",
-              "nativeQueryRef": "Sales Budget",
-              "displayName": "Sales Budget"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
-                  "Property": "Sales Variance"
-                }
-              },
-              "queryRef": "_Measures.Sales Variance",
-              "nativeQueryRef": "Sales Variance",
-              "displayName": "Sales Variance"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
                   "Property": "Sales Attainment Selected Period %"
                 }
               },
@@ -157,7 +127,7 @@
                 }
               },
               "index": 0,
-              "length": 4
+              "length": 2
             }
           ]
         }

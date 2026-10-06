@@ -41,12 +41,12 @@ table 'Production Chart Selector'
 		source =
 				{
 				    (
-				        "Production Budget",
+				        "Budget",
 				        NAMEOF('_Measures'[Production Budget Selected Period]),
 				        0
 				    ),
 				    (
-				        "Sales Actual",
+				        "Sales",
 				        NAMEOF('_Measures'[Sales Actual Selected Period All Channels]),
 				        1
 				    )
