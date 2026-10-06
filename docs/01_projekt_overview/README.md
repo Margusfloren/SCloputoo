@@ -2,8 +2,8 @@
 
 Pelletitööstuse Supply Chain Management juhtimisvaate arendusprojekt.
 
-**Status:** Power BI V1 development in progress  
-**Last updated:** 04.10.2026
+**Status:** Power BI V1 core functionality complete – QA and documentation in progress  
+**Last updated:** 06.10.2026
 
 ## Project Overview
 
@@ -13,9 +13,20 @@ Projekti eesmärk on luua Supply Chain Managerile juhtimisvaade, mis seob müüg
 - kas tootmine täidab tootmisplaani;
 - millisel perioodil, tehases või tootel kõrvalekalle tekib;
 - kas tootmine ja müük liiguvad samas taktis;
-- milline müügikanal, toode või tehas mõjutab tulemust.
+- milline müügikanal, toode või tehas mõjutab tulemust;
+- kui suur on tegeliku tootmise ja tegeliku müügi vahe ning milliste toodete juures see tekib.
 
 Projekt kasutab sünteetilisi 2023–2025 andmeid nelja pelletitehase kohta.
+
+Power BI V1 koosneb viiest omavahel seotud analüüsivaatest:
+
+1. `SC Overview`
+2. `Sales Analysis`
+3. `Production Analysis`
+4. `Plant Analysis`
+5. `Product Analysis`
+
+Overview seob loo kokku ning detailvaated võimaldavad kõrvalekalde põhjuseid edasi analüüsida.
 
 ## Source data
 
@@ -92,23 +103,50 @@ Pikemas versioonis on plaan luua samast äriloogikast Python / Streamlit veebiva
 
 ### SC Overview
 
-Overview-leht annab juhtimiseks kiire tervikpildi.
+Overview-leht annab juhtimiseks kiire tervikpildi ning seob Sales ja Production analüüsi üheks looks.
 
-Praegu on realiseeritud:
+Realiseeritud:
 
 - Sales KPI rida: Actual, Budget, Variance, Budget Attainment;
 - Production KPI rida: Actual, Budget, Variance, Production Attainment;
 - globaalsed slicerid: Year, Month, Plant, Product, Channel;
-- Sales Actual vs Budget graafik;
-- Production Actual vs Budget graafik;
+- Sales Actual vs Budget ajatelg;
+- Production Actual vs Budget võrdlus;
+- Production Actual vs Sales võrdlus;
+- `Compare production with` valik, millega saab Production graafikut vahetada Budget ja Sales võrdluse vahel;
 - dünaamiline Sales View;
 - dünaamiline Production View;
-- slicerite sünkroniseerimine lehtede vahel.
+- eraldi `Production vs Sales by Product` tabel;
+- slicerite sünkroniseerimine analüüsilehtede vahel.
+
+Overview kasutab kolme põhilist analüütilist graafikuvaadet:
+
+1. Sales Actual vs Budget;
+2. Production Actual vs Budget;
+3. Production Actual vs Sales.
+
+Productioni kaks võrdlust on koondatud ühte dünaamilisse graafikusse, mida juhib `Compare production with` selector.
+
+Lehe alumine osa kasutab kolme tabelit:
+
+1. `Sales View` – müügi Actual, Budget, Variance ja Attainment;
+2. `Production View` – tootmise Actual, Budget, Variance ja Attainment;
+3. `Production vs Sales by Product` – Production Actual, Sales Actual ja nende vahe toodete lõikes.
+
+Uue `Production vs Sales by Product` tabeli eesmärk on näidata mitte ainult arvutuse tulemust, vaid ka selle lähteväärtuseid. Kasutaja näeb samas reas:
+
+```text
+Product | Production Actual | Sales Actual | Production vs Sales
+```
+
+See muudab tootmise ja müügi suhte läbipaistvaks ning võimaldab kohe näha, millise toote juures vahe tekib.
 
 Sales ja Production KPI-d kasutavad sama visuaalset loogikat, kuid eristuvad värviga:
 
 - Sales – sinepitoon;
 - Production – heleroheline.
+
+Sales Actual kasutatakse Production vs Sales võrdluses sinise tooniga, et müügi ja tootmise seos oleks visuaalselt eristatav.
 
 ### Sales Analysis
 
@@ -131,13 +169,123 @@ Realiseeritud:
 - `product_name`
 - `channel_id`
 
-### Product Analysis
+Sales Analysis eesmärk on näha, millisel perioodil ja millise dimensiooni lõikes müügieelarve kõrvalekalle tekib.
 
-Tootepõhine detailvaade Production Actual ↔ Sales Actual võrdluseks.
+### Production Analysis
+
+Production Analysis keskendub tootmisplaani täitmisele ja tootmise suhtele tegeliku müügiga.
+
+Realiseeritud:
+
+- Selected Period Production KPI-d;
+- Production Actual vs Budget ajateljel;
+- Production Actual vs Sales ajateljel;
+- Production Actual vs Budget Matrix;
+- Production Actual vs Sales Matrix;
+- dünaamiline `Production KPI Selector`;
+- dünaamiline `Production View Selector`;
+- negatiivsete variance-väärtuste tingimusvärvimine;
+- ühtne täisarvude ja tuhandete eraldajaga tabeliformaat.
+
+Production Analysis võimaldab eristada kahte eri juhtimisküsimust:
+
+1. kas tootmine täitis tootmisplaani;
+2. kas tegelik tootmismaht liikus tegeliku müügiga samas taktis.
+
+See eristus on oluline, sest tootmine võib olla eelarve suhtes väga täpne, kuid tegelik müük võib samal ajal liikuda teises tempos.
 
 ### Plant Analysis
 
-Tehasepõhine detailvaade, mis aitab tuvastada, millises tehases kõrvalekalle tekkis.
+Plant Analysis on tehasepõhine detailvaade, mis aitab tuvastada, millises tehases tootmismaht ja kõrvalekalle tekivad.
+
+Realiseeritud:
+
+- Production vs Budget tehase lõikes;
+- Product Mix by Plant;
+- Plant Production Performance tabel;
+- Production Share % by Plant;
+- Year, Month, Plant ja Product slicerid.
+
+Vaade võimaldab näha:
+
+- milline tehas toodab valitud toodet;
+- kuidas tehase Actual suhestub Budgetiga;
+- milline on tehase osa valitud tootmismahust;
+- kuidas erineb toodete mix tehaste vahel.
+
+### Product Analysis
+
+Product Analysis on tootepõhine detailvaade, mille keskne eesmärk on võrrelda tootmist müügiga ning näha, millistes tehastes valitud toodet toodetakse.
+
+Realiseeritud:
+
+- Production vs Budget toote vaates;
+- Production vs Sales toote vaates;
+- `Product performance by plant` tabel;
+- `Production Share % by plant`;
+- Year, Month, Plant ja Product slicerid;
+- tootevaliku mõju kõikidele lehe visuaalidele.
+
+Vaade võimaldab lugeda ühe toote kohta tervikliku loo:
+
+- millal toodet toodeti;
+- kui palju toodeti võrreldes tootmisplaaniga;
+- kui palju samal perioodil müüdi;
+- millised tehased toodet valmistasid;
+- milline tehas tekitas Budgeti kõrvalekalde;
+- kui suur osa valitud toote kogumahust tuli igast tehasest.
+
+Product Analysis eesmärk ei ole dubleerida Plant Analysis vaadet, vaid vaadata sama tarneahela loogikat toote vaatenurgast.
+
+## Production vs Sales logic
+
+Üks V1 keskseid mõõdikuid on Production Actual ja Sales Actual vahe.
+
+```DAX
+Production vs Sales =
+[Production Actual] - [Sales Actual]
+```
+
+Tõlgendus:
+
+- positiivne tulemus → valitud perioodil toodeti rohkem kui müüdi;
+- negatiivne tulemus → valitud perioodil müüdi rohkem kui toodeti;
+- nullilähedane tulemus → tootmine ja müük liikusid valitud perioodil sarnases mahus.
+
+Oluline: positiivne või negatiivne tulemus ei tähenda automaatselt head või halba tulemust.
+
+Vahe võib olla põhjustatud näiteks:
+
+- teadlikust hooajalisest varu kasvatamisest;
+- varasemalt toodetud valmistoodangu müügist;
+- müügi kõrvalekaldest prognoosist;
+- tootmisplaani ja tegeliku nõudluse erinevast tempost.
+
+Seetõttu kasutatakse mõõdikut eelkõige tähelepanu juhtimiseks ja edasise analüüsi lähtepunktina.
+
+Overview tabelis kuvatakse arvutus koos lähteandmetega:
+
+```text
+Production Actual - Sales Actual = Production vs Sales
+```
+
+Negatiivne `Production vs Sales` väärtus kuvatakse tabelis punase tekstina, et juhtida tähelepanu olukorrale, kus Sales Actual ületab sama perioodi Production Actual väärtust.
+
+## Analytical approach
+
+Dashboardi analüütiline põhimõte on:
+
+**Budget performance alone does not tell the full story.**
+
+Tootmise 100% lähedane Budget Attainment võib esmapilgul näidata väga head tulemust. Supply Chain vaates ei piisa aga ainult sellest, et tootmine järgib plaani. Oluline on kontrollida, kas tootmine liigub ka tegeliku müügiga samas tempos.
+
+Seetõttu seob juhtimisvaade kolm põhitasandit:
+
+**Sales → Production → Production vs Sales**
+
+Overview näitab, mis toimub tervikuna. Sales, Production, Plant ja Product Analysis aitavad seejärel leida, millal, kus ja millise toote või tehase juures erinevus tekib.
+
+Pikemas versioonis seotakse sama loogika valmistoodangu laoseisuga, et näha, kuidas Production vs Sales erinevus mõjutab tegelikku inventory taset ja füüsilist laomahutavust.
 
 ## KPI display formatting
 
@@ -163,7 +311,6 @@ Oluline tehniline põhimõte: KPI Display measure'id jäävad numbriliseks ning 
 
 Budget Attainment ja Production Attainment kuvatakse ühtselt kahe komakohaga.
 
-
 ## KPI status logic / conditional formatting
 
 Budget Attainment ja Production Attainment puhul ei kasutata loogikat **"mida kõrgem, seda parem"**. Juhtimisvaates on eesmärk püsida sihtvahemikus, sest liiga suur üle- või alatäitmine võib viidata ebatäpsele eelarvele / tootmisplaanile ning tekitada lisapingeid tootmises, varudes ja logistikas.
@@ -179,16 +326,16 @@ Kasutatav staatuseloogika:
 Power BI conditional formatting `Rules` kasutab protsendi alusväärtust kümnendmurruna. Seetõttu sisestatakse piirid reeglitesse kujul:
 
 ```text
-0.00 – < 0.90   → Critical
-0.90 – < 0.95   → Attention
-0.95 – <= 1.05  → OK
+0.00 – < 0.90    → Critical
+0.90 – < 0.95    → Attention
+0.95 – <= 1.05   → OK
 > 1.05 – <= 1.10 → Attention
 > 1.10           → Critical
 ```
 
 Näiteks `101,4%` alusväärtus on Power BI-s `1.014`, mistõttu kuulub see vahemikku `0.95–1.05` ja kuvatakse rohelisena.
 
-Kasutatav värvipalett:
+Kasutatav KPI staatuse värvipalett:
 
 - OK / roheline: `#A8C9A0`
 - Attention / sinep: `#D6A84B`
@@ -196,6 +343,23 @@ Kasutatav värvipalett:
 
 Sama põhimõte rakendub nii Sales Budget Attainment kui ka Production Attainment KPI-dele.
 
+Negatiivsete Variance ja Production vs Sales väärtuste tekstivärvina kasutatakse eraldi tugevat punast `#C00000`.
+
+## Visual design principles
+
+Dashboardi kujundamisel kasutatakse põhimõtet **less is more**.
+
+Peamised kujundusreeglid:
+
+- visualiseeritakse ainult juhtimisotsuse jaoks vajalik info;
+- telgede tiitleid ei kuvata juhul, kui pealkiri, legend ja mõõdikud annavad sama info juba selgelt edasi;
+- Sales ja Production kasutavad läbivalt samu põhivärve;
+- tabelite kujundus on teadlikult tagasihoidlik;
+- negatiivne kõrvalekalle tuuakse välja punase tekstiga, mitte liigsete ikoonide või signaalvärvidega;
+- selectorid ja slicerid kasutavad võimalikult ühtset kujunduskeelt;
+- sama filtreering annab eri lehtedel omavahel võrreldavad vaated.
+
+Production vs Sales tabel seob teadlikult müügi ja tootmise värviloogika: Sales seostub sinisega ning Production sinepitooniga.
 
 ## Field parameters and Matrix formatting
 
@@ -243,24 +407,39 @@ Näiteks:
 
 Kui tulemused kattuvad, suureneb kindlus, et juhtimisvaate andmeid saab usaldada.
 
+Sama kontrollipõhimõte kehtib ka visuaalide omavahelisel võrdlemisel: Overview annab koondpildi ning detailvaated peavad võimaldama sama tulemust perioodi, toote ja tehase tasandil lahti seletada.
+
 ## Current V1 status
 
-Seisuga 04.10.2026:
+Seisuga 06.10.2026:
 
 - PostgreSQL Bronze / Silver / Gold mudel töötab;
 - DIM / FACT mudel on loodud;
 - SQL-kontrollid töötavad;
 - Python ↔ PostgreSQL Gold ühendus töötab;
 - Power BI ühendus töötab;
-- SC Overview põhiloogika töötab;
-- Sales Analysis põhiloogika töötab;
-- Product Analysis ja Plant Analysis vaated on olemas;
+- SC Overview põhiloogika on valmis;
+- Sales Analysis põhiloogika on valmis;
+- Production Analysis põhiloogika on valmis;
+- Plant Analysis põhiloogika on valmis;
+- Product Analysis põhiloogika on valmis;
+- viis peamist analüüsivaadet töötavad sama filtreerimisloogikaga;
 - globaalsed slicerid on sünkroniseeritud;
+- Production Budget ↔ Sales Actual võrdlus on dünaamilise selectoriga juhitav;
+- `Production vs Sales` measure ja tootepõhine Overview tabel on lisatud;
 - KPI-de K/M vorming on standardiseeritud;
 - Sales ja Production Matrixite arvuvorming on ühtlustatud;
-- negatiivsed variance-väärtused on analüüsivaadetes esile tõstetavad.
+- negatiivsed variance-väärtused on analüüsivaadetes esile tõstetavad;
+- negatiivne Production vs Sales väärtus on tingimusvorminguga esile tõstetav;
+- visualiseerimise põhiline kujundus ja funktsionaalsus on paigas.
 
-Järgmine V1 etapp on Production Analysis lehe viimistlemine, navigation, QA ja dokumentatsiooni lõppkontroll.
+V1 järgmine etapp on:
+
+- lõplik QA;
+- lehtede ja selectorite viimased nimetuste / paigutuse kontrollid;
+- navigation kontroll;
+- dokumentatsiooni lõppkontroll;
+- kaitsmise jaoks demo-loo ja põhijärelduste ettevalmistamine.
 
 ## Long version backlog
 
@@ -279,6 +458,34 @@ Planeeritud laiendused:
 - OTIF order / delivery grain;
 - exception-based management view;
 - Python / Streamlit veebivaade.
+
+### Finished Goods Inventory
+
+Pika versiooni üks olulisemaid järgmisi samme on Production vs Sales loogika sidumine valmistoodangu laoseisuga.
+
+Planeeritud mõõdikud ja piirangud:
+
+- Opening Stock;
+- Closing / Current Stock;
+- Min Stock;
+- Target Stock;
+- Max Stock / Physical Capacity;
+- Utilization %;
+- coverage;
+- staatused nagu Below Min / OK / Near Full / Over Capacity.
+
+See võimaldab vastata küsimusele, kas Production vs Sales erinevus oli teadlik varu kasvatamine või tekitas soovimatu laoseisu suurenemise.
+
+### BOM / raw-material layer
+
+Pikas versioonis lisatakse BOM-kiht, mis seob tootmisplaani tooraine vajadusega.
+
+Planeeritud loogika:
+
+- standardne kuivaineline toorainesegu 1 tonni pelleti kohta;
+- märja tooraine vajaduse arvutamine niiskusesisalduse alusel;
+- höövlilaastu, märja saepuru, hakke ja ümarpalgi vajadus;
+- tootmisplaani teisendamine reaalseks sisseostu / tarnevajaduseks.
 
 ### Sales Channel Budget / Channel Mix
 
@@ -317,3 +524,9 @@ powerbi/
 ## Scope principle
 
 V1 eesmärk ei ole realiseerida kogu pelletitööstuse Supply Chain mudelit korraga. V1 lukustab müügi, tootmise ja nende omavahelise takti analüüsiloogika ning loob usaldusväärse tehnilise vundamendi pikemale projektile.
+
+V1 põhiküsimus on:
+
+**Kas müük ja tootmine liiguvad omavahel kooskõlas ning kus tekib kõrvalekalle?**
+
+Pikk versioon laiendab sama loogikat varude, BOM-i, tooraine, forecast'i, OTIF-i ja füüsiliste tootmis- / laopiiranguteni.
