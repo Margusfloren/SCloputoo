@@ -5,7 +5,7 @@
     "x": 106.66666666666667,
     "y": 301.66666666666669,
     "z": 3000,
-    "height": 240,
+    "height": 345,
     "width": 1025,
     "tabOrder": 3000
   },
@@ -16,6 +16,13 @@
         {
           "properties": {
             "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
               {
                 "textRuns": [
                   {
@@ -37,20 +44,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Use the available filters to analyse performance by ",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": "year, month, plant, product and sales channel",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": ".",
+                    "value": "Use the available filters to analyse performance by year, month, plant, product and sales channel.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -60,20 +54,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "The ",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": "V1 Dashboard",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": " provides a high-level management view of sales and production performance.",
+                    "value": "The V1 Dashboard provides a high-level management view of sales and production performance.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -93,79 +74,44 @@
               {
                 "textRuns": [
                   {
-                    "value": "Sales Analysis",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": " – sales performance against budget;",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
+                    "value": ""
                   }
-                ],
-                "listType": "bullet"
+                ]
               },
               {
                 "textRuns": [
                   {
-                    "value": "Production Analysis",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": " – production performance against budget and comparison with sales;",
+                    "value": "• Sales Analysis – sales performance against budget;",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
                   }
-                ],
-                "listType": "bullet"
+                ]
               },
               {
                 "textRuns": [
                   {
-                    "value": "Plant Analysis",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": " – performance and product mix by production plant;",
+                    "value": "• Production Analysis – production performance against budget and comparison with sales;",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
                   }
-                ],
-                "listType": "bullet"
+                ]
               },
               {
                 "textRuns": [
                   {
-                    "value": "Product Analysis",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": " – performance and production/sales mix by product.",
+                    "value": "• Plant Analysis – performance and product mix by production plant;",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
                   }
-                ],
-                "listType": "bullet"
+                ]
               },
               {
                 "textRuns": [
                   {
-                    "value": "The different views are intended to support both high-level monitoring and deeper analysis of the factors behind the results",
+                    "value": "• Product Analysis – performance and production/sales relationships by product.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -176,6 +122,36 @@
                 "textRuns": [
                   {
                     "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Use the Reset filters button to return each analysis page to its predefined default view.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Negative variances and attainment values below 100% are highlighted in red to make exceptions easier to identify.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The different views are intended to support both high-level monitoring and deeper analysis of the factors behind the results.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
                   }
                 ]
               }

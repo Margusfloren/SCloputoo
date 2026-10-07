@@ -3,10 +3,10 @@
   "name": "6a74e3fef0728eac5404",
   "position": {
     "x": 106.66666666666667,
-    "y": 573.33333333333337,
+    "y": 646.66666666666674,
     "z": 2000,
-    "height": 195,
-    "width": 1010,
+    "height": 295,
+    "width": 1025,
     "tabOrder": 2000
   },
   "visual": {
@@ -116,6 +116,53 @@
                 "textRuns": [
                   {
                     "value": "100% means that the budget has been achieved exactly",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Production vs Sales – difference between Production Actual and Sales Actual.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "A positive value indicates that production exceeded sales, while a negative value indicates that sales exceeded production.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Production vs Sales % – Production Actual divided by Sales Actual.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "100% means production and sales volumes are equal. A value above 100% indicates that production exceeded sales.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }

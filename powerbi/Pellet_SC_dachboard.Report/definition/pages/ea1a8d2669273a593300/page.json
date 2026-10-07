@@ -5,6 +5,7 @@
   "displayOption": "ActualSize",
   "height": 1400,
   "width": 2100,
+  "visibility": "HiddenInViewMode",
   "visualInteractions": [
     {
       "source": "3165184177c91bbd885a",

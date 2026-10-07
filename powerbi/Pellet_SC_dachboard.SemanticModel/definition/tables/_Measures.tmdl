@@ -489,6 +489,16 @@ table _Measures
 		formatString: 0%;-0%;0%
 		lineageTag: cf5c5b78-61db-4a6e-a7a0-d2c2384ebc2e
 
+	/// Production Actual divided by Sales Actual. 100% means production equals sales for the selected reporting context.
+	measure 'Production vs Sales %' =
+			
+			DIVIDE(
+			    [Production Actual],
+			    [Sales Actual]
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1849c48f-f87f-4ad6-aea4-bd08f1c36618
+
 	column Value
 		isHidden
 		formatString: 0
