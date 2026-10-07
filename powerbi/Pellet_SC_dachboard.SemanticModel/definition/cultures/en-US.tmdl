@@ -1126,7 +1126,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Sales Actual": {
+			          "Sales": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -4984,7 +4984,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "gold fact_sales",
-			          "ConceptualProperty": "quantity_t"
+			          "ConceptualProperty": "Quantity (t)"
 			        }
 			      },
 			      "State": "Generated",
