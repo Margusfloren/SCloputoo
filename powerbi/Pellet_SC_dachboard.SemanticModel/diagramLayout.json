@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 195.93254242046117,
+        "x": 2155.0173173246585,
         "y": 0
       },
       "nodes": [
@@ -184,6 +184,32 @@
           "nodeIndex": "Sales KPI Selector",
           "size": {
             "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3733.4250240486308,
+            "y": 943.80540922333967
+          },
+          "nodeIndex": "Table",
+          "nodeLineageTag": "a11e9c72-3ff5-41fd-afff-e423dfde4879",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3978.3090127395008,
+            "y": 943.80540922333967
+          },
+          "nodeIndex": "Table 2",
+          "nodeLineageTag": "3a63b716-1f5f-401c-8307-d8c8578e72c0",
+          "size": {
+            "height": 200,
             "width": 234
           },
           "zIndex": 0

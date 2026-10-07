@@ -1,7 +1,7 @@
 table _Measures
 	lineageTag: 4b5ba0f4-1d73-42ad-908c-4fb04578680e
 
-	measure 'Sales Actual' = SUM('gold fact_sales'[quantity_t])
+	measure 'Sales Actual' = SUM('gold fact_sales'[Quantity (t)])
 		formatString: #,0
 		lineageTag: b7670af3-9855-4e4c-975f-92a8b86dc259
 

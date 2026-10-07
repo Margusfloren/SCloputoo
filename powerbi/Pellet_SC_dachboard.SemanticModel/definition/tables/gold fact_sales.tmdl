@@ -62,11 +62,11 @@ table 'gold fact_sales'
 
 		annotation SummarizationSetBy = Automatic
 
-	column quantity_t
+	column 'Quantity (t)'
 		dataType: double
 		lineageTag: 489c0bfc-370a-4a3a-9d1b-ae0c582d4d74
 		summarizeBy: sum
-		sourceColumn: quantity_t
+		sourceColumn: Quantity (t)
 
 		annotation SummarizationSetBy = Automatic
 
@@ -123,9 +123,10 @@ table 'gold fact_sales'
 		source =
 				let
 				    Source = PostgreSQL.Database("localhost", "postgres"),
-				    gold_fact_sales = Source{[Schema="gold",Item="fact_sales"]}[Data]
+				    gold_fact_sales = Source{[Schema="gold",Item="fact_sales"]}[Data],
+				    #"Renamed Columns" = Table.RenameColumns(gold_fact_sales,{{"quantity_t", "Quantity (t)"}})
 				in
-				    gold_fact_sales
+				    #"Renamed Columns"
 
 	annotation PBI_ResultType = Table
 
