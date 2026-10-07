@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "db2959c03ca507f8b84a",
   "position": {
-    "x": 107.14285714285715,
-    "y": 698.28571428571422,
+    "x": 103.33333333333334,
+    "y": 813.33333333333337,
     "z": 4000,
-    "height": 148.57142857142858,
-    "width": 1024.2857142857144,
+    "height": 260,
+    "width": 1013.3333333333334,
     "tabOrder": 4000
   },
   "visual": {
@@ -37,7 +37,20 @@
               {
                 "textRuns": [
                   {
-                    "value": "The dashboard uses a Directo-based source data structure. Data is transformed and validated in PostgreSQL using a layered bronze, silver and gold architecture before being loaded into Power BI.",
+                    "value": "The dashboard uses a ",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "Directo-based source data structure",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": ".",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -47,7 +60,120 @@
               {
                 "textRuns": [
                   {
-                    "value": "The reporting model uses separate fact tables for sales, sales budget, production and production budget, supported by shared dimensions such as date, plant, product and sales channel",
+                    "value": "Data is transformed and validated in ",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "PostgreSQL",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": " using a layered ",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "bronze, silver and gold architecture",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": " before being loaded into Power BI.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The reporting model uses separate fact tables for:",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "sales;",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "sales budget;",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "production;",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "production budget.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "These fact tables are supported by shared dimensions such as ",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "date, plant, product and sales channel",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": ".",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "This structure allows the same business dimensions to be used consistently across different analysis views.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }

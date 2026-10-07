@@ -47,14 +47,33 @@
               {
                 "textRuns": [
                   {
-                    "value": ""
-                  }
-                ]
-              },
-              {
-                "textRuns": [
+                    "value": "The ",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  },
                   {
-                    "value": "The SC Overview is designed for quick management-level monitoring, while detailed analysis is available on dedicated analysis pages.",
+                    "value": "V1 Dashboard",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": " is designed for quick management-level monitoring, while more detailed analysis is available on dedicated ",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "Sales, Production, Plant and Product Analysis",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": " pages.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }

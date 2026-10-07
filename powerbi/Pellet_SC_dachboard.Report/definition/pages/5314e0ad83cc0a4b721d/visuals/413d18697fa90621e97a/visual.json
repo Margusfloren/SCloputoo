@@ -162,7 +162,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Plant Production Share % by plant'"
+                  "Value": "'Production Share % by plant'"
                 }
               }
             }

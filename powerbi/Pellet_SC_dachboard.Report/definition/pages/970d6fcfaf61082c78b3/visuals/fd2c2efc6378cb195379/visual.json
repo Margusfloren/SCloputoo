@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "fd2c2efc6378cb195379",
   "position": {
-    "x": 107.14285714285715,
-    "y": 893.42857142857133,
+    "x": 103.33333333333334,
+    "y": 1115,
     "z": 5000,
-    "height": 150,
-    "width": 1024.2857142857144,
+    "height": 243.33333333333334,
+    "width": 991.66666666666674,
     "tabOrder": 5000
   },
   "visual": {
@@ -37,7 +37,20 @@
               {
                 "textRuns": [
                   {
-                    "value": "Data and KPI calculations are validated independently using SQL, Power BI and Python. Python is connected directly to the PostgreSQL gold layer and is used to reproduce key sales KPIs such as Actual, Budget, Variance and Budget Attainment. ",
+                    "value": "Data and KPI calculations are validated independently using ",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "SQL, Power BI and Python",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": ".",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -47,10 +60,74 @@
               {
                 "textRuns": [
                   {
-                    "value": "Comparing the same results across multiple tools helps ensure data consistency and reliability",
+                    "value": "Python is connected directly to the PostgreSQL gold layer and is used to reproduce key sales KPIs such as:",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Actual;",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Budget;",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Variance;",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Budget Attainment.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ],
+                "listType": "bullet"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Comparing the same results across multiple tools provides an additional validation layer and helps ensure data consistency and reliability",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
                   }
                 ]
               }

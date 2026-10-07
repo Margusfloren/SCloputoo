@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "6a74e3fef0728eac5404",
   "position": {
-    "x": 107.14285714285715,
-    "y": 476,
+    "x": 106.66666666666667,
+    "y": 573.33333333333337,
     "z": 2000,
-    "height": 175.71428571428572,
-    "width": 1024.2857142857144,
+    "height": 195,
+    "width": 1010,
     "tabOrder": 2000
   },
   "visual": {
@@ -78,7 +78,17 @@
                     }
                   },
                   {
-                    "value": " – difference between Actual and Budget. A positive value indicates performance above budget; a negative value indicates performance below budget.",
+                    "value": " – difference between Actual and Budget.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "A positive value indicates performance above budget, while a negative value indicates performance below budget.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -95,13 +105,20 @@
                     }
                   },
                   {
-                    "value": " – Actual divided by Budget, shown as a percentage. 100% means the budget has been achieved",
+                    "value": " – Actual divided by Budget, shown as a percentage.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
-                  },
+                  }
+                ]
+              },
+              {
+                "textRuns": [
                   {
-                    "value": "."
+                    "value": "100% means that the budget has been achieved exactly",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
                   }
                 ]
               }
