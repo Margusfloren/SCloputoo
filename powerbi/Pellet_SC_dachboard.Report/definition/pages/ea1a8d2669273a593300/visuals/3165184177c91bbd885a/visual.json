@@ -108,6 +108,13 @@
                                 "Value": "'DIST'"
                               }
                             }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'IND'"
+                              }
+                            }
                           ]
                         ]
                       }

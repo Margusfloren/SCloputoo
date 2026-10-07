@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "gold dim_product"
+                      "Entity": "gold dim_plant"
                     }
                   },
-                  "Property": "product_name"
+                  "Property": "plant_name"
                 }
               },
-              "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "Product",
+              "queryRef": "gold dim_plant.plant_name",
+              "nativeQueryRef": "Plant",
               "active": true,
-              "displayName": "Product"
+              "displayName": "Plant"
             }
           ],
           "fieldParameters": [
@@ -131,35 +131,6 @@
         }
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Rows"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "gold dim_product.product_name"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
-                    }
-                  },
-                  "Property": "product_name"
-                }
-              }
-            ],
-            "isPinned": true
-          }
-        ],
-        "root": {}
-      }
-    ],
     "objects": {
       "columnFormatting": [
         {

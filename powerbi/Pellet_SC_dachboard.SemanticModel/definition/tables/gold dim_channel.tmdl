@@ -3,12 +3,16 @@ table 'gold dim_channel'
 
 	column channel_id
 		dataType: string
+		isHidden
 		lineageTag: 5e3ed4f5-0901-48e6-8170-9fef1ac0d289
 		summarizeBy: none
 		sourceColumn: channel_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// Sales channel used for reporting and analysis.
 	column channel_name
 		dataType: string
 		lineageTag: 0915ddd1-19f5-4355-811b-8b5e287e322b

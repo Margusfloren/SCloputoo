@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "9e37edb0e9a1f8293a81",
+  "name": "a1c33823d5cab981967c",
   "position": {
-    "x": 1241.6666666666667,
-    "y": 1115,
-    "z": 10000,
-    "height": 250,
-    "width": 696.66666666666674,
-    "tabOrder": 10000
+    "x": 1043.3333333333335,
+    "y": 143.33333333333334,
+    "z": 1009,
+    "height": 380,
+    "width": 936.66666666666674,
+    "tabOrder": 1009
   },
   "visual": {
     "visualType": "pivotTable",
@@ -72,20 +72,6 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Production Actual"
-                }
-              },
-              "queryRef": "_Measures.Production Actual",
-              "nativeQueryRef": "Production Actual"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "_Measures"
-                    }
-                  },
                   "Property": "Sales Actual"
                 }
               },
@@ -100,11 +86,25 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Production vs Sales"
+                  "Property": "Sales Budget"
                 }
               },
-              "queryRef": "_Measures.Production vs Sales",
-              "nativeQueryRef": "Production vs Sales"
+              "queryRef": "_Measures.Sales Budget",
+              "nativeQueryRef": "Sales Budget"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales Variance"
+                }
+              },
+              "queryRef": "_Measures.Sales Variance",
+              "nativeQueryRef": "Sales Variance"
             }
           ]
         }
@@ -120,6 +120,29 @@
                   "Value": "true"
                 }
               }
+            },
+            "backColorPrimary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FBF4E2'"
+                    }
+                  }
+                }
+              }
             }
           }
         },
@@ -133,20 +156,7 @@
                 }
               }
             ],
-            "metadata": "_Measures.Production Actual"
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "metadata": "_Measures.Production vs Sales"
+            "metadata": "_Measures.Sales Variance"
           }
         },
         {
@@ -163,7 +173,7 @@
                               "Entity": "_Measures"
                             }
                           },
-                          "Property": "Production vs Sales"
+                          "Property": "Sales Variance"
                         }
                       },
                       "FillRule": {
@@ -183,7 +193,7 @@
                           "max": {
                             "color": {
                               "Literal": {
-                                "Value": "'#4A852E'"
+                                "Value": "'#000000'"
                               }
                             },
                             "value": {
@@ -215,7 +225,75 @@
                 }
               }
             ],
-            "metadata": "_Measures.Production vs Sales"
+            "metadata": "_Measures.Sales Variance"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#A8C9A0'"
+                    }
+                  }
+                }
+              }
+            },
+            "gridVerticalWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#A8C9A0'"
+                    }
+                  }
+                }
+              }
+            },
+            "outlineWeight": {
+              "expr": {
+                "Literal": {
+                  "Value": "2D"
+                }
+              }
+            },
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       ]
@@ -234,7 +312,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Production vs Sales (tons)'"
+                  "Value": "'Sales Actual vs Budget'"
                 }
               }
             }

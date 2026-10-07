@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
-  "name": "8140be0de90979bc2439",
+  "name": "8a2c7efd08e3634d2463",
   "position": {
-    "x": 908.33333333333337,
-    "y": 605,
-    "z": 7000,
-    "height": 351.66666666666669,
-    "width": 1165,
-    "tabOrder": 7000
+    "x": 1125,
+    "y": 708.33333333333337,
+    "z": 1003,
+    "height": 325,
+    "width": 773.33333333333337,
+    "tabOrder": 1003
   },
   "visual": {
     "visualType": "pivotTable",
@@ -15,22 +15,6 @@
       "queryState": {
         "Rows": {
           "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_plant"
-                    }
-                  },
-                  "Property": "plant_name"
-                }
-              },
-              "queryRef": "gold dim_plant.plant_name",
-              "nativeQueryRef": "Plant",
-              "active": true,
-              "displayName": "Plant"
-            },
             {
               "field": {
                 "Column": {
@@ -61,7 +45,7 @@
                 }
               },
               "index": 0,
-              "length": 2
+              "length": 1
             }
           ]
         },
@@ -147,29 +131,6 @@
         }
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Rows"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "gold dim_plant.plant_name"
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "gold dim_product.product_name"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          }
-        ],
-        "root": {}
-      }
-    ],
     "visualContainerObjects": {
       "title": [
         {

@@ -79,12 +79,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sales Actual Selected Period All Channels"
+                  "Property": "Production Budget Selected Period"
                 }
               },
-              "queryRef": "_Measures.Sales Actual Selected Period All Channels",
-              "nativeQueryRef": "Sales",
-              "displayName": "Sales"
+              "queryRef": "_Measures.Production Budget Selected Period",
+              "nativeQueryRef": "Budget",
+              "displayName": "Budget"
             },
             {
               "field": {

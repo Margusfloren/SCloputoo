@@ -1,10 +1,12 @@
 table _Measures
 	lineageTag: 4b5ba0f4-1d73-42ad-908c-4fb04578680e
 
+	/// Actual sales volume in tonnes for the selected reporting context.
 	measure 'Sales Actual' = SUM('gold fact_sales'[Quantity (t)])
 		formatString: #,0
 		lineageTag: b7670af3-9855-4e4c-975f-92a8b86dc259
 
+	/// Budgeted sales volume in tones in the current filter context.
 	measure 'Sales Budget' = ```
 			SUM('gold fact_sales_budget'[budget_t]) 
 			```
@@ -13,6 +15,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
+	/// Difference between Sales Actual and Sales Budget. Positive values indicate sales above budget.
 	measure 'Sales Variance' = ```
 			[Sales Actual]-[Sales Budget] 
 			```
@@ -21,29 +24,34 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
+	/// Actual production volume in tonnes in the current filter context.
 	measure 'Production Actual' = SUM('gold fact_production'[quantity_t])
 		lineageTag: e08d7648-bcdf-471e-b391-27242a4bd9d8
 
 		formatStringDefinition = "#,##0"
 
+	/// Budgeted production volume in tonnes in the current filter context.
 	measure 'Production Budget' = SUM('gold fact_production_budget'[budget_t])
 		formatString: 0
 		lineageTag: e78776ec-e739-4587-ad18-0b479e3df60e
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
+	/// Difference between Production Actual and Production Budget. Positive values indicate production above budget
 	measure 'Production Variance' = [Production Actual]-[Production Budget]
 		formatString: 0
 		lineageTag: 3b183e9e-1497-40a3-868f-b63a0b8f5d00
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
+	/// Difference between Production Actual and Sales Actual. Positive values indicate that production exceeded sales.
 	measure 'Production vs Sales' = [Production Actual]-[Sales Actual]
 		formatString: 0
 		lineageTag: b4e6295e-a3ff-4da3-b909-f6e5f8390b5d
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
+	/// Cumulative actual sales volume from the beginning of the selected year to the current reporting period.
 	measure 'Sales Actual YTD' =
 			
 			COALESCE(
@@ -57,6 +65,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Cumulative budgeted sales volume from the beginning of the selected year to the current reporting period.
 	measure 'Sales Budget YTD' =
 			
 			COALESCE(
@@ -70,10 +79,12 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Difference between cumulative Sales Actual and cumulative Sales Budget from the beginning of the selected year to the current reporting period.
 	measure 'Sales Variance YTD' = [Sales Actual YTD]-[Sales Budget YTD]
 		formatString: 0.00
 		lineageTag: 7bc9d6a0-2fda-4c25-bc13-c4b886bc463d
 
+	/// Year-to-date Sales Actual divided by year-to-date Sales Budget. 100% means the sales budget has been achieved exactly.
 	measure 'Budget Attainment YTD %' =
 			
 			VAR Actual = [Sales Actual Selected Period]
@@ -99,8 +110,10 @@ table _Measures
 			    Budget = 0 && Actual > 0, "Unbudgeted sales",
 			    BLANK()
 			)
+		isHidden
 		lineageTag: c3937e9d-d59b-477e-b024-dd83022f2484
 
+	/// Actual sales volume in tonnes for the selected reporting period.
 	measure 'Sales Actual Selected Period' =
 			
 			COALESCE(
@@ -110,6 +123,7 @@ table _Measures
 		formatString: 0.00
 		lineageTag: 6ab7087a-7710-4665-88fc-ef102d236f58
 
+	/// Budgeted sales volume in tones for the selected reporting period.
 	measure 'Sales Budget Selected Period' =
 			
 			COALESCE(
@@ -120,6 +134,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Difference between Sales Actual and Sales Budget for the selected reporting period.
 	measure 'Sales Variance Selected Period' =
 			
 			[Sales Actual Selected Period]
@@ -127,6 +142,7 @@ table _Measures
 		formatString: 0.00
 		lineageTag: 83fc7162-e94c-48e1-abcc-89f7573e6854
 
+	/// Sales Actual divided by Sales Budget for the selected period. 100% means the sales budget has been achieved exactly.
 	measure 'Sales Attainment Selected Period %' =
 			
 			VAR Budget = [Sales Budget Selected Period]
@@ -143,6 +159,7 @@ table _Measures
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: ce1bbde2-ab65-428b-a2d2-89d14b19e7e2
 
+	/// Actual production volume in tonnes for the selected reporting period.
 	measure 'Production Actual Selected Period' =
 			
 			COALESCE(
@@ -152,6 +169,7 @@ table _Measures
 		formatString: 0.00
 		lineageTag: 0a6fc72c-0eab-4d57-afda-467d3dfb1190
 
+	/// Budgeted production volume in tonnes for the selected reporting period.
 	measure 'Production Budget Selected Period' =
 			
 			COALESCE(
@@ -162,6 +180,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Difference between Production Actual and Production Budget for the selected reporting period.
 	measure 'Production Variance Selected Period' =
 			
 			[Production Actual Selected Period]
@@ -170,6 +189,7 @@ table _Measures
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Production Actual divided by Production Budget for the selected period. 100% means the production budget has been achieved exactly.
 	measure 'Production Attainment Selected Period %' =
 			
 			VAR Budget = [Production Budget Selected Period]
@@ -193,6 +213,7 @@ table _Measures
 			    REMOVEFILTERS('gold dim_channel'),
 			    REMOVEFILTERS('gold fact_sales'[channel_id])
 			)
+		isHidden
 		lineageTag: cd8300af-b9c4-499c-a42f-0fa3f597e486
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -200,6 +221,7 @@ table _Measures
 	measure 'Sales Variance KPI' =
 			
 			[Sales Variance Selected Period]
+		isHidden
 		lineageTag: ad793090-5bd2-4cb1-9c31-99811608f036
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -223,11 +245,13 @@ table _Measures
 			        "Sales Actual", "Production Actual vs Sales",
 			        "Production Actual"
 			    )
+		isHidden
 		lineageTag: c36c883a-369a-400b-a3c1-14d3f69d59c2
 
 	measure 'Sales Actual KPI' =
 			
 			[Sales Actual Selected Period]
+		isHidden
 		lineageTag: ae8b2317-56b9-4607-ba25-648d2b18b213
 
 		formatStringDefinition =
@@ -257,6 +281,7 @@ table _Measures
 			            DIVIDE ( _Value, 1000000 )
 			        )
 			    )
+		isHidden
 		lineageTag: 7244fdd4-29ae-4c0e-98d6-ce41ac179b4c
 
 		formatStringDefinition =
@@ -289,6 +314,7 @@ table _Measures
 			            DIVIDE ( _Value, 1000000 )
 			        )
 			    )
+		isHidden
 		lineageTag: ca82b735-6f1c-4212-9e56-843438596f0e
 
 		formatStringDefinition =
@@ -321,6 +347,7 @@ table _Measures
 			            DIVIDE ( _Value, 1000000 )
 			        )
 			    )
+		isHidden
 		lineageTag: 2eb75327-bc2a-48a5-8e69-98c5310e68f8
 
 		formatStringDefinition =
@@ -353,6 +380,7 @@ table _Measures
 			            DIVIDE ( _Value, 1000000 )
 			        )
 			    )
+		isHidden
 		lineageTag: 78f1c0af-d57b-4e1c-b1c5-148442f7b2e3
 
 		formatStringDefinition =
@@ -385,6 +413,7 @@ table _Measures
 			            DIVIDE ( _Value, 1000000 )
 			        )
 			    )
+		isHidden
 		lineageTag: c723a8a5-a5fa-479e-b21f-6d44902d2adf
 
 		formatStringDefinition =
@@ -416,6 +445,7 @@ table _Measures
 			            DIVIDE ( _Value, 1000000 )
 			        )
 			    )
+		isHidden
 		lineageTag: 00121b44-5308-4c6a-a532-e340105143a3
 
 		formatStringDefinition =
@@ -436,14 +466,17 @@ table _Measures
 			
 			[Production Actual]
 		formatString: #,0
+		isHidden
 		lineageTag: 05d15062-4f9e-4b40-8789-e4978cfd99fc
 
 	measure 'Sales Attainment Target %' =
 			
 			1
 		formatString: 0
+		isHidden
 		lineageTag: 0bf06072-f365-40ef-8c59-fa2a22b6c255
 
+	/// Share of total production volume represented by the selected plant within the current reporting context.
 	measure 'Plant Production Share %' =
 			
 			DIVIDE(

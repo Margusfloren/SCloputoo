@@ -106,7 +106,21 @@
                           [
                             {
                               "Literal": {
+                                "Value": "'Industrial pellet Bulk 8 mm'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
                                 "Value": "'Premium pellet 15 kg 8 mm'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'Premium pellet Big Bag 8 mm'"
                               }
                             }
                           ]
