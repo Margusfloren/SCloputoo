@@ -19,7 +19,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Table"
+                      "Entity": "Model Measures Metadata"
                     }
                   },
                   "Property": "Name"
@@ -33,7 +33,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Table"
+                      "Entity": "Model Measures Metadata"
                     }
                   },
                   "Property": "Description"
@@ -47,7 +47,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Table"
+                      "Entity": "Model Measures Metadata"
                     }
                   },
                   "Property": "Expression"

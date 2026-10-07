@@ -3,12 +3,16 @@ table 'gold dim_plant'
 
 	column plant_id
 		dataType: string
+		isHidden
 		lineageTag: 3a637e24-20f0-49ac-be30-d0a1570b1926
 		summarizeBy: none
 		sourceColumn: plant_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// Production plant used for reporting and analysis.
 	column plant_name
 		dataType: string
 		lineageTag: 7a7456dc-eaba-4224-a7e2-eb0dffe3ed3e
@@ -17,6 +21,7 @@ table 'gold dim_plant'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Classification of the production plant.
 	column plant_type
 		dataType: string
 		lineageTag: 6740f7b5-4866-48c0-ae81-7c561abf3f19
@@ -27,10 +32,13 @@ table 'gold dim_plant'
 
 	column active_flag
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 63e61862-94d7-4977-adc6-040652f905d2
 		summarizeBy: none
 		sourceColumn: active_flag
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

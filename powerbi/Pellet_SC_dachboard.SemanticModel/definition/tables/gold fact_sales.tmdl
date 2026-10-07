@@ -1,120 +1,172 @@
 table 'gold fact_sales'
 	lineageTag: a7d61fc4-246b-4bf7-ada7-c2a7bc691c11
 
+	/// kasutada dim_date
 	column sales_date
 		dataType: dateTime
+		isHidden
 		formatString: Long Date
 		lineageTag: 24b41372-7fbf-48b6-8c6e-c37f50916e47
 		summarizeBy: none
 		sourceColumn: sales_date
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	/// tehingu identifikaator
 	column invoice_number
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 44da68cf-cd9d-4cc8-9c09-879b2ade8f6e
 		summarizeBy: sum
 		sourceColumn: invoice_number
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// tehniline reanumber
 	column invoice_row_no
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 58cdb386-8abb-4daf-852e-208ceae89a78
 		summarizeBy: sum
 		sourceColumn: invoice_row_no
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// foreign key → kasutada dim_plant
 	column plant_id
 		dataType: string
+		isHidden
 		lineageTag: 30c6355f-4356-4743-82b7-fea4a861dce4
 		summarizeBy: none
 		sourceColumn: plant_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// foreign key → kasutada dim_product
 	column product_id
 		dataType: string
+		isHidden
 		lineageTag: 571b5538-6d55-4500-b7e2-2dbff0b73d8b
 		summarizeBy: none
 		sourceColumn: product_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// tehniline kliendivõti; kliendivaadet V1-s pole
 	column customer_id
 		dataType: string
+		isHidden
 		lineageTag: a8e5bd1b-7f00-46f3-8b9a-972ba53468e0
 		summarizeBy: none
 		sourceColumn: customer_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// foreign key → kasutada dim_channel
 	column channel_id
 		dataType: string
+		isHidden
 		lineageTag: 3fa1d08b-15ea-482a-b6fe-bb7473534caf
 		summarizeBy: none
 		sourceColumn: channel_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// Sales Actual measure annab kontrollitud müügikoguse
 	column 'Quantity (t)'
 		dataType: double
+		isHidden
 		lineageTag: 489c0bfc-370a-4a3a-9d1b-ae0c582d4d74
 		summarizeBy: sum
 		sourceColumn: Quantity (t)
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// hinnastamise analüüsi V1-s pole
 	column unit_price_eur
 		dataType: double
+		isHidden
 		lineageTag: 7b3b31da-98cc-4b9a-b338-b6a0de05cff0
 		summarizeBy: sum
 		sourceColumn: unit_price_eur
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// finants-/tehingudetail, V1 skoobist väljas
 	column discount_pct
 		dataType: double
+		isHidden
 		lineageTag: 47b82e98-5824-4c72-9c49-d7b122036c25
 		summarizeBy: sum
 		sourceColumn: discount_pct
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// V1 keskendub tonnidele, mitte müügitulule
 	column net_sales_eur
 		dataType: double
+		isHidden
 		lineageTag: 1d6bba08-7dc3-4c47-987f-7930d02d8bd8
 		summarizeBy: sum
 		sourceColumn: net_sales_eur
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// V1 ei sisalda valuutapõhist analüüsi
 	column currency
 		dataType: string
+		isHidden
 		lineageTag: 8841e306-1965-4ca9-b389-eec972f3e494
 		summarizeBy: none
 		sourceColumn: currency
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// tehniline versiooniväli
 	column version_id
 		dataType: string
+		isHidden
 		lineageTag: 725e892e-c336-4377-85a0-f3a7bd115ca1
 		summarizeBy: none
 		sourceColumn: version_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

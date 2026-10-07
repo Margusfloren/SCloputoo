@@ -23,7 +23,7 @@
                       "Entity": "Sales KPI Selector"
                     }
                   },
-                  "Property": "Sales KPI Selector ver 2"
+                  "Property": "Sales KPI Selector"
                 }
               },
               "queryRef": "Sales KPI Selector ver 2.Sales KPI Selector ver 2",
@@ -93,7 +93,7 @@
                                   "Entity": "Sales KPI Selector"
                                 }
                               },
-                              "Property": "Sales KPI Selector ver 2"
+                              "Property": "Sales KPI Selector"
                             }
                           }
                         ],

@@ -1,84 +1,120 @@
 table 'gold fact_production'
 	lineageTag: 3da44eec-3f79-4e01-a78c-051c13f63a81
 
+	/// kasutada dim_date kuupäevavälju
 	column production_date
 		dataType: dateTime
+		isHidden
 		formatString: Long Date
 		lineageTag: 6f793a41-f6ec-40bf-9b36-e7a84e946ad0
 		summarizeBy: none
 		sourceColumn: production_date
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	/// tehingu/tootmise tehniline identifikaator
 	column production_number
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 6e274f15-7bd8-434e-937d-a9ce1775bac6
 		summarizeBy: sum
 		sourceColumn: production_number
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// rea tehniline identifikaator
 	column production_row_no
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: f01e2d64-6551-42f0-9ad4-e01164d36c8e
 		summarizeBy: sum
 		sourceColumn: production_row_no
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// foreign key, kasutada dim_plant välju
 	column plant_id
 		dataType: string
+		isHidden
 		lineageTag: 32ff7f0d-e4ad-45d3-8238-731036df5bc1
 		summarizeBy: none
 		sourceColumn: plant_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// foreign key, kasutada dim_product välju
 	column product_id
 		dataType: string
+		isHidden
 		lineageTag: c172eeff-ebcd-49ab-9510-436b8b42ae49
 		summarizeBy: none
 		sourceColumn: product_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// Production Actual measure summeerib selle kontrollitud loogikaga
 	column quantity_t
 		dataType: double
+		isHidden
 		lineageTag: 6225e1a5-964b-49f9-95ae-4ebfafc95736
 		summarizeBy: sum
 		sourceColumn: quantity_t
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// V1-s pole eraldi kasutajale mõeldud scrap KPI-d
 	column scrap_t
 		dataType: double
+		isHidden
 		lineageTag: 1a1eece3-9899-439d-b596-e450faa26225
 		summarizeBy: sum
 		sourceColumn: scrap_t
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// V1 analüüsis seda dimensioonina ei kasutata
 	column workcenter
 		dataType: string
+		isHidden
 		lineageTag: b3d20db2-87c0-4728-bcc7-1d3b6e3a7815
 		summarizeBy: none
 		sourceColumn: workcenter
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// tehniline versiooniväli
 	column version_id
 		dataType: string
+		isHidden
 		lineageTag: cd99da87-7740-4775-8646-c6c435d0c65a
 		summarizeBy: none
 		sourceColumn: version_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

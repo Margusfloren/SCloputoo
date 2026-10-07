@@ -1,7 +1,9 @@
-table Table
+table 'Model Measures Metadata'
+	isHidden
 	lineageTag: a11e9c72-3ff5-41fd-afff-e423dfde4879
 
 	column ID
+		isHidden
 		formatString: 0
 		lineageTag: 11223c9b-d58c-4642-8c29-4d2e74bbac91
 		summarizeBy: count
@@ -11,6 +13,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column Name
+		isHidden
 		lineageTag: 69f30739-eea8-42b3-8d88-2d1f123a1dda
 		summarizeBy: none
 		isNameInferred
@@ -19,6 +22,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column Table
+		isHidden
 		lineageTag: d9e5fec4-440e-4c5f-a680-aac9d07fbcb5
 		summarizeBy: none
 		isNameInferred
@@ -27,6 +31,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column Description
+		isHidden
 		lineageTag: 48d6c238-d94e-4822-ab46-b2a193db8d8f
 		summarizeBy: none
 		isNameInferred
@@ -35,6 +40,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column DataType
+		isHidden
 		lineageTag: d972f035-9971-4c75-9712-38b9ca6e9e07
 		summarizeBy: none
 		isNameInferred
@@ -43,6 +49,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column Expression
+		isHidden
 		lineageTag: 3878666e-56f9-49da-b085-d52344c85917
 		summarizeBy: none
 		isNameInferred
@@ -51,6 +58,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column FormatString
+		isHidden
 		lineageTag: 17d24844-f2cb-4a8d-9c8a-b438a1d9ea62
 		summarizeBy: none
 		isNameInferred
@@ -59,6 +67,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column IsHidden
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 5b285b35-d7ad-47c6-b512-79e03b35f080
 		summarizeBy: none
@@ -68,6 +77,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column State
+		isHidden
 		lineageTag: 35f8924b-04ba-4b1a-b62d-5e81cb69f22f
 		summarizeBy: none
 		isNameInferred
@@ -76,6 +86,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column KPIID
+		isHidden
 		formatString: 0
 		lineageTag: d15f9108-0c9f-49b0-937a-c72303bf6424
 		summarizeBy: count
@@ -85,6 +96,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column IsSimpleMeasure
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 1c4e31b2-081a-48aa-ae06-3f89d4b303f8
 		summarizeBy: none
@@ -94,6 +106,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column DisplayFolder
+		isHidden
 		lineageTag: 1dd7a84d-de37-46b6-8bad-c284c8e21f62
 		summarizeBy: none
 		isNameInferred
@@ -102,6 +115,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column DetailRowsDefinition
+		isHidden
 		lineageTag: 7bf9068f-8ee9-4b78-96d9-d67fa73db4c0
 		summarizeBy: none
 		isNameInferred
@@ -110,6 +124,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column DataCategory
+		isHidden
 		lineageTag: dca424ac-3586-4e51-bafb-2dff3e8f98ed
 		summarizeBy: none
 		isNameInferred
@@ -118,6 +133,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column FormatStringDefinition
+		isHidden
 		lineageTag: 8d638e6d-50ee-4cf8-8c9e-b1f415ab1222
 		summarizeBy: none
 		isNameInferred
@@ -126,6 +142,7 @@ table Table
 		annotation SummarizationSetBy = Automatic
 
 	column LineageTag
+		isHidden
 		lineageTag: 27158209-a2fd-4fe8-afdd-a1dad20521e8
 		summarizeBy: none
 		isNameInferred
@@ -133,7 +150,7 @@ table Table
 
 		annotation SummarizationSetBy = Automatic
 
-	partition Table = calculated
+	partition 'Model Measures Metadata' = calculated
 		mode: import
 		source = INFO.VIEW.MEASURES()
 

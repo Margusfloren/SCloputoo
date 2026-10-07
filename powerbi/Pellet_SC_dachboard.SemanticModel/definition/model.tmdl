@@ -30,8 +30,8 @@ ref table 'Production KPI Selector'
 ref table 'Production View Selector'
 ref table 'Production Chart Selector'
 ref table 'Sales KPI Selector'
-ref table Table
-ref table 'Table 2'
+ref table 'Model Measures Metadata'
+ref table 'Model Columns Metadata'
 
 ref cultureInfo en-US
 

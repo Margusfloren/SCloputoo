@@ -664,16 +664,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.9
 			          }
-			        },
-			        {
-			          "Budget Attainment Selected Period %": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -919,6 +909,16 @@ cultureInfo en-US
 			        },
 			        {
 			          "Production Budget": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Budget": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -10749,7 +10749,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Sales KPI Selector",
-			          "ConceptualProperty": "Sales KPI Selector ver 2"
+			          "ConceptualProperty": "Sales KPI Selector"
 			        }
 			      },
 			      "State": "Generated",

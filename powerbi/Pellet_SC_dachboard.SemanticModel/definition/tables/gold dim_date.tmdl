@@ -40,17 +40,19 @@ table 'gold dim_date'
 
 	column month_no
 		dataType: int64
+		isHidden
 		formatString: 0
 		lineageTag: 5a690c1d-4c9e-4d66-9d87-2c8f4151ad95
 		summarizeBy: sum
 		sourceColumn: month_no
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	/// Calendar month name.
 	column month_name
 		dataType: string
-		isHidden
 		lineageTag: 2ab3901f-7893-4cd1-a537-bc987ff33474
 		summarizeBy: none
 		sourceColumn: month_name

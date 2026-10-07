@@ -3,10 +3,13 @@ table 'gold fact_sales_budget'
 
 	column budget_date
 		dataType: dateTime
+		isHidden
 		formatString: Long Date
 		lineageTag: 81fd4ffa-7b12-454c-a614-0be4c1355ef9
 		summarizeBy: none
 		sourceColumn: budget_date
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -14,33 +17,45 @@ table 'gold fact_sales_budget'
 
 	column plant_id
 		dataType: string
+		isHidden
 		lineageTag: 6bd6f93a-ec90-4c3f-844c-22cdaa0133aa
 		summarizeBy: none
 		sourceColumn: plant_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column product_id
 		dataType: string
+		isHidden
 		lineageTag: 13d3fb49-9dd8-4ce0-9a52-168c20b9074f
 		summarizeBy: none
 		sourceColumn: product_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column channel_id
 		dataType: string
+		isHidden
 		lineageTag: 512bee90-8b0e-47ff-91a2-003e02631385
 		summarizeBy: none
 		sourceColumn: channel_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column budget_t
 		dataType: double
+		isHidden
 		lineageTag: 97879726-4382-4c32-9956-342be364c979
 		summarizeBy: sum
 		sourceColumn: budget_t
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -48,9 +63,12 @@ table 'gold fact_sales_budget'
 
 	column version_id
 		dataType: string
+		isHidden
 		lineageTag: fd729628-1642-4241-afdf-e704d7ccfecb
 		summarizeBy: none
 		sourceColumn: version_id
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 

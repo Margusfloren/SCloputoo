@@ -1,7 +1,7 @@
 table 'Sales KPI Selector'
 	lineageTag: f8d1d537-f78b-4266-a3b3-d4a99ab10499
 
-	column 'Sales KPI Selector ver 2'
+	column 'Sales KPI Selector'
 		lineageTag: 7d9267a6-80ec-4059-9b5e-0ef7bb25a10f
 		summarizeBy: none
 		sourceColumn: [Value1]

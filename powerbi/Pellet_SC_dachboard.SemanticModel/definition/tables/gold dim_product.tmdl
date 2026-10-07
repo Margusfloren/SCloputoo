@@ -3,12 +3,16 @@ table 'gold dim_product'
 
 	column product_id
 		dataType: string
+		isHidden
 		lineageTag: c290f4ca-a6d8-493d-8717-10d7f21f18bb
 		summarizeBy: none
 		sourceColumn: product_id
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// Product name used for reporting and analysis.
 	column product_name
 		dataType: string
 		lineageTag: 94ba84aa-061d-44ab-916f-5ed5c400c026
@@ -17,6 +21,7 @@ table 'gold dim_product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Product classification used for reporting and analysis
 	column product_class
 		dataType: string
 		lineageTag: 30efd97c-b1f4-445b-b30e-35a89bde90ca
@@ -25,6 +30,7 @@ table 'gold dim_product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Pellet quality classification.
 	column quality_class
 		dataType: string
 		lineageTag: 2936492b-7daa-41af-958e-7deea11b1397
@@ -33,6 +39,7 @@ table 'gold dim_product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Packaging type used for the product.
 	column package_type
 		dataType: string
 		lineageTag: 8defa933-685c-48a6-8ad8-7ce9b1907f6d
@@ -41,6 +48,7 @@ table 'gold dim_product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Pellet diameter in millimetres.
 	column diameter_mm
 		dataType: int64
 		formatString: 0
@@ -50,6 +58,7 @@ table 'gold dim_product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Indicates whether the product is sold as packaged or bulk.
 	column is_packaged
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
@@ -59,6 +68,7 @@ table 'gold dim_product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Unit of measure used for the product.
 	column unit
 		dataType: string
 		lineageTag: 920005f9-5fd9-4883-bb42-f2738e9593ee
@@ -67,21 +77,29 @@ table 'gold dim_product'
 
 		annotation SummarizationSetBy = Automatic
 
+	/// Standard cost of the product in euros.
 	column standard_cost_eur
 		dataType: double
+		isHidden
 		lineageTag: 4cffb678-6120-4083-9348-291364d72790
 		summarizeBy: sum
 		sourceColumn: standard_cost_eur
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	/// Standard sales price of the product in euros.
 	column sales_price_eur
 		dataType: double
+		isHidden
 		lineageTag: e6058cf3-91d2-47f7-967a-75f7ad6083b1
 		summarizeBy: sum
 		sourceColumn: sales_price_eur
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -89,13 +107,17 @@ table 'gold dim_product'
 
 	column active_flag
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 3f75913a-d203-437c-b573-9cc233efb43f
 		summarizeBy: none
 		sourceColumn: active_flag
 
+		changedProperty = IsHidden
+
 		annotation SummarizationSetBy = Automatic
 
+	/// Short product label used in report visuals.
 	column 'Product Short' =
 			
 			TRIM(
