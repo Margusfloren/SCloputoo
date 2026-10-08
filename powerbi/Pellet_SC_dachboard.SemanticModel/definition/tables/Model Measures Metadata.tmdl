@@ -152,7 +152,12 @@ table 'Model Measures Metadata'
 
 	partition 'Model Measures Metadata' = calculated
 		mode: import
-		source = INFO.VIEW.MEASURES()
+		source =
+				
+				FILTER(
+				    INFO.VIEW.MEASURES(),
+				    [IsHidden] = FALSE()
+				)
 
 	annotation PBI_Id = aa5c32b507434712b2352fa1874d3177
 

@@ -1,7 +1,9 @@
 table 'Sales View Selector'
+	isHidden
 	lineageTag: e91dfad4-8cb2-4124-aef3-9baa1e876ec2
 
 	column 'Sales View Selector'
+		isHidden
 		lineageTag: af2da19d-fd03-4ec6-89c5-c58a25cf8841
 		summarizeBy: none
 		sourceColumn: [Value1]

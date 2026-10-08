@@ -1,7 +1,9 @@
 table 'Production View Selector'
+	isHidden
 	lineageTag: 58b1ff1d-a22e-4e87-b8d0-681dd9381fab
 
 	column 'Production View Selector'
+		isHidden
 		lineageTag: a237872e-aeec-4952-9636-60ba816105ee
 		summarizeBy: none
 		sourceColumn: [Value1]

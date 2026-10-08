@@ -1,7 +1,9 @@
 table 'Production Chart Selector'
+	isHidden
 	lineageTag: d0fe157e-359c-4127-a423-8519db0bfa8e
 
 	column 'Production Chart Selector'
+		isHidden
 		lineageTag: 023aef08-aed7-45cc-9d1a-ecb005f0ec9c
 		summarizeBy: none
 		sourceColumn: [Value1]

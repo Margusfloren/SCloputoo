@@ -499,6 +499,60 @@ table _Measures
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 1849c48f-f87f-4ad6-aea4-bd08f1c36618
 
+	measure 'Filter Context' =
+			
+			VAR _YearCount =
+			    COUNTROWS(ALLSELECTED('gold dim_date'[year]))
+			VAR _YearAllCount =
+			    COUNTROWS(ALL('gold dim_date'[year]))
+			VAR _Year =
+			    IF(
+			        _YearCount = _YearAllCount,
+			        "All",
+			        CONCATENATEX(
+			            ALLSELECTED('gold dim_date'[year]),
+			            FORMAT('gold dim_date'[year], "0"),
+			            ", "
+			        )
+			    )
+			
+			VAR _MonthCount =
+			    COUNTROWS(ALLSELECTED('gold dim_date'[month_name]))
+			VAR _MonthAllCount =
+			    COUNTROWS(ALL('gold dim_date'[month_name]))
+			VAR _Month =
+			    IF(
+			        _MonthCount = _MonthAllCount,
+			        "All",
+			        CONCATENATEX(
+			            ALLSELECTED('gold dim_date'[month_name]),
+			            'gold dim_date'[month_name],
+			            ", "
+			        )
+			    )
+			
+			VAR _PlantCount =
+			    COUNTROWS(ALLSELECTED('gold dim_plant'[plant_name]))
+			VAR _PlantAllCount =
+			    COUNTROWS(ALL('gold dim_plant'[plant_name]))
+			VAR _Plant =
+			    IF(
+			        _PlantCount = _PlantAllCount,
+			        "All",
+			        CONCATENATEX(
+			            ALLSELECTED('gold dim_plant'[plant_name]),
+			            'gold dim_plant'[plant_name],
+			            ", "
+			        )
+			    )
+			
+			RETURN
+			    "Year: " & _Year &
+			    " | Month: " & _Month &
+			    " | Plant: " & _Plant
+		isHidden
+		lineageTag: 01593734-70ca-4fb0-af05-6f3c70660692
+
 	column Value
 		isHidden
 		formatString: 0

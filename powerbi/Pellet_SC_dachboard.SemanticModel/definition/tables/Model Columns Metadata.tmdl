@@ -226,7 +226,12 @@ table 'Model Columns Metadata'
 
 	partition 'Model Columns Metadata' = calculated
 		mode: import
-		source = INFO.VIEW.COLUMNS()
+		source =
+				
+				FILTER(
+				    INFO.VIEW.COLUMNS(),
+				    [IsHidden] = FALSE()
+				)
 
 	annotation PBI_Id = f57e97a07fab44669bb78db36c23719e
 

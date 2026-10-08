@@ -1,7 +1,9 @@
 table 'Production KPI Selector'
+	isHidden
 	lineageTag: ef43c464-fdc0-421a-9c66-dcc47300ec62
 
 	column 'Production KPI Selector'
+		isHidden
 		lineageTag: e611f382-b8bc-4b59-a542-f892972e5384
 		summarizeBy: none
 		sourceColumn: [Value1]

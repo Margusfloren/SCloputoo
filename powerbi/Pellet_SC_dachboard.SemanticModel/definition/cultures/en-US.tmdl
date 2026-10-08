@@ -1074,7 +1074,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Production Attainment": {
+			          "Production Attainment Selected Period": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -1084,7 +1084,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Production Attainment Selected Period": {
+			          "Production Attainment": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
