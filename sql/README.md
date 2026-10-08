@@ -1,142 +1,79 @@
-# SQL
+# SQL — Pellet Supply Chain Management Dashboard
 
-## Eesmärk
+## Purpose
 
-Selle kausta SQL-skriptide eesmärk on kontrollida ja valideerida PostgreSQL Gold-kihi andmeid enne nende kasutamist Power BI juhtimisvaates.
+This folder contains PostgreSQL validation scripts and quality-assurance (QA) records supporting the Pellet Supply Chain Management Dashboard. The objective is to make sales and production figures **traceable, reproducible, and explainable** before using them in Power BI management reports.
 
-SQL-päringuid kasutatakse selleks, et kontrollida:
+The project uses a Directo-inspired source-data structure and a Medallion-style data pipeline:
 
-- kas andmed on õigesti koondatud
-- kas Actual ja Budget tulemused klapivad
-- kas KPI-de arvutusloogika on korrektne
-- kas Power BI kuvab PostgreSQL-is olevate andmetega sama tulemuse
+`Source files → bronze (raw) → silver (cleaned/typed) → gold (dimensional model) → Power BI`
 
-SQL valideerimine on osa projekti kontrolliprotsessist:
+The scripts in this folder primarily **verify** that pipeline; they do not constitute the complete ETL implementation. The `gold` schema contains the reporting fact and dimension tables. The raw source files' exact equivalence to `bronze` has **not yet been independently validated**.
 
-**PostgreSQL Gold → SQL validation → Python analysis → Power BI**
+## Files
 
----
+| File | What it does |
+|---|---|
+| [`01_sales_v1_checks.sql`](01_sales_v1_checks.sql) | Initial V1 SQL checks for sales Actual, Budget and related aggregates. |
+| [`02_gold_documentation.sql`](02_gold_documentation.sql) | Applies PostgreSQL `COMMENT ON` metadata to 13 `gold` tables and 87 columns; checks comment coverage. **Writes metadata**, but does not alter business data or table structures. |
+| [`03_bronze_silver_qa.sql`](03_bronze_silver_qa.sql) | Read-only comparisons of Bronze/Silver structures, data types, row counts and sales invoice-row quality. |
+| [`04_production_qa.sql`](04_production_qa.sql) | Read-only production QA between Bronze and Silver: document structure, key uniqueness and quantity reconciliation. |
+| [`05_silver_gold_production_qa.sql`](05_silver_gold_production_qa.sql) | Read-only production reconciliation between Silver finished-product rows and `gold.fact_production`. |
+| [`06_production_powerbi_reconciliation.md`](06_production_powerbi_reconciliation.md) | Records the PostgreSQL-to-Power BI Production Actual comparison and its precision limits. |
+| [`07_sales_silver_gold_qa.sql`](07_sales_silver_gold_qa.sql) | Read-only sales reconciliation: unit checks, invoice-line uniqueness, quantity comparisons and PASS/REVIEW summary. |
+| [`08_sales_powerbi_reconciliation.md`](08_sales_powerbi_reconciliation.md) | Records the PostgreSQL-to-Power BI Sales Actual comparison and its precision limits. |
 
-## Kasutatavad Gold-kihi tabelid
+## QA results — 8 October 2026
 
-Praegused SQL kontrollpäringud kasutavad peamiselt järgmisi tabeleid:
+The following are **observed results for the validated dataset**, not permanent expectations for future data loads.
 
-- `gold.fact_sales`
-- `gold.fact_sales_budget`
-- `gold.dim_product`
+### Data structure and documentation
 
-Täiendavad Gold-kihi tabelid lisatakse vastavalt projekti järgmiste analüüsivaldkondade valmimisele.
+- Both `bronze` and `silver` have 10 corresponding source tables.
+- Column comparison: **66** matching names/types, **59** differing types, and **20** Bronze-only provenance columns (`_loaded_at`, `_source_file`); no Silver-only columns.
+- Row counts match across the 10 source tables: **8,011 rows per layer**.
+- The `gold` schema has **13 documented tables** and **87 documented columns** (all comments present at the time of the check).
 
----
+### Sales reconciliation
 
-## 01_sales_v1_checks.sql
+- `bronze.invoice_rows` and `silver.invoice_rows`: **1,404** rows each, with no duplicate `(number, rn)` keys in the checked data.
+- Silver sales unit: **tonnes (`t`)** for all 1,404 rows.
+- Bronze → Silver invoice-line quantities: **0 mismatches** on 1,404 matched rows.
+- Silver → Gold invoice-line quantities: **1,404 matched rows**, **0 missing**, **0 quantity mismatches**.
+- Sales Actual total: **2,429,578.700 t** in both Silver and Gold.
+- Power BI Sales Actual matrix: **2,429,579 t**; KPI: **2.43M**. **PASS at displayed precision**.
 
-Fail sisaldab V1 müügi ja müügieelarve kontrollpäringuid.
+### Production reconciliation
 
-Kontrollitavad KPI-d:
+- `bronze.production_rows` and `silver.production_rows`: **2,520** rows each, no duplicate `(production, rn)` keys.
+- **504** production documents, each with **4 input-material rows and 1 finished-output row**.
+- Bronze → Silver matched production rows: **0 differences** in input quantity, output quantity or scrap.
+- Silver → Gold finished-output rows: **504 matched**, **0 missing**, **0 quantity mismatches**.
+- Production Actual total: **2,406,082.300** in both Silver and Gold. The physical unit must be confirmed from the upstream field definitions.
+- Power BI Production Actual matrix: **2,406,082**; KPI: **2.41M**. **PASS at displayed precision**.
 
-- Actual Sales
-- Sales Budget
-- Variance
-- Budget Fulfilment %
+## How to reproduce the checks
 
-### Kontrolltasemed
+1. Open the project database in **pgAdmin 4 → Query Tool**.
+2. Open the relevant `.sql` file and review its header, scope and assumptions.
+3. Run each numbered SQL statement **independently**, including its full `WITH ... SELECT` block where applicable. Avoid selecting only the final `SELECT` of a common-table-expression query.
+4. Review returned values and any `PASS` / `REVIEW` status; compare with current data, **not blindly with historical row counts**.
+5. Investigate deviations before changing source records or reporting measures. The QA queries are read-only unless explicitly identified otherwise (notably the metadata script `02`).
+6. For dashboard comparisons, clear reporting slicers or otherwise use precisely the same year, month, plant, product and channel filters as in PostgreSQL.
 
-Actual Sales ja Sales Budget tulemusi kontrollitakse järgmistes lõigetes:
+## Interpretation and limitations
 
-1. kuu
-2. aasta
-3. aasta + tehas
-4. aasta + tehas + toode
+- A `PASS` confirms **only the conditions encoded by that check**; it is not proof that every source attribute or business rule is correct.
+- Equal totals alone do not prove row-level correspondence; the invoice-line and production-line checks provide additional assurance for quantities.
+- The Power BI totals were visually verified **at displayed rounding precision**, not against unrounded DAX outputs. Month-by-month and plant-by-plant reconciliations are still separate potential checks.
+- The Bronze-to-Silver comparison does not by itself establish that Bronze preserves every original source value or that all type conversions are semantically correct.
+- The meaning and units of some fields (including reference costs, prices, discounts, production input/output and moisture assumptions) require business-definition review before additional analysis.
+- Results reflect the **2026-10-08 dataset snapshot**; a later import may legitimately change counts and totals.
 
-Kõige detailsemas kontrollis liidetakse juurde ka `gold.dim_product`, et tehnilise `product_id` kõrval oleks nähtav toote kirjeldus ja omadused.
+## Next validation tasks
 
-Näiteks:
+- Compare imported source files directly with Bronze (columns, raw values and provenance).
+- Review the Python ingestion/processing steps and the role of Power Query against the intended pipeline.
+- Where required, verify unrounded Power BI DAX totals and period/plant/product breakdowns against matching SQL extracts.
 
-- product name
-- product class
-- quality class
-- package type
-- diameter
-
----
-
-## KPI-de loogika
-
-### Variance
-
-Müügi ja eelarve erinevus:
-
-`Variance = Actual Sales - Sales Budget`
-
-Positiivne väärtus tähendab, et tegelik müük ületas eelarvet.
-
-Negatiivne väärtus tähendab, et tegelik müük jäi eelarvest väiksemaks.
-
-### Budget Fulfilment %
-
-Eelarve täituvus:
-
-`Budget Fulfilment % = Actual Sales / Sales Budget × 100`
-
-Näiteks:
-
-- 100% = eelarve täidetud
-- üle 100% = eelarve ületatud
-- alla 100% = eelarve jäi täitmata
-
-SQL-is kasutatakse nulliga jagamise vältimiseks `NULLIF()` funktsiooni.
-
----
-
-## Drill-down loogika
-
-SQL kontrollid järgivad sama analüüsiloogikat, mida kasutatakse Power BI juhtimisvaates:
-
-**Year → Plant → Product**
-
-See võimaldab kontrollida, kas üldise tulemuse taga olevad erinevused on nähtavad ka detailsemal tasemel.
-
----
-
-## SQL ja Power BI tulemuste kontroll
-
-SQL-is saadud tulemusi võrreldakse Power BI tulemustega.
-
-Näiteks kontrolliti aastate 2023–2025 Actual Sales tulemusi ning SQL-i ja Power BI tulemused kattusid.
-
-Väikesed erinevused kuvatavates väärtustes võivad tuleneda ümardamisest.
-
-Projekti eesmärk on, et sama äriloogika annaks kõigis analüüsikihtides sama tulemuse:
-
-**SQL = Python = Power BI**
-
----
-
-## Skriptide kasutamine
-
-SQL-skriptid on kirjutatud PostgreSQL jaoks ning neid saab käivitada näiteks DBeaveris.
-
-Eeldus on, et PostgreSQL andmebaasis on olemas vajalikud Gold-kihi tabelid.
-
-Töövoog:
-
-1. Ava PostgreSQL andmebaasi ühendus DBeaveris.
-2. Ava GitHubi repo `sql` kaustast soovitud `.sql` fail.
-3. Käivita soovitud kontrollpäring.
-4. Võrdle tulemust Power BI või muu analüüsikihi tulemusega.
-
-Praegused V1 kontrollpäringud on andmeid lugevad päringud ning ei muuda Gold-kihi lähteandmeid.
-
----
-
-## Edasiarendus
-
-V1 järgmistes etappides lisatakse SQL valideerimine ka teistele juhtimisvaldkondadele, näiteks:
-
-- Production Actual vs Plan
-- Inventory
-- Raw Materials
-- OTIF ja Delivery Performance
-
-SQL kaust täieneb koos projekti andmemudeli ja Power BI juhtimisvaate arenguga.
+For broader project context, see the [repository README](../README.md).
