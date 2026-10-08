@@ -11,11 +11,12 @@ The objective is to combine sales and production information into a clear manage
 - How does production compare with sales?
 - Which plants are performing above or below plan?
 - Which products are driving the result?
-- How does performance change by period and sales channel?
+- How does performance change by period?
+- How are actual sales distributed across sales channels?
 
 The project is built around a management-level Power BI dashboard supported by PostgreSQL, SQL and Python.
 
-The current version represents **V1** of the project. After the V1 defence, the project will continue as a broader supply chain management solution.
+The current version represents **V1 of the project**. After the V1 defence, the project will continue as a broader supply chain management solution.
 
 ---
 
@@ -33,17 +34,20 @@ The main reporting dimensions are:
 
 The current V1 focuses primarily on **sales and production performance against budget**.
 
-The purpose is not only to display numbers, but also to make deviations visible and support analysis of the factors behind the results.
+Sales-channel analysis is included to analyse the distribution of actual sales.  
+The V1 sales budget is **not allocated at sales-channel level**, therefore channel views should not be interpreted as channel-specific budget fulfilment.
 
 ---
 
-## Dashboard structure
+## V1 dashboard structure
+
+The Power BI report currently contains the following main analysis pages:
 
 ### V1 Dashboard
 
-The **V1 Dashboard** provides a high-level management view of sales and production performance.
+The main management overview combines sales and production information in one view.
 
-It is intended for quick monitoring of:
+The page includes:
 
 - Sales Actual
 - Sales Budget
@@ -52,301 +56,355 @@ It is intended for quick monitoring of:
 - Production Actual
 - Production Budget
 - Production Variance
-- Production Budget Attainment
+- Production Attainment
+- Production vs Sales
+- Production vs Sales %
+- filters for Year, Month, Plant, Product and Channel
+- comparison of Production Actual with either Budget or Sales
+- product-level and plant-level detail views
+- Reset filters functionality
 
-The same global filters can be used to analyse results by period, plant, product and sales channel.
+The purpose of the V1 Dashboard is to provide a high-level management overview while still allowing the user to investigate the main drivers behind the result.
 
 ---
 
 ### Sales Analysis
 
-The **Sales Analysis** page provides a more detailed view of sales performance.
+The Sales Analysis page provides a more detailed view of sales performance.
 
-Main analysis areas include:
+It includes:
 
 - Sales Actual vs Budget
-- Variance
-- Budget Attainment
-- performance by Plant
-- performance by Product
-- performance by Sales Channel
+- Sales Variance
+- Sales Budget Attainment
+- monthly performance analysis
+- product, plant and channel views
+- selectable KPI and analysis perspectives
+- detailed Actual / Budget / Variance tables
+- Reset filters functionality
 
-The purpose of the page is to move from a management-level KPI view into the underlying sales structure.
+Sales-channel views are primarily intended to analyse **actual sales distribution**.
+
+Because the V1 budget is not allocated separately to B2B, DIST, IND and RET channels, channel-level Budget Attainment must not be interpreted as fulfilment of a dedicated channel budget.
 
 ---
 
 ### Production Analysis
 
-The **Production Analysis** page focuses on production performance.
+The Production Analysis page provides a detailed view of production performance.
 
-The page includes:
+It includes:
 
 - Production Actual vs Budget
+- Production Actual vs Sales
 - Production Variance
-- Production Budget Attainment
-- Production Actual vs Sales Actual
+- Production Attainment
+- monthly analysis
+- detailed Actual / Budget / Variance tables
+- filters for Year, Month, Plant and Product
+- Reset filters functionality
 
-The **Production vs Sales** view helps identify whether production output and sales volumes are developing in balance.
+The page is intentionally kept simple and focuses on two core questions:
 
-This becomes especially important in later versions of the project when finished-goods inventory is added to the model.
+1. Is production meeting the production budget?
+2. Is production aligned with actual sales?
 
 ---
 
 ### Plant Analysis
 
-The **Plant Analysis** page provides a plant-level view of performance.
+The Plant Analysis page focuses on production performance by plant.
 
-It helps analyse:
+It includes:
 
-- production by plant
-- performance against budget
-- sales and production relationships
-- product mix by plant
-- differences between production sites
+- Production Actual vs Budget
+- plant-level Production Variance
+- Production Attainment
+- production mix by plant
+- production share by plant
+- product filtering
+- plant selection
+- Reset filters functionality
 
-The view also makes it visible when a selected product is manufactured only at specific plants.
+This page helps identify which production plants are driving the total result and how the product mix differs between plants.
 
 ---
 
 ### Product Analysis
 
-The **Product Analysis** page focuses on individual products and product mix.
+The Product Analysis page focuses on product-level production and sales relationships.
 
-It supports analysis of:
+It includes:
 
-- production by product
-- sales by product
-- budget performance
-- plant contribution
-- product share of total production or sales
+- Production Actual vs Budget by product
+- Production Actual vs Sales by product
+- product performance by plant
+- Production Share % by plant
+- filters for Year, Month, Plant and Product
+- Reset filters functionality
 
-The page is designed to help understand not only whether a product is above or below budget, but also how important that product is within the selected plant or period.
-
----
-
-## KPI definitions
-
-### Actual
-
-Actual sales or production volume for the selected period.
-
-### Budget
-
-Planned sales or production volume for the selected period.
-
-### Variance
-
-Difference between Actual and Budget.
-
-**Variance = Actual - Budget**
-
-A positive value indicates performance above budget.
-
-A negative value indicates performance below budget.
-
-### Budget Attainment
-
-Actual divided by Budget.
-
-**Budget Attainment % = Actual / Budget**
-
-100% means that the budget has been achieved exactly.
+The page supports analysis of which products are produced by which plants and whether production volume is aligned with actual sales.
 
 ---
 
-## Data source
+## Key performance indicators
 
-The project uses a **Directo-based source data structure** as the basis for the data model.
+### Sales Actual
 
-The project data is prepared for analytical and educational use and does not contain confidential company reporting data.
+Actual sales volume in tonnes for the selected reporting context.
 
-The source structure follows typical ERP logic including areas such as:
+### Sales Budget
 
-- items
-- sales
-- purchases
-- dates
-- plants
-- products
-- sales channels
+Budgeted sales volume in tonnes for the selected reporting context.
 
-The Directo-style source structure is transformed into a reporting model suitable for supply chain analysis.
+### Sales Variance
 
----
+Difference between Sales Actual and Sales Budget.
 
-## Data architecture
+**Formula:**
 
-The data pipeline follows a layered PostgreSQL structure:
+`Sales Actual - Sales Budget`
 
-**Source Data → Bronze → Silver → Gold → Power BI / Python**
+A positive value indicates sales above budget.  
+A negative value indicates sales below budget.
 
-### Bronze layer
+### Sales Budget Attainment
 
-Contains source-level imported data with minimal transformation.
+Sales Actual divided by Sales Budget.
 
-### Silver layer
+**Formula:**
 
-Contains cleaned and standardized data.
+`Sales Actual / Sales Budget`
 
-Typical transformations include:
-
-- data type corrections
-- naming standardization
-- product mapping
-- plant mapping
-- sales-channel mapping
-- validation rules
-
-### Gold layer
-
-Contains reporting-ready fact and dimension tables used by Power BI and Python.
-
-The gold layer is intended to provide a consistent source of truth for analytical calculations.
+100% means that the sales budget has been achieved exactly.
 
 ---
 
-## Reporting model
+### Production Actual
 
-The Power BI model follows a star-schema approach.
+Actual production volume in tonnes for the selected reporting context.
 
-Separate fact tables are used for:
+### Production Budget
 
-- Sales Actual
-- Sales Budget
-- Production Actual
-- Production Budget
+Budgeted production volume in tonnes for the selected reporting context.
 
-Shared dimensions include:
+### Production Variance
 
-- Date
-- Plant
-- Product
-- Sales Channel
+Difference between Production Actual and Production Budget.
 
-This allows the same filters and business dimensions to be used consistently across the different reporting areas.
+**Formula:**
 
-Sales and production remain separate business processes while sharing common analytical dimensions.
+`Production Actual - Production Budget`
 
----
+A positive value indicates production above budget.  
+A negative value indicates production below budget.
 
-## Tools used
+### Production Attainment
 
-The project combines several tools instead of relying on a single reporting application.
+Production Actual divided by Production Budget.
 
-### PostgreSQL
+**Formula:**
 
-Used for:
+`Production Actual / Production Budget`
 
-- data storage
-- transformation
-- layered data architecture
-- validation
-- analytical queries
-
-### SQL
-
-Used to:
-
-- build and validate the reporting model
-- reproduce key KPI calculations
-- check monthly and period-level results
-- compare Actual and Budget values
-
-### Power BI
-
-Used for:
-
-- management dashboards
-- KPI reporting
-- interactive filtering
-- detailed analysis
-- dynamic views and selectors
-- cross-filtering between visuals
-
-### Python
-
-Python connects directly to the PostgreSQL gold layer.
-
-It is used as an independent analytical and validation tool.
-
-Current Python validation includes key sales KPIs such as:
-
-- Actual
-- Budget
-- Variance
-- Budget Attainment
-
-Python development will later continue into a web-based analytical interface using Streamlit.
-
-### GitHub
-
-GitHub is used for:
-
-- version control
-- project documentation
-- SQL scripts
-- Python notebooks
-- Power BI project files
-- portfolio presentation
+100% means that the production budget has been achieved exactly.
 
 ---
 
-## Validation approach
+### Production vs Sales
 
-An important principle of the project is that the same business result should be reproducible using different tools.
+Difference between Production Actual and Sales Actual.
 
-Key calculations are therefore checked independently using:
+**Formula:**
 
-**SQL ↔ Python ↔ Power BI**
+`Production Actual - Sales Actual`
 
-For example, the same selected period can be calculated separately in SQL, Python and Power BI and the results compared.
+A positive value indicates that production exceeded sales.  
+A negative value indicates that sales exceeded production.
 
-This approach helps identify:
+### Production vs Sales %
 
-- modelling errors
-- incorrect filters
-- incorrect measures
-- transformation issues
-- inconsistencies between reporting layers
+Production Actual divided by Sales Actual.
 
-The purpose is to increase confidence that the dashboard is showing reliable information rather than simply producing visually correct reports.
+**Formula:**
+
+`Production Actual / Sales Actual`
+
+100% means production and sales volumes are equal.
+
+A value above 100% indicates that production exceeded sales, while a value below 100% indicates that sales exceeded production.
+
+This KPI helps identify situations where both production and sales may individually appear close to budget, but production and sales volumes are not aligned with each other.
 
 ---
 
-## Example validation
+## Conditional formatting
 
-One of the SQL validation checks compares monthly Sales Actual and Sales Budget.
+To support exception-based analysis, the report uses simple and consistent formatting rules.
 
-Example:
+- Negative Variance values are highlighted in red.
+- Attainment values below 100% are highlighted in red.
+- Production vs Sales % values below 100% are highlighted in red.
 
-**January 2023**
+The objective is to make exceptions visible without adding unnecessary visual complexity.
 
-- Sales Actual: 68,298.7 t
-- Sales Budget: 68,646.1 t
-- Variance: -347.4 t
-- Budget Attainment: 99.5%
+---
 
-The same result can then be reproduced in Power BI and Python.
+## Data source and architecture
+
+The project uses a **Directo-based source data structure**.
+
+The data is transformed and validated in PostgreSQL using a layered architecture:
+
+`Source / Directo structure → Bronze → Silver → Gold → Power BI`
+
+The Gold layer contains reporting-ready fact and dimension tables.
+
+Main fact tables include:
+
+- `gold.fact_sales`
+- `gold.fact_sales_budget`
+- `gold.fact_production`
+- `gold.fact_production_budget`
+
+Main dimensions include:
+
+- `gold.dim_date`
+- `gold.dim_plant`
+- `gold.dim_product`
+- `gold.dim_channel`
+
+The Power BI semantic model is built primarily around controlled measures rather than exposing raw fact-table fields directly to the end user.
+
+---
+
+## Semantic model
+
+The model has been cleaned for end-user use.
+
+Technical implementation details are hidden where they are not required for reporting.
+
+Examples include:
+
+- KPI display measures
+- chart-title measures
+- filter-context helper measures
+- YTD helper measures not required in V1 reporting
+- technical fact-table columns
+- field-parameter technical fields
+- metadata helper tables
+
+Important business measures remain visible and documented.
+
+The model also contains descriptions for key measures and reporting dimensions to make the semantic layer easier to understand and maintain.
+
+---
+
+## Data dictionary
+
+The Power BI About page includes automatically generated metadata views for:
+
+- reporting columns
+- business measures
+- descriptions
+- DAX expressions
+
+Technical and hidden fields are excluded from the end-user metadata presentation.
+
+This allows the About page to act as a lightweight data dictionary for the V1 model.
+
+---
+
+## Validation and QA
+
+The project uses multiple independent validation layers.
+
+Key calculations are checked using:
+
+- SQL
+- Power BI
+- Python
+- dedicated QA Validation views
+
+The purpose is to confirm that the same business logic produces the same result regardless of the tool used.
+
+### Example validation
+
+For January 2023:
+
+- Sales Actual: **68,298.7 t**
+- Sales Budget: **68,646.1 t**
+- Sales Variance: **-347.4 t**
+- Sales Budget Attainment: **99.49%**
+
+The same result was reproduced using PostgreSQL / SQL, Python and Power BI.
+
+---
+
+## V1 Quality Assurance
+
+Before completion, the V1 report was tested for:
+
+- Year filtering
+- Month filtering
+- Plant filtering
+- Product filtering
+- Channel filtering
+- synchronized slicers across report pages
+- KPI and detail-table consistency
+- selector behaviour
+- Production vs Budget / Sales comparison
+- Reset filters functionality
+- conditional formatting
+- negative Variance handling
+- Attainment values below 100%
+- Production vs Sales %
+- cross-page consistency
+- SQL / Python / Power BI calculation consistency
+- semantic-model visibility
+- measure and column descriptions
+- removal of unused and technical controls
+- metadata presentation
+- documentation consistency
+
+The objective of the QA process is to ensure that the V1 report is not only visually complete but also logically consistent, understandable and repeatable.
 
 ---
 
 ## Design principles
 
-The dashboard follows a simple management-reporting principle:
+The report follows a deliberately simple visual approach.
 
-**Less is more.**
+The main principles are:
 
-The focus is on:
+- less is more
+- consistent terminology
+- clear separation between Sales and Production
+- limited use of colour
+- exception-based highlighting
+- management information before technical detail
+- the ability to move from a high-level KPI to the underlying reason
 
-- clear information
-- consistent visual logic
-- limited use of colours
-- comparable Sales and Production views
-- readable KPIs
-- useful interaction between visuals
-- avoiding unnecessary decorative elements
+The objective is not to maximise the number of visuals, but to make the information easy to read and explain.
 
-The objective is to make deviations and relationships visible without adding visual noise.
+---
+
+## Technology
+
+The project currently uses:
+
+- PostgreSQL
+- SQL
+- Power BI
+- DAX
+- Power Query
+- Python
+- pandas
+- SQLAlchemy
+- Git
+- GitHub
+
+Python connects directly to the PostgreSQL Gold layer and is used as an independent validation layer for key calculations.
 
 ---
 
@@ -357,233 +415,49 @@ The current V1 focuses on:
 - Sales Actual vs Budget
 - Production Actual vs Budget
 - Production vs Sales
-- period analysis
-- plant analysis
-- product analysis
-- sales-channel analysis
-- KPI validation
-- interactive filtering
-- SQL / Python / Power BI cross-validation
+- Production vs Sales %
+- Plant performance
+- Product performance
+- sales-channel actual distribution
+- period-based filtering
+- synchronized report filters
+- management-level KPI monitoring
+- detailed analysis pages
+- data and calculation validation
 
-V1 is intentionally limited to a manageable and reliable reporting scope.
-
-The broader supply chain functionality is planned for the extended version of the project.
-
----
-
-# Extended project roadmap
-
-After the V1 defence, development will continue toward a more complete supply chain management solution.
-
-Planned areas include the following.
-
-## Finished-goods inventory
-
-Add inventory flows including:
-
-- Opening Stock
-- Production
-- Sales
-- Closing Stock
-
-Basic inventory logic:
-
-**Closing Stock = Opening Stock + Production - Sales**
-
-This will connect the currently separate Sales and Production views into a complete material-flow perspective.
+The purpose of V1 is to create a clear and reliable management view rather than to cover every supply chain process.
 
 ---
 
-## Inventory limits and capacity
+## Long version roadmap
 
-Finished-goods inventory will include operational limits such as:
+After the V1 defence, the project will continue as a broader supply chain management solution.
 
-- Min Stock
-- Target Stock
-- Max Stock
-- Physical Capacity
-- Current Stock
-- Utilization %
-- Inventory Coverage
+Planned extensions include:
 
-Possible status logic:
-
-- Below Minimum
-- OK
-- Near Full
-- Over Capacity
-
-Packaged products and bulk products will have different storage constraints.
-
----
-
-## Raw-material BOM
-
-A BOM layer will convert the production plan into required raw-material volumes.
-
-The model will include a standard dry-matter raw-material mix for one tonne of pellets.
-
-Raw-material categories may include:
-
-- planing shavings
-- wet sawdust
-- wood chips
-- roundwood
-
-This will allow the production plan to be translated into raw-material requirements.
-
----
-
-## Moisture-based raw-material conversion
-
-Dry-matter requirements will be converted into actual incoming wet tonnes using the moisture content of each raw material.
-
-This is important because production planning based only on wet tonnes does not accurately represent usable dry material.
-
-The model will therefore connect:
-
-**Production Plan → Dry Matter Requirement → Moisture Conversion → Required Incoming Raw Material**
-
----
-
-## Packaging capacity
-
-Future development will include packaging-line capacity.
-
-The model will help compare:
-
-- production requirement
-- packaging requirement
-- available packaging capacity
-- backlog
-
-This is particularly important for packaged premium pellets.
-
----
-
-## Bulk storage and vessel planning
-
-Bulk products require a different logistics model.
-
-Future development may include:
-
-- bulk silo capacity
-- port storage
-- vessel schedules
-- loading requirements
-- inventory before vessel arrival
-
-This will help connect production planning with outbound logistics.
-
----
-
-## Forecast management
-
-The extended project will include forecast snapshots.
-
-This will make it possible to compare how forecasts change over time and calculate:
-
-- Forecast Accuracy
-- Forecast Bias
-- Forecast vs Actual
-- Forecast vs Budget
-
-Historical forecast snapshots are required because the latest forecast alone does not show how planning quality has developed.
-
----
-
-## OTIF
-
-OTIF — **On Time In Full** — will be added as a customer-service KPI.
-
-The future model will include order and delivery level information to analyse whether customer orders were delivered:
-
-- on time
-- in full
-- both on time and in full
-
-This will connect operational supply chain performance with customer-service performance.
-
----
-
-## Exception-based management
-
-The long-term objective is not to require managers to inspect every KPI manually.
-
-The dashboard should increasingly highlight situations that require attention.
-
-Examples:
-
-- Sales below budget
-- Production below budget
-- inventory below minimum
-- warehouse near capacity
-- insufficient raw material
-- packaging backlog
+- finished-goods inventory management
+- opening and closing inventory
+- Min Stock / Target / Max Stock / Physical Capacity
+- inventory utilization %
+- inventory coverage
+- BOM and dry-matter raw-material requirements
+- moisture-based wet-tonnage conversion
+- raw-material planning
+- packaging capacity and backlog
+- bulk silo and port storage
+- vessel scheduling
+- forecast snapshots
+- forecast accuracy
 - forecast bias
-- OTIF deterioration
-
-This moves the solution toward **exception-based supply chain management**.
-
----
-
-## Python / Streamlit
-
-After the Power BI version, the project will also be developed as a Python-based web application.
-
-Planned technology:
-
-**PostgreSQL → Python → Streamlit**
-
-The purpose is to demonstrate that the same analytical logic can be delivered through different front-end technologies while using the same underlying data model.
+- OTIF order and delivery performance
+- exception-based management views
+- more detailed sales-channel planning
+- Python / Streamlit web-based reporting
 
 ---
 
-## Repository structure
+## Project status
 
-The repository is organized around the main technical parts of the project.
+**V1 functional development and structured QA are complete.**
 
-```text
-/
-├── docs/
-│   └── project documentation
-│
-├── sql/
-│   └── SQL queries and validation scripts
-│
-├── python/
-│   └── Python notebooks and analytical checks
-│
-├── Power BI project files
-│
-└── README.md
-
----
-
-Current project status
-V1 core functionality is complete.
-Current focus:
-- final visual review
-- QA
-- documentation
-- consistency checks
-- preparation for project defence
-The next major development stage begins after the V1 defence.
-QA
-Before V1 is considered final, the dashboard is reviewed through a structured Quality Assurance process.
-QA includes checks such as:
-- slicers filter the correct visuals
-- synchronized filters behave consistently
-- Sales, Production, Plant and Product pages use consistent logic
-- KPI values match detailed tables
-- percentages and negative values are formatted correctly
-- titles, units and terminology are consistent
-- selectors and visual interactions work correctly
-- SQL, Python and Power BI calculations produce matching results
-- obsolete test visuals or measures are removed
-- project documentation matches the final dashboard
-The objective of QA is to ensure that V1 is not only visually complete but also logically consistent and reproducible.
-Project objective
-The project is designed to demonstrate how operational industry knowledge, supply chain management and modern data analytics can be combined into one management solution.
-The technical tools are important, but the main objective is to understand and explain:
-what is happening, where it is happening, and what is driving the numbers
+The current version provides a validated management view of sales and production performance and forms the foundation for the extended supply chain management version of the project.
