@@ -116,7 +116,28 @@
                           [
                             {
                               "Literal": {
+                                "Value": "'January'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
                                 "Value": "'February'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'March'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'April'"
                               }
                             }
                           ]
@@ -155,7 +176,40 @@
                                 "0": [
                                   {
                                     "Literal": {
+                                      "Value": "'January'"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
                                       "Value": "'February'"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'March'"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'April'"
                                     }
                                   }
                                 ]
@@ -179,7 +233,16 @@
                         },
                         "valueMap": [
                           {
+                            "0": "January"
+                          },
+                          {
                             "0": "February"
+                          },
+                          {
+                            "0": "March"
+                          },
+                          {
+                            "0": "April"
                           }
                         ]
                       }

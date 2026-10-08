@@ -91,12 +91,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sales Budget"
+                  "Property": "Sales Actual"
                 }
               },
-              "queryRef": "_Measures.Sales Budget",
-              "nativeQueryRef": "Sales Budget",
-              "displayName": "Sales Budget"
+              "queryRef": "_Measures.Sales Actual",
+              "nativeQueryRef": "Sales Actual",
+              "displayName": "Sales Actual"
             },
             {
               "field": {

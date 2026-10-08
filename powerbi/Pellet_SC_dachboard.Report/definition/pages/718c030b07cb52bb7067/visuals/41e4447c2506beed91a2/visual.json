@@ -5,8 +5,8 @@
     "x": 31.666666666666668,
     "y": 895,
     "z": 5000,
-    "height": 266.66666666666669,
-    "width": 621.66666666666674,
+    "height": 245,
+    "width": 590,
     "tabOrder": 5000
   },
   "visual": {
@@ -419,6 +419,31 @@
               "expr": {
                 "Literal": {
                   "Value": "'Sales View '"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Filter Context"
                 }
               }
             }
