@@ -81,7 +81,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''_Measures''[Production Budget Selected Period]'"
+                                "Value": "'''_Measures''[Sales Actual Selected Period All Channels]'"
                               }
                             }
                           ]
@@ -109,7 +109,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''_Measures''[Production Budget Selected Period]'"
+                                      "Value": "'''_Measures''[Sales Actual Selected Period All Channels]'"
                                     }
                                   }
                                 ]
@@ -133,7 +133,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Budget"
+                            "0": "Sales"
                           }
                         ]
                       }

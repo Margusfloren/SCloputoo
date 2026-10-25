@@ -27,9 +27,9 @@
                 }
               },
               "queryRef": "gold fact_sales.channel_id",
-              "nativeQueryRef": "channel_id",
+              "nativeQueryRef": "Channel",
               "active": true,
-              "displayName": "channel_id"
+              "displayName": "Channel"
             },
             {
               "field": {
@@ -43,9 +43,9 @@
                 }
               },
               "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "product_name",
+              "nativeQueryRef": "Product",
               "active": false,
-              "displayName": "product_name"
+              "displayName": "Product"
             },
             {
               "field": {
@@ -59,9 +59,9 @@
                 }
               },
               "queryRef": "gold dim_plant.plant_name",
-              "nativeQueryRef": "plant_name",
+              "nativeQueryRef": "Plant",
               "active": false,
-              "displayName": "plant_name"
+              "displayName": "Plant"
             }
           ],
           "fieldParameters": [

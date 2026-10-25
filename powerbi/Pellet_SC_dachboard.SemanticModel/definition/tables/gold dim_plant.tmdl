@@ -47,9 +47,15 @@ table 'gold dim_plant'
 		source =
 				let
 				    Source = PostgreSQL.Database("localhost", "postgres"),
-				    gold_dim_plant = Source{[Schema="gold",Item="dim_plant"]}[Data]
+				    gold_dim_plant = Source{[Schema="gold", Item="dim_plant"]}[Data],
+				    #"Selected Columns" = Table.SelectColumns(
+				        gold_dim_plant,
+				        {"plant_id", "plant_name", "plant_type", "active_flag"}
+				    )
 				in
-				    gold_dim_plant
+				    #"Selected Columns"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

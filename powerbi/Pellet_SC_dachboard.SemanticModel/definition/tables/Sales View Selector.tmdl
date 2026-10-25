@@ -42,9 +42,9 @@ table 'Sales View Selector'
 		mode: import
 		source =
 				{
-				    ("plant_name", NAMEOF('gold dim_plant'[plant_name]), 0),
-				    ("product_name", NAMEOF('gold dim_product'[product_name]), 1),
-				    ("channel_id", NAMEOF('gold fact_sales'[channel_id]), 2)
+				    ("Plant", NAMEOF('gold dim_plant'[plant_name]), 0),
+				    ("Product", NAMEOF('gold dim_product'[product_name]), 1),
+				    ("Channel", NAMEOF('gold fact_sales'[channel_id]), 2)
 				}
 
 	annotation PBI_Id = 66d78815b0584dce898ee027ccaddb91

@@ -61,6 +61,7 @@ table _Measures
 			    ),
 			    0
 			)
+		isHidden
 		lineageTag: fb2084be-0df2-4b6d-9ead-0f445cca637b
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -75,6 +76,7 @@ table _Measures
 			    ),
 			    0
 			)
+		isHidden
 		lineageTag: 71466149-0204-4f97-ad92-6e392e86e350
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
@@ -82,6 +84,7 @@ table _Measures
 	/// Difference between cumulative Sales Actual and cumulative Sales Budget from the beginning of the selected year to the current reporting period.
 	measure 'Sales Variance YTD' = [Sales Actual YTD]-[Sales Budget YTD]
 		formatString: 0.00
+		isHidden
 		lineageTag: 7bc9d6a0-2fda-4c25-bc13-c4b886bc463d
 
 	/// Year-to-date Sales Actual divided by year-to-date Sales Budget. 100% means the sales budget has been achieved exactly.
@@ -97,6 +100,7 @@ table _Measures
 			    DIVIDE(Actual, Budget)
 			)
 		formatString: 0.00%;-0.00%;0.00%
+		isHidden
 		lineageTag: 6dd75860-a00c-4b8d-887e-829ac01eaeb3
 
 	measure 'Budget Attainment Status' =

@@ -3,10 +3,10 @@
   "name": "896d20587e6303d21392",
   "position": {
     "x": 106.66666666666667,
-    "y": 151.66666666666669,
+    "y": 131.66666666666669,
     "z": 1000,
-    "height": 150,
-    "width": 1024.2857142857144,
+    "height": 170,
+    "width": 1025,
     "tabOrder": 1000
   },
   "visual": {
@@ -37,7 +37,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "This dashboard provides a management view of pellet-industry supply chain performance. It combines sales and production data to compare actual results against budget and helps identify deviations by period, plant, product and sales channel.",
+                    "value": "This dashboard provides a management view of pellet-industry supply chain performance. It combines sales and production data to compare actual results against budget and to identify deviations by period, plant and product. Sales-channel analysis is also included to show the distribution of actual sales. ",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -47,33 +47,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "The ",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": "V1 Dashboard",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": " is designed for quick management-level monitoring, while more detailed analysis is available on dedicated ",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": "Sales, Production, Plant and Product Analysis",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": " pages.",
+                    "value": "The V1 Dashboard provides a high-level management overview, while dedicated Sales, Production, Plant and Product Analysis pages provide more detailed analysis of the underlying performance.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }

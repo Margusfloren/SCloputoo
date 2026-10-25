@@ -27,9 +27,9 @@
                 }
               },
               "queryRef": "gold dim_plant.plant_name",
-              "nativeQueryRef": "plant_name",
+              "nativeQueryRef": "Plant",
               "active": false,
-              "displayName": "plant_name"
+              "displayName": "Plant"
             },
             {
               "field": {
@@ -43,9 +43,9 @@
                 }
               },
               "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "product_name",
+              "nativeQueryRef": "Product",
               "active": true,
-              "displayName": "product_name"
+              "displayName": "Product"
             },
             {
               "field": {
@@ -59,9 +59,9 @@
                 }
               },
               "queryRef": "gold fact_sales.channel_id",
-              "nativeQueryRef": "channel_id",
+              "nativeQueryRef": "Channel",
               "active": false,
-              "displayName": "channel_id"
+              "displayName": "Channel"
             }
           ],
           "fieldParameters": [
@@ -351,7 +351,7 @@
                                   },
                                   "Right": {
                                     "Literal": {
-                                      "Value": "-100000000000000000D"
+                                      "Value": "0D"
                                     }
                                   }
                                 }
@@ -371,7 +371,7 @@
                                   },
                                   "Right": {
                                     "Literal": {
-                                      "Value": "0D"
+                                      "Value": "1D"
                                     }
                                   }
                                 }
@@ -431,7 +431,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },

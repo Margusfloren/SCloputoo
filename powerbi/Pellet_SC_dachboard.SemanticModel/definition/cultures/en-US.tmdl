@@ -900,16 +900,6 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.9
 			          }
-			        },
-			        {
-			          "Budget": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
 			        }
 			      ]
 			    },
@@ -8587,6 +8577,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "sales view selector": {
@@ -8682,6 +8675,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "sales view selector": {
@@ -8690,18 +8686,6 @@ cultureInfo en-US
 			        },
 			        {
 			          "sale view selector": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.78
-			          }
-			        },
-			        {
-			          "sales view selector name": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "sale view selector name": {
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.78
@@ -8779,8 +8763,7 @@ cultureInfo en-US
 			            "Weight": 0.491
 			          }
 			        }
-			      ],
-			      "NameType": "Name"
+			      ]
 			    },
 			    "sales_view_selector.sales_view_selector_field": {
 			      "Definition": {
@@ -9057,6 +9040,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "production KPI selector": {
@@ -9145,14 +9131,12 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "production KPI selector": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "production KPI selector name": {
 			            "State": "Generated"
 			          }
 			        },
@@ -9228,8 +9212,7 @@ cultureInfo en-US
 			            "Weight": 0.491
 			          }
 			        }
-			      ],
-			      "NameType": "Name"
+			      ]
 			    },
 			    "production_KPI_selector.production_KPI_selector_field": {
 			      "Definition": {
@@ -9512,6 +9495,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "production view selector": {
@@ -9600,14 +9586,12 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "production view selector": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "production view selector name": {
 			            "State": "Generated"
 			          }
 			        },
@@ -9683,8 +9667,7 @@ cultureInfo en-US
 			            "Weight": 0.491
 			          }
 			        }
-			      ],
-			      "NameType": "Name"
+			      ]
 			    },
 			    "production_view_selector.production_view_selector_field": {
 			      "Definition": {
@@ -9967,6 +9950,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "production chart selector": {
@@ -10055,14 +10041,12 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "production chart selector": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "production chart selector name": {
 			            "State": "Generated"
 			          }
 			        },
@@ -10138,8 +10122,7 @@ cultureInfo en-US
 			            "Weight": 0.491
 			          }
 			        }
-			      ],
-			      "NameType": "Name"
+			      ]
 			    },
 			    "production_chart_selector.production_chart_selector_field": {
 			      "Definition": {
@@ -10553,6 +10536,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "sales KPI selector": {
@@ -10648,6 +10634,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "sales KPI selector": {
@@ -10656,18 +10645,6 @@ cultureInfo en-US
 			        },
 			        {
 			          "sale KPI selector": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.78
-			          }
-			        },
-			        {
-			          "sales KPI selector name": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "sale KPI selector name": {
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.78
@@ -10745,8 +10722,7 @@ cultureInfo en-US
 			            "Weight": 0.491
 			          }
 			        }
-			      ],
-			      "NameType": "Name"
+			      ]
 			    },
 			    "sales_KPI_selector.sales_KPI_selector_ver_2_field": {
 			      "Definition": {
@@ -16256,6 +16232,177 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "entity__measure.production_vs_sales_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Production vs Sales %"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "production vs sales %": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "production vs sale percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "production vs sale pct": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "production vs sale %": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ]
+			    },
+			    "entity__measure.filter_context": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "_Measures",
+			          "ConceptualProperty": "Filter Context"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "filter context": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "context": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "filter situation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "filter framework": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "filter milieu": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "filter environment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "situation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "framework": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "milieu": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "environment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "filter setting": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "filter background": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
@@ -16676,6 +16823,42 @@ cultureInfo en-US
 			        }
 			      }
 			    },
+			    "gold_fact_sale_has_entity__measure_production_vs_sales_": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_sales"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_sale": {
+			          "Target": {
+			            "Entity": "gold_fact_sale"
+			          }
+			        },
+			        "entity__measure.production_vs_sales_": {
+			          "Target": {
+			            "Entity": "entity__measure.production_vs_sales_"
+			          }
+			        }
+			      }
+			    },
+			    "gold_fact_production_has_entity__measure_production_vs_sales_": {
+			      "Binding": {
+			        "ConceptualEntity": "gold fact_production"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "gold_fact_production": {
+			          "Target": {
+			            "Entity": "gold_fact_production"
+			          }
+			        },
+			        "entity__measure.production_vs_sales_": {
+			          "Target": {
+			            "Entity": "entity__measure.production_vs_sales_"
+			          }
+			        }
+			      }
+			    },
 			    "gold_dim_product_has_product_short": {
 			      "Binding": {
 			        "ConceptualEntity": "gold dim_product"
@@ -16726,236 +16909,6 @@ cultureInfo en-US
 			          }
 			        }
 			      }
-			    },
-			    "sales_KPI_selector_has_sales_KPI_selector": {
-			      "Binding": {
-			        "ConceptualEntity": "Sales KPI Selector"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "sales_KPI_selector": {
-			          "Target": {
-			            "Entity": "sales_KPI_selector"
-			          }
-			        },
-			        "sales_KPI_selector.sales_KPI_selector": {
-			          "Target": {
-			            "Entity": "sales_KPI_selector.sales_KPI_selector"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "sales_KPI_selector"
-			            },
-			            "Object": {
-			              "Role": "sales_KPI_selector.sales_KPI_selector"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "sales_KPI_selectors_have_sales_KPI_selectors"
-			        },
-			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "sales_KPI_selector"
-			            },
-			            "Name": {
-			              "Role": "sales_KPI_selector.sales_KPI_selector"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "sales_KPI_selectors_are_names_IDs_of_sales_KPI_selectors"
-			        }
-			      ]
-			    },
-			    "production_chart_selector_has_production_chart_selector": {
-			      "Binding": {
-			        "ConceptualEntity": "Production Chart Selector"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "production_chart_selector": {
-			          "Target": {
-			            "Entity": "production_chart_selector"
-			          }
-			        },
-			        "production_chart_selector.production_chart_selector": {
-			          "Target": {
-			            "Entity": "production_chart_selector.production_chart_selector"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "production_chart_selector"
-			            },
-			            "Object": {
-			              "Role": "production_chart_selector.production_chart_selector"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "production_chart_selectors_have_production_chart_selectors"
-			        },
-			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "production_chart_selector"
-			            },
-			            "Name": {
-			              "Role": "production_chart_selector.production_chart_selector"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "production_chart_selectors_are_names_IDs_of_production_chart_selectors"
-			        }
-			      ]
-			    },
-			    "production_view_selector_has_production_view_selector": {
-			      "Binding": {
-			        "ConceptualEntity": "Production View Selector"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "production_view_selector": {
-			          "Target": {
-			            "Entity": "production_view_selector"
-			          }
-			        },
-			        "production_view_selector.production_view_selector": {
-			          "Target": {
-			            "Entity": "production_view_selector.production_view_selector"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "production_view_selector"
-			            },
-			            "Object": {
-			              "Role": "production_view_selector.production_view_selector"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "production_view_selectors_have_production_view_selectors"
-			        },
-			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "production_view_selector"
-			            },
-			            "Name": {
-			              "Role": "production_view_selector.production_view_selector"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "production_view_selectors_are_names_IDs_of_production_view_selectors"
-			        }
-			      ]
-			    },
-			    "production_KPI_selector_has_production_KPI_selector": {
-			      "Binding": {
-			        "ConceptualEntity": "Production KPI Selector"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "production_KPI_selector": {
-			          "Target": {
-			            "Entity": "production_KPI_selector"
-			          }
-			        },
-			        "production_KPI_selector.production_KPI_selector": {
-			          "Target": {
-			            "Entity": "production_KPI_selector.production_KPI_selector"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "production_KPI_selector"
-			            },
-			            "Object": {
-			              "Role": "production_KPI_selector.production_KPI_selector"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "production_KPI_selectors_have_production_KPI_selectors"
-			        },
-			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "production_KPI_selector"
-			            },
-			            "Name": {
-			              "Role": "production_KPI_selector.production_KPI_selector"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "production_KPI_selectors_are_names_IDs_of_production_KPI_selectors"
-			        }
-			      ]
-			    },
-			    "sales_view_selector_has_sales_view_selector": {
-			      "Binding": {
-			        "ConceptualEntity": "Sales View Selector"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "sales_view_selector": {
-			          "Target": {
-			            "Entity": "sales_view_selector"
-			          }
-			        },
-			        "sales_view_selector.sales_view_selector": {
-			          "Target": {
-			            "Entity": "sales_view_selector.sales_view_selector"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "sales_view_selector"
-			            },
-			            "Object": {
-			              "Role": "sales_view_selector.sales_view_selector"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "sales_view_selectors_have_sales_view_selectors"
-			        },
-			        {
-			          "Name": {
-			            "Subject": {
-			              "Role": "sales_view_selector"
-			            },
-			            "Name": {
-			              "Role": "sales_view_selector.sales_view_selector"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "sales_view_selectors_are_names_IDs_of_sales_view_selectors"
-			        }
-			      ]
 			    },
 			    "gold_fact_sales_budget_has_entity__measure_budget_attainment_YTD_": {
 			      "Binding": {
@@ -18168,166 +18121,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "some_gold_dim_products_are_packaged_gold_dim_products"
-			        }
-			      ]
-			    },
-			    "sales_KPI_selector_select": {
-			      "Binding": {
-			        "ConceptualEntity": "Sales KPI Selector"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "sales_KPI_selector": {
-			          "Target": {
-			            "Entity": "sales_KPI_selector"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Verb": {
-			            "Subject": {
-			              "Role": "sales_KPI_selector"
-			            },
-			            "Verbs": [
-			              {
-			                "select": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ]
-			          },
-			          "State": "Generated",
-			          "Weight": 0.75,
-			          "ID": "sales_KPI_selectors_select"
-			        }
-			      ]
-			    },
-			    "production_chart_selector_select": {
-			      "Binding": {
-			        "ConceptualEntity": "Production Chart Selector"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "production_chart_selector": {
-			          "Target": {
-			            "Entity": "production_chart_selector"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Verb": {
-			            "Subject": {
-			              "Role": "production_chart_selector"
-			            },
-			            "Verbs": [
-			              {
-			                "select": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ]
-			          },
-			          "State": "Generated",
-			          "Weight": 0.75,
-			          "ID": "production_chart_selectors_select"
-			        }
-			      ]
-			    },
-			    "production_view_selector_select": {
-			      "Binding": {
-			        "ConceptualEntity": "Production View Selector"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "production_view_selector": {
-			          "Target": {
-			            "Entity": "production_view_selector"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Verb": {
-			            "Subject": {
-			              "Role": "production_view_selector"
-			            },
-			            "Verbs": [
-			              {
-			                "select": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ]
-			          },
-			          "State": "Generated",
-			          "Weight": 0.75,
-			          "ID": "production_view_selectors_select"
-			        }
-			      ]
-			    },
-			    "production_KPI_selector_select": {
-			      "Binding": {
-			        "ConceptualEntity": "Production KPI Selector"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "production_KPI_selector": {
-			          "Target": {
-			            "Entity": "production_KPI_selector"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Verb": {
-			            "Subject": {
-			              "Role": "production_KPI_selector"
-			            },
-			            "Verbs": [
-			              {
-			                "select": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ]
-			          },
-			          "State": "Generated",
-			          "Weight": 0.75,
-			          "ID": "production_KPI_selectors_select"
-			        }
-			      ]
-			    },
-			    "sales_view_selector_select": {
-			      "Binding": {
-			        "ConceptualEntity": "Sales View Selector"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "sales_view_selector": {
-			          "Target": {
-			            "Entity": "sales_view_selector"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Verb": {
-			            "Subject": {
-			              "Role": "sales_view_selector"
-			            },
-			            "Verbs": [
-			              {
-			                "select": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ]
-			          },
-			          "State": "Generated",
-			          "Weight": 0.75,
-			          "ID": "sales_view_selectors_select"
 			        }
 			      ]
 			    }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "a4dc4f090d7a486e906e",
   "position": {
-    "x": 646.66666666666674,
+    "x": 621.66666666666674,
     "y": 895,
     "z": 8000,
-    "height": 245,
-    "width": 608.33333333333337,
+    "height": 233.33333333333334,
+    "width": 718.33333333333337,
     "tabOrder": 8000
   },
   "visual": {
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "gold dim_plant"
+                      "Entity": "gold dim_product"
                     }
                   },
-                  "Property": "plant_name"
+                  "Property": "product_name"
                 }
               },
-              "queryRef": "gold dim_plant.plant_name",
-              "nativeQueryRef": "Plant",
+              "queryRef": "gold dim_product.product_name",
+              "nativeQueryRef": "Product",
               "active": true,
-              "displayName": "Plant"
+              "displayName": "Product"
             }
           ],
           "fieldParameters": [
@@ -307,6 +307,19 @@
           }
         },
         {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "_Measures.Production Attainment Selected Period %"
+          }
+        },
+        {
           "properties": {
             "fontColor": {
               "solid": {
@@ -332,7 +345,7 @@
                                   },
                                   "Right": {
                                     "Literal": {
-                                      "Value": "-1e+26D"
+                                      "Value": "0D"
                                     }
                                   }
                                 }
@@ -352,7 +365,7 @@
                                   },
                                   "Right": {
                                     "Literal": {
-                                      "Value": "0D"
+                                      "Value": "1D"
                                     }
                                   }
                                 }
@@ -376,7 +389,7 @@
             "data": [
               {
                 "dataViewWildcard": {
-                  "matchingOption": 1
+                  "matchingOption": 0
                 }
               }
             ],

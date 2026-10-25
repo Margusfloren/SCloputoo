@@ -44,7 +44,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Use the available filters to analyse performance by year, month, plant, product and sales channel.",
+                    "value": "Use the available filters to analyse performance by year, month, plant and product. Sales-channel views are available to analyse the distribution of actual sales. ",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -54,7 +54,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "The V1 Dashboard provides a high-level management view of sales and production performance.",
+                    "value": "The V1 Dashboard provides a high-level management overview of sales and production performance. The dedicated analysis pages provide more detailed perspectives: ",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -64,24 +64,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "The dedicated analysis pages provide more detailed perspectives:",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "• Sales Analysis – sales performance against budget;",
+                    "value": "• Sales Analysis – sales performance against budget and actual sales distribution by channel;",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -101,7 +84,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "• Plant Analysis – performance and product mix by production plant;",
+                    "value": "• Plant Analysis – production performance and product mix by production plant;",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -111,17 +94,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "• Product Analysis – performance and production/sales relationships by product.",
+                    "value": "• Product Analysis – performance and production/sales relationships by product. ",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": ""
                   }
                 ]
               },
@@ -139,6 +115,16 @@
                 "textRuns": [
                   {
                     "value": "Negative variances and attainment values below 100% are highlighted in red to make exceptions easier to identify.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Sales-channel views should primarily be used to analyse actual sales distribution, as the V1 budget is not allocated at sales-channel level.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }

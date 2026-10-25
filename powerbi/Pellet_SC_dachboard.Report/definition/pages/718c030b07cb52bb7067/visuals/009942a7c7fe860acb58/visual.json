@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "009942a7c7fe860acb58",
   "position": {
-    "x": 1285,
+    "x": 1340,
     "y": 895,
     "z": 20000,
     "height": 245,
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "product_name",
-              "active": true
+              "nativeQueryRef": "Product",
+              "active": true,
+              "displayName": "Product"
             }
           ]
         },
@@ -242,14 +243,14 @@
                                   },
                                   "Right": {
                                     "Literal": {
-                                      "Value": "-10000000000000000000D"
+                                      "Value": "0D"
                                     }
                                   }
                                 }
                               },
                               "Right": {
                                 "Comparison": {
-                                  "ComparisonKind": 3,
+                                  "ComparisonKind": 4,
                                   "Left": {
                                     "Measure": {
                                       "Expression": {
@@ -262,7 +263,7 @@
                                   },
                                   "Right": {
                                     "Literal": {
-                                      "Value": "0D"
+                                      "Value": "1D"
                                     }
                                   }
                                 }

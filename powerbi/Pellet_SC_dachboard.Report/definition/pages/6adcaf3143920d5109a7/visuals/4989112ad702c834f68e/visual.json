@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
   "name": "4989112ad702c834f68e",
   "position": {
-    "x": 1313.3333333333335,
+    "x": 1341.6666666666667,
     "y": 51.666666666666671,
     "z": 5000,
     "height": 80,
@@ -130,14 +130,28 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'March'"
+                                "Value": "'October'"
                               }
                             }
                           ],
                           [
                             {
                               "Literal": {
-                                "Value": "'April'"
+                                "Value": "'November'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'December'"
+                              }
+                            }
+                          ],
+                          [
+                            {
+                              "Literal": {
+                                "Value": "'March'"
                               }
                             }
                           ]
@@ -198,7 +212,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'March'"
+                                      "Value": "'October'"
                                     }
                                   }
                                 ]
@@ -209,7 +223,29 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'April'"
+                                      "Value": "'November'"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'December'"
+                                    }
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "0": [
+                                  {
+                                    "Literal": {
+                                      "Value": "'March'"
                                     }
                                   }
                                 ]
@@ -239,10 +275,16 @@
                             "0": "February"
                           },
                           {
-                            "0": "March"
+                            "0": "October"
                           },
                           {
-                            "0": "April"
+                            "0": "November"
+                          },
+                          {
+                            "0": "December"
+                          },
+                          {
+                            "0": "March"
                           }
                         ]
                       }

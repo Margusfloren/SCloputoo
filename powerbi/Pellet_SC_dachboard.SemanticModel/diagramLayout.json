@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 1626.7141144032512,
+        "x": 662.06238124333231,
         "y": 0
       },
       "nodes": [
@@ -114,8 +114,8 @@
         },
         {
           "location": {
-            "x": 2509.005080594281,
-            "y": 967.80540922333967
+            "x": 2485.3035633659997,
+            "y": 642.30457262160587
           },
           "nodeIndex": "Sales View Selector",
           "nodeLineageTag": "e91dfad4-8cb2-4124-aef3-9baa1e876ec2",
@@ -139,8 +139,8 @@
         },
         {
           "location": {
-            "x": 2753.889069285151,
-            "y": 967.80540922333967
+            "x": 2733.3477543539734,
+            "y": 642.304572621606
           },
           "nodeIndex": "Production KPI Selector",
           "nodeLineageTag": "ef43c464-fdc0-421a-9c66-dcc47300ec62",
@@ -152,8 +152,8 @@
         },
         {
           "location": {
-            "x": 2998.7730579760209,
-            "y": 967.80540922333967
+            "x": 2984.5521476390522,
+            "y": 648.6249772158144
           },
           "nodeIndex": "Production View Selector",
           "nodeLineageTag": "58b1ff1d-a22e-4e87-b8d0-681dd9381fab",
@@ -165,56 +165,59 @@
         },
         {
           "location": {
-            "x": 3243.6570466668909,
-            "y": 967.80540922333967
+            "x": 3234.1764397755783,
+            "y": 650.2050783643665
           },
           "nodeIndex": "Production Chart Selector",
           "nodeLineageTag": "d0fe157e-359c-4127-a423-8519db0bfa8e",
           "size": {
-            "height": 152,
+            "height": 169.38111263407313,
             "width": 234
           },
           "zIndex": 12
         },
         {
           "location": {
-            "x": 3488.5410353577608,
-            "y": 967.80540922333967
+            "x": 3490.1211365063132,
+            "y": 650.20507836436639
           },
           "nodeIndex": "Sales KPI Selector",
+          "nodeLineageTag": "f8d1d537-f78b-4266-a3b3-d4a99ab10499",
           "size": {
-            "height": 152,
+            "height": 178.86171952538575,
             "width": 234
           },
           "zIndex": 13
         },
         {
           "location": {
-            "x": 3733.4250240486308,
-            "y": 943.80540922333967
+            "x": 3739.7454286428392,
+            "y": 649.906595592648
           },
           "nodeIndex": "Model Measures Metadata",
+          "nodeLineageTag": "a11e9c72-3ff5-41fd-afff-e423dfde4879",
           "size": {
-            "height": 200,
+            "height": 504.95952167055634,
             "width": 234
           },
           "zIndex": 0
         },
         {
           "location": {
-            "x": 3978.3090127395008,
-            "y": 943.80540922333967
+            "x": 3986.2095184822615,
+            "y": 645.16629214699174
           },
           "nodeIndex": "Model Columns Metadata",
+          "nodeLineageTag": "3a63b716-1f5f-401c-8307-d8c8578e72c0",
           "size": {
-            "height": 200,
+            "height": 691.41145719970484,
             "width": 234
           },
           "zIndex": 0
         }
       ],
       "name": "All tables",
-      "zoomValue": 50.346892102823148,
+      "zoomValue": 63.287087723234059,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
@@ -333,13 +336,13 @@
         }
       ],
       "name": "Core Data Model",
-      "zoomValue": 50.346892102823162,
+      "zoomValue": 56.447393005377791,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
       "tablesLocked": false
     }
   ],
-  "selectedDiagram": "All tables",
+  "selectedDiagram": "Core Data Model",
   "defaultDiagram": "All tables"
 }
