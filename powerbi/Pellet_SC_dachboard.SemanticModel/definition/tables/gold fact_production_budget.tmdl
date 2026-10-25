@@ -70,7 +70,7 @@ table 'gold fact_production_budget'
 		mode: import
 		source =
 				let
-				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    Source = PostgreSQL.Database("localhost", "pellet_sc"),
 				    gold_fact_production_budget = Source{[Schema="gold",Item="fact_production_budget"]}[Data]
 				in
 				    gold_fact_production_budget

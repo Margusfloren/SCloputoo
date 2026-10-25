@@ -46,7 +46,7 @@ table 'gold dim_plant'
 		mode: import
 		source =
 				let
-				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    Source = PostgreSQL.Database("localhost", "pellet_sc"),
 				    gold_dim_plant = Source{[Schema="gold", Item="dim_plant"]}[Data],
 				    #"Selected Columns" = Table.SelectColumns(
 				        gold_dim_plant,

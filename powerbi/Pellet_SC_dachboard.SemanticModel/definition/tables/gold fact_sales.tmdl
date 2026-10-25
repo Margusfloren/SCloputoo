@@ -174,7 +174,7 @@ table 'gold fact_sales'
 		mode: import
 		source =
 				let
-				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    Source = PostgreSQL.Database("localhost", "pellet_sc"),
 				    gold_fact_sales = Source{[Schema="gold",Item="fact_sales"]}[Data],
 				    #"Renamed Columns" = Table.RenameColumns(gold_fact_sales,{{"quantity_t", "Quantity (t)"}})
 				in

@@ -136,7 +136,7 @@ table 'gold dim_product'
 		mode: import
 		source =
 				let
-				    Source = PostgreSQL.Database("localhost", "postgres"),
+				    Source = PostgreSQL.Database("localhost", "pellet_sc"),
 				    gold_dim_product = Source{[Schema="gold",Item="dim_product"]}[Data]
 				in
 				    gold_dim_product
