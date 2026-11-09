@@ -1,2 +1,12 @@
+# Power BI local files
 **/.pbi/localSettings.json
 **/.pbi/cache.abf
+
+# Raw source data
+/data/raw/*
+!/data/raw/README.md
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
