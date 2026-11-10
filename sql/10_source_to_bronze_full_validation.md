@@ -32,7 +32,7 @@ The Python script reads the source CSVs directly from the two ZIP archives, fetc
 | `purchase_rows` | 576 | 576 | 0 | 0 | PASS |
 | `production_budget` | 504 | 504 | 0 | 0 | PASS |
 | `sales_budget` | 1,404 | 1,404 | 0 | 0 | PASS |
-| **Total** | **8,011** | **8,011** | **0** | **0** | **10/10 PASS** |
+| **Total** | **8,007** | **8,007** | **0** | **0** | **10/10 PASS** |
 
 The console reported `PASS: 10/10` and wrote the machine-readable report to `data/processed/source_bronze_qa_results.csv`. The script also checks column-set differences; all ten tables received PASS results. This run did not report any missing or additional rows.
 
@@ -62,4 +62,6 @@ python .\10_source_bronze_full_qa.py --actual "..\data\raw\Directo_RAW_Actual_20
 
 The script requests the PostgreSQL password interactively; do not store the password in the repository or attach it to QA evidence. Review the summary and generated CSV after each execution. If any table returns `REVIEW`, inspect missing/extra columns and rows before treating the pipeline as verified.
 
-**Conclusion:** All ten checked source tables matched their PostgreSQL Bronze counterparts under the stated comparison rules, covering **8,011 rows**. This supports source traceability and preservation for the checked synthetic dataset while retaining the limitations above.
+**Conclusion:** All ten checked source tables matched their PostgreSQL Bronze counterparts under the stated comparison rules, covering **8,007 rows**. This supports source traceability and preservation for the checked synthetic dataset while retaining the limitations above.
+
+Documentation correction (10 November 2026): The original reported total of 8,011 rows was an arithmetic error. The ten individual table counts sum to 8,007 rows. The 10/10 PASS validation result remains unchanged.
