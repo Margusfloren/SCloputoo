@@ -1,0 +1,11 @@
+﻿table_name,archive,status,source_rows,bronze_rows,missing_columns,extra_columns,missing_rows,extra_rows,null_fields_in_bronze,error
+invoice_header,Directo_RAW_Actual_2023_2025.zip,PASS,504,504,,,0,0,0,
+invoice_rows,Directo_RAW_Actual_2023_2025.zip,PASS,1404,1404,,,0,0,0,
+item,Directo_RAW_Actual_2023_2025.zip,PASS,11,11,,,0,0,40,
+object,Directo_RAW_Actual_2023_2025.zip,PASS,4,4,,,0,0,8,
+production_header,Directo_RAW_Actual_2023_2025.zip,PASS,504,504,,,0,0,0,
+production_rows,Directo_RAW_Actual_2023_2025.zip,PASS,2520,2520,,,0,0,0,
+purchase_header,Directo_RAW_Actual_2023_2025.zip,PASS,576,576,,,0,0,1152,
+purchase_rows,Directo_RAW_Actual_2023_2025.zip,PASS,576,576,,,0,0,576,
+production_budget,Budget_2023_2025_CSV (1).zip,PASS,504,504,,,0,0,0,
+sales_budget,Budget_2023_2025_CSV (1).zip,PASS,1404,1404,,,0,0,0,
