@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "896d20587e6303d21392",
   "position": {
-    "x": 106.66666666666667,
-    "y": 131.66666666666669,
+    "x": 107.14285714285715,
+    "y": 131.42857142857144,
     "z": 1000,
-    "height": 170,
-    "width": 1025,
+    "height": 240.00000000000003,
+    "width": 1025.7142857142858,
     "tabOrder": 1000
   },
   "visual": {
@@ -51,6 +51,23 @@
                     "textStyle": {
                       "fontSize": "12pt"
                     }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "This portfolio project uses synthetic data based on a Directo-inspired source structure. The dataset represents a simulated pellet-industry supply chain environment and does not contain actual company transactions.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
                   }
                 ]
               }

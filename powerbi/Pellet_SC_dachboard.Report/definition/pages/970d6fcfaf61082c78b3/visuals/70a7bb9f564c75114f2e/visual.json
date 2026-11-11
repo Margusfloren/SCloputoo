@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "70a7bb9f564c75114f2e",
   "position": {
-    "x": 106.66666666666667,
-    "y": 301.66666666666669,
+    "x": 107.14285714285715,
+    "y": 340,
     "z": 3000,
-    "height": 345,
-    "width": 1025,
+    "height": 365.71428571428572,
+    "width": 1024.2857142857144,
     "tabOrder": 3000
   },
   "visual": {
@@ -114,7 +114,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Negative variances and attainment values below 100% are highlighted in red to make exceptions easier to identify.",
+                    "value": "The V1 Dashboard uses a different KPI colour logic from the detailed analysis tables. The top-level KPI cards provide a high-level management overview rather than a traffic-light status system. In detailed budget analysis tables, negative variances and budget attainment below 100% are highlighted in red to support exception analysis.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
