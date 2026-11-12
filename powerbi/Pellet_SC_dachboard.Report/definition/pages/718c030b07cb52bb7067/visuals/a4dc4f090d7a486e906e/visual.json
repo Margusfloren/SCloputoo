@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "gold dim_plant"
+                      "Entity": "gold dim_product"
                     }
                   },
-                  "Property": "plant_name"
+                  "Property": "product_name"
                 }
               },
-              "queryRef": "gold dim_plant.plant_name",
-              "nativeQueryRef": "Plant",
+              "queryRef": "gold dim_product.product_name",
+              "nativeQueryRef": "Product",
               "active": true,
-              "displayName": "Plant"
+              "displayName": "Product"
             }
           ],
           "fieldParameters": [

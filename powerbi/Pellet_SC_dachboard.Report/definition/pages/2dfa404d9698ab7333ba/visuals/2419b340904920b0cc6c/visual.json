@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "gold dim_channel"
+                      "Entity": "gold dim_product"
                     }
                   },
-                  "Property": "channel_name"
+                  "Property": "product_name"
                 }
               },
-              "queryRef": "gold dim_channel.channel_name",
-              "nativeQueryRef": "Channel",
+              "queryRef": "gold dim_product.product_name",
+              "nativeQueryRef": "Product",
               "active": true,
-              "displayName": "Channel"
+              "displayName": "Product"
             }
           ],
           "fieldParameters": [
