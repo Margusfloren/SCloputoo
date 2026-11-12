@@ -8,7 +8,7 @@ The dashboard is built as a Power BI Project (`.pbip`) so that the report struct
 
 The dashboard is designed as a management view for pellet-industry supply chain operations.
 
-The current V1 focuses on comparing sales and production performance against budget and allowing the user to analyse results dynamically by selected periods, plants, products and sales channels.
+V1 compares sales and production performance against budget and allows users to analyse results by period, plant and product. Sales views also support channel-level **Actual vs Budget** comparisons.
 
 This portfolio project uses **synthetic data** based on a **Directo-inspired source structure**. It represents a simulated pellet-industry supply chain and does not contain actual company transactions.
 
@@ -16,36 +16,39 @@ This portfolio project uses **synthetic data** based on a **Directo-inspired sou
 
 Current V1 functionality includes:
 
-- Sales Actual vs Budget
+- Sales Actual vs Budget, including channel-specific budgets
 - Production Actual vs Budget
 - Sales and Production variance
 - Budget attainment %
 - Selected Period calculations
 - Multi-select Year and Month filters
 - Plant and Product filtering
-- Sales Channel filtering
+- Sales Channel filtering for sales results and budgets
 - Dynamic KPI selection using Field Parameters
-- Dynamic Plant / Product views
+- Dynamic Plant / Product / Channel views where applicable
 - Sales and Production matrices
-- Dynamic Production comparison:
+- Selectable production chart comparison:
   - Production Actual vs Budget
   - Production Actual vs Sales
-- Channel-filter logic separating sales analysis from production analysis
-- Handling of zero / blank values and unbudgeted sales scenarios
+- **Production vs Sales by Product (All Channels)**, comparing production with sales across all channels regardless of the selected sales-channel slicer
+- Handling of zero and blank values in relevant measures
 - An About page with KPI definitions, model information and measure documentation
+- A QA Validation page for inspecting selected reporting totals
 
-**V1 scope note:** Sales-channel views show actual sales distribution. The V1 sales budget is not allocated at sales-channel level, so channel-level budget comparisons should not be inferred.
+**V1 scope note:** Sales budgets are **allocated by sales channel**. Channel-level Actual, Budget, Variance and Attainment values have been checked against PostgreSQL results. Production quantities are **not** allocated to sales channels. Therefore, the production-versus-sales balance uses **all-channel sales** rather than the selected channel's sales volume.
 
 ## Power BI Project Structure
 
-`Pellet_SC_dashboard.pbip`  
+`Pellet_SC_dachboard.pbip`  
 Main Power BI project file.
 
-`Pellet_SC_dashboard.Report/`  
+`Pellet_SC_dachboard.Report/`  
 Power BI report pages, visuals and report definitions.
 
-`Pellet_SC_dashboard.SemanticModel/`  
+`Pellet_SC_dachboard.SemanticModel/`  
 Semantic model containing tables, relationships, measures and model definitions.
+
+*The `dachboard` spelling above follows the existing project filenames.*
 
 ## Data Model
 
@@ -61,6 +64,8 @@ Main Gold-layer tables include:
 - Plant
 - Product
 - Sales Channel
+
+The sales and sales-budget fact tables share the Sales Channel dimension. Channel slicers and the Sales View Selector use the channel dimension, enabling consistent filtering of both actual sales and their budgets.
 
 Data is prepared in PostgreSQL through Bronze, Silver and Gold layers before being consumed by Power BI.
 
@@ -92,23 +97,26 @@ This supports traceability between the report documentation and the actual measu
 
 ## Quality Assurance
 
-The project includes SQL and Python checks for data consistency across the source, Bronze, Silver, Gold and Power BI layers. Validation scripts and results are documented separately in the repository's `sql/` folder and `docs/07_quality_assurance/`.
+SQL checks document data consistency and reconciliation across the source, Bronze, Silver, Gold and Power BI layers. Python notebooks support exploratory analysis and cross-checks of SQL-derived results; they do **not** yet independently recalculate the complete Power BI KPI set.
+
+Channel-level sales actuals, budgets, variances and attainment have also been compared against PostgreSQL query results. Report-level filtering and Reset filters have been tested on the V1 Dashboard and Sales Analysis pages.
+
+Validation scripts and results are documented separately in the repository's `sql/` folder and `docs/07_quality_assurance/`.
 
 Passing a validation check confirms the specific conditions tested; it does not independently establish the business correctness of the synthetic input data.
 
 ## Current Status
 
-**V1 core functionality is complete.** The dashboard's principal views and the About-page documentation have been reviewed, and the core validation work is documented.
+**V1 core functionality is implemented and tested against the documented checks.** A final quality and documentation review is in progress before public portfolio release.
 
-The remaining preparation for a public portfolio release focuses on:
+Remaining release preparation includes:
 
-- Final usability and visual consistency checks
-- Portfolio screenshots and project presentation
-- Repository documentation and review of files intended for publication
+- Final documentation consistency checks
+- Review of project files intended for publication
 - Final GitHub version-control and release preparation
 
 ## Future Development
 
 The extended version of the project will continue beyond V1.
 
-Planned areas include inventory management, raw-material planning, BOM logic, OTIF, capacity constraints, sales-channel mix analysis, forecasting and additional supply-chain management views.
+Planned areas include inventory management and coverage, raw-material planning, BOM logic, OTIF, capacity constraints, more detailed channel and customer-mix analysis, forecasting and additional exception-focused supply-chain management views.
