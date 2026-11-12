@@ -1,47 +1,46 @@
 # KPI-d
 
-See kaust kirjeldab pelletitööstuse juhtimisvaates kasutatavaid KPI-sid.
+See kaust dokumenteerib pelletitööstuse juhtimisaruande mõõdikud kahes arendusetapis: **V1 (valminud lõputöö)** ja **Full Version / V2 (kavandatud edasiarendused)**.
 
-KPI-d on jagatud kaheks arendusetapiks:
+## 1. V1 – valminud juhtimisvaade
 
-## 1. V1 – lõputöö kaitsmise versioon
+V1 keskendub müügi ja tootmise tegelike tulemuste, eelarvete ja kõrvalekallete hindamisele.
 
-V1 sisaldab juhtimisvaate põhifunktsionaalsust ja KPI-sid, mis on vajalikud lõputöö kaitsmiseks.
-
-Peamised KPI-d:
-
-- Sales Budget, t
+**Müügi KPI-d**
 - Sales Actual, t
-- Budget vs Actual, t
-- Budget Achievement, %
-- Production Plan, t
-- Production Actual, t
-- Production Plan Achievement, %
-- OTIF, %
+- Sales Budget, t
+- Sales Variance (Actual − Budget), t
+- Sales Attainment (Actual / Budget), %
 
-Täpsem kirjeldus:
+**Tootmise KPI-d**
+- Production Actual, t
+- Production Budget, t
+- Production Variance (Actual − Budget), t
+- Production Attainment (Actual / Budget), %
+
+**Tootmise ja müügi võrdlus**
+- Production vs Sales (Production Actual − Sales Actual), t
+- Production vs Sales (Production Actual / Sales Actual), %
+
+Mõõdikuid saab uurida perioodi, tehase ja toote lõikes. **Müügikanali valik mõjutab müügi ja müügieelarve mõõdikuid.** Tootmist kanalitele ei jaotata; V1 Dashboardi ja QA Validationi tootmise-müügi tasakaalu võrdlus kasutab **kõigi müügikanalite müüki** ka siis, kui kasutaja on valinud konkreetse kanali.
+
+**OTIF ei kuulu V1 funktsionaalsusse.** Tellimuste õigeaegne ja täielik täitmine kuulub järgmise arendusetapi plaani.
 
 [Vaata V1 KPI-sid](./01_V1_KPI-d/)
 
-## 2. Full Version – laiendatud juhtimisvaade
+## 2. Full Version / V2 – kavandatud arendused
 
-Täisversioon arendab V1 edasi täielikumaks Supply Chain juhtimisvaateks.
+V2 eesmärk on laiendada tulemuslikkuse aruandlust tarneahela planeerimise ja erandite juhtimise suunas.
 
-Täiendused hõlmavad muu hulgas:
+Planeeritud teemad on näiteks:
+- müügiprognoos, Budget vs Forecast vs Actual, forecast snapshot'id ja Forecast Accuracy / Bias;
+- valmistoodangu varud, katvus päevades, min/target/max tasemed ning laovõimsus;
+- tootmisvõimsuse kasutus ja pudelikaelad;
+- toormevajadus, BOM, niiskuse ja saagise arvestus;
+- müügimix ja kanalite põhjalikum analüüs;
+- **OTIF-i esmane rakendamine ja edasiarendus**;
+- kõrvalekalletele keskenduv juhtimisvaade.
 
-- Forecast vs Budget vs Actual
-- snapshot / as-of date analüüs
-- kuu täitmine vs ajaline kulg
-- valmistoodangu varud
-- Min Stock ja Max Stock / Capacity
-- Warehouse Utilization %
-- varude staatuse loogika
-- tootmisvõimsuse kasutus
-- pudelikaelad
-- toorme mix
-- müügimix
-- detailsem OTIF analüüs
+Need on **plaanid, mitte V1-s juba rakendatud KPI-d**.
 
-Täpsem kirjeldus:
-
-[Vaata Full Version KPI-sid](./02_Full%20version_KPI-d/)
+[Vaata Full Version KPI-sid](./02_Full%20version_%20KPI-d/)
