@@ -119,28 +119,6 @@ FULL OUTER JOIN budget b
    AND a.plant_id = b.plant_id
 ORDER BY year, plant_id;
 
--- Sales Actual vs Budget by year, plant and product ---  -aastapõhine  Actual sales ja Budget võrdlus ja budgeti täituvuse % ning juurde on lisatud tehas ja toote_id
-
-WITH actual AS (
-    SELECT
-        EXTRACT(YEAR FROM sales_date)::int AS year,
-        plant_id,
-        product_id,
-        SUM(quantity_t) AS actual_t
-    FROM gold.fact_sales
-    GROUP BY 1, 2, 3
-),
-
-budget AS (
-    SELECT
-        EXTRACT(YEAR FROM budget_date)::int AS year,
-        plant_id,
-        product_id,
-        SUM(budget_t) AS budget_t
-    FROM gold.fact_sales_budget
-    GROUP BY 1, 2, 3
-)
-
 
 -- Sales Actual vs Budget by year, plant and product
 -- with product descriptions
