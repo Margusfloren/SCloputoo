@@ -22,6 +22,8 @@ they are neither reported again as new defects nor forgotten.
 | B2-1a | Static title "Production Actual" on the V1 Dashboard production comparison chart | ACCEPTED AS DESIGNED | 12 November 2026 | No |
 | B2-1b | Outdated option labels in the `Production Chart Title` measure | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 12 November 2026 | No |
 | B2-2 | Outdated `Reset - Sales Analysis` bookmark after the A1 sales-channel budget fix; associated `Reset - V1 Dashboard` state also refreshed | FIXED AND VERIFIED | 13 November 2026 | Yes – report bookmarks, visual states and start page |
+| B2-3a | Ambiguous "Budget Attainment Selected Period" labels on two sales KPI cards | FIXED AND VERIFIED | 13 November 2026 | Yes – two card labels and Desktop-generated language metadata |
+| B2-3b | Hidden `Budget Attainment YTD %` measure has a misleading YTD name and description | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 13 November 2026 | No – measure deliberately retained |
 
 ---
 
@@ -216,3 +218,105 @@ full identifiers should be taken from the current repository when needed.*
 - Preserve the deliberate Product-oriented V1 Dashboard default and the four-
   KPI Sales Analysis reset state unless the project owner approves a new design.
 - B2-1b remains separate, open technical debt; the B2-2 fix does not resolve it.
+
+---
+
+## B2-3 – Sales budget attainment KPI naming
+
+### B2-3a – Visible card labels
+
+**Status:** FIXED AND VERIFIED  
+**Decided by:** Project owner  
+**Decision recorded:** 13 November 2026
+
+**Original finding and rationale:** The fourth sales KPI card on **V1 Dashboard**
+and **Sales Analysis** was labelled **Budget Attainment Selected Period**, although
+it calculates **sales** actual as a proportion of **sales** budget for the selected
+period. The other cards on the sales row are named Sales Actual, Sales Budget
+and Sales Variance; the Sales View table calls the matching percentage **Sales
+Attainment**. Production has a distinct **Production Attainment Selected Period**
+card. The value was correct, but the ambiguous label could be mistaken for an
+overall budget-attainment indicator combining sales and production.
+
+**Decision and implemented change:** In Power BI Desktop, the project owner
+renamed the displayed label on both sales cards to **Sales Attainment Selected
+Period**. The underlying measure, its DAX formula, card value formatting, and
+existing Reset-bookmark definitions were not changed. This is a label correction,
+not a change in KPI calculation or business logic.
+
+| Page | Visual ID | Visible label after correction |
+|---|---|---|
+| V1 Dashboard | `9d8d82065575701d3bce` | `Sales Attainment Selected Period` |
+| Sales Analysis | `7f4a9cce8b9ceed492da` | `Sales Attainment Selected Period` |
+
+**Verification evidence:**
+
+- The project owner inspected both Power BI Desktop cards and confirmed the
+  corrected visible labels.
+- A subsequent read-only PBIP inspection in Claude Code confirmed `displayName`
+  was updated on both cards (their `visual.json` lines 30–31), while `Property`
+  remained `Budget Attainment YTD %` (line 26), `queryRef` remained
+  `_Measures.Budget Attainment YTD %` (line 29), and percentage formatting
+  remained `0.00%`. The cards' `nativeQueryRef` was also updated as part of the
+  visual label change.
+- The same inspection found no changes to the other Sales Actual, Sales Budget,
+  Sales Variance or Production KPI cards, the DAX measure definitions, or either
+  previously verified Reset bookmark.
+- Power BI Desktop also updated the cards' visual schema version from 2.11.0
+  to 2.14.0 and generated changes in `SemanticModel/definition/cultures/en-US.tmdl`
+  (including the new Q&A synonym for the renamed card and changes to some
+  automatically generated budget-related synonyms). These are language/Q&A
+  metadata effects, not changes to the measures' calculations. There are no
+  Q&A visuals in the V1 report.
+
+**Affected files:**
+
+- `powerbi/Pellet_SC_dachboard.Report/definition/pages/718c030b07cb52bb7067/visuals/9d8d82065575701d3bce/visual.json`
+  (measure binding near line 26; display label near lines 30–31).
+- `powerbi/Pellet_SC_dachboard.Report/definition/pages/2dfa404d9698ab7333ba/visuals/7f4a9cce8b9ceed492da/visual.json`
+  (measure binding near line 26; display label near lines 30–31).
+- `powerbi/Pellet_SC_dachboard.SemanticModel/definition/cultures/en-US.tmdl`
+  (Desktop-generated language/Q&A metadata; renamed-card synonym near line 8412
+  in the audit, plus automatically generated budget-related synonym changes).
+
+### B2-3b – Misleading name of hidden measure
+
+**Status:** KNOWN TECHNICAL DEBT – ACCEPTED FOR V1  
+**Decided by:** Project owner  
+**Decision recorded:** 13 November 2026
+
+The cards continue to use the hidden measure `_Measures[Budget Attainment YTD %]`
+(`powerbi/Pellet_SC_dachboard.SemanticModel/definition/tables/_Measures.tmdl`,
+name near line 91, description near line 90, references near lines 93–94,
+`isHidden` near line 103). Despite its **YTD** name and "Year-to-date"
+description, its calculation divides `[Sales Actual Selected Period]` by
+`[Sales Budget Selected Period]` in the current filter context. It does not
+apply a year-to-date time-intelligence calculation of its own.
+
+The existing measure `Sales Attainment Selected Period %` (same `_Measures.tmdl`,
+near lines 149–164) expresses the intended meaning more clearly. The hidden
+YTD-named measure is not exposed in the report's About-page measure listing,
+which excludes hidden measures. The discrepancy therefore affects model
+maintainability rather than the visible KPI value.
+
+**Decision:** Do not rename, rebind or delete this measure in V1. Changing it
+would require coordinated review of both visible cards, a card on the hidden
+`Dasboard` page, Reset-bookmark references and the language metadata. This
+additional change is not justified for the V1 release immediately after the
+B2-2 Reset-bookmark repairs.
+
+### Guidance for future audits and cleanup
+
+- Treat B2-3a as **FIXED AND VERIFIED**; do not reopen the old card-label issue
+  when the two cards show **Sales Attainment Selected Period**.
+- Keep B2-3b visible as open technical debt until the duplicate and misleadingly
+  named measure is reviewed. A future cleanup should consider rebinding dependent
+  visuals to `Sales Attainment Selected Period %`, reviewing bookmark references
+  and Q&A metadata, and only then retiring the obsolete measure.
+- Preserve the B2-2 Reset behaviour when performing that cleanup; changes to
+  measure references may require updating and retesting the bookmarks.
+- **Start-page side effect:** the B2-3 follow-up initially detected Desktop
+  changing `pages/pages.json` from V1 Dashboard to Sales Analysis. The project
+  owner subsequently reopened and saved V1 Dashboard as the start page. Confirm
+  `activePageName = 718c030b07cb52bb7067` in the final Git diff before commit;
+  the uploaded audit log itself cannot independently verify the local file state.

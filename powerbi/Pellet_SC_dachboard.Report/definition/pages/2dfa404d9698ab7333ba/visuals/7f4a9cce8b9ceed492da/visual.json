@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "7f4a9cce8b9ceed492da",
   "position": {
     "x": 684.99999999999943,
@@ -27,8 +27,8 @@
                 }
               },
               "queryRef": "_Measures.Budget Attainment YTD %",
-              "nativeQueryRef": "Budget Attainment Selected Period",
-              "displayName": "Budget Attainment Selected Period",
+              "nativeQueryRef": "Sales Attainment Selected Period",
+              "displayName": "Sales Attainment Selected Period",
               "format": "0.00%;-0.00%;0.00%"
             }
           ]

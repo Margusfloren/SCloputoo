@@ -7559,12 +7559,6 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "budget": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
 			          "sale account": {
 			            "Type": "Noun",
 			            "State": "Suggested",
@@ -7592,36 +7586,6 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "account": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.714
-			          }
-			        },
-			        {
-			          "cost": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.714
-			          }
-			        },
-			        {
-			          "finance": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.714
 			          }
 			        },
 			        {
@@ -7855,12 +7819,6 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "budget": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
 			          "production account": {
 			            "Type": "Noun",
 			            "State": "Suggested",
@@ -7888,36 +7846,6 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "account": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.714
-			          }
-			        },
-			        {
-			          "cost": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.714
-			          }
-			        },
-			        {
-			          "finance": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.714
 			          }
 			        }
 			      ]
@@ -8481,7 +8409,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Budget Attainment Selected Period": {
+			          "Sales Attainment Selected Period": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
