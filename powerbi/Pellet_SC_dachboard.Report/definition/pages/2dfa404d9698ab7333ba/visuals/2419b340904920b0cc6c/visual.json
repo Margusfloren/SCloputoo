@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "2419b340904920b0cc6c",
   "position": {
     "x": 1178.3333333333335,
@@ -20,48 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "gold fact_sales"
+                      "Entity": "gold dim_channel"
                     }
                   },
-                  "Property": "channel_id"
+                  "Property": "channel_name"
                 }
               },
-              "queryRef": "gold fact_sales.channel_id",
+              "queryRef": "gold dim_channel.channel_name",
               "nativeQueryRef": "Channel",
               "active": true,
               "displayName": "Channel"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
-                    }
-                  },
-                  "Property": "product_name"
-                }
-              },
-              "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "Product",
-              "active": false,
-              "displayName": "Product"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_plant"
-                    }
-                  },
-                  "Property": "plant_name"
-                }
-              },
-              "queryRef": "gold dim_plant.plant_name",
-              "nativeQueryRef": "Plant",
-              "active": false,
-              "displayName": "Plant"
             }
           ],
           "fieldParameters": [
@@ -77,7 +45,7 @@
                 }
               },
               "index": 0,
-              "length": 3
+              "length": 1
             }
           ]
         },
@@ -97,6 +65,36 @@
               "queryRef": "_Measures.Sales Actual",
               "nativeQueryRef": "Sales Actual",
               "displayName": "Sales Actual"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales Budget"
+                }
+              },
+              "queryRef": "_Measures.Sales Budget",
+              "nativeQueryRef": "Sales Budget",
+              "displayName": "Sales Budget"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Sales Variance"
+                }
+              },
+              "queryRef": "_Measures.Sales Variance",
+              "nativeQueryRef": "Sales Variance",
+              "displayName": "Sales Variance"
             },
             {
               "field": {
@@ -127,91 +125,12 @@
                 }
               },
               "index": 0,
-              "length": 2
+              "length": 4
             }
           ]
         }
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Rows"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "gold fact_sales.channel_id"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold fact_sales"
-                    }
-                  },
-                  "Property": "channel_id"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "gold dim_product.product_name"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
-                    }
-                  },
-                  "Property": "product_name"
-                }
-              }
-            ],
-            "isPinned": true
-          },
-          {
-            "queryRefs": [
-              "gold dim_plant.plant_name"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          }
-        ],
-        "root": {
-          "children": [
-            {
-              "identityValues": [
-                {
-                  "Literal": {
-                    "Value": "'B2B'"
-                  }
-                }
-              ],
-              "children": [
-                {
-                  "identityValues": [
-                    {
-                      "Literal": {
-                        "Value": "'Premium pellet 15 kg 8 mm'"
-                      }
-                    }
-                  ],
-                  "isToggled": true
-                }
-              ]
-            }
-          ]
-        }
-      }
-    ],
     "objects": {
       "general": [
         {
@@ -322,6 +241,72 @@
               }
             ],
             "metadata": "_Measures.Sales Variance"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "_Measures.Sales Attainment Selected Period %"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "_Measures"
+                                    }
+                                  },
+                                  "Property": "Sales Attainment Selected Period %"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0.99995D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#C00000'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "_Measures.Sales Attainment Selected Period %"
           }
         }
       ],

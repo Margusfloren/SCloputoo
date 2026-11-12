@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "e2765a8dc5d09c18b07b",
   "position": {
     "x": 951.66666666666674,
@@ -79,12 +79,12 @@
                       "Entity": "_Measures"
                     }
                   },
-                  "Property": "Sales Actual Selected Period All Channels"
+                  "Property": "Production Budget Selected Period"
                 }
               },
-              "queryRef": "_Measures.Sales Actual Selected Period All Channels",
-              "nativeQueryRef": "Sales",
-              "displayName": "Sales"
+              "queryRef": "_Measures.Production Budget Selected Period",
+              "nativeQueryRef": "Budget",
+              "displayName": "Budget"
             },
             {
               "field": {

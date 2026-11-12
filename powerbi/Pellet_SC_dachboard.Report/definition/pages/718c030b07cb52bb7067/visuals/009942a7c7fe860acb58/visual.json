@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "009942a7c7fe860acb58",
   "position": {
     "x": 1340,
@@ -323,7 +323,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Production vs Sales by Product'"
+                  "Value": "'Production vs Sales by Product (All Channel)'"
                 }
               }
             }

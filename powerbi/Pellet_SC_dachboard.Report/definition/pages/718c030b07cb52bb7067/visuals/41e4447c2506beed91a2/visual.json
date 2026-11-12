@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "41e4447c2506beed91a2",
   "position": {
     "x": 31.666666666666668,
@@ -52,13 +52,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "gold fact_sales"
+                      "Entity": "gold dim_channel"
                     }
                   },
-                  "Property": "channel_id"
+                  "Property": "channel_name"
                 }
               },
-              "queryRef": "gold fact_sales.channel_id",
+              "queryRef": "gold dim_channel.channel_name",
               "nativeQueryRef": "Channel",
               "active": false,
               "displayName": "Channel"

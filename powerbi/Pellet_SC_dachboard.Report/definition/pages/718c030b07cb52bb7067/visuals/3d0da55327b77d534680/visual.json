@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "3d0da55327b77d534680",
   "position": {
     "x": 1185,
@@ -75,7 +75,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''gold dim_product''[product_name]'"
+                                "Value": "'''gold dim_plant''[plant_name]'"
                               }
                             }
                           ]
@@ -103,7 +103,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''gold dim_product''[product_name]'"
+                                      "Value": "'''gold dim_plant''[plant_name]'"
                                     }
                                   }
                                 ]
@@ -127,7 +127,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Product"
+                            "0": "Plant"
                           }
                         ]
                       }

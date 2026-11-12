@@ -900,6 +900,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.9
 			          }
+			        },
+			        {
+			          "Budget": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -7549,6 +7559,12 @@ cultureInfo en-US
 			          }
 			        },
 			        {
+			          "budget": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
 			          "sale account": {
 			            "Type": "Noun",
 			            "State": "Suggested",
@@ -7576,6 +7592,36 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "account": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "cost": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "finance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
 			          }
 			        },
 			        {
@@ -7809,6 +7855,12 @@ cultureInfo en-US
 			          }
 			        },
 			        {
+			          "budget": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
 			          "production account": {
 			            "Type": "Noun",
 			            "State": "Suggested",
@@ -7836,6 +7888,36 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "account": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "cost": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "finance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
 			          }
 			        }
 			      ]
@@ -7996,6 +8078,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "sales actual YTD": {
@@ -8124,6 +8209,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "sales budget YTD": {
@@ -8252,6 +8340,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "sales variance YTD": {
@@ -8320,6 +8411,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "budget attainment YTD %": {
@@ -16909,213 +17003,6 @@ cultureInfo en-US
 			          }
 			        }
 			      }
-			    },
-			    "gold_fact_sales_budget_has_entity__measure_budget_attainment_YTD_": {
-			      "Binding": {
-			        "ConceptualEntity": "gold fact_sales_budget"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_fact_sales_budget": {
-			          "Target": {
-			            "Entity": "gold_fact_sales_budget"
-			          }
-			        },
-			        "entity__measure.budget_attainment_YTD_": {
-			          "Target": {
-			            "Entity": "entity__measure.budget_attainment_YTD_"
-			          }
-			        }
-			      }
-			    },
-			    "gold_fact_sale_has_entity__measure_budget_attainment_YTD_": {
-			      "Binding": {
-			        "ConceptualEntity": "gold fact_sales"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_fact_sale": {
-			          "Target": {
-			            "Entity": "gold_fact_sale"
-			          }
-			        },
-			        "entity__measure.budget_attainment_YTD_": {
-			          "Target": {
-			            "Entity": "entity__measure.budget_attainment_YTD_"
-			          }
-			        }
-			      }
-			    },
-			    "gold_fact_sales_budget_has_entity__measure_sales_variance_YTD": {
-			      "Binding": {
-			        "ConceptualEntity": "gold fact_sales_budget"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_fact_sales_budget": {
-			          "Target": {
-			            "Entity": "gold_fact_sales_budget"
-			          }
-			        },
-			        "entity__measure.sales_variance_YTD": {
-			          "Target": {
-			            "Entity": "entity__measure.sales_variance_YTD"
-			          }
-			        }
-			      }
-			    },
-			    "gold_fact_sale_has_entity__measure_sales_variance_YTD": {
-			      "Binding": {
-			        "ConceptualEntity": "gold fact_sales"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_fact_sale": {
-			          "Target": {
-			            "Entity": "gold_fact_sale"
-			          }
-			        },
-			        "entity__measure.sales_variance_YTD": {
-			          "Target": {
-			            "Entity": "entity__measure.sales_variance_YTD"
-			          }
-			        }
-			      }
-			    },
-			    "gold_dim_date_has_entity__measure_sales_variance_YTD": {
-			      "Binding": {
-			        "ConceptualEntity": "gold dim_date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_dim_date": {
-			          "Target": {
-			            "Entity": "gold_dim_date"
-			          }
-			        },
-			        "entity__measure.sales_variance_YTD": {
-			          "Target": {
-			            "Entity": "entity__measure.sales_variance_YTD"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "gold_dim_date"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.sales_variance_YTD"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "gold_dim_dates_have_sales_variance_YTD"
-			        }
-			      ]
-			    },
-			    "gold_fact_sales_budget_has_entity__measure_sales_budget_YTD": {
-			      "Binding": {
-			        "ConceptualEntity": "gold fact_sales_budget"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_fact_sales_budget": {
-			          "Target": {
-			            "Entity": "gold_fact_sales_budget"
-			          }
-			        },
-			        "entity__measure.sales_budget_YTD": {
-			          "Target": {
-			            "Entity": "entity__measure.sales_budget_YTD"
-			          }
-			        }
-			      }
-			    },
-			    "gold_dim_date_has_entity__measure_sales_budget_YTD": {
-			      "Binding": {
-			        "ConceptualEntity": "gold dim_date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_dim_date": {
-			          "Target": {
-			            "Entity": "gold_dim_date"
-			          }
-			        },
-			        "entity__measure.sales_budget_YTD": {
-			          "Target": {
-			            "Entity": "entity__measure.sales_budget_YTD"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "gold_dim_date"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.sales_budget_YTD"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "gold_dim_dates_have_sales_budget_YTD"
-			        }
-			      ]
-			    },
-			    "gold_fact_sale_has_entity__measure_sales_actual_YTD": {
-			      "Binding": {
-			        "ConceptualEntity": "gold fact_sales"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_fact_sale": {
-			          "Target": {
-			            "Entity": "gold_fact_sale"
-			          }
-			        },
-			        "entity__measure.sales_actual_YTD": {
-			          "Target": {
-			            "Entity": "entity__measure.sales_actual_YTD"
-			          }
-			        }
-			      }
-			    },
-			    "gold_dim_date_has_entity__measure_sales_actual_YTD": {
-			      "Binding": {
-			        "ConceptualEntity": "gold dim_date"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "gold_dim_date": {
-			          "Target": {
-			            "Entity": "gold_dim_date"
-			          }
-			        },
-			        "entity__measure.sales_actual_YTD": {
-			          "Target": {
-			            "Entity": "entity__measure.sales_actual_YTD"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "gold_dim_date"
-			            },
-			            "Object": {
-			              "Role": "entity__measure.sales_actual_YTD"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "gold_dim_dates_have_sales_actual_YTD"
-			        }
-			      ]
 			    },
 			    "gold_fact_sale_has_entity__measure_production_vs_sales": {
 			      "Binding": {

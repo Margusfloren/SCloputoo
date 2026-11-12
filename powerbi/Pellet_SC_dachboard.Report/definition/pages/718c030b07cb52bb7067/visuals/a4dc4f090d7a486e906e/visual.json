@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "a4dc4f090d7a486e906e",
   "position": {
     "x": 621.66666666666674,
@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "gold dim_product"
+                      "Entity": "gold dim_plant"
                     }
                   },
-                  "Property": "product_name"
+                  "Property": "plant_name"
                 }
               },
-              "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "Product",
+              "queryRef": "gold dim_plant.plant_name",
+              "nativeQueryRef": "Plant",
               "active": true,
-              "displayName": "Product"
+              "displayName": "Plant"
             }
           ],
           "fieldParameters": [

@@ -44,7 +44,7 @@ table 'Sales View Selector'
 				{
 				    ("Plant", NAMEOF('gold dim_plant'[plant_name]), 0),
 				    ("Product", NAMEOF('gold dim_product'[product_name]), 1),
-				    ("Channel", NAMEOF('gold fact_sales'[channel_id]), 2)
+				    ("Channel", NAMEOF('gold dim_channel'[channel_name]), 2)
 				}
 
 	annotation PBI_Id = 66d78815b0584dce898ee027ccaddb91

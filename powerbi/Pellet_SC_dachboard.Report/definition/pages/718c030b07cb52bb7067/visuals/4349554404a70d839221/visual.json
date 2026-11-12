@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "4349554404a70d839221",
   "position": {
     "x": 966.66666666666674,
@@ -81,7 +81,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''_Measures''[Sales Actual Selected Period All Channels]'"
+                                "Value": "'''_Measures''[Production Budget Selected Period]'"
                               }
                             }
                           ]
@@ -109,7 +109,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''_Measures''[Sales Actual Selected Period All Channels]'"
+                                      "Value": "'''_Measures''[Production Budget Selected Period]'"
                                     }
                                   }
                                 ]
@@ -133,7 +133,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Sales"
+                            "0": "Budget"
                           }
                         ]
                       }

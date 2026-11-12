@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "87e315241947b2e32005",
   "position": {
     "x": 1620,
@@ -75,21 +75,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''gold fact_sales''[channel_id]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''gold dim_product''[product_name]'"
-                              }
-                            }
-                          ],
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'''gold dim_plant''[plant_name]'"
+                                "Value": "'''gold dim_channel''[channel_name]'"
                               }
                             }
                           ]
@@ -117,29 +103,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''gold fact_sales''[channel_id]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''gold dim_product''[product_name]'"
-                                    }
-                                  }
-                                ]
-                              }
-                            ],
-                            [
-                              {
-                                "0": [
-                                  {
-                                    "Literal": {
-                                      "Value": "'''gold dim_plant''[plant_name]'"
+                                      "Value": "'''gold dim_channel''[channel_name]'"
                                     }
                                   }
                                 ]
@@ -163,13 +127,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "channel_id"
-                          },
-                          {
-                            "0": "product_name"
-                          },
-                          {
-                            "0": "plant_name"
+                            "0": "Channel"
                           }
                         ]
                       }

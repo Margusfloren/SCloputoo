@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.11.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
   "name": "753edd3f8d5a412dc85d",
   "position": {
     "x": 1178.3333333333335,
@@ -20,48 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "gold fact_sales"
+                      "Entity": "gold dim_channel"
                     }
                   },
-                  "Property": "channel_id"
+                  "Property": "channel_name"
                 }
               },
-              "queryRef": "gold fact_sales.channel_id",
+              "queryRef": "gold dim_channel.channel_name",
               "nativeQueryRef": "Channel",
               "active": true,
               "displayName": "Channel"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_product"
-                    }
-                  },
-                  "Property": "product_name"
-                }
-              },
-              "queryRef": "gold dim_product.product_name",
-              "nativeQueryRef": "Product",
-              "active": false,
-              "displayName": "Product"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "gold dim_plant"
-                    }
-                  },
-                  "Property": "plant_name"
-                }
-              },
-              "queryRef": "gold dim_plant.plant_name",
-              "nativeQueryRef": "Plant",
-              "active": false,
-              "displayName": "Plant"
             }
           ],
           "fieldParameters": [
@@ -77,7 +45,7 @@
                 }
               },
               "index": 0,
-              "length": 3
+              "length": 1
             }
           ]
         },
