@@ -16,6 +16,8 @@ they are neither reported again as new defects nor forgotten.
 | FIXED AND VERIFIED | The issue was corrected and the result was verified using an appropriate method (e.g. Power BI Desktop, SQL execution, or source-file inspection). The relevant evidence is recorded with each decision. |
 | FUTURE DEVELOPMENT – V2 | A potential later improvement, intentionally outside V1 scope. |
 | NO ISSUE FOUND – VERIFIED | Review found no defect in the checked scope; no change required. |
+| DOCUMENTED LIMITATION – ACCEPTED FOR V1 | The limitation remains, is described transparently, and does not prevent V1 publication. It has not been fixed. |
+| KNOWN COSMETIC ISSUE – ACCEPTED FOR V1 | A minor presentation inconsistency with no identified effect on numbers or filtering. It has not been fixed. |
 
 ## Summary
 
@@ -29,6 +31,8 @@ they are neither reported again as new defects nor forgotten.
 | B2-2 | Outdated `Reset - Sales Analysis` bookmark after the A1 sales-channel budget fix; associated `Reset - V1 Dashboard` state also refreshed | FIXED AND VERIFIED | 13 November 2026 | Yes – report bookmarks, visual states and start page |
 | B2-3a | Ambiguous "Budget Attainment Selected Period" labels on two sales KPI cards | FIXED AND VERIFIED | 13 November 2026 | Yes – two card labels and Desktop-generated language metadata |
 | B2-3b | Hidden `Budget Attainment YTD %` measure has a misleading YTD name and description | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 13 November 2026 | No – measure deliberately retained |
+| B2-4 | Trailing spaces in `Production KPI Selector` labels, some visual titles and card display names | DOCUMENTED LIMITATION – ACCEPTED FOR V1 | 13 November 2026 | No |
+| B2-5 | `Filter Context` measure omits Product and Sales Channel; its only use is a disabled subtitle | DOCUMENTED LIMITATION – ACCEPTED FOR V1 | 13 November 2026 | No |
 | B3 | Incorrect summed row count (8,011 instead of 8,007) in Source/Bronze/Silver QA comments and documentation | FIXED AND VERIFIED | 13 November 2026 | No – SQL comments and QA Markdown documentation only |
 | B4 | Documentation formatting, README placeholders, and relative links | FIXED AND VERIFIED | 13 November 2026 | Yes – seven README files |
 | B5a | About-page spelling and outdated sales-channel usage guidance | FIXED AND VERIFIED | 13 November 2026 | Yes – two About-page text visuals |
@@ -42,6 +46,9 @@ they are neither reported again as new defects nor forgotten.
 | B6-4 | `gold dim_date` not marked as a date table | FUTURE DEVELOPMENT – V2 | 13 November 2026 | No |
 | B6-5 | Descriptions of all 17 visible measures | NO ISSUE FOUND – VERIFIED | 13 November 2026 | No |
 | B7-A | Inconsistent plant display names across slicers, charts and matrices | FIXED AND VERIFIED | 13 November 2026 | Yes – Power Query display-name step, six Plant slicers and five Reset bookmarks |
+| B7-B | Month names in SQL-backed matrices and in automatic date-hierarchy visuals may use different languages | KNOWN COSMETIC ISSUE – ACCEPTED FOR V1 | 13 November 2026 | No |
+| B7-C1 | Chart colour convention: gold for the main actual series, green for the comparison series | ACCEPTED AS DESIGNED | 13 November 2026 | No |
+| B7-C2 | No explicit colour for the Sales comparison series on the V1 Dashboard production chart | KNOWN COSMETIC ISSUE – ACCEPTED FOR V1 | 13 November 2026 | No |
 | B8 | Outdated documentation requiring production volume units to be confirmed | FIXED AND VERIFIED | 13 November 2026 | No – three SQL documentation statements corrected; data, SQL logic and DAX unchanged |
 | B9 | SQL ↔ Power BI reconciliation initially documented only at grand-total level | FIXED AND VERIFIED – defined reconciliation scope | 13 November 2026 | No – new reconciliation record and README reference; model and report unchanged |
 | B10 | Minor repository and documentation issues (five sub-findings B10-1 to B10-5) | CLOSED – documentation corrections and English translation completed | 13 November 2026 | No – documentation and SQL comments only (eleven files); model, report, SQL query logic and Python logic unchanged |
@@ -479,6 +486,52 @@ B2-2 Reset-bookmark repairs.
 
 ---
 
+## B2-4 and B2-5 – Additional B2 observations
+
+**Decision recorded:** 13 November 2026
+
+**Origin:** The original audit contained a single B2 finding (dynamic chart title). The identifiers B2-1 to B2-5 were introduced during the later detailed B2 review. B2-4 and B2-5 are low-priority observations from that review. They were re-checked read-only against the current report and model files before this decision.
+
+### B2-4 – Trailing spaces in labels
+
+**Status:** DOCUMENTED LIMITATION – ACCEPTED FOR V1
+
+**Evidence:**
+
+- The four labels in `Production KPI Selector.tmdl` (lines 45–48) end with a space: `"Production Actual "`, `"Production Budget "`, `"Production Variance "` and `"Production Attainment "`. They appear as column headers in the matrices on V1 Dashboard (`a4dc4f`), Plant Analysis (`633a70`), Product Analysis (`de1033`) and the hidden QA Validation page (`8a2c7e`).
+- The other field parameters (Sales KPI, Sales View, Production View and Production Chart selectors) have no trailing spaces.
+- Some visual titles and card display names also end with a space:
+  - the titles `Sales View ` (V1 Dashboard `41e444`, Sales Analysis `2419b3`), `Production View ` (`a4dc4f`, `8a2c7e`) and `Production vs Budget ` (`86199a`, `0e3d2a`);
+  - the card display name `Production Attainment Selected Period ` (`12773d`, `99ca68`, `64f5ef`, `f58469`).
+- No DAX measure refers to `Production KPI Selector` or compares its labels as text. The B2-1 type of risk (unmatched text comparison) therefore does not apply.
+- The Reset bookmarks do not store any filter value containing these trailing-space labels.
+
+**Assessment:** No visible functional or numerical defect has been identified, and the spaces are practically invisible on screen. Changing the field parameter labels would require re-checking four matrices and three bookmarks that reference `Production KPI Selector`. That is a regression risk without user benefit.
+
+**Future action:** Optional V2 cleanup, potentially alongside B2-1b.
+
+**Related note:** The hidden QA Validation page titles use "(tons)" while the rest of the project uses "tonnes". This is not visible to report users and is included in the same optional cleanup.
+
+**V1 release impact:** Non-blocking.
+
+### B2-5 – Hidden `Filter Context` subtitle
+
+**Status:** DOCUMENTED LIMITATION – ACCEPTED FOR V1
+
+**Evidence:**
+
+- The `Filter Context` measure (`_Measures.tmdl`, lines 506–557) returns the selected Year, Month and Plant. It does not include Product or Sales Channel.
+- Its only identified visual use is the subtitle of the V1 Dashboard Sales matrix (`pages/718c030b07cb52bb7067/visuals/41e4447c2506beed91a2/visual.json`, `subTitle`). That subtitle is disabled (`subTitle.show = false`).
+- The Reset bookmarks do not enable it (all use `suppressDisplay: true`).
+
+**Assessment:** The incomplete context text is not currently visible to report users and has no effect on KPI values or filtering.
+
+**Future action:** If the subtitle is enabled, first extend the measure to include the relevant Product and Sales Channel context, then test the resulting behaviour.
+
+**V1 release impact:** Non-blocking.
+
+---
+
 ## B3 – Incorrect total row count in Source/Bronze/Silver QA documentation
 
 **Status:** FIXED AND VERIFIED  
@@ -618,6 +671,8 @@ According to the follow-up report:
 - B4 is separate from the subsequently resolved B3 finding; B5 and B6
   decisions are documented below. Other findings (B1, B7–B10 and later
   B2-4/B2-5) require separate review or disposition.
+
+**Audit follow-up (13 November 2026):** All findings referenced above have subsequently been reviewed and their final decisions are documented in the corresponding sections of this log.
 
 ---
 
@@ -760,7 +815,7 @@ All **17 visible measures** had descriptions in the read-only inspection and are
 The same four plants were shown under two different names, sometimes on the same page:
 
 - **Plant slicers** used the hidden technical key `gold dim_plant[plant_id]` and displayed `PLANT-A` to `PLANT-D`.
-- **Charts, matrices and the `Filter Context` text** used `gold dim_plant[plant_name]` and displayed the Estonian business names `Tehas A` to `Tehas D`.
+- **Charts and matrices** used `gold dim_plant[plant_name]` and displayed the Estonian business names `Tehas A` to `Tehas D`. The `Filter Context` measure also references `plant_name`, but it is used only in a disabled (hidden) subtitle, so its text was not visible to report users (see B2-5).
 
 The values originate in the synthetic source data (`object.csv`: `PLANT-A,Tehas A`, etc.) and reach Power BI unchanged from PostgreSQL `gold.dim_plant`. The mapping was one-to-one, so the risk of misreading figures was low, but the interface was inconsistent and partly non-English.
 
@@ -822,6 +877,64 @@ No DAX calculations, relationships or PostgreSQL data were modified for B7-A.
 - `plant_id` remains the technical key used in relationships. `plant_name` is the user-facing display field.
 - If new plant names are added in the source data, check that the `Tehas ` → `Plant ` replacement still produces the intended English names.
 - If the Plant slicer field is changed again, update all five Reset bookmarks in the same change.
+
+---
+
+## B7-B and B7-C – Month names and chart colours
+
+**Decision recorded:** 13 November 2026
+
+**Evidence basis:** Read-only inspection of the report JSON and TMDL files. No separate visual confirmation in Power BI Desktop was performed for these decisions.
+
+### B7-B – Month-name language
+
+**Status:** KNOWN COSMETIC ISSUE – ACCEPTED FOR V1
+
+**Evidence:**
+
+- **Matrices** use the SQL-backed column `gold dim_date[month_name]`, sorted by `month_no`:
+  - Sales Analysis `b2f9de`;
+  - Production Analysis `3bda48` and `3fd888`;
+  - four matrices on the hidden QA Validation page.
+- **Month slicers and charts** use the automatic date hierarchy (`Date Hierarchy` → `Month`). Power BI generates those month names with `FORMAT([Date], "MMMM")` in the model culture `en-US`, so they are English.
+
+Any language difference therefore comes from the source data in `gold.dim_date`, not from formatting or locale settings. The original audit observed Estonian month names in the Sales Analysis matrix. The actual `month_name` values cannot be confirmed from the repository files, and a final visual confirmation in Power BI Desktop was not performed for this decision.
+
+**Assessment:** This is a presentation consistency issue, not a numerical defect. Month ordering is correct and each month is unambiguous. No model, date-hierarchy or relationship change is required for V1. Any change would interact with the automatic date hierarchy (B6-3) and the Sales matrix drill state restored by the Reset bookmark (B2-2).
+
+**Future action:** Optional standardization of displayed month names.
+
+**V1 release impact:** Non-blocking.
+
+### B7-C1 – Main chart colour convention
+
+**Status:** ACCEPTED AS DESIGNED
+
+The visible comparison charts consistently use:
+
+- gold (`#D6A84B`) for the main actual-value series of the chart;
+- light green (`#A8C9A0`) for the comparison or reference series (Budget, or Sales when compared with production).
+
+This applies to the main comparison charts on Sales Analysis (`5dff9f`, `753edd`), Plant Analysis (`86199a`), Production Analysis (`479a11`, `714f22`), Product Analysis (`0e3d2a`, `0ebff6`) and V1 Dashboard (`dc947c`, `e2765a`).
+
+The colour therefore indicates the series' role in the chart, not a fixed measure. For example, Sales Actual is gold in sales charts and green when it is the comparison baseline in production-versus-sales charts. This is consistent with B2-1a, where Production Actual is the subject of the production comparison chart. The convention is intentional and does not require correction.
+
+### B7-C2 – Sales comparison series colour
+
+**Status:** KNOWN COSMETIC ISSUE – ACCEPTED FOR V1
+
+**Evidence:** The V1 Dashboard production comparison chart (`pages/718c030b07cb52bb7067/visuals/e2765a8dc5d09c18b07b/visual.json`) sets explicit colours for only two series:
+
+- `Production Actual Selected Period` (gold);
+- `Production Budget Selected Period` (green).
+
+When **Compare production with = Sales** is selected, the field parameter adds the series `Sales Actual Selected Period All Channels`, which has no explicit colour. It therefore uses a theme default colour instead of the green comparison colour. The report JSON supports this configuration difference. The final displayed colour was not independently confirmed in Power BI Desktop during this audit.
+
+**Assessment:** No impact on numerical results or filtering has been identified. The chart legend identifies the series.
+
+**Future action:** Optional explicit colour standardization (set the Sales series to the comparison colour) in V2.
+
+**V1 release impact:** Non-blocking.
 
 ---
 
