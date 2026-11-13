@@ -43,6 +43,7 @@ they are neither reported again as new defects nor forgotten.
 | B6-5 | Descriptions of all 17 visible measures | NO ISSUE FOUND – VERIFIED | 13 November 2026 | No |
 | B7-A | Inconsistent plant display names across slicers, charts and matrices | FIXED AND VERIFIED | 13 November 2026 | Yes – Power Query display-name step, six Plant slicers and five Reset bookmarks |
 | B8 | Outdated documentation requiring production volume units to be confirmed | FIXED AND VERIFIED | 13 November 2026 | No – three SQL documentation statements corrected; data, SQL logic and DAX unchanged |
+| B9 | SQL ↔ Power BI reconciliation initially documented only at grand-total level | FIXED AND VERIFIED – defined reconciliation scope | 13 November 2026 | No – new reconciliation record and README reference; model and report unchanged |
 
 ---
 
@@ -880,4 +881,88 @@ No PostgreSQL data, SQL query logic, DAX, Power BI files or source data were mod
 No data or calculation defect was identified. The Actual vs Budget and Production vs Sales comparisons use consistent volume units, subject to the budget-unit limitation above. **B8 does not block V1 publication.**
 
 Optional later improvement: the About-page KPI definitions describe "volume" without naming the unit. A short sentence stating that all volumes are in metric tonnes and explaining the K/M abbreviations could be added during later UX polish. It is not required for V1.
+
+---
+
+## B9 – SQL ↔ Power BI reconciliation granularity
+
+**Status:** FIXED AND VERIFIED – defined reconciliation scope
+
+**Decision recorded:** 13 November 2026
+
+**Evidence:** [`sql/14_channel_plant_powerbi_reconciliation.md`](../../sql/14_channel_plant_powerbi_reconciliation.md)
+
+### Original limitation
+
+The SQL ↔ Power BI comparisons were documented only at **grand-total level** and at displayed precision:
+
+- `sql/08_sales_powerbi_reconciliation.md` (scope line 5; limitation stated at line 17);
+- `sql/06_production_powerbi_reconciliation.md`.
+
+No SQL comparison of the budget measures was documented, and no comparison existed by channel, plant, product or month. Matching grand totals alone could hide an allocation or filter-context error at a lower level.
+
+### Relationship to A1
+
+A1 corrected the sales-channel filtering of Sales Budget and Attainment. That correction was verified functionally: channel-specific values appeared in the report, and the B2-2 Reset tests passed. A corrected DAX/filter setup is not, however, a numerical reconciliation. Before B9, no channel-level SQL ↔ Power BI comparison was recorded in the repository, even though `powerbi/README.md` stated that one had been made. That README statement now references the new evidence.
+
+### Reconciliation performed (13 November 2026)
+
+Both tests cover the full period 2023–2025 with no Year, Month, Plant, Product or Channel selection. Each compares a SQL Gold aggregation with the corresponding Power BI matrix.
+
+**Test A – Sales by channel** (Sales Analysis, Sales View Selector = Channel)
+
+| Channel | SQL Actual / Budget (t) | Power BI Actual / Budget (t) | Attainment SQL / Power BI |
+|---|---|---|---|
+| B2B | 216,172.7 / 217,161.9 | 216,173 / 217,162 | 99.54% / 99.54% |
+| DIST | 1,520,952.1 / 1,520,998.0 | 1,520,952 / 1,520,998 | 100.00% / 100.00% |
+| IND | 638,226.3 / 629,769.1 | 638,226 / 629,769 | 101.34% / 101.34% |
+| RET | 54,227.6 / 55,170.1 | 54,228 / 55,170 | 98.29% / 98.29% |
+| Total | 2,429,578.7 / 2,423,099.1 | 2,429,579 / 2,423,099 | 100.27% / 100.27% |
+
+Result: **PASS**. Variance also matched at displayed precision.
+
+**Test B – Production by plant** (Plant Analysis, Production KPI Selector = All)
+
+| Plant | SQL Actual / Budget (t) | Power BI Actual / Budget (t) | Attainment SQL / Power BI |
+|---|---|---|---|
+| Plant A (`PLANT-A`) | 294,164.3 / 295,000.4 | 294,164 / 295,000 | 99.72% / 99.72% |
+| Plant B (`PLANT-B`) | 469,209.9 / 472,000.5 | 469,210 / 472,001 | 99.41% / 99.41% |
+| Plant C (`PLANT-C`) | 704,109.5 / 707,999.4 | 704,110 / 707,999 | 99.45% / 99.45% |
+| Plant D (`PLANT-D`) | 938,598.6 / 944,000.7 | 938,599 / 944,001 | 99.43% / 99.43% |
+| Total | 2,406,082.3 / 2,419,001.0 | 2,406,082 / 2,419,001 | 99.47% / 99.47% |
+
+Result: **PASS**. Variance also matched at displayed precision. This is the first documented SQL comparison of Production Budget.
+
+**PASS criteria:**
+
+1. Every dimension member is present in both outputs.
+2. Actual, Budget and Variance agree at whole-tonne display precision.
+3. Attainment agrees within 0.01 percentage points.
+4. Power BI grand totals reconcile to independently calculated SQL totals.
+5. No blank or unassigned member appears.
+
+One-tonne differences between summed displayed rows and displayed totals, or between displayed Variance and displayed Actual minus Budget, are rounding effects and were treated as such.
+
+**Arithmetic check:** before documentation, Claude Code checked the supplied figures for arithmetic and rounding consistency. All row variances, attainments and totals are consistent. The budget figures also equal the sums of the local budget source files by channel and plant.
+
+### Remaining limitations – DOCUMENTED LIMITATIONS – ACCEPTED FOR V1
+
+- **Channel mapping is not traced to the source.** Channel values already exist in `gold.fact_sales` and `gold.fact_sales_budget`. The original sales invoice files contain no directly comparable channel field. The reconciliation therefore does not verify that each invoice was assigned to the correct business channel when the Gold layer was built.
+- **Month and product levels were not reconciled.** No SQL ↔ Power BI comparison by month or product was performed under B9. The queries in `sql/01_sales_v1_checks.sql` remain available for this.
+- **Dimension combinations were not tested.** Combinations such as channel × month or plant × product were not tested.
+- **Precision is limited to the display.** The comparison is at Power BI's displayed precision. Unrounded DAX values were not extracted.
+- **Other QA checks remain separate.** The Source-to-Bronze and Bronze/Silver/Gold checks validate the SQL pipeline. They are not SQL ↔ Power BI dimension-level tests.
+
+### Changes made
+
+| File | Change |
+|---|---|
+| `sql/14_channel_plant_powerbi_reconciliation.md` | New reconciliation record with both SQL queries, both result sets, comparison rules, reproduction steps and limitations. |
+| `powerbi/README.md` | The V1 scope note now states both PASS results and links to the new evidence instead of the previously unsupported claim. |
+
+No Power BI files, DAX, TMDL, SQL execution scripts or source data were modified.
+
+### Release decision
+
+**B9 does not block V1 publication.** The dimensions most exposed to the A1 defect and to budget allocation errors are now reconciled numerically with PASS results: sales channel (Actual, Budget, Variance, Attainment) and plant (including Production Budget). No numerical defect was found. The remaining gaps are lower-risk and transparently documented: source-to-Gold channel mapping, month and product granularity, and dimension combinations. They may be addressed in a later QA iteration.
 

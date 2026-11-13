@@ -35,7 +35,7 @@ Current V1 functionality includes:
 - An About page with KPI definitions, model information and measure documentation
 - A QA Validation page for inspecting selected reporting totals
 
-**V1 scope note:** Sales budgets are **allocated by sales channel**. Channel-level Actual, Budget, Variance and Attainment values have been checked against PostgreSQL results. Production quantities are **not** allocated to sales channels. Therefore, the production-versus-sales balance uses **all-channel sales** rather than the selected channel's sales volume.
+**V1 scope note:** Sales budgets are **allocated by sales channel**. Channel-level Actual, Budget, Variance and Attainment values were reconciled with PostgreSQL on 13 November 2026 (sales by channel: **PASS**; production by plant: **PASS**). Both tests compare full-period SQL Gold aggregates with Power BI matrix outputs at displayed precision. See [`sql/14_channel_plant_powerbi_reconciliation.md`](../sql/14_channel_plant_powerbi_reconciliation.md) for the evidence and its scope limitations. Production quantities are **not** allocated to sales channels. Therefore, the production-versus-sales balance uses **all-channel sales** rather than the selected channel's sales volume.
 
 ## Power BI Project Structure
 
