@@ -90,7 +90,9 @@ FROM information_schema.tables t
 WHERE t.table_schema = 'bronze'
   AND t.table_type = 'BASE TABLE'
 ORDER BY t.table_name;
--- Observed across all 10 tables: 8,011 bronze rows and 8,011 silver rows.
+-- Observed across all 10 tables: 8,007 bronze rows and 8,007 silver rows.
+-- Correction: the earlier comment stated 8,011, a summation error; the per-table counts
+-- were correct. The 8,007 totals were confirmed in PostgreSQL on 13 November 2026.
 -- Equal counts alone do not prove identical records.
 
 -- 06 | Required fields (NULL checks) in silver invoice rows

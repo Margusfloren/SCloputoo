@@ -47,7 +47,7 @@ The following are **observed results for the validated dataset**, not permanent 
 - Row counts matched between Bronze and Silver in the ten source tables checked.
 - The `gold` schema had **13 documented tables** and **87 documented columns** (all comments present at the time of the check).
 
-**Row-count documentation note:** The earlier SQL README and October Source-to-Bronze report stated a total of **8,011 rows**, but the ten table counts listed in that October report sum to **8,007 rows**. The November Source-to-Bronze CSV independently lists the same ten counts, totaling **8,007**. The historical total should therefore be corrected in the October report; this arithmetic discrepancy does not itself indicate a row-level comparison failure.
+**Row-count documentation note:** The earlier SQL README and October Source-to-Bronze report stated a total of **8,011 rows**, but the ten table counts listed in that October report sum to **8,007 rows**. The November Source-to-Bronze CSV independently lists the same ten counts, totaling **8,007**. The historical total was corrected in the October report on 10 November 2026, and the related SQL comments and documentation were updated on 13 November 2026. A read-only PostgreSQL row-count check on 13 November 2026 confirmed **8,007** rows in both Bronze and Silver across the ten tables. This arithmetic discrepancy did not indicate a row-level comparison failure.
 
 ### Sales reconciliation
 
@@ -116,7 +116,6 @@ To repeat the full Source-to-Bronze audit, follow the [Python script instruction
 
 ## Next validation tasks
 
-- Resolve the **8,011 vs 8,007** historical row-total discrepancy in the October Source-to-Bronze report.
 - Preserve the November validation output as reproducible QA evidence; rerun the same audit after any source or Bronze reload.
 - Review the role of Python ingestion/processing steps and Power Query against the intended pipeline architecture.
 - Where required, validate unrounded Power BI DAX totals and period/plant/product breakdowns against matching SQL extracts.

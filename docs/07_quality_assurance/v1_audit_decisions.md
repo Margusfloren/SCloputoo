@@ -27,6 +27,7 @@ they are neither reported again as new defects nor forgotten.
 | B2-2 | Outdated `Reset - Sales Analysis` bookmark after the A1 sales-channel budget fix; associated `Reset - V1 Dashboard` state also refreshed | FIXED AND VERIFIED | 13 November 2026 | Yes – report bookmarks, visual states and start page |
 | B2-3a | Ambiguous "Budget Attainment Selected Period" labels on two sales KPI cards | FIXED AND VERIFIED | 13 November 2026 | Yes – two card labels and Desktop-generated language metadata |
 | B2-3b | Hidden `Budget Attainment YTD %` measure has a misleading YTD name and description | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 13 November 2026 | No – measure deliberately retained |
+| B3 | Incorrect summed row count (8,011 instead of 8,007) in Source/Bronze/Silver QA comments and documentation | FIXED AND VERIFIED | 13 November 2026 | No – SQL comments and QA Markdown documentation only |
 | B4 | Documentation formatting, README placeholders, and relative links | FIXED AND VERIFIED | 13 November 2026 | Yes – seven README files |
 
 ---
@@ -143,11 +144,10 @@ are corrected and checked. Mark A2 **FIXED AND VERIFIED**. This status does
 not assert that Python now independently computes sales KPIs; that remains
 outside the implemented V1 scope.
 
-**Related follow-up, not part of A2:**
-`sql/12_python_documentation_validation.md` still states `REVIEW PENDING`
-for the notebook, although its reviewed/documented version exists. The same
-file also contains the older `8,011` figure; update these together when
-handling original audit finding **B3**.
+**Related follow-up, resolved under B3 (13 November 2026):**
+The stale `REVIEW PENDING` notebook status and incorrect `8,011` row-total
+reference in `sql/12_python_documentation_validation.md` were corrected as
+part of B3. See the B3 decision below.
 
 ---
 
@@ -462,6 +462,84 @@ B2-2 Reset-bookmark repairs.
 
 ---
 
+## B3 – Incorrect total row count in Source/Bronze/Silver QA documentation
+
+**Status:** FIXED AND VERIFIED  
+**Decision recorded:** 13 November 2026  
+**Finding type:** Documentation summation error; no data or executable SQL defect.  
+**Evidence basis:** Claude Code's read-only source/Git-history inspection, the project owner's 13 November pgAdmin execution, and Claude Code's post-edit file/diff checks. The edited SQL and Markdown files themselves were not supplied with this log update; file-level verification is attributed to that report.
+
+### Original finding and root cause
+
+Several SQL comments and QA Markdown files reported **8,011** rows across
+10 source tables. Individual table counts were correct, but their arithmetic
+sum was **8,007**:
+
+`504 + 1,404 + 11 + 4 + 504 + 2,520 + 576 + 576 + 504 + 1,404 = 8,007`.
+
+The incorrect aggregate originated in October 2026 and was repeated in
+later documentation. A correction to the aggregate in the Source → Bronze
+report had already been committed on **10 November 2026** (`aa7f21d`), but
+some related comments and status notes still contained the outdated figure.
+This was a **reporting/summation error**, not evidence of lost or duplicated
+rows, a faulty ETL transformation, or incorrect Power BI KPIs.
+
+### Verification evidence
+
+On **13 November 2026**, the project owner ran a read-only PostgreSQL query
+in pgAdmin against database `pellet_sc`, counting all matching tables in the
+`bronze` and `silver` schemas. The displayed result was:
+
+| Check | Verified result |
+|---|---:|
+| Tables | 10 |
+| Bronze total rows | 8,007 |
+| Silver total rows | 8,007 |
+| Difference in aggregate row counts | 0 |
+
+These database totals are consistent with the ten per-table counts in
+`data/processed/source_bronze_qa_results.csv` and the corrected
+`sql/10_source_to_bronze_full_validation.md` report (**10/10 PASS**).
+**Scope:** the pgAdmin query verifies matching *aggregate row counts* across
+Bronze and Silver; it does **not** by itself prove row-by-row equivalence.
+The separate Source → Bronze Python check is documented elsewhere.
+
+### Corrective action
+
+According to the Claude Code post-edit report, four files were updated:
+
+| File | Documented correction |
+|---|---|
+| `sql/03_bronze_silver_qa.sql` (near lines 93–95) | Replaced the obsolete 8,011 Bronze/Silver total with 8,007 and added an explanatory note referencing the 13 November database check. Executable SQL was unchanged. |
+| `sql/12_python_documentation_validation.md` (near lines 5, 23, 34–37) | Updated 8,011 to 8,007; changed the notebook review from `PARTIAL PASS` / `REVIEW PENDING` to `PASS` based on checking the five documented review criteria. Clarified that the KPI notebook executes SQL rather than independently recalculating KPIs in Python. |
+| `sql/13_architecture_standard_compliance_summary.md` (near line 11) | Corrected Source → Bronze aggregate to 8,007. |
+| `sql/README.md` (near lines 50, 79, 119) | Recorded the prior report correction as completed on 10 November, added the 13 November 8,007/8,007 confirmation, and removed the already completed task to reconcile 8,011 versus 8,007. |
+
+The notebook's updated **PASS** status applies to its *documentation/security
+review criteria* (scope, KPI definitions, `getpass`, saved output/limitations,
+and no hard-coded password). It does **not** mean that the notebook now
+independently implements KPI calculations or that all SQL/Python validation
+workflows were re-executed.
+
+### Post-edit checks and release decision
+
+The read-only follow-up reported:
+
+- All remaining occurrences of **8,011** in the repository are explicitly
+  historical correction notes, not current totals.
+- All current QA totals use **8,007**, consistent with the independent
+  Source → Bronze QA report and the 13 November pgAdmin total-row check.
+- Only four expected files changed (**+22 / −16 lines**); no database,
+  Power BI, Python source, executable SQL logic, or bookmark changes.
+- `git diff --check` passed; existing line-ending conventions were preserved.
+
+**Decision:** Mark B3 **FIXED AND VERIFIED**. The 8,011/8,007 discrepancy was
+resolved in documentation. Do not reopen B3 merely because older numbers
+remain quoted in clearly labelled historical correction notes. Reassess only
+if a future data reload changes table counts or a new reconciliation fails.
+
+---
+
 ## B4 – Documentation formatting, README placeholders and links
 
 **Status:** FIXED AND VERIFIED  
@@ -520,5 +598,6 @@ According to the follow-up report:
   future work, not a promise made by V1.
 - Retain the A2 distinction: Python independently validates source-to-Bronze
   loads but does not independently recalculate sales KPIs.
-- B4 does not close other audit findings (including B3, B5, B6, B7, B8, B9,
-  B10 and the later B2-4/B2-5 observations).
+- B4 is separate from the subsequently resolved B3 finding; other audit
+  observations (B5, B6, B7, B8, B9, B10 and later B2-4/B2-5) remain to be
+  reviewed or dispositioned independently.
