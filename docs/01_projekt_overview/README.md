@@ -246,9 +246,6 @@ Typical transformations include:
 
 - data type corrections;
 - naming standardization;
-- product mapping;
-- plant mapping;
-- sales-channel mapping;
 - validation rules.
 
 ### Gold layer
@@ -256,6 +253,13 @@ Typical transformations include:
 Contains reporting-ready fact and dimension tables used by Power BI and Python.
 
 The gold layer is intended to provide a consistent source of truth for analytical calculations.
+
+During Silver/Gold processing, source records are mapped to the reporting dimensions (product, plant and sales channel). The build scripts for the Bronze, Silver and Gold layers are not included in this repository, so the exact processing stage of each mapping is not documented here.
+
+### Sales-channel assignment
+
+- **Sales budget:** the source file `sales_budget.csv` contains the sales channel explicitly (`channel_id`, `channel_name`). The budget totals by channel in Gold equal the source file totals (see `sql/14_channel_plant_powerbi_reconciliation.md`).
+- **Actual sales:** the source invoice files contain no channel field. The Gold layer contains sales-channel assignments used by the reporting model. The original source-to-Gold channel-assignment implementation is not included in this repository. SQL-to-Power BI reconciliation verifies the reported channel aggregates, but does not independently validate the original assignment rules.
 
 ---
 

@@ -45,6 +45,7 @@ they are neither reported again as new defects nor forgotten.
 | B8 | Outdated documentation requiring production volume units to be confirmed | FIXED AND VERIFIED | 13 November 2026 | No – three SQL documentation statements corrected; data, SQL logic and DAX unchanged |
 | B9 | SQL ↔ Power BI reconciliation initially documented only at grand-total level | FIXED AND VERIFIED – defined reconciliation scope | 13 November 2026 | No – new reconciliation record and README reference; model and report unchanged |
 | B10 | Minor repository and documentation issues (five sub-findings B10-1 to B10-5) | CLOSED – documentation corrections and English translation completed | 13 November 2026 | No – documentation and SQL comments only (eleven files); model, report, SQL query logic and Python logic unchanged |
+| B1 | Source → Bronze → Silver → Gold pipeline cannot be rebuilt from the repository | DOCUMENTED LIMITATION – ACCEPTED FOR V1 | 13 November 2026 | No – three documentation files clarified; no DDL, ETL, data or Power BI changes |
 
 ---
 
@@ -1087,4 +1088,90 @@ No Python program logic, SQL queries, source data, Power BI files, DAX or TMDL w
 ### Release decision
 
 **B10 does not block V1 publication.** All five sub-findings have a recorded disposition. The documentation corrections address the items that affected reproducibility and the accuracy of public repository statements. The repository documentation is now in English. The only remaining Estonian text found by the scan is in developer notes on hidden semantic-model columns, which report viewers do not see. Translating them is an optional later cleanup.
+
+---
+
+## B1 – Data pipeline reproducibility
+
+**Status:** DOCUMENTED LIMITATION – ACCEPTED FOR V1
+
+**Decision recorded:** 13 November 2026
+
+### Original finding
+
+The original audit found that the pipeline could not be rebuilt from the repository:
+
+- the Bronze, Silver and Gold DDL and ETL were missing;
+- the raw data was (justifiably) excluded;
+- the Power BI cache was ignored, so the PBIP opens without data unless a local `pellet_sc` database exists;
+- the README overstated the role of SQL and Python in data preparation.
+
+It recommended adding at least the Gold DDL and transformation SQL, or a synthetic sample dataset.
+
+### Current state (verified read-only)
+
+**Not in the repository:**
+
+- **Source data.** The two raw ZIP archives are excluded by `.gitignore` (`/data/raw/*`). The procedure for generating the synthetic source data is not documented in the repository.
+- **Build scripts.** No tracked file contains a `CREATE`, `INSERT`, `COPY`, `ALTER`, `UPDATE` or `DROP` statement. No Bronze loading script, Silver transformation or Gold build logic is present. `sql/02_gold_documentation.sql` only writes `COMMENT ON` metadata to existing tables.
+
+**In the repository:**
+
+- the architecture description (`README.md`, `docs/01_projekt_overview/README.md`);
+- Gold metadata for 13 tables and 87 columns (`sql/02`);
+- read-only SQL QA scripts with recorded results (`sql/03`–`sql/14`) and a documented execution procedure (`sql/README.md`);
+- the Python Source-to-Bronze QA script and its completed runs;
+- the complete Power BI semantic model (TMDL) and report definitions (PBIR).
+
+The earlier README wording criticised in the original finding no longer appears.
+
+### Pipeline reproducibility vs QA reproducibility
+
+| Capability | Assessment |
+|---|---|
+| **Pipeline reproducibility** – rebuilding Source → Bronze → Silver → Gold and a refreshed report from the repository | **Not supported.** Source data and build scripts are not included. |
+| **QA reproducibility** – repeating the documented checks against an appropriately populated database | **Partially supported.** The SQL checks, their execution order and the expected results are documented. The Python Source-to-Bronze check also needs the local source archives. |
+| **Model and report inspection** | **Supported.** All model and report definitions are version-controlled. |
+
+### Power BI refresh dependency
+
+All eight Power Query partitions connect to `PostgreSQL.Database("localhost", "pellet_sc")` and import eight Gold tables. Refreshing requires:
+
+- a populated local PostgreSQL database;
+- valid credentials.
+
+The local cache (`.pbi/cache.abf`) is excluded from Git. Without the database, a reviewer can inspect the model and report definitions but cannot reproduce a populated, refreshed report.
+
+### Sales-channel assignment
+
+| Category | Evidence |
+|---|---|
+| **Confirmed fields and relationships** | `gold.fact_sales.channel_id` and `gold.fact_sales_budget.channel_id` relate to `gold.dim_channel` (`relationships.tmdl`). `gold.dim_customer.channel_id` is documented as "Sales channel associated with the customer" (`sql/02_gold_documentation.sql`). `dim_customer` is not imported into Power BI. |
+| **Confirmed mappings** | **Sales budget:** the source file `sales_budget.csv` contains `channel_id` and `channel_name` (B2B, DIST, IND, RET). Gold budget totals by channel equal the source file totals (`sql/14_channel_plant_powerbi_reconciliation.md`). |
+| **Inferred, not verified** | **Actual sales:** the source invoice files contain no channel field, only customer codes such as `CUST-B01`, `CUST-D02`, `CUST-I01` and `CUST-R01`. The Gold metadata suggests that the channel is assigned through the customer. A correspondence between code letters and channels is plausible but **not established** by repository evidence. |
+| **Missing implementation** | The original source-to-Gold channel-assignment logic is not included in the repository. |
+
+The Gold layer contains the sales-channel assignments used by the reporting model. SQL-to-Power BI reconciliation (B9) verifies the reported channel aggregates. It does not independently validate the original assignment rules for actual sales.
+
+`docs/01_projekt_overview/README.md` previously listed product, plant and sales-channel mapping as Silver-layer transformations, while the Gold metadata places the customer–channel attribute in `gold.dim_customer`. Because the build scripts are not available, the description now states neutrally that the mappings are applied during Silver/Gold processing.
+
+### Documentation improvements
+
+| File | Change |
+|---|---|
+| `README.md` | The reproducibility note now states what is and is not included: source ZIP archives excluded, no DDL/ETL, SQL scripts validate rather than build. It describes the repository as a transparent portfolio, not an executable pipeline, and links to the Power BI refresh instructions. |
+| `powerbi/README.md` | New section **Opening and refreshing the report**, covering the `localhost`/`pellet_sc` connection, the eight Gold tables, the credentials and database requirement, the excluded cache, and what a reviewer can and cannot do without the database. |
+| `docs/01_projekt_overview/README.md` | Neutral wording for the Silver/Gold mapping stage, and a new **Sales-channel assignment** subsection separating confirmed budget channels from unverified actual-sales assignment. |
+
+No DDL, ETL, sample data, database exports, SQL query logic, DAX, TMDL, Power BI report files or source data were added or changed.
+
+### Why a full rebuild is outside the V1 scope
+
+Recreating the Bronze, Silver and Gold build logic would be a new development cycle. It would also partly be a reconstruction rather than the original implementation. The V1 results do not depend on it: the existing tables have been validated layer by layer (Source → Bronze 10/10 PASS; Bronze/Silver/Gold quantity reconciliations) and against Power BI (B8, B9). The repository's stated purpose is a transparent portfolio of business understanding, data preparation and validation, modelling and reporting. That purpose is met when the architecture, model, QA evidence and limitations can be inspected.
+
+Possible later improvements include a schema-only Gold export (DDL without data), the documented channel-assignment rule, or a small synthetic sample database.
+
+### Release decision
+
+**B1 does not block V1 publication.** The repository no longer claims to be fully reproducible. The limitation is stated in the main README, the Power BI README and the project overview, and the reported figures remain traceable through the documented QA evidence. The unverified actual-sales channel assignment is recorded here and in B9 as an accepted V1 limitation.
 

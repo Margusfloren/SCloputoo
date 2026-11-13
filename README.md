@@ -82,4 +82,8 @@ Potential next stages include inventory and coverage, raw-material and BOM plann
 - [Python notebooks and scripts](python/)
 - [Project documentation](docs/)
 
-**Reproducibility note:** The repository contains the Power BI project structure and validation materials, but not a fully self-contained environment for rebuilding the entire pipeline. Running the report against its underlying data requires an appropriate local PostgreSQL and Power BI setup; raw ZIP source archives may be excluded from the repository.
+**Reproducibility note:** This repository is a transparent technical and business portfolio. It is not a fully executable data pipeline.
+
+- **Included:** the architecture description, Gold-layer metadata definitions (`sql/02_gold_documentation.sql`), SQL and Python quality-assurance checks with their recorded results, and the complete Power BI semantic model and report definitions.
+- **Not included:** the raw source ZIP archives, which are excluded from Git, and the DDL and ETL scripts that build the Bronze, Silver and Gold layers. The SQL scripts in `sql/` validate existing tables; they do not create them.
+- **Consequence:** the full pipeline cannot be rebuilt from this repository alone. Refreshing the report requires a populated local PostgreSQL database; see [Opening and refreshing the report](powerbi/README.md#opening-and-refreshing-the-report).

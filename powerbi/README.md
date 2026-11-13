@@ -50,6 +50,23 @@ Semantic model containing tables, relationships, measures and model definitions.
 
 *The `dachboard` spelling above follows the existing project filenames.*
 
+## Opening and refreshing the report
+
+The semantic model imports eight Gold-layer tables from the PostgreSQL database `pellet_sc` on `localhost`. The connection `PostgreSQL.Database("localhost", "pellet_sc")` is defined in each of the eight Power Query partitions in `Pellet_SC_dachboard.SemanticModel/definition/tables/`:
+
+- `gold.dim_date`, `gold.dim_plant`, `gold.dim_product`, `gold.dim_channel`
+- `gold.fact_sales`, `gold.fact_sales_budget`, `gold.fact_production`, `gold.fact_production_budget`
+
+To refresh the data, you need:
+
+- Power BI Desktop;
+- a local PostgreSQL database `pellet_sc` with these tables populated;
+- valid database credentials, which Power BI Desktop requests on refresh.
+
+The local data cache (`.pbi/cache.abf`) is excluded from Git and is not distributed with the project. The database build scripts and source data are not included either (see the repository README's reproducibility note).
+
+A reviewer without the database can open the project and inspect the version-controlled model (tables, relationships, DAX measures, Power Query steps) and the report definitions (pages, visuals, bookmarks). They cannot reproduce a populated, refreshed report from the repository alone.
+
 ## Data Model
 
 The dashboard uses a dimensional model based on a synthetic, Directo-inspired source-data structure.
