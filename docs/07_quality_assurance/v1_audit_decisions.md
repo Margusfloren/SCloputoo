@@ -14,6 +14,8 @@ they are neither reported again as new defects nor forgotten.
 | ACCEPTED AS DESIGNED | The behaviour is intentional. It is not a defect. |
 | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | The implementation is not ideal, but the current result is acceptable for V1. The item stays open for a future version. |
 | FIXED AND VERIFIED | The issue was corrected and the result was verified using an appropriate method (e.g. Power BI Desktop, SQL execution, or source-file inspection). The relevant evidence is recorded with each decision. |
+| FUTURE DEVELOPMENT – V2 | A potential later improvement, intentionally outside V1 scope. |
+| NO ISSUE FOUND – VERIFIED | Review found no defect in the checked scope; no change required. |
 
 ## Summary
 
@@ -34,6 +36,11 @@ they are neither reported again as new defects nor forgotten.
 | B5c | Obsolete duplicate `data/procecced/` placeholder directory | FIXED AND VERIFIED | 13 November 2026 | Yes – obsolete README deleted |
 | B5d | Legacy hidden page name `Dasboard` and technical PBIP name `dachboard` | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 13 November 2026 | No – naming deliberately retained |
 | B5e | Previously incorrect `Pellet_SC_dashboard` documentation path | FIXED AND VERIFIED (previously resolved) | 13 November 2026 (status recorded) | No new change |
+| B6-1 | Six hidden legacy measures with no live report references | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 13 November 2026 | No |
+| B6-2 | Inconsistent measure number formats; possible matrix display differences not visually confirmed | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 13 November 2026 | No |
+| B6-3 | Automatic date/time hierarchy dependency | FUTURE DEVELOPMENT – V2 | 13 November 2026 | No |
+| B6-4 | `gold dim_date` not marked as a date table | FUTURE DEVELOPMENT – V2 | 13 November 2026 | No |
+| B6-5 | Descriptions of all 17 visible measures | NO ISSUE FOUND – VERIFIED | 13 November 2026 | No |
 
 ---
 
@@ -603,9 +610,9 @@ According to the follow-up report:
   future work, not a promise made by V1.
 - Retain the A2 distinction: Python independently validates source-to-Bronze
   loads but does not independently recalculate sales KPIs.
-- B4 is separate from the subsequently resolved B3 finding; other audit
-  observations (B5, B6, B7, B8, B9, B10 and later B2-4/B2-5) remain to be
-  reviewed or dispositioned independently.
+- B4 is separate from the subsequently resolved B3 finding; B5 and B6
+  decisions are documented below. Other findings (B1, B7–B10 and later
+  B2-4/B2-5) require separate review or disposition.
 
 ---
 
@@ -670,3 +677,64 @@ At the last read-only follow-up, exactly **four local files** were changed relat
 The follow-up reported no changes in the Reset bookmarks, DAX calculations, relationships, semantic-model field names, `pages.json` or Desktop-generated culture metadata; `git diff --check` passed. The user-visible sales-budget measure descriptions were also checked in Power BI Desktop.
 
 **Decision:** The B5 spelling, About-page wording, unit-description and obsolete-folder fixes are complete, with the two legacy technical names explicitly accepted for V1. The project owner also confirmed correcting the extra whitespace and redundant sales-channel wording after the initial read-only inspection; those items are not open work. Before committing, confirm that the four expected changes plus this decision log are selected and that `data/procecced/README.md` is recorded as deleted.
+---
+
+## B6 – Measure hygiene and date-model dependencies
+
+**Decision recorded:** 13 November 2026  
+**Decided by:** Project owner – retain the functioning V1 model without structural changes.  
+**Evidence basis:** Claude Code read-only inspection of the PBIP/TMDL report, bookmark and semantic-model files. The audit found a clean Git working tree. These are source-level findings; no date-model configuration changes or visual re-tests were performed for B6.
+
+### B6-1 – Unused hidden legacy measures
+
+**Status:** KNOWN TECHNICAL DEBT – ACCEPTED FOR V1.
+
+The dependency search found no references in current report visuals, bookmarks, field parameters or active measure expressions to these six hidden measures, except for references within other unused measures and generated Q&A culture metadata:
+
+| Hidden measure | `_Measures.tmdl` line reported in audit |
+|---|---:|
+| `Sales Actual YTD` | 55 |
+| `Sales Budget YTD` | 70 |
+| `Sales Variance YTD` | 85 |
+| `Budget Attainment Status` | 106 |
+| `Sales Variance KPI` | 225 |
+| `Sales Actual KPI` | 255 |
+
+Their presence does not affect the visible V1 KPI calculations. Do not remove them in V1 solely for cleanup. Active hidden support measures remain necessary, including KPI Display measures, view calculations, `Filter Context`, `Production Chart Title` and `Sales Attainment Target %`. The misleading but **actively used** `Budget Attainment YTD %` measure is already covered by **B2-3b**; that decision remains unchanged.
+
+### B6-2 – Inconsistent numeric formats
+
+**Status:** KNOWN TECHNICAL DEBT – ACCEPTED FOR V1.
+
+The TMDL audit reported a mixture of `#,0`, `0`, `0.00`, `General` and other format definitions among sales and production measures (examples near `_Measures.tmdl` lines 31, 35, 42, 49, 127, 139, 146, 173, 185 and 194). Some matrix visuals override the measure format and others do not.
+
+These inconsistencies **do not change the numeric results**. A user-visible mismatch (e.g. decimal places or thousand separators in a specific matrix) was **not established by the file-only inspection**. Accept the current V1 implementation; only revisit formatting if a material display problem is observed, or during later UX polish.
+
+### B6-3 – Auto date/time hierarchies
+
+**Status:** FUTURE DEVELOPMENT – V2.
+
+The configuration `Pellet_SC_dachboard.SemanticModel/definition/model.tmdl` contains `__PBI_TimeIntelligenceEnabled = 1` (audit reference: line 10). Two LocalDateTable objects and a DateTableTemplate are present.
+
+The read-only search found automatic `Date Hierarchy` / `PropertyVariationSource` references in **35 report files**, covering approximately **30 visuals across seven report pages and five bookmarks**. Disabling Auto date/time would therefore jeopardize existing Year/Month hierarchy references and is expected to require coordinated visual and bookmark migration. **No disabling test was performed**, so this is a dependency-based risk assessment, not a claim of a reproduced breakage. Keep Auto date/time enabled in V1.
+
+### B6-4 – Dedicated date table is not marked as a date table
+
+**Status:** FUTURE DEVELOPMENT – V2 (coordinate with B6-3).
+
+The report uses `gold dim_date`; its TMDL definition was not found to mark it explicitly as a date table. The `date` and `month_start_date` columns have automatic variations (audit references in `gold dim_date.tmdl`, near lines 12–15 and 84–87).
+
+No active report KPI measure uses `TOTALYTD` or similar time-intelligence functions; current selected-period sums and ratios work with normal filter relationships. Marking the table as a date table could affect the currently referenced automatic hierarchies. Do not change this setting independently of the B6-3 migration. If required in V2, test the revised date hierarchy, all affected visuals and reset bookmarks together.
+
+### B6-5 – Measure descriptions
+
+**Status:** NO ISSUE FOUND – VERIFIED.
+
+All **17 visible measures** had descriptions in the read-only inspection and are exposed through the About-page measure metadata view, which excludes hidden measures. The B5 corrections to `tonnes` were present (`_Measures.tmdl`, audit references near lines 9 and 130). Some hidden helper measures lack descriptions, but these are not exposed to report viewers. One minor punctuation inconsistency in the `Production Variance` description (near line 40) is not a functional defect and does not warrant a V1 change.
+
+### V1 release decision and follow-up
+
+**B6 does not block V1 publication.** The inspection found no B6 issue requiring a functional fix before release. Current visible KPI measures use standard aggregations, ratios and filter relationships rather than the unused YTD calculations. Prior SQL/Power BI reconciliation evidence is discussed in the A-level audit record; wider channel/budget comparison coverage remains a separate **B9** item.
+
+**No files were changed for B6.** Future work may remove unused hidden measures, harmonize number formats and redesign the date hierarchy/date-table setup, but should be planned and tested as a distinct V2 change rather than introduced during V1 sign-off. This decision records a source-level risk assessment; it does not assert that a date-model migration was experimentally tested.
+
