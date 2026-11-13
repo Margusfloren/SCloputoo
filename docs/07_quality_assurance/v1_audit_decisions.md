@@ -29,6 +29,11 @@ they are neither reported again as new defects nor forgotten.
 | B2-3b | Hidden `Budget Attainment YTD %` measure has a misleading YTD name and description | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 13 November 2026 | No – measure deliberately retained |
 | B3 | Incorrect summed row count (8,011 instead of 8,007) in Source/Bronze/Silver QA comments and documentation | FIXED AND VERIFIED | 13 November 2026 | No – SQL comments and QA Markdown documentation only |
 | B4 | Documentation formatting, README placeholders, and relative links | FIXED AND VERIFIED | 13 November 2026 | Yes – seven README files |
+| B5a | About-page spelling and outdated sales-channel usage guidance | FIXED AND VERIFIED | 13 November 2026 | Yes – two About-page text visuals |
+| B5b | `tones` instead of `tonnes` in two sales-budget measure descriptions | FIXED AND VERIFIED | 13 November 2026 | Yes – measure descriptions only (DAX unchanged) |
+| B5c | Obsolete duplicate `data/procecced/` placeholder directory | FIXED AND VERIFIED | 13 November 2026 | Yes – obsolete README deleted |
+| B5d | Legacy hidden page name `Dasboard` and technical PBIP name `dachboard` | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 13 November 2026 | No – naming deliberately retained |
+| B5e | Previously incorrect `Pellet_SC_dashboard` documentation path | FIXED AND VERIFIED (previously resolved) | 13 November 2026 (status recorded) | No new change |
 
 ---
 
@@ -601,3 +606,67 @@ According to the follow-up report:
 - B4 is separate from the subsequently resolved B3 finding; other audit
   observations (B5, B6, B7, B8, B9, B10 and later B2-4/B2-5) remain to be
   reviewed or dispositioned independently.
+
+---
+
+## B5 – Naming inconsistencies and spelling corrections
+
+**Decision recorded:** 13 November 2026  
+**Decision basis:** B5 read-only investigation, subsequent Claude Code read-only follow-up, Power BI Desktop screenshots of the About page and measure-description table, and the project owner's confirmation that the obsolete local folder was removed. This log update does not independently access or modify the local Git working tree.
+
+### B5a – About-page wording
+
+**Status:** FIXED AND VERIFIED.
+
+Two visible About-page text visuals were corrected in Power BI Desktop:
+
+| Visual | Previously | Current verified content |
+|---|---|---|
+| `powerbi/Pellet_SC_dachboard.Report/definition/pages/970d6fcfaf61082c78b3/visuals/db2959c03ca507f8b84a/visual.json` (near line 40) | `syntetic` in the **Data & model** section | The word is now spelled `synthetic`. |
+| `powerbi/Pellet_SC_dachboard.Report/definition/pages/970d6fcfaf61082c78b3/visuals/70a7bb9f564c75114f2e/visual.json` (near line 127) | Claim that V1 sales budgets were not allocated by channel | States that sales-channel views support analysis of actual sales, allocated budgets, variances and budget attainment by channel, consistent with the A1 correction. |
+
+The subsequent read-only inspection confirmed that only the expected About text changed and that the report's default start page remained **V1 Dashboard**. The channel-budget statement was an A1 documentation follow-up discovered during the B5 review; it is not a new calculation change.
+
+**Additional presentation corrections:** The read-only follow-up initially observed an extra space after `synthetic,` in the visual JSON and a redundant, narrower sales-channel sentence in **How to use**. The project owner subsequently confirmed that both were corrected in Power BI Desktop before the B5 commit. These are therefore not outstanding B5 actions. The two final wording changes were confirmed by the project owner; a separate read-only JSON check after those final edits has not been recorded here.
+
+### B5b – Sales-budget measure descriptions
+
+**Status:** FIXED AND VERIFIED.
+
+In `powerbi/Pellet_SC_dachboard.SemanticModel/definition/tables/_Measures.tmdl`, the description of **Sales Budget** (near line 9) and **Sales Budget Selected Period** (near line 130) was corrected from `tones` to **`tonnes`**. Both measures represent quantities in metric tonnes (`t`), using the existing `budget_t` field.
+
+The Claude Code follow-up confirmed that only two `///` description lines changed; DAX expressions, measure names, formatting and model relationships were not altered. The project owner additionally inspected the Power BI About-page measure metadata table and confirmed that both descriptions display `tonnes`.
+
+### B5c – Duplicate obsolete data folder
+
+**Status:** FIXED AND VERIFIED at the Git working-tree level; include the deletion in the next commit.
+
+The misspelled `data/procecced/` directory contained only an unused placeholder `README.md`. The actual `data/processed/` directory, including `source_bronze_qa_results.csv`, already existed and remained intact. The B5 inspection found no references to `data/procecced/` in the project.
+
+The project owner deleted the obsolete directory. GitHub Desktop subsequently displayed `data/procecced/README.md` as a **deleted** changed file. The deletion was not yet committed when the screenshot was reviewed; it must be included in the B5 commit. No data processing, SQL, Python or Power BI changes were required.
+
+### B5d – Legacy technical names retained
+
+**Status:** KNOWN TECHNICAL DEBT – ACCEPTED FOR V1.
+
+- **`Dasboard`** is the display name of an old *hidden* prototype page (`pages/ea1a8d2669273a593300/page.json`). It is not shown to ordinary report viewers. Leave it unchanged in V1; consider retiring the obsolete page in a later cleanup rather than renaming it now.
+- **`Pellet_SC_dachboard`** is the existing PBIP project/folder stem. Renaming it would affect project structure, internal references and documentation for little user-facing benefit. Retain the existing spelling for V1. `powerbi/README.md` already explains the historical filename spelling.
+
+### B5e – Previously corrected documentation reference
+
+**Status:** FIXED AND VERIFIED (previously resolved).
+
+The earlier documentation reference to `Pellet_SC_dashboard` has already been corrected to the real project-file stem. The B5 investigation found no remaining occurrences of that incorrect reference. No additional change was needed.
+
+### Final file scope and verification
+
+At the last read-only follow-up, exactly **four local files** were changed relative to the preceding Git commit:
+
+1. `.../visuals/db2959c03ca507f8b84a/visual.json` – About-page spelling correction;
+2. `.../visuals/70a7bb9f564c75114f2e/visual.json` – updated sales-channel explanation;
+3. `powerbi/Pellet_SC_dachboard.SemanticModel/definition/tables/_Measures.tmdl` – two description lines (`tonnes`);
+4. `data/procecced/README.md` – deleted obsolete placeholder.
+
+The follow-up reported no changes in the Reset bookmarks, DAX calculations, relationships, semantic-model field names, `pages.json` or Desktop-generated culture metadata; `git diff --check` passed. The user-visible sales-budget measure descriptions were also checked in Power BI Desktop.
+
+**Decision:** The B5 spelling, About-page wording, unit-description and obsolete-folder fixes are complete, with the two legacy technical names explicitly accepted for V1. The project owner also confirmed correcting the extra whitespace and redundant sales-channel wording after the initial read-only inspection; those items are not open work. Before committing, confirm that the four expected changes plus this decision log are selected and that `data/procecced/README.md` is recorded as deleted.
