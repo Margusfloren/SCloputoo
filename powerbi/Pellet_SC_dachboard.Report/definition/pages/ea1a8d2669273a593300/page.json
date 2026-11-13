@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ea1a8d2669273a593300",
+  "displayName": "Dasboard",
+  "displayOption": "ActualSize",
+  "height": 1400,
+  "width": 2100,
+  "visibility": "HiddenInViewMode",
+  "visualInteractions": [
+    {
+      "source": "3165184177c91bbd885a",
+      "target": "2f1fbb692ce01297a32a",
+      "type": "NoFilter"
+    },
+    {
+      "source": "3165184177c91bbd885a",
+      "target": "8b746e049b09269647d3",
+      "type": "NoFilter"
+    }
+  ]
+}

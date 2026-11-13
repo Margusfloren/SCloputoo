@@ -1,0 +1,37 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: et-EE
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["gold dim_date","gold dim_plant","gold dim_product","gold dim_channel","gold fact_sales","gold fact_sales_budget","gold fact_production","gold fact_production_budget"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'gold dim_date'
+ref table DateTableTemplate_9744685a-403d-4cc3-a54e-47c59897220c
+ref table LocalDateTable_47c7e2c3-0098-484a-bf3d-2dc8bb2667c7
+ref table LocalDateTable_904793f3-9cc5-4373-ba71-4b5f4658553c
+ref table 'gold dim_plant'
+ref table 'gold dim_product'
+ref table 'gold dim_channel'
+ref table 'gold fact_sales'
+ref table 'gold fact_sales_budget'
+ref table 'gold fact_production'
+ref table 'gold fact_production_budget'
+ref table _Measures
+ref table 'Sales View Selector'
+ref table 'Production KPI Selector'
+ref table 'Production View Selector'
+ref table 'Production Chart Selector'
+ref table 'Sales KPI Selector'
+ref table 'Model Measures Metadata'
+ref table 'Model Columns Metadata'
+
+ref cultureInfo en-US
+

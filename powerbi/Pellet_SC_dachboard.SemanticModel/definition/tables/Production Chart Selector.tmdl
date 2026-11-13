@@ -1,0 +1,58 @@
+table 'Production Chart Selector'
+	isHidden
+	lineageTag: d0fe157e-359c-4127-a423-8519db0bfa8e
+
+	column 'Production Chart Selector'
+		isHidden
+		lineageTag: 023aef08-aed7-45cc-9d1a-ecb005f0ec9c
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Production Chart Selector Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Production Chart Selector Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production Chart Selector Fields'
+		isHidden
+		lineageTag: f7d36626-28e5-4e80-bf6f-089635d8fe04
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Production Chart Selector Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production Chart Selector Order'
+		isHidden
+		formatString: 0
+		lineageTag: ac80dbf5-becf-414e-8b60-0515f95b1b45
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Production Chart Selector' = calculated
+		mode: import
+		source =
+				{
+				    (
+				        "Budget",
+				        NAMEOF('_Measures'[Production Budget Selected Period]),
+				        0
+				    ),
+				    (
+				        "Sales",
+				        NAMEOF('_Measures'[Sales Actual Selected Period All Channels]),
+				        1
+				    )
+				}
+
+	annotation PBI_Id = 7fda760db5f147d896ef752f4b59ae4b
+

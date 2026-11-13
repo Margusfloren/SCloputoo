@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Pellet_SC_dachboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5fff060e-a855-4d49-b525-467cb09269cd"
+  }
+}

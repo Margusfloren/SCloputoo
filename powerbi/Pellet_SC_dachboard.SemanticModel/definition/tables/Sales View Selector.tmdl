@@ -1,0 +1,51 @@
+table 'Sales View Selector'
+	isHidden
+	lineageTag: e91dfad4-8cb2-4124-aef3-9baa1e876ec2
+
+	column 'Sales View Selector'
+		isHidden
+		lineageTag: af2da19d-fd03-4ec6-89c5-c58a25cf8841
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Sales View Selector Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Sales View Selector Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales View Selector Fields'
+		isHidden
+		lineageTag: fe3a8685-f678-4917-adcd-2b9ae47e68c9
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Sales View Selector Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales View Selector Order'
+		isHidden
+		formatString: 0
+		lineageTag: 98353408-3baf-4971-9bc3-57905b7ced4d
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sales View Selector' = calculated
+		mode: import
+		source =
+				{
+				    ("Plant", NAMEOF('gold dim_plant'[plant_name]), 0),
+				    ("Product", NAMEOF('gold dim_product'[product_name]), 1),
+				    ("Channel", NAMEOF('gold dim_channel'[channel_name]), 2)
+				}
+
+	annotation PBI_Id = 66d78815b0584dce898ee027ccaddb91
+

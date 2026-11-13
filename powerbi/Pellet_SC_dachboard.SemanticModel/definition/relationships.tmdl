@@ -1,0 +1,94 @@
+relationship e9de7a0f-12ec-4ec4-8c48-c1a8f0a239dc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'gold dim_date'.date
+	toColumn: LocalDateTable_47c7e2c3-0098-484a-bf3d-2dc8bb2667c7.Date
+
+relationship 39bb6240-6ea4-4b55-8713-6d5feaebe05c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'gold dim_date'.month_start_date
+	toColumn: LocalDateTable_904793f3-9cc5-4373-ba71-4b5f4658553c.Date
+
+relationship b682a63f-8705-4ad8-a733-9ba061604d32
+	fromColumn: 'gold fact_sales'.sales_date
+	toColumn: 'gold dim_date'.date
+
+	annotation PBI_IsFromSource = FS
+
+relationship 3e423618-5477-4016-900b-baa7e3e414d6
+	fromColumn: 'gold fact_sales'.plant_id
+	toColumn: 'gold dim_plant'.plant_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 06b2c874-bacc-4f88-b255-19cdb1f26def
+	fromColumn: 'gold fact_sales'.product_id
+	toColumn: 'gold dim_product'.product_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 8cd7ccb8-eb2e-4a9a-bfaa-f1af194fc584
+	fromColumn: 'gold fact_sales'.channel_id
+	toColumn: 'gold dim_channel'.channel_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 605899b6-286c-4623-a43c-209332562709
+	fromColumn: 'gold fact_sales_budget'.budget_date
+	toColumn: 'gold dim_date'.date
+
+	annotation PBI_IsFromSource = FS
+
+relationship c3f0b6b7-68d0-427e-b8c8-d756a867902b
+	fromColumn: 'gold fact_sales_budget'.plant_id
+	toColumn: 'gold dim_plant'.plant_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 2c24301f-7a12-4540-8924-4fcc67c82ab5
+	fromColumn: 'gold fact_sales_budget'.product_id
+	toColumn: 'gold dim_product'.product_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship b166d303-1a49-44d3-80ed-638a9194aafd
+	fromColumn: 'gold fact_sales_budget'.channel_id
+	toColumn: 'gold dim_channel'.channel_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship dd0ec7f7-f4f6-440d-9ab8-dc888a4392f9
+	fromColumn: 'gold fact_production'.production_date
+	toColumn: 'gold dim_date'.date
+
+	annotation PBI_IsFromSource = FS
+
+relationship bb1efa78-7ccc-4f2a-b8fe-d98dcfb037c9
+	fromColumn: 'gold fact_production'.plant_id
+	toColumn: 'gold dim_plant'.plant_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship e6f0fefa-bfca-41a8-8db5-79c30d65eddd
+	fromColumn: 'gold fact_production'.product_id
+	toColumn: 'gold dim_product'.product_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship b47a17ae-7e25-4269-afdb-7f6345901390
+	fromColumn: 'gold fact_production_budget'.budget_date
+	toColumn: 'gold dim_date'.date
+
+	annotation PBI_IsFromSource = FS
+
+relationship ab5402d1-6ef9-4652-b314-84ee245e0c40
+	fromColumn: 'gold fact_production_budget'.plant_id
+	toColumn: 'gold dim_plant'.plant_id
+
+	annotation PBI_IsFromSource = FS
+
+relationship 9a3ba224-b93a-4652-9166-4963fe59faec
+	fromColumn: 'gold fact_production_budget'.product_id
+	toColumn: 'gold dim_product'.product_id
+
+	annotation PBI_IsFromSource = FS
+

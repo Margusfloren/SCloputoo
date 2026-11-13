@@ -1,0 +1,106 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "fef93b259f3a40e7dc81",
+  "position": {
+    "x": 93.571428571428584,
+    "y": 2421.4285714285716,
+    "z": 7000,
+    "height": 1978.5714285714287,
+    "width": 950.00000000000011,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Measures Metadata"
+                    }
+                  },
+                  "Property": "Name"
+                }
+              },
+              "queryRef": "Table.Name",
+              "nativeQueryRef": "Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Measures Metadata"
+                    }
+                  },
+                  "Property": "Description"
+                }
+              },
+              "queryRef": "Table.Description",
+              "nativeQueryRef": "Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Model Measures Metadata"
+                    }
+                  },
+                  "Property": "Expression"
+                }
+              },
+              "queryRef": "Table.Expression",
+              "nativeQueryRef": "Expression"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Model Measures Metadata"
+                  }
+                },
+                "Property": "Name"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "273.0000508626435D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Table.Description"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

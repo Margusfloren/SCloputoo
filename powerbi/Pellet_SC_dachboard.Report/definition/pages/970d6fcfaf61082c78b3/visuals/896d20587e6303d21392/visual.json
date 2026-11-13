@@ -1,0 +1,81 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "896d20587e6303d21392",
+  "position": {
+    "x": 107.14285714285715,
+    "y": 131.42857142857144,
+    "z": 1000,
+    "height": 240.00000000000003,
+    "width": 1025.7142857142858,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Purpose",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "14pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "This dashboard provides a management view of pellet-industry supply chain performance. It combines sales and production data to compare actual results against budget and to identify deviations by period, plant and product. Sales-channel analysis is also included to show the distribution of actual sales. ",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "The V1 Dashboard provides a high-level management overview, while dedicated Sales, Production, Plant and Product Analysis pages provide more detailed analysis of the underlying performance.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "This portfolio project uses synthetic data based on a Directo-inspired source structure. The dataset represents a simulated pellet-industry supply chain environment and does not contain actual company transactions.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

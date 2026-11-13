@@ -1,0 +1,52 @@
+table 'Production KPI Selector'
+	isHidden
+	lineageTag: ef43c464-fdc0-421a-9c66-dcc47300ec62
+
+	column 'Production KPI Selector'
+		isHidden
+		lineageTag: e611f382-b8bc-4b59-a542-f892972e5384
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Production KPI Selector Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Production KPI Selector Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production KPI Selector Fields'
+		isHidden
+		lineageTag: 21bddd93-8bf1-4f3d-8dce-c69ae5c5a27c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Production KPI Selector Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production KPI Selector Order'
+		isHidden
+		formatString: 0
+		lineageTag: 8e164506-fedf-4677-bd0d-0bd3ac3fdd22
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Production KPI Selector' = calculated
+		mode: import
+		source =
+				{
+				    ("Production Actual ", NAMEOF('_Measures'[Production Actual View]), 0),
+				    ("Production Budget ", NAMEOF('_Measures'[Production Budget Selected Period]), 1),
+				    ("Production Variance ", NAMEOF('_Measures'[Production Variance Selected Period]), 2),
+				    ("Production Attainment ", NAMEOF('_Measures'[Production Attainment Selected Period %]), 3)
+				}
+
+	annotation PBI_Id = db78b8f44d08496dbe89cfd867c28a50
+

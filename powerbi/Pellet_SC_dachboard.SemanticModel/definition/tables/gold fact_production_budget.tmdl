@@ -1,0 +1,79 @@
+table 'gold fact_production_budget'
+	lineageTag: e8595373-029a-4db2-823c-010fa97a69ca
+
+	/// kasutada dim_date kuupäevavälju
+	column budget_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: 75ea287f-d795-4577-b155-e2b30e99c643
+		summarizeBy: none
+		sourceColumn: budget_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// foreign key
+	column plant_id
+		dataType: string
+		isHidden
+		lineageTag: adb73525-66f9-4c3f-8fd1-b9fcaa522113
+		summarizeBy: none
+		sourceColumn: plant_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// foreign key
+	column product_id
+		dataType: string
+		isHidden
+		lineageTag: 8c11b823-59c6-4378-a09f-5972c83e85c1
+		summarizeBy: none
+		sourceColumn: product_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Production Budget measure kasutab seda
+	column budget_t
+		dataType: double
+		isHidden
+		lineageTag: 99e11003-5fa8-4307-85c5-9c909bd8220a
+		summarizeBy: sum
+		sourceColumn: budget_t
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// tehniline versiooniväli
+	column version_id
+		dataType: string
+		isHidden
+		lineageTag: af148e6a-71cb-42a2-a5f2-3d6b4a0aa5f4
+		summarizeBy: none
+		sourceColumn: version_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold fact_production_budget' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "pellet_sc"),
+				    gold_fact_production_budget = Source{[Schema="gold",Item="fact_production_budget"]}[Data]
+				in
+				    gold_fact_production_budget
+
+	annotation PBI_ResultType = Table
+

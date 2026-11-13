@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ab72c54676677ac517c1",
+  "displayName": "Product Analysis",
+  "displayOption": "ActualSize",
+  "height": 1200,
+  "width": 2100
+}

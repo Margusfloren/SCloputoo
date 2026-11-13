@@ -1,0 +1,163 @@
+table 'gold dim_date'
+	lineageTag: fd6957c8-533f-4154-bef8-8963a006f0cb
+
+	/// Calendar date used for reporting and time-based analysis
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 2e5ccef2-e423-40db-a25e-a4722e70072a
+		summarizeBy: none
+		sourceColumn: date
+
+		variation Variation
+			isDefault
+			relationship: e9de7a0f-12ec-4ec4-8c48-c1a8f0a239dc
+			defaultHierarchy: LocalDateTable_47c7e2c3-0098-484a-bf3d-2dc8bb2667c7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Calendar year.
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b5d4a74-ec60-4e36-bcb1-c9a656928b6c
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Calendar quarter.
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 6238635f-e872-4168-ad6e-11e01d2c5484
+		summarizeBy: sum
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_no
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5a690c1d-4c9e-4d66-9d87-2c8f4151ad95
+		summarizeBy: sum
+		sourceColumn: month_no
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Calendar month name.
+	column month_name
+		dataType: string
+		lineageTag: 2ab3901f-7893-4cd1-a537-bc987ff33474
+		summarizeBy: none
+		sourceColumn: month_name
+		sortByColumn: month_no
+
+		changedProperty = SortByColumn
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Year and month used for monthly reporting.
+	column year_month
+		dataType: string
+		lineageTag: bf81ad9c-057d-4e11-9c0c-ab288e024f51
+		summarizeBy: none
+		sourceColumn: year_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_start_date
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: cef4c804-cb1b-47e3-b06e-3b0274db09ad
+		summarizeBy: none
+		sourceColumn: month_start_date
+
+		variation Variation
+			isDefault
+			relationship: 39bb6240-6ea4-4b55-8713-6d5feaebe05c
+			defaultHierarchy: LocalDateTable_904793f3-9cc5-4373-ba71-4b5f4658553c.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	/// Day number within the month.
+	column day_of_month
+		dataType: int64
+		formatString: 0
+		lineageTag: e256b2c9-1280-4e25-aa6e-2ce6841d01e1
+		summarizeBy: sum
+		sourceColumn: day_of_month
+
+		annotation SummarizationSetBy = Automatic
+
+	/// ISO week number of the year.
+	column iso_week
+		dataType: int64
+		formatString: 0
+		lineageTag: a22aeddf-45b1-4310-b37d-276a0baf3f16
+		summarizeBy: sum
+		sourceColumn: iso_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column iso_day_of_week
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5bfb4283-6ffe-4e40-b407-faad79cbd2fd
+		summarizeBy: sum
+		sourceColumn: iso_day_of_week
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_month_start
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 17f267cd-9de1-4f2b-99ba-8e20545a2702
+		summarizeBy: none
+		sourceColumn: is_month_start
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column is_month_end
+		dataType: boolean
+		isHidden
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2ec81ca1-83d3-4d90-861b-eabf393affd4
+		summarizeBy: none
+		sourceColumn: is_month_end
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'gold dim_date' = m
+		mode: import
+		source =
+				let
+				    Source = PostgreSQL.Database("localhost", "pellet_sc"),
+				    gold_dim_date = Source{[Schema="gold",Item="dim_date"]}[Data]
+				in
+				    gold_dim_date
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

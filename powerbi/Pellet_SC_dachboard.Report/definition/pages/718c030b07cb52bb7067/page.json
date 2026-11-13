@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "718c030b07cb52bb7067",
+  "displayName": "V1 Dashboard",
+  "displayOption": "ActualSize",
+  "height": 1400,
+  "width": 2100,
+  "visualInteractions": [
+    {
+      "source": "0bfc0cb87d6fdfc88ce2",
+      "target": "d6b0cdeec6276bf91e76",
+      "type": "DataFilter"
+    },
+    {
+      "source": "0bfc0cb87d6fdfc88ce2",
+      "target": "009942a7c7fe860acb58",
+      "type": "NoFilter"
+    }
+  ]
+}

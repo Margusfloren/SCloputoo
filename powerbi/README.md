@@ -1,0 +1,142 @@
+# Power BI – Pellet Supply Chain Dashboard
+
+This folder contains the Power BI project for the Pellet Supply Chain Management Dashboard.
+
+The dashboard is built as a Power BI Project (`.pbip`) so that the report structure, semantic model and future changes can be version-controlled in GitHub.
+
+## Purpose
+
+The dashboard is designed as a management view for pellet-industry supply chain operations.
+
+V1 compares sales and production performance against budget and allows users to analyse results by period, plant and product. Sales views also support channel-level **Actual vs Budget** comparisons.
+
+This portfolio project uses **synthetic data** based on a **Directo-inspired source structure**. It represents a simulated pellet-industry supply chain and does not contain actual company transactions.
+
+## V1 Functionality
+
+Current V1 functionality includes:
+
+- Sales Actual vs Budget, including channel-specific budgets
+- Production Actual vs Budget
+- Sales and Production variance
+- Budget attainment %
+- Selected Period calculations
+- Multi-select Year and Month filters
+- Plant and Product filtering
+- Sales Channel filtering for sales results and budgets
+- Dynamic KPI selection using Field Parameters
+- Dynamic Plant / Product / Channel views where applicable
+- Sales and Production matrices
+- Selectable production chart comparison:
+  - Production Actual vs Budget
+  - Production Actual vs Sales
+- **Production vs Sales by Product (All Channels)**, comparing production with sales across all channels regardless of the selected sales-channel slicer
+- Handling of zero and blank values in relevant measures
+- An About page with KPI definitions, model information and measure documentation
+- A hidden technical QA Validation page, available in Power BI Desktop editing view for inspecting selected reporting totals (hidden in report reading view; not intended as a standard end-user navigation page)
+
+**V1 scope note:** Sales budgets are **allocated by sales channel**. Channel-level Actual, Budget, Variance and Attainment values were reconciled with PostgreSQL on 13 November 2026 (sales by channel: **PASS**; production by plant: **PASS**). Both tests compare full-period SQL Gold aggregates with Power BI matrix outputs at displayed precision. See [`sql/14_channel_plant_powerbi_reconciliation.md`](../sql/14_channel_plant_powerbi_reconciliation.md) for the evidence and its scope limitations. Production quantities are **not** allocated to sales channels. Therefore, the production-versus-sales balance uses **all-channel sales** rather than the selected channel's sales volume.
+
+## Power BI Project Structure
+
+`Pellet_SC_dachboard.pbip`  
+Main Power BI project file.
+
+`Pellet_SC_dachboard.Report/`  
+Power BI report pages, visuals and report definitions.
+
+`Pellet_SC_dachboard.SemanticModel/`  
+Semantic model containing tables, relationships, measures and model definitions.
+
+*The `dachboard` spelling above follows the existing project filenames.*
+
+## Opening and refreshing the report
+
+The semantic model imports eight Gold-layer tables from the PostgreSQL database `pellet_sc` on `localhost`. The connection `PostgreSQL.Database("localhost", "pellet_sc")` is defined in each of the eight Power Query partitions in `Pellet_SC_dachboard.SemanticModel/definition/tables/`:
+
+- `gold.dim_date`, `gold.dim_plant`, `gold.dim_product`, `gold.dim_channel`
+- `gold.fact_sales`, `gold.fact_sales_budget`, `gold.fact_production`, `gold.fact_production_budget`
+
+To refresh the data, you need:
+
+- Power BI Desktop;
+- a local PostgreSQL database `pellet_sc` with these tables populated;
+- valid database credentials, which Power BI Desktop requests on refresh.
+
+The local data cache (`.pbi/cache.abf`) is excluded from Git and is not distributed with the project. The database build scripts and source data are not included either (see the repository README's reproducibility note).
+
+A reviewer without the database can open the project and inspect the version-controlled model (tables, relationships, DAX measures, Power Query steps) and the report definitions (pages, visuals, bookmarks). They cannot reproduce a populated, refreshed report from the repository alone.
+
+## Data Model
+
+The dashboard uses a dimensional model based on a synthetic, Directo-inspired source-data structure.
+
+Main Gold-layer tables include:
+
+- Sales
+- Sales Budget
+- Production
+- Production Budget
+- Date
+- Plant
+- Product
+- Sales Channel
+
+The sales and sales-budget fact tables share the Sales Channel dimension. Channel slicers and the Sales View Selector use the channel dimension, enabling consistent filtering of both actual sales and their budgets.
+
+Data is prepared in PostgreSQL through Bronze, Silver and Gold layers before being consumed by Power BI.
+
+## Automated Measure Documentation
+
+The **About** page includes measure documentation derived from the Power BI semantic model rather than manually transcribed DAX formulas.
+
+A calculated table named `Model Measures Metadata` retrieves metadata for visible measures using:
+
+```dax
+Model Measures Metadata =
+FILTER(
+    INFO.VIEW.MEASURES(),
+    [IsHidden] = FALSE()
+)
+```
+
+The About-page table displays the following fields from this metadata:
+
+- **Name** – measure name
+- **Description** – the description stored with the measure in the semantic model
+- **Expression** – the measure's DAX expression
+
+This supports traceability between the report documentation and the actual measure definitions, while reducing the need to maintain a separate list of manually copied formulas.
+
+**Display note:** Long DAX expressions may be visually truncated in the table. Hover over an Expression cell to view its full content.
+
+**Refresh note:** `Model Measures Metadata` is a calculated table, not a live query executed on every report interaction. After changing a measure, the metadata table may need to be recalculated or refreshed before the About page reflects the latest definition.
+
+## Quality Assurance
+
+SQL checks document data consistency and reconciliation across the source, Bronze, Silver, Gold and Power BI layers. Python notebooks support exploratory analysis and cross-checks of SQL-derived results; they do **not** yet independently recalculate the complete Power BI KPI set.
+
+Channel-level sales actuals, budgets, variances and attainment have also been compared against PostgreSQL query results. Report-level filtering and Reset filters have been tested on the V1 Dashboard and Sales Analysis pages.
+
+Validation scripts and results are documented separately in the repository's `sql/` folder and `docs/07_quality_assurance/`.
+
+Passing a validation check confirms the specific conditions tested; it does not independently establish the business correctness of the synthetic input data.
+
+## Current Status
+
+| Area | Status |
+|---|---|
+| V1 implementation | Completed |
+| V1 quality audit | Completed |
+| Publication preparation | In progress |
+| V2 development | Planned |
+
+All original A- and B-level audit findings have documented decisions. Accepted technical debt and limitations, including the documented local database dependency for refreshing the report, are recorded in [`docs/07_quality_assurance/v1_audit_decisions.md`](../docs/07_quality_assurance/v1_audit_decisions.md).
+
+Not yet completed: updated portfolio screenshots, merging the completed V1 into the `main` branch, and public release of the repository.
+
+## Future Development
+
+The extended version of the project will continue beyond V1.
+
+Planned areas include inventory management and coverage, raw-material planning, BOM logic, OTIF, capacity constraints, more detailed channel and customer-mix analysis, forecasting and additional exception-focused supply-chain management views.
