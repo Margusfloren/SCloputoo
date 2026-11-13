@@ -51,9 +51,10 @@ table 'gold dim_plant'
 				    #"Selected Columns" = Table.SelectColumns(
 				        gold_dim_plant,
 				        {"plant_id", "plant_name", "plant_type", "active_flag"}
-				    )
+				    ),
+				    #"Replaced Value" = Table.ReplaceValue(#"Selected Columns","Tehas ","Plant ",Replacer.ReplaceText,{"plant_name"})
 				in
-				    #"Selected Columns"
+				    #"Replaced Value"
 
 	annotation PBI_ResultType = Table
 
