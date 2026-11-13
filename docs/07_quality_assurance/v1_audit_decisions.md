@@ -27,6 +27,7 @@ they are neither reported again as new defects nor forgotten.
 | B2-2 | Outdated `Reset - Sales Analysis` bookmark after the A1 sales-channel budget fix; associated `Reset - V1 Dashboard` state also refreshed | FIXED AND VERIFIED | 13 November 2026 | Yes – report bookmarks, visual states and start page |
 | B2-3a | Ambiguous "Budget Attainment Selected Period" labels on two sales KPI cards | FIXED AND VERIFIED | 13 November 2026 | Yes – two card labels and Desktop-generated language metadata |
 | B2-3b | Hidden `Budget Attainment YTD %` measure has a misleading YTD name and description | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 13 November 2026 | No – measure deliberately retained |
+| B4 | Documentation formatting, README placeholders, and relative links | FIXED AND VERIFIED | 13 November 2026 | Yes – seven README files |
 
 ---
 
@@ -458,3 +459,66 @@ B2-2 Reset-bookmark repairs.
   owner subsequently reopened and saved V1 Dashboard as the start page. Confirm
   `activePageName = 718c030b07cb52bb7067` in the final Git diff before commit;
   the uploaded audit log itself cannot independently verify the local file state.
+
+---
+
+## B4 – Documentation formatting, README placeholders and links
+
+**Status:** FIXED AND VERIFIED  
+**Decision recorded:** 13 November 2026  
+**Decision:** Fix the GitHub-visible documentation defects while keeping future-version folders clearly labelled rather than removing them.  
+**Evidence basis:** Claude Code's read-only follow-up report after the seven README files were edited. The repository files themselves were not provided with this decision-log update, so the checks below are attributed to that report; the rendered GitHub view has not yet been independently reviewed here.
+
+### Original finding
+
+The project overview README had an unterminated Markdown code fence surrounding
+its repository tree. Consequently, the later **Current project status**, **QA** and
+**Project objective** sections rendered as code instead of document sections.
+Some README landing pages linked from the root README were outdated or in
+Estonian and did not describe the work already present. Four other documentation
+subfolders contained placeholders. The initial concern about broken relative
+links was **not reproduced** by the B4 investigation.
+
+### Changes made
+
+| File | Correction |
+|---|---|
+| `docs/01_projekt_overview/README.md` | Closed the repository-tree code fence (reported near line 702); restored `## Current project status`, `## QA` and `## Project objective` as proper sections (near lines 706, 721, 748); added spacing and dividers; updated the tree to show the actual `powerbi/` and `data/` directories. Existing A2 QA wording was preserved. |
+| `python/README.md` | Replaced the outdated placeholder with an English overview and links for `10_source_bronze_full_qa.py`, `10_source_bronze_qa_README.md`, `01_sales_analysis.ipynb`, and `01_sales_analysis_documented.ipynb`. It distinguishes independent source-to-Bronze validation (10/10 PASS) from notebook SQL-result cross-checks; standalone Python KPI recalculation is **not** claimed. V2 ideas are labelled as future work. |
+| `docs/README.md` | Added an English navigation index for completed V1 documentation, V1 QA and audit decisions, and planned areas; noted that the existing KPI documentation includes Estonian-language material. |
+| `docs/02_management_view/README.md` | Marked **Planned – not part of V1**, with a brief purpose and a link to existing V1 material. |
+| `docs/04_data_model/README.md` | Marked **Planned – not part of V1**, with a brief purpose and a link to existing V1 material. |
+| `docs/05_powerbi_design/README.md` | Marked **Planned – not part of V1**, with a brief purpose and a link to existing V1 material. |
+| `docs/06_thesis_materials/README.md` | Marked **Planned – not part of V1**, explaining the intended purpose; no artificial V1 counterpart link was added. |
+
+### Verification evidence
+
+According to the follow-up report:
+
+- The project overview's code fences are balanced (opening near line 684;
+  closing near line 702), and all three restored headings have correct Markdown
+  syntax and spacing.
+- All **26 relative links** in the edited files resolved, including the
+  `#dashboard-structure`, `#data-architecture`, and `#data-model` anchors.
+  No broken relative file links were found in the scope reviewed.
+- The five A2 documentation corrections in `docs/01_projekt_overview/README.md`
+  remained unchanged.
+- Exactly **seven README files** changed (**+102 / −16 lines**). No files were
+  added, deleted, or renamed; Power BI, SQL, Python scripts, and the audit log
+  were not modified by the B4 implementation.
+- `git diff --check` passed; existing CRLF line endings were preserved in
+  the edited working files.
+
+### Guidance for future audits
+
+- Treat the Markdown-rendering defect and the two incomplete entry-point
+  READMEs as **FIXED AND VERIFIED** by file-level checks. A post-push visual
+  review of the GitHub rendering is a useful presentation check, not evidence
+  that the original defect remains open.
+- Do not classify the four explicitly marked **Planned – not part of V1**
+  directories as missing V1 deliverables. Their substantive content remains
+  future work, not a promise made by V1.
+- Retain the A2 distinction: Python independently validates source-to-Bronze
+  loads but does not independently recalculate sales KPIs.
+- B4 does not close other audit findings (including B3, B5, B6, B7, B8, B9,
+  B10 and the later B2-4/B2-5 observations).

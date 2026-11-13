@@ -692,22 +692,38 @@ The repository is organized around the main technical parts of the project.
 ├── python/
 │   └── Python notebooks and analytical checks
 │
-├── Power BI project files
+├── powerbi/
+│   └── Power BI project files (PBIP report and semantic model)
+│
+├── data/
+│   └── data folder notes and aggregated QA results (raw source archives are excluded)
 │
 └── README.md
+```
 
-Current project status
+---
+
+## Current project status
+
 V1 core functionality is complete.
+
 Current focus:
 - final visual review;
 - QA;
 - documentation;
 - consistency checks;
 - preparation for project defence.
+
 The next major development stage begins after the V1 defence.
-QA
+
+---
+
+## QA
+
 Before V1 is considered final, the dashboard is reviewed through a structured Quality Assurance process.
+
 QA includes checks such as:
+
 - slicers filter the correct visuals;
 - synchronized filters behave consistently;
 - Sales, Production, Plant and Product pages use consistent logic;
@@ -724,8 +740,14 @@ QA includes checks such as:
 - important business measures include descriptions;
 - obsolete test visuals or measures are removed;
 - project documentation matches the final dashboard.
+
 The objective of QA is to ensure that V1 is not only visually complete but also logically consistent, understandable and reproducible.
-Project objective
+
+---
+
+## Project objective
+
 The project is designed to demonstrate how operational industry knowledge, supply chain management and modern data analytics can be combined into one management solution.
+
 The technical tools are important, but the main objective is to understand and explain:
 what is happening, where it is happening, and what is driving the numbers.

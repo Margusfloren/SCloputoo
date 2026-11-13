@@ -1,3 +1,5 @@
 # 06_thesis_materials
 
-kaitsmise versioon, vahedokumendid, juhendajale mõeldud materjalid
+**Status: Planned – not part of V1**
+
+This folder is reserved for thesis defence materials, interim documents and materials for the supervisor.
