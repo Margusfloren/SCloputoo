@@ -6,7 +6,7 @@ table _Measures
 		formatString: #,0
 		lineageTag: b7670af3-9855-4e4c-975f-92a8b86dc259
 
-	/// Budgeted sales volume in tones in the current filter context.
+	/// Budgeted sales volume in tonnes in the current filter context.
 	measure 'Sales Budget' = ```
 			SUM('gold fact_sales_budget'[budget_t]) 
 			```
@@ -127,7 +127,7 @@ table _Measures
 		formatString: 0.00
 		lineageTag: 6ab7087a-7710-4665-88fc-ef102d236f58
 
-	/// Budgeted sales volume in tones for the selected reporting period.
+	/// Budgeted sales volume in tonnes for the selected reporting period.
 	measure 'Sales Budget Selected Period' =
 			
 			COALESCE(

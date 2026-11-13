@@ -44,7 +44,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Use the available filters to analyse performance by year, month, plant and product. Sales-channel views are available to analyse the distribution of actual sales. ",
+                    "value": "Use the available filters to analyse performance by year, month, plant and product. ",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
@@ -124,7 +124,7 @@
               {
                 "textRuns": [
                   {
-                    "value": "Sales-channel views should primarily be used to analyse actual sales distribution, as the V1 budget is not allocated at sales-channel level.",
+                    "value": "Sales-channel views support the analysis of actual sales, allocated budgets, variances and budget attainment by channel.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
