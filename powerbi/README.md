@@ -33,7 +33,7 @@ Current V1 functionality includes:
 - **Production vs Sales by Product (All Channels)**, comparing production with sales across all channels regardless of the selected sales-channel slicer
 - Handling of zero and blank values in relevant measures
 - An About page with KPI definitions, model information and measure documentation
-- A QA Validation page for inspecting selected reporting totals
+- A hidden technical QA Validation page, available in Power BI Desktop editing view for inspecting selected reporting totals (hidden in report reading view; not intended as a standard end-user navigation page)
 
 **V1 scope note:** Sales budgets are **allocated by sales channel**. Channel-level Actual, Budget, Variance and Attainment values were reconciled with PostgreSQL on 13 November 2026 (sales by channel: **PASS**; production by plant: **PASS**). Both tests compare full-period SQL Gold aggregates with Power BI matrix outputs at displayed precision. See [`sql/14_channel_plant_powerbi_reconciliation.md`](../sql/14_channel_plant_powerbi_reconciliation.md) for the evidence and its scope limitations. Production quantities are **not** allocated to sales channels. Therefore, the production-versus-sales balance uses **all-channel sales** rather than the selected channel's sales volume.
 

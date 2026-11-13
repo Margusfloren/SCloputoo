@@ -1,3 +1,3 @@
 # Raw data
 
-Siia paigutatakse algsed lähteandmed ja testandmed enne puhastamist või töötlemist.
+This folder holds the original source data and test data before cleaning or processing.

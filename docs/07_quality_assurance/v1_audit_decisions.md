@@ -44,6 +44,7 @@ they are neither reported again as new defects nor forgotten.
 | B7-A | Inconsistent plant display names across slicers, charts and matrices | FIXED AND VERIFIED | 13 November 2026 | Yes – Power Query display-name step, six Plant slicers and five Reset bookmarks |
 | B8 | Outdated documentation requiring production volume units to be confirmed | FIXED AND VERIFIED | 13 November 2026 | No – three SQL documentation statements corrected; data, SQL logic and DAX unchanged |
 | B9 | SQL ↔ Power BI reconciliation initially documented only at grand-total level | FIXED AND VERIFIED – defined reconciliation scope | 13 November 2026 | No – new reconciliation record and README reference; model and report unchanged |
+| B10 | Minor repository and documentation issues (five sub-findings B10-1 to B10-5) | CLOSED – documentation corrections and English translation completed | 13 November 2026 | No – documentation and SQL comments only (eleven files); model, report, SQL query logic and Python logic unchanged |
 
 ---
 
@@ -965,4 +966,125 @@ No Power BI files, DAX, TMDL, SQL execution scripts or source data were modified
 ### Release decision
 
 **B9 does not block V1 publication.** The dimensions most exposed to the A1 defect and to budget allocation errors are now reconciled numerically with PASS results: sales channel (Actual, Budget, Variance, Attainment) and plant (including Production Budget). No numerical defect was found. The remaining gaps are lower-risk and transparently documented: source-to-Gold channel mapping, month and product granularity, and dimension combinations. They may be addressed in a later QA iteration.
+
+---
+
+## B10 – Minor repository and documentation issues
+
+**Status:** CLOSED – documentation corrections and English translation completed
+
+**Decision recorded:** 13 November 2026
+
+### Original finding
+
+The original audit grouped five minor observations under B10:
+
+1. two nearly identical notebooks;
+2. outdated lines in the Python QA README ("Place this Python file…", "No live database comparison was possible");
+3. `sql/09` referring to `bronze_invoice_rows_export.csv`, which is not in the repository;
+4. a mix of Estonian and English documentation;
+5. a hidden QA Validation page that the README presented as a report page.
+
+The audit found no numerical, DAX, filtering or data-integrity defects in B10.
+
+### Summary of sub-findings
+
+| ID | Sub-finding | Status |
+|---|---|---|
+| B10-1 | Two similar Python notebooks | FIXED AND VERIFIED |
+| B10-2 | Outdated Python QA instructions | FIXED AND VERIFIED |
+| B10-3 | Missing intermediate CSV reference | DOCUMENTATION FIXED |
+| B10-4 | Mixed documentation languages | FIXED AND VERIFIED |
+| B10-5 | Hidden QA Validation page | ACCEPTED AS DESIGNED |
+
+### B10-1 – Two similar Python notebooks
+
+**Status:** FIXED AND VERIFIED
+
+`python/01_sales_analysis.ipynb` is the working notebook. `python/01_sales_analysis_documented.ipynb` is the documented version of the same code, with explanatory Markdown and recorded results. Their roles are already described in `python/README.md` (notebook table) and `sql/12_python_documentation_validation.md`. Both files are intentionally retained. No change was required in this step.
+
+### B10-2 – Outdated Python QA instructions
+
+**Status:** FIXED AND VERIFIED
+
+`python/10_source_bronze_qa_README.md` was corrected:
+
+- The outdated instruction to place the script in the `python` folder was removed. The script is already part of the repository.
+- The example command now passes `--database pellet_sc`, the project's current local database. The script's argument parser supports `--database`, with default `postgres` (`python/10_source_bronze_full_qa.py`, argument definitions). The README states that the database must be passed explicitly.
+- The statement that no live database comparison was possible was removed. It was replaced with a table of the two completed runs, each showing 10/10 PASS over 8,007 rows with no missing or additional rows:
+  - 8 October 2026, database `postgres` (`sql/10_source_to_bronze_full_validation.md`);
+  - 9 November 2026, database `pellet_sc` (`docs/07_quality_assurance/source_to_bronze_qa_2026-11-09.md`).
+- The README now distinguishes preparing the script from obtaining verified results by executing it against a live database.
+
+The run dates, database names and row counts were checked against both reports and against `data/processed/source_bronze_qa_results.csv` (10 PASS rows, 8,007 source rows).
+
+### B10-3 – Missing intermediate CSV reference
+
+**Status:** DOCUMENTATION FIXED
+
+`sql/09_source_to_bronze_invoice_rows_qa.md` now describes `data/processed/bronze_invoice_rows_export.csv` as follows:
+
+- it was a local intermediate export;
+- it is not version-controlled and is not in the repository;
+- it can be regenerated with the read-only query in section 3 of that document.
+
+The note also states that the later ten-table validation (`sql/10_source_to_bronze_full_validation.md`), which includes `invoice_rows`, supersedes the single-table check. The original result is retained as historical evidence. No additional data export is necessary for V1.
+
+### B10-4 – Mixed documentation languages
+
+**Status:** FIXED AND VERIFIED
+
+The project owner decided that the public portfolio repository should use English consistently. The remaining Estonian-language documentation and SQL comments identified under B10 were translated to English:
+
+| File | Translation |
+|---|---|
+| `docs/03_kpi/README.md` | KPI overview for V1 and Full Version / V2 |
+| `docs/03_kpi/01_V1_KPI-d/README.md` | V1 KPI definitions |
+| `docs/03_kpi/02_Full version_ KPI-d/README.md` | Planned Full Version / V2 KPIs |
+| `data/README.md`, `data/raw/README.md` | Folder descriptions |
+| `sql/01_sales_v1_checks.sql` | Four comment lines (lines 1, 20, 53 and 86) |
+
+The translation preserved:
+
+- KPI names, formulas, units and the distinction between implemented V1 functionality and planned V2 topics;
+- DAX measure names and SQL identifiers;
+- headings, lists and relative links;
+- SQL query logic, which is unchanged (only the four comment lines differ).
+
+No new business claims were added. The existing directory names (`01_V1_KPI-d`, `02_Full version_ KPI-d`) and other file paths were deliberately retained so that existing links keep working. The `(in Estonian)` note was removed from `docs/README.md`.
+
+**Out of scope (Power BI semantic model):** a read-only scan after the translation found Estonian developer notes in the `///` descriptions of hidden fact-table columns:
+
+- `gold fact_sales.tmdl`: 13 descriptions;
+- `gold fact_production.tmdl`: 9 descriptions;
+- `gold fact_production_budget.tmdl`: 5 descriptions.
+
+These columns are hidden. The About-page column metadata table lists only visible columns (`Model Columns Metadata`: `IsHidden = FALSE()`), so report viewers do not see these notes. They are visible only in the Power BI Desktop model view and in the TMDL source files. They were not changed in B10, because Power BI files were outside its scope. Translating them is an optional small model-metadata cleanup and does not affect V1 publication.
+
+### B10-5 – Hidden QA Validation page
+
+**Status:** ACCEPTED AS DESIGNED
+
+The QA Validation page (`pages/40f9151083306e262529/page.json`, `"visibility": "HiddenInViewMode"`) is intentionally hidden in report reading view. It is an internal technical validation tool, available in Power BI Desktop editing view. Its Plant slicer belongs to the synchronized Plant slicer group (see B7-A).
+
+The page descriptions in `README.md` and `powerbi/README.md` now consistently describe it as a hidden technical page, not a standard end-user navigation page. The page visibility and all Power BI files were left unchanged.
+
+### Changes made
+
+| File | Change |
+|---|---|
+| `python/10_source_bronze_qa_README.md` | Outdated instruction removed. `--database pellet_sc` added to the command. Completed-runs table and the distinction between script preparation and verified execution added. |
+| `sql/09_source_to_bronze_invoice_rows_qa.md` | The export is marked as a local, regenerable intermediate file, with a note that the full validation supersedes this check. |
+| `README.md` | The QA Validation page is described as a hidden technical page. |
+| `powerbi/README.md` | Same clarification as in `README.md`. |
+| `docs/03_kpi/README.md`, `docs/03_kpi/01_V1_KPI-d/README.md`, `docs/03_kpi/02_Full version_ KPI-d/README.md` | Translated to English (B10-4). |
+| `data/README.md`, `data/raw/README.md` | Translated to English (B10-4). |
+| `sql/01_sales_v1_checks.sql` | Four Estonian comment lines translated to English. Queries unchanged (B10-4). |
+| `docs/README.md` | `(in Estonian)` note removed from the KPI folder entry (B10-4). |
+
+No Python program logic, SQL queries, source data, Power BI files, DAX or TMDL were changed.
+
+### Release decision
+
+**B10 does not block V1 publication.** All five sub-findings have a recorded disposition. The documentation corrections address the items that affected reproducibility and the accuracy of public repository statements. The repository documentation is now in English. The only remaining Estonian text found by the scan is in developer notes on hidden semantic-model columns, which report viewers do not see. Translating them is an optional later cleanup.
 

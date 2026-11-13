@@ -1,6 +1,6 @@
 # Data
 
-Siia koondatakse lõputöö andmefailid.
+This folder holds the thesis data files.
 
-- raw – algsed lähteandmed ja testandmed
-- processed – puhastatud ja töödeldud andmed
+- raw – original source data and test data
+- processed – cleaned and processed data

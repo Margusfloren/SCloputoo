@@ -1,38 +1,38 @@
-# Full Version / V2 KPI-d – kavandatud edasiarendused
+# Full Version / V2 KPIs – planned further development
 
-See dokument kirjeldab **võimalikke järgmisi arendusi**, mitte V1-s juba olemasolevat funktsionaalsust. Prioriteedid ja mõõdikute täpsed definitsioonid vajavad arenduse käigus kinnitamist.
+This document describes **possible future developments**, not functionality already available in V1. Priorities and exact metric definitions need to be confirmed during development.
 
-## Prognoos ja planeerimine
+## Forecasting and planning
 
 - Forecast vs Budget vs Actual
-- Forecast snapshot'id (*as-of date*)
-- Forecast Accuracy ja Forecast Bias
-- Kuu täitmine vs ajaline kulg (*run-rate*)
+- Forecast snapshots (*as-of date*)
+- Forecast Accuracy and Forecast Bias
+- Month-to-date attainment vs elapsed time (*run-rate*)
 
-## Valmistoodangu varud
+## Finished-goods inventory
 
-- Current Stock ja algvaru
-- Inventory Coverage (päevades)
+- Current Stock and opening stock
+- Inventory Coverage (in days)
 - Min / Target / Max Stock
 - Warehouse Utilization %
-- Varude seisund: Below Min / OK / Near Full / Over Capacity
+- Inventory status: Below Min / OK / Near Full / Over Capacity
 
-## Tootmine ja materjalivajadus
+## Production and material requirements
 
-- Tootmisvõimsuse kasutus
-- Pudelikohad ja piirangud
-- Toorme mix ja materjalivajaduse planeerimine
-- BOM, niiskuse teisendus ning saagis/kadu
+- Production capacity utilisation
+- Bottlenecks and constraints
+- Raw-material mix and material requirements planning
+- BOM, moisture conversion and yield/loss
 
-## Müük ja teenindustase
+## Sales and service level
 
-- Müügimix ja kanalite täiendav analüüs
-- **OTIF (On-Time In-Full): esmane rakendamine**, mis eeldab tellimuste, lubatud tarneaegade ja tegelike tarnete andmeid
-- OTIF-i detailanalüüs klientide, toodete ja perioodide lõikes
+- Sales mix and additional channel analysis
+- **OTIF (On-Time In-Full): initial implementation**, which requires data on orders, promised delivery dates and actual deliveries
+- Detailed OTIF analysis by customer, product and period
 
-## Juhtimisvaated
+## Management views
 
-- Erandite ja kõrvalekallete koondvaade
-- Hoiatused ning KPI-de seosed otsustamisega
+- Summary view of exceptions and deviations
+- Alerts and links between KPIs and decision-making
 
-**Staatus:** planeeritud; ei kuulu V1 valminud funktsionaalsusse.
+**Status:** planned; not part of the completed V1 functionality.

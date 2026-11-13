@@ -1,4 +1,4 @@
--- Sales Actual by month Siin ühendatakse kuupäevad ühe kuu alla, et sales ja budget oleksid ühises kuises ajaühikus
+-- Sales Actual by month: dates are grouped by month so that sales and budget share a common monthly time unit
 
 SELECT
     date_trunc('month', sales_date)::date AS month_date,
@@ -17,7 +17,7 @@ GROUP BY budget_date
 ORDER BY budget_date;
 
 
--- Sales Actual vs Budget by month -- kuupõhine  Actual sales ja Budget võrdlus ja budgeti täituvuse %
+-- Sales Actual vs Budget by month -- monthly comparison of actual sales and budget, with budget attainment %
 
 WITH actual AS (
     SELECT
@@ -50,7 +50,7 @@ FULL OUTER JOIN budget b
 ORDER BY month_date;
 
 
--- Sales Actual vs Budget by year ----aastapõhine  Actual sales ja Budget võrdlus ja budgeti täituvuse %  
+-- Sales Actual vs Budget by year -- annual comparison of actual sales and budget, with budget attainment %
 
 WITH actual AS (
     SELECT
@@ -83,7 +83,7 @@ FULL OUTER JOIN budget b
 ORDER BY year;
 
 
--- Sales Actual vs Budget by year and plant --- -aastapõhine  Actual sales ja Budget võrdlus ja budgeti täituvuse % ning juurde on lisatud tehas
+-- Sales Actual vs Budget by year and plant -- annual comparison of actual sales and budget, with budget attainment %, broken down by plant
 
 WITH actual AS (
     SELECT

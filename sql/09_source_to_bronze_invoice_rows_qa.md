@@ -14,10 +14,12 @@ Demonstrate that the original Directo-inspired synthetic sales invoice rows were
 |---|---|---|
 | Original source | `Directo_RAW_Actual_2023_2025.zip` → `invoice_rows.csv` | Synthetic 2023–2025 sales invoice rows |
 | Database table | `bronze.invoice_rows` | Raw layer with additional `_source_file` and `_loaded_at` lineage columns |
-| Database export | `data/processed/bronze_invoice_rows_export.csv` | Export produced using the original 14 source columns, excluding the two lineage fields |
+| Database export | `data/processed/bronze_invoice_rows_export.csv` (local intermediate file, not in the repository) | Export produced using the original 14 source columns, excluding the two lineage fields; regenerate with the query in section 3 |
 | Related SQL | `sql/03_bronze_silver_qa.sql`, `sql/07_sales_silver_gold_qa.sql` | Separate checks for subsequent pipeline stages |
 
 The validation covers **only `invoice_rows.csv`**. It is not proof of exact preservation for the remaining source files or the two budget datasets.
+
+**Note (13 November 2026):** The Bronze export was a local intermediate file. It is not version-controlled and is not currently included in the repository. It can be regenerated with the read-only query in section 3. This single-table check is superseded by the later ten-table validation in [`10_source_to_bronze_full_validation.md`](10_source_to_bronze_full_validation.md), which also covers `invoice_rows`. The result below is retained as historical QA evidence.
 
 ## 3. Method
 

@@ -7,7 +7,7 @@ This folder contains the documentation for the Pellet Supply Chain Management Da
 | Folder | Content |
 |---|---|
 | [`01_projekt_overview/`](01_projekt_overview/README.md) | Project overview: business context, dashboard pages, KPI definitions, data architecture, validation approach and V1 scope. |
-| [`03_kpi/`](03_kpi/README.md) | KPI definitions for V1 and the planned Full Version (in Estonian). |
+| [`03_kpi/`](03_kpi/README.md) | KPI definitions for V1 and the planned Full Version. |
 | [`images/`](images/) | Dashboard screenshots used in the repository README. |
 
 ## V1 quality assurance and audit decisions

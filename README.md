@@ -32,7 +32,7 @@ A high-level total can look close to budget even when individual plants, product
 | **Plant Analysis** | Plant-specific production performance, product mix and share of output |
 | **Product Analysis** | Product performance and production-versus-sales relationships |
 
-The report supports interactive year, month, plant and product filters, context-specific **sales-channel filtering**, dynamic selectors and **Reset filters**. Separate **QA Validation** and **About** pages explain checks, KPI definitions and model context.
+The report supports interactive year, month, plant and product filters, context-specific **sales-channel filtering**, dynamic selectors and **Reset filters**. An **About** page explains KPI definitions and model context. A hidden technical **QA Validation** page is available in Power BI Desktop editing view for inspecting selected reporting totals; it is hidden in report reading view and is not intended as a standard end-user navigation page.
 
 ### Additional analysis views
 
