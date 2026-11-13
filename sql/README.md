@@ -64,7 +64,7 @@ The following are **observed results for the validated dataset**, not permanent 
 - **504** production documents, each with **4 input-material rows and 1 finished-output row**.
 - Bronze → Silver matched production rows: **0 differences** in input quantity, output quantity or scrap.
 - Silver → Gold finished-output rows: **504 matched**, **0 missing**, **0 quantity mismatches**.
-- Production Actual total: **2,406,082.300** in both Silver and Gold. The physical unit must be confirmed from upstream field definitions.
+- Production Actual total: **2,406,082.300 metric tonnes (t)** in both Silver and Gold. All 504 finished-output rows in the source `production_rows.csv` have `unit = t`. No quantity-unit conversion is applied between Source, Bronze, Silver and Gold.
 - Power BI Production Actual matrix: **2,406,082**; KPI: **2.41M**. **PASS at displayed precision**.
 
 ## Source-to-Bronze validation — 8 October and 9 November 2026

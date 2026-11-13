@@ -51,7 +51,7 @@ Expected for the validated dataset: `production_rows = 504`, `production_actual 
 
 - Equality has been verified **only to the displayed whole-number precision** in Power BI.
 - Monthly, plant-level and product-level totals have not been independently reconciled with PostgreSQL by this check.
-- Both compared quantities are treated as production quantities; confirm physical units and any conversion rules from source definitions if a formal unit audit is needed.
+- Both compared quantities are finished-production volumes in metric tonnes (t). The source production rows explicitly record `unit = t`, and the pipeline applies no unit conversion. Raw-material input quantities, including records measured in `tm3`, are outside this comparison.
 - Validation refers to the dataset and filter state observed on 2026-10-08, not necessarily to future refreshes.
 
 **Evidence:** pgAdmin results for the PostgreSQL total and line-level checks, plus the Power BI Production Analysis screenshot showing `2.41M` on the KPI card and `2,406,082` in the grand total.

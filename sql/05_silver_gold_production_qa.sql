@@ -3,8 +3,11 @@
 -- Read-only queries. No data or schema changes.
 -- Validated manually on 2026-10-08 against the project database.
 -- Expected: 504 finished-product rows and 2406082.300 total quantity in both layers.
--- IMPORTANT: Confirm that outputquantity and quantity_t have the same unit before
--- interpreting the equality as a physical mass balance.
+-- Unit: outputquantity (Silver) and quantity_t (Gold) are both metric tonnes.
+-- All 504 finished-output rows in the source production_rows.csv have unit = 't'
+-- (verified 13 November 2026).
+-- This check compares finished-output quantities only; it is not an
+-- input/output mass balance.
 
 -- 01 | Compare finished-production totals between Silver and Gold.
 SELECT
@@ -88,5 +91,6 @@ SELECT
     END AS qa_status
 FROM metrics;
 -- Note: 504 is the current test-data expectation, not a universal business rule.
--- Matching counts/sums do not independently verify unit definitions, date/plant/
--- product mapping or the Power BI Production Actual DAX measure.
+-- Matching counts/sums do not by themselves verify units (verified separately from
+-- the source files; see the header), date/plant/product mapping or the Power BI
+-- Production Actual DAX measure.

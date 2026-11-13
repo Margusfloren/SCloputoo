@@ -42,6 +42,7 @@ they are neither reported again as new defects nor forgotten.
 | B6-4 | `gold dim_date` not marked as a date table | FUTURE DEVELOPMENT – V2 | 13 November 2026 | No |
 | B6-5 | Descriptions of all 17 visible measures | NO ISSUE FOUND – VERIFIED | 13 November 2026 | No |
 | B7-A | Inconsistent plant display names across slicers, charts and matrices | FIXED AND VERIFIED | 13 November 2026 | Yes – Power Query display-name step, six Plant slicers and five Reset bookmarks |
+| B8 | Outdated documentation requiring production volume units to be confirmed | FIXED AND VERIFIED | 13 November 2026 | No – three SQL documentation statements corrected; data, SQL logic and DAX unchanged |
 
 ---
 
@@ -818,4 +819,65 @@ No DAX calculations, relationships or PostgreSQL data were modified for B7-A.
 - `plant_id` remains the technical key used in relationships. `plant_name` is the user-facing display field.
 - If new plant names are added in the source data, check that the `Tehas ` → `Plant ` replacement still produces the intended English names.
 - If the Plant slicer field is changed again, update all five Reset bookmarks in the same change.
+
+---
+
+## B8 – Production volume units
+
+**Status:** FIXED AND VERIFIED
+
+**Decision recorded:** 13 November 2026
+
+**Business definition (project owner):** V1 is a volume-based management dashboard. All sales and production Actual, Budget and Variance values are in metric tonnes (t), not money. The report abbreviates large numbers (for example, 2.4M = 2.4 million tonnes; 765K = 765,000 tonnes). Budget means planned volume in tonnes. Attainment is a percentage ratio.
+
+### Original finding
+
+Some SQL QA documentation said the physical unit of production quantities still had to be confirmed. Other sources already described them as tonnes: the Gold column comments, the Power BI measure descriptions and the KPI documentation. The audit checked whether the source data and pipeline support the tonne definition.
+
+### Verification evidence
+
+The evidence comes from a read-only inspection of the local source ZIP archives, SQL QA scripts, documentation and TMDL files.
+
+| Item | Evidence | Basis |
+|---|---|---|
+| Production actual (source) | All **504** finished-output rows in `production_rows.csv` have `unit = t`; total **2,406,082.3 t** | Source unit field |
+| Sales actual (source) | All **1,404** rows in `invoice_rows.csv` have `unit = t`; total **2,429,578.7 t** | Source unit field |
+| Finished products | All 10 pellet items in `item.csv` have `unit = t` | Source unit field |
+| Source → Bronze → Silver → Gold | Source-to-Bronze 10/10 PASS; Bronze → Silver production rows show no quantity differences; Silver → Gold has 504/504 matched rows with no quantity mismatches. The production total is 2,406,082.3 at every layer, so no quantity conversion is applied | Existing reconciliations (`sql/04`, `sql/05`, `sql/10`) |
+| Gold metadata | `quantity_t` and `budget_t` are documented as metric tonnes (`sql/02_gold_documentation.sql`) | Documentation |
+| Power BI | `Production Actual = SUM('gold fact_production'[quantity_t])` and `Production Budget = SUM('gold fact_production_budget'[budget_t])`. Neither applies a unit conversion, and both are described as tonnes in `_Measures.tmdl` | Model definition |
+
+Actual production and actual sales volumes are therefore expressed consistently in metric tonnes, and the **Production vs Sales** comparison uses the same unit on both sides.
+
+### Limitation – budget units
+
+The production and sales budget source files (`production_budget.csv`, `sales_budget.csv`) **do not contain an explicit unit column**. Their `budget_t` values are interpreted as metric tonnes based on three things:
+
+- the project owner's business definition;
+- the column naming;
+- consistency with actual volumes. For example, the total production budget of 2,419,001.0 is within about 0.5% of actual production, and individual budget rows are of the same magnitude as the matching actual rows.
+
+This is a documented interpretation. It is **not** independently proven by a source unit field.
+
+### Raw-material inputs
+
+Raw-material input rows in `production_rows.csv` include quantities in `tm3` (round wood, `RM-ROUND`) as well as wet tonnes. Do not sum input records with finished-output tonnes as a physical mass balance. The existing warning in `sql/04_production_qa.sql` remains valid. Production KPIs use finished-output quantities only.
+
+### Changes made
+
+Three outdated SQL documentation statements were corrected. Query logic was not changed.
+
+| File | Change |
+|---|---|
+| `sql/README.md` | The Production Actual total is stated in metric tonnes, with the source unit evidence and no conversion in the pipeline. |
+| `sql/05_silver_gold_production_qa.sql` | The header unit warning is replaced with the verified unit statement and a clarification that the check is not a mass balance. The closing note now says units were verified separately from the source files. |
+| `sql/06_production_powerbi_reconciliation.md` | The unit-confirmation follow-up is replaced with the verified unit statement and a note on raw-material `tm3` inputs. |
+
+No PostgreSQL data, SQL query logic, DAX, Power BI files or source data were modified.
+
+### Impact and release decision
+
+No data or calculation defect was identified. The Actual vs Budget and Production vs Sales comparisons use consistent volume units, subject to the budget-unit limitation above. **B8 does not block V1 publication.**
+
+Optional later improvement: the About-page KPI definitions describe "volume" without naming the unit. A short sentence stating that all volumes are in metric tonnes and explaining the K/M abbreviations could be added during later UX polish. It is not required for V1.
 
