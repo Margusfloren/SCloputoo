@@ -13,17 +13,155 @@ they are neither reported again as new defects nor forgotten.
 |---|---|
 | ACCEPTED AS DESIGNED | The behaviour is intentional. It is not a defect. |
 | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | The implementation is not ideal, but the current result is acceptable for V1. The item stays open for a future version. |
-| FIXED AND VERIFIED | The issue was corrected, the resulting project configuration was inspected, and the expected behaviour was demonstrated in Power BI Desktop. |
+| FIXED AND VERIFIED | The issue was corrected and the result was verified using an appropriate method (e.g. Power BI Desktop, SQL execution, or source-file inspection). The relevant evidence is recorded with each decision. |
 
 ## Summary
 
 | ID | Finding | Status | Date | Model/report changed |
 |---|---|---|---|---|
+| A1 | Incorrect sales-budget allocation in channel views | FIXED AND VERIFIED | 13 November 2026 (decision logged) | Yes – sales field parameter and channel filtering |
+| A2 | Incorrect documentation of Python as an independent sales-KPI calculation tool; earlier OTIF scope inconsistency | FIXED AND VERIFIED | 13 November 2026 | Yes – About page and project overview README (OTIF documentation corrected earlier) |
+| A3 | Incomplete CTE / SQL syntax issue in the sales validation script | FIXED AND VERIFIED | 13 November 2026 (decision logged) | Yes – SQL QA script |
 | B2-1a | Static title "Production Actual" on the V1 Dashboard production comparison chart | ACCEPTED AS DESIGNED | 12 November 2026 | No |
 | B2-1b | Outdated option labels in the `Production Chart Title` measure | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 12 November 2026 | No |
 | B2-2 | Outdated `Reset - Sales Analysis` bookmark after the A1 sales-channel budget fix; associated `Reset - V1 Dashboard` state also refreshed | FIXED AND VERIFIED | 13 November 2026 | Yes – report bookmarks, visual states and start page |
 | B2-3a | Ambiguous "Budget Attainment Selected Period" labels on two sales KPI cards | FIXED AND VERIFIED | 13 November 2026 | Yes – two card labels and Desktop-generated language metadata |
 | B2-3b | Hidden `Budget Attainment YTD %` measure has a misleading YTD name and description | KNOWN TECHNICAL DEBT – ACCEPTED FOR V1 | 13 November 2026 | No – measure deliberately retained |
+
+---
+
+## A1 – Sales-channel budget allocation
+
+**Status:** FIXED AND VERIFIED  
+**Decision recorded:** 13 November 2026  
+**Evidence basis:** Earlier project-owner and Claude Code audit reports; not re-executed for this log update.
+
+### Finding and resolution
+
+The Sales Analysis channel view previously applied an incorrect sales-budget
+filter context: a channel could show the overall budget rather than its
+allocated channel budget, leading to misleading channel-level attainment.
+The A1 correction aligned the Sales View field parameter and the channel
+filtering with `dim_channel[channel_name]` / `channel_id` relationships.
+A subsequent Sales Analysis review showed channel-specific Actual and Budget
+values, and the B2-2 Reset-bookmark tests confirmed the corrected report state.
+
+Earlier audit evidence identifies Git commits `a99b971` and `9ca3d20`
+for the A1 work. The channel-level comparison documentation is a separate
+follow-up topic (original audit finding **B9**); resolving A1 does not,
+by itself, close B9.
+
+### Guidance
+
+Do not reopen A1 merely because the prior bookmark state contained an old
+`fact_sales[channel_id]` projection; the obsolete bookmark state was
+removed and tested under **B2-2**. Revalidate channel-level Actual and Budget
+results if the model relationships or field parameter are changed later.
+
+---
+
+## A2 – Accurate description of Python validation and V1 scope
+
+**Status:** FIXED AND VERIFIED  
+**Decision recorded:** 13 November 2026  
+**Decided by:** Project owner
+
+### Original finding
+
+The V1 documentation overstated what Python did for sales KPI validation:
+
+- The Power BI **About** page described SQL, Power BI, and Python as three
+  independent sources of KPI validation and said Python *reproduced* sales KPIs.
+- `docs/01_projekt_overview/README.md` repeated the claim that Python was an
+  independent KPI validation tool.
+- An earlier V1 documentation inconsistency had presented **OTIF** as a
+  current KPI, although OTIF is planned beyond V1.
+
+The OTIF description was corrected earlier (audit reported commit `5be2e92`).
+The Python claims required a separate correction.
+
+### Actual implemented validation
+
+Python performs **two distinct roles**, which must not be conflated:
+
+1. **Independent Source-to-Bronze reconciliation.**
+   `python/10_source_bronze_full_qa.py` reads original CSV files from source ZIP
+   archives and independently compares column structure, row counts, and full
+   rows (including duplicate multiplicity) with ten PostgreSQL Bronze tables.
+   Results were **10/10 PASS** according to
+   `docs/07_quality_assurance/source_to_bronze_qa_2026-11-09.md`.
+   The comparison has a documented limitation: NULL and empty fields are
+   treated as equal.
+2. **SQL-based sales KPI cross-check.**
+   `python/01_sales_analysis.ipynb` and the documented notebook read Gold data
+   using SQL queries and display selected Actual, Budget, Variance, and
+   Attainment results. They do **not** independently recompute those KPIs
+   in pandas from source records. The principal independent KPI logic
+   comparison is **SQL versus Power BI (DAX)**.
+
+### Changes made
+
+- **Power BI About page**: replaced the misleading validation claims with
+  a concise description of SQL reconciliation, SQL-to-Power-BI KPI checks,
+  independently verified Source-to-Bronze tables (**10/10 PASS**), and the
+  SQL-query-based Python notebook.
+  - `powerbi/Pellet_SC_dachboard.Report/definition/pages/970d6fcfaf61082c78b3/visuals/fd2c2efc6378cb195379/visual.json`
+  - Relevant audit references: the `Validation & tools` section starts near
+    line 22; revised passages near lines 40, 57, 74–87 and 104.
+- **Project overview README**: corrected five passages to distinguish the
+  two Python roles and replace the unsupported `SQL ↔ Python ↔ Power BI`
+  independent-calculation claim with **SQL ↔ Power BI**, supported by Python
+  Source-to-Bronze validation and SQL-result cross-checking.
+  - `docs/01_projekt_overview/README.md`, post-change references near
+    lines 348–363, 384–390, 417, 501 and 722.
+- No DAX measures, bookmarks, data pipelines, or calculations were changed
+  for this A2 documentation correction.
+
+### Verification evidence
+
+The project owner visually reviewed the new About-page wording in Power BI
+Desktop. A subsequent **read-only Claude Code** audit reported:
+
+- About-page JSON was valid and contained the revised text; its structural
+  diff consisted of text/paragraph formatting only, with no visual position,
+  size, type, or schema change.
+- All five README passages matched the About-page wording and the Python
+  scripts/notebooks' actual behaviour.
+- A repository-wide search found **zero remaining occurrences** of the
+  previously misleading formulations, including independent Python sales KPI
+  validation and `SQL ↔ Python ↔ Power BI` as independent calculations.
+- Neither the bookmarks nor any semantic model files were changed; the
+  report start page remained **V1 Dashboard** (`activePageName =
+  718c030b07cb52bb7067`).
+- At the time of the check, precisely **two files** were modified and
+  uncommitted: the About-page `visual.json` and the project overview README.
+  No Git commit was made by the auditor.
+
+**Decision:** Both parts of A2 (OTIF scope and Python validation claims)
+are corrected and checked. Mark A2 **FIXED AND VERIFIED**. This status does
+not assert that Python now independently computes sales KPIs; that remains
+outside the implemented V1 scope.
+
+**Related follow-up, not part of A2:**
+`sql/12_python_documentation_validation.md` still states `REVIEW PENDING`
+for the notebook, although its reviewed/documented version exists. The same
+file also contains the older `8,011` figure; update these together when
+handling original audit finding **B3**.
+
+---
+
+## A3 – Sales validation SQL syntax issue
+
+**Status:** FIXED AND VERIFIED  
+**Decision recorded:** 13 November 2026  
+**Evidence basis:** Earlier Claude Code audit report and project-owner test;
+not re-executed for this log update.
+
+The original audit found an incomplete CTE / syntax issue in
+`sql/01_sales_v1_checks.sql`. The issue was corrected (reported Git commit
+`086bdab`) and the revised check was reported to run successfully in
+PostgreSQL. This is a **SQL script fix**, not a change to the report's DAX
+measures. Re-run the script if the underlying SQL QA logic is modified.
 
 ---
 

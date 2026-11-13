@@ -37,90 +37,10 @@
               {
                 "textRuns": [
                   {
-                    "value": "Data and KPI calculations are validated independently using ",
+                    "value": "Data quality is checked across multiple stages using SQL, Power BI and Python.",
                     "textStyle": {
                       "fontSize": "12pt"
                     }
-                  },
-                  {
-                    "value": "SQL, Power BI and Python",
-                    "textStyle": {
-                      "fontWeight": "bold",
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": ".",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Python is connected directly to the PostgreSQL gold layer and is used to reproduce key sales KPIs such as:",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  }
-                ]
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Actual;",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Budget;",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Variance;",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Budget Attainment.",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  }
-                ],
-                "listType": "bullet"
-              },
-              {
-                "textRuns": [
-                  {
-                    "value": "Comparing the same results across multiple tools provides an additional validation layer and helps ensure data consistency and reliability",
-                    "textStyle": {
-                      "fontSize": "12pt"
-                    }
-                  },
-                  {
-                    "value": "."
                   }
                 ]
               },
@@ -128,6 +48,63 @@
                 "textRuns": [
                   {
                     "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "SQL validates the Bronze, Silver and Gold layers, while key sales KPI results are compared with Power BI (DAX).",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "A Python script independently compares original source CSV files with PostgreSQL Bronze tables (",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": "10/10 tables passed",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontSize": "12pt"
+                    }
+                  },
+                  {
+                    "value": ").",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "A separate Python notebook cross-checks selected sales KPI results from the Gold layer using SQL queries. It does not independently recalculate these KPIs.",
+                    "textStyle": {
+                      "fontSize": "12pt"
+                    }
                   }
                 ]
               }

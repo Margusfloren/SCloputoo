@@ -347,16 +347,18 @@ Used for:
 
 ### Python
 
-Python connects directly to the PostgreSQL gold layer.
+Python is used in two different quality assurance roles.
 
-It is used as an independent analytical and validation tool.
+A read-only validation script (`python/10_source_bronze_full_qa.py`) independently compares the original source CSV files with the PostgreSQL Bronze tables. The comparison covers columns, row counts and complete rows, and all ten tables passed (10/10 PASS).
 
-Current Python validation includes key sales KPIs such as:
+A notebook connected to the PostgreSQL gold layer cross-checks selected sales KPIs by running SQL queries:
 
 - Actual;
 - Budget;
 - Variance;
 - Budget Attainment.
+
+The KPI values in the notebook are calculated by SQL in PostgreSQL. Independent KPI recalculation in Python is not yet implemented.
 
 Python development will later continue into a web-based analytical interface using Streamlit.
 
@@ -379,11 +381,13 @@ Development work is maintained in a dedicated development branch until the V1 ve
 
 An important principle of the project is that the same business result should be reproducible using different tools.
 
-Key calculations are therefore checked independently using:
+Key results are therefore calculated separately in SQL and in Power BI (DAX) and compared:
 
-**SQL ↔ Python ↔ Power BI**
+**SQL ↔ Power BI**
 
-For example, the same selected period can be calculated separately in SQL, Python and Power BI and the results compared.
+For example, the same selected period can be calculated in SQL and in Power BI and the results compared.
+
+Python supports this approach in two ways: it independently validates the Source → Bronze load, and it cross-checks selected SQL KPI results from the gold layer.
 
 This approach helps identify:
 
@@ -410,7 +414,7 @@ Example:
 - Variance: -347.4 t
 - Budget Attainment: 99.5%
 
-The same result can then be reproduced in Power BI and Python.
+The same result can then be reproduced in Power BI and retrieved in the Python notebook using the same SQL query.
 
 Another example demonstrates the relationship between production and sales.
 
@@ -494,7 +498,7 @@ The current V1 focuses on:
 - interactive filtering;
 - reset controls;
 - semantic model usability;
-- SQL / Python / Power BI cross-validation.
+- SQL ↔ Power BI reconciliation, supported by Python Source → Bronze validation and SQL result cross-checks.
 
 V1 is intentionally limited to a manageable and reliable reporting scope.
 
@@ -715,7 +719,7 @@ QA includes checks such as:
 - negative Variance values are highlighted consistently;
 - Attainment values below 100% are highlighted consistently;
 - Production vs Sales tonnes and percentage calculations produce consistent results;
-- SQL, Python and Power BI calculations produce matching results;
+- SQL and Power BI calculations produce matching results, and the Python notebook returns the same SQL result for the tested period;
 - technical helper measures are hidden from end users;
 - important business measures include descriptions;
 - obsolete test visuals or measures are removed;
