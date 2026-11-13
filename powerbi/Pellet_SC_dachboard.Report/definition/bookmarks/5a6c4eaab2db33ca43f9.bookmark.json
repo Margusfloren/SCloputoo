@@ -16,7 +16,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "96f2b65f82f430566ed6",
+                  "name": "b8e7e26472b2b0545660",
                   "type": "Advanced",
                   "expression": {
                     "HierarchyLevel": {
@@ -42,7 +42,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "c18a1cd28433d14dd1d6",
+                  "name": "7e1d7ac7b85b07d96258",
                   "type": "Categorical",
                   "expression": {
                     "HierarchyLevel": {
@@ -68,7 +68,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "6f011d245957da3eeafb",
+                  "name": "ee1e7dfe55d402100a17",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -83,7 +83,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "ffd9733c2df20826cbdc",
+                  "name": "fff09eef06abb3920860",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -98,7 +98,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "70b546135572b3a9ef27",
+                  "name": "a99aa0bcbeee00b7a267",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -179,7 +179,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "3966c17833fd0722263c",
+                  "name": "1740aab87638b5821ec1",
                   "type": "Advanced",
                   "expression": {
                     "HierarchyLevel": {
@@ -205,7 +205,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "046cfd0959fc1437c2da",
+                  "name": "072fbe31d38809ee3ee6",
                   "type": "Categorical",
                   "expression": {
                     "HierarchyLevel": {
@@ -231,7 +231,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "872a6c6b17db760486a7",
+                  "name": "5cd549e8b71176b6de56",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -246,7 +246,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "f3465c2f6ba27e16dd03",
+                  "name": "82ce4a9a4b35e4b0ddeb",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -261,7 +261,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "5f3e7066c08948f7403d",
+                  "name": "79b4d3c0ac0b515eaeb4",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -342,7 +342,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "8645efa20194aaa77ec9",
+                  "name": "967f7df63a72dd6026be",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -363,11 +363,17 @@
               "objects": {}
             }
           },
+          "347a2e052a28f417d2b7": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
           "6753d25b6b2d33a5b169": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "67d3e8ea639a66f87c0b",
+                  "name": "9920d5190865214923c7",
                   "type": "Categorical",
                   "expression": {
                     "HierarchyLevel": {
@@ -463,7 +469,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "e20d82ae0ed9cbb93445",
+                  "name": "00761f37cc46e500a909",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -537,7 +543,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "4bd24c90bc0c27f05e55",
+                  "name": "c097d0fcd79ba74d6e04",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -552,7 +558,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "90090464fca1e8282bb5",
+                  "name": "4ef4ca9fb79c6ba09d97",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -606,7 +612,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "60208509cb18e0223650",
+                  "name": "0c7fa0748bc17c0b2e06",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -646,7 +652,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "8c514330c98c93987402",
+                  "name": "f90a71a0e358946033d9",
                   "type": "Advanced",
                   "expression": {
                     "HierarchyLevel": {
@@ -780,7 +786,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "63d9e19cf64f5ae80660",
+                  "name": "b92532f6daeeed70cba9",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -820,7 +826,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "52d0cb9c222fd52a097a",
+                  "name": "3366e2e3207a0a691da2",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -835,7 +841,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "1fad14372e1146f75b41",
+                  "name": "a09529632880a2233b4c",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -850,7 +856,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "8582cbd797c35becdc77",
+                  "name": "371cba03b9e79b331da7",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -865,7 +871,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "8d49f952aa2e11ec54e5",
+                  "name": "04c871d476db2984ac57",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -880,7 +886,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "91e1454fce9140f9e4b3",
+                  "name": "02c7773c3a18aa9a0e55",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -914,6 +920,18 @@
                 ]
               },
               "projections": {
+                "Rows": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "gold dim_plant"
+                        }
+                      },
+                      "Property": "plant_name"
+                    }
+                  }
+                ],
                 "Values": [
                   {
                     "Measure": {
@@ -953,18 +971,6 @@
                         }
                       },
                       "Property": "Production Attainment Selected Period %"
-                    }
-                  }
-                ],
-                "Rows": [
-                  {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "gold dim_plant"
-                        }
-                      },
-                      "Property": "plant_name"
                     }
                   }
                 ]
@@ -1012,7 +1018,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "431a8de2b788ed973ee3",
+                  "name": "c94db293c675c970ae08",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -1021,7 +1027,7 @@
                           "Entity": "gold dim_plant"
                         }
                       },
-                      "Property": "plant_id"
+                      "Property": "plant_name"
                     }
                   },
                   "howCreated": 0
@@ -1056,37 +1062,18 @@
                           "Entity": "gold dim_plant"
                         }
                       },
-                      "Property": "plant_id"
+                      "Property": "plant_name"
                     }
                   }
                 ]
-              },
-              "expansionStates": [
-                {
-                  "roles": [
-                    "Values"
-                  ],
-                  "levels": [
-                    {
-                      "queryRefs": [
-                        "gold dim_plant.plant_id"
-                      ],
-                      "isCollapsed": true,
-                      "isPinned": true
-                    }
-                  ],
-                  "root": {
-                    "identityValues": []
-                  }
-                }
-              ]
+              }
             }
           },
           "f584692d3bb692dd0dac": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "b7530446a22c052c15fd",
+                  "name": "9cd7c6e63756712809b0",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {

@@ -16,7 +16,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "5d1389db0b109900e61e",
+                  "name": "8cc6da826056b244da29",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -41,22 +41,22 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "af67fe6cce7430c369b2",
-                  "type": "Advanced",
+                  "name": "ed3d9ddf68e9e5e5910d",
+                  "type": "Categorical",
                   "expression": {
-                    "Measure": {
+                    "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "_Measures"
+                          "Entity": "gold dim_product"
                         }
                       },
-                      "Property": "Sales Attainment Selected Period %"
+                      "Property": "product_name"
                     }
                   },
                   "howCreated": 0
                 },
                 {
-                  "name": "b3e983b4d050d5da0de5",
+                  "name": "e9a071baa281adde0e85",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -71,7 +71,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "d571c7e0c5356d07c7e4",
+                  "name": "f3556d642dbc82716449",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -86,7 +86,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "29a7889bd371b3d7e419",
+                  "name": "e8953b003d0a33770b2e",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -101,16 +101,16 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "5a7a7b539aa42d06cb1a",
-                  "type": "Categorical",
+                  "name": "be765a534c8094d5b489",
+                  "type": "Advanced",
                   "expression": {
-                    "Column": {
+                    "Measure": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "gold dim_product"
+                          "Entity": "_Measures"
                         }
                       },
-                      "Property": "product_name"
+                      "Property": "Sales Attainment Selected Period %"
                     }
                   },
                   "howCreated": 0
@@ -230,7 +230,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "2862d4162989213c905b",
+                  "name": "c93128f2e6710dc66475",
                   "type": "Categorical",
                   "expression": {
                     "HierarchyLevel": {
@@ -326,7 +326,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "0cce1070a4727d9c9b20",
+                  "name": "44e60d7bd78856448436",
                   "type": "Advanced",
                   "expression": {
                     "HierarchyLevel": {
@@ -352,7 +352,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "8b0a95a55a9d85e6608d",
+                  "name": "b9a32c7bed204b84e610",
                   "type": "Categorical",
                   "expression": {
                     "HierarchyLevel": {
@@ -378,7 +378,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "a3c682974a760eba15ed",
+                  "name": "bb2d378cba02ac915c27",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -393,7 +393,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "fff959be089a89bb4d4e",
+                  "name": "7efc69331508bc888a49",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -408,7 +408,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "8ba0f77a0960c492a420",
+                  "name": "5096d1ae224e0c640503",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -423,7 +423,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "5a93cac2b40e9dcbccbc",
+                  "name": "33de691a050d000c3c68",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -494,7 +494,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "7c850accbbe8801d62b2",
+                  "name": "e00a64be98a30c12803d",
                   "type": "Advanced",
                   "expression": {
                     "HierarchyLevel": {
@@ -628,7 +628,22 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "92ccb41f5e91780702bd",
+                  "name": "428878eb803c5038eedb",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "gold dim_product"
+                        }
+                      },
+                      "Property": "product_name"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "77d291c95ed0dce2560e",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -643,7 +658,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "7b5c74a40a3eba700dd4",
+                  "name": "dd17a2be3e9a70240a91",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -653,21 +668,6 @@
                         }
                       },
                       "Property": "Sales Budget Selected Period"
-                    }
-                  },
-                  "howCreated": 0
-                },
-                {
-                  "name": "54fd9bce71762045685a",
-                  "type": "Categorical",
-                  "expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "gold dim_product"
-                        }
-                      },
-                      "Property": "product_name"
                     }
                   },
                   "howCreated": 0
@@ -766,7 +766,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "c32516907670abe89346",
+                  "name": "09f78bd0010aedc88278",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -797,7 +797,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "0d24b2ca8c7c0c450dd5",
+                  "name": "d4ec6c549cb6b4508449",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -837,7 +837,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "9618fd424b4092e570d7",
+                  "name": "f773fc7e399688358025",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -966,7 +966,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "10ab459623e520073a22",
+                  "name": "ec4b5e684da932071731",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -1021,7 +1021,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "80d44d61e0de03ab0bc6",
+                  "name": "7484703b0a670ccc003d",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -1030,7 +1030,7 @@
                           "Entity": "gold dim_plant"
                         }
                       },
-                      "Property": "plant_id"
+                      "Property": "plant_name"
                     }
                   },
                   "howCreated": 0
@@ -1065,37 +1065,18 @@
                           "Entity": "gold dim_plant"
                         }
                       },
-                      "Property": "plant_id"
+                      "Property": "plant_name"
                     }
                   }
                 ]
-              },
-              "expansionStates": [
-                {
-                  "roles": [
-                    "Values"
-                  ],
-                  "levels": [
-                    {
-                      "queryRefs": [
-                        "gold dim_plant.plant_id"
-                      ],
-                      "isCollapsed": true,
-                      "isPinned": true
-                    }
-                  ],
-                  "root": {
-                    "identityValues": []
-                  }
-                }
-              ]
+              }
             }
           },
           "9095b00f9fa045248a11": {
             "filters": {
               "byExpr": [
                 {
-                  "name": "02bedca969149c6bc904",
+                  "name": "a5f9fc8e8e2c33000d6e",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -1150,7 +1131,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "3bc9b9e7d041967b90b4",
+                  "name": "46ee0b21a37450b78cd9",
                   "type": "Categorical",
                   "expression": {
                     "Column": {
@@ -1165,7 +1146,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "d3563180c1e9ad96906c",
+                  "name": "9a0c20e8438c128de326",
                   "type": "Advanced",
                   "expression": {
                     "HierarchyLevel": {
@@ -1191,7 +1172,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "ff730f2ae206284dd7dd",
+                  "name": "a9f19d941e65282d4922",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -1206,7 +1187,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "d54fb72c2dbd2b652e6c",
+                  "name": "02c1479f130585ee2508",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -1221,7 +1202,7 @@
                   "howCreated": 0
                 },
                 {
-                  "name": "5e1bed8c7a0e40c2cc5e",
+                  "name": "5ad5d8ea6d7056c46d6b",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -1283,7 +1264,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "a635bcd3ed608a9b0381",
+                  "name": "41b5fbcca892660743e7",
                   "type": "Advanced",
                   "expression": {
                     "Measure": {
@@ -1308,7 +1289,7 @@
             "filters": {
               "byExpr": [
                 {
-                  "name": "2b46eb473a7111972254",
+                  "name": "9fa442cf9e9d7a054a4a",
                   "type": "Categorical",
                   "expression": {
                     "Column": {

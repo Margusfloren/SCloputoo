@@ -5,6 +5,8 @@
 **Validation date:** 9 October 2026  
 **Result:** **PASS — 8/8 queries reviewed; no substantial Power Query transformations observed**
 
+**Update:** 13 November 2026 — presentation step added to `gold dim_plant` (see section 7)
+
 ## 1. Purpose
 
 Verify that Power Query primarily imports prepared tables from the PostgreSQL `gold` schema, while the SQL data pipeline handles upstream preparation and the Power BI semantic model/DAX handles relationships and interactive reporting calculations.
@@ -27,6 +29,8 @@ The eight queries were inspected individually in Power Query Editor. For each, t
 | `gold fact_production_budget` | Source; Navigation | PASS — direct Gold import |
 
 **Summary:** 8/8 reviewed; six queries have only `Source` and `Navigation`; two include one simple additional step each. No merges, appends, aggregations, business calculations or complex cleansing steps were observed in the eight Applied Steps lists.
+
+The table above records the state reviewed on 9 October 2026. The current `gold dim_plant` query has one additional presentation step; see section 7.
 
 ### Two permitted lightweight steps
 
@@ -56,3 +60,19 @@ This division of responsibilities is consistent with the course's preference to 
 ## 6. Conclusion
 
 **PASS (scope: Power Query architecture review).** All eight Power Query queries are sourced from PostgreSQL Gold tables, and the only extra steps observed were one column selection and one column rename. The reviewed setup follows the intended separation of data preparation, semantic modelling and DAX reporting logic.
+
+## 7. Post-validation change – 13 November 2026
+
+As part of V1 quality-audit finding **B7-A**, one step was added to the `gold dim_plant` query. The query now has these Applied Steps: Source; Navigation; Selected Columns; **Replaced Value**.
+
+Current definition (`powerbi/Pellet_SC_dachboard.SemanticModel/definition/tables/gold dim_plant.tmdl`):
+
+```
+#"Replaced Value" = Table.ReplaceValue(#"Selected Columns","Tehas ","Plant ",Replacer.ReplaceText,{"plant_name"})
+```
+
+- **Purpose:** standardizes the plant display names for the English-language report. `plant_name` changes from `Tehas A`–`Tehas D` to `Plant A`–`Plant D`.
+- **Unchanged:** the PostgreSQL `gold.dim_plant` data, the technical plant IDs (`plant_id`, `PLANT-A`–`PLANT-D`), column names, data types, keys and model relationships.
+- **Classification:** this is a presentation-oriented value replacement for report display, not a new Bronze/Silver/Gold ETL operation, business calculation or data-cleansing step.
+
+The 9 October 2026 result remains valid for the configuration reviewed on that date. With this step, the architecture assessment in sections 4 and 6 still holds: Power Query performs only minor model-facing adjustments, and substantive data preparation remains in PostgreSQL. The decision and its verification are recorded in [`docs/07_quality_assurance/v1_audit_decisions.md`](../docs/07_quality_assurance/v1_audit_decisions.md) under B7-A.

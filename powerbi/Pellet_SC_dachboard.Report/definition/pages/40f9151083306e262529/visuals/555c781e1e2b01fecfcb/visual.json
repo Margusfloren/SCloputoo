@@ -23,10 +23,10 @@
                       "Entity": "gold dim_plant"
                     }
                   },
-                  "Property": "plant_id"
+                  "Property": "plant_name"
                 }
               },
-              "queryRef": "gold dim_plant.plant_id",
+              "queryRef": "gold dim_plant.plant_name",
               "nativeQueryRef": "Plant",
               "active": true,
               "displayName": "Plant"
@@ -38,23 +38,6 @@
         "isDefaultSort": true
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Values"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "gold dim_plant.plant_id"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          }
-        ],
-        "root": {}
-      }
-    ],
     "objects": {
       "selection": [
         {

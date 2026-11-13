@@ -41,6 +41,7 @@ they are neither reported again as new defects nor forgotten.
 | B6-3 | Automatic date/time hierarchy dependency | FUTURE DEVELOPMENT – V2 | 13 November 2026 | No |
 | B6-4 | `gold dim_date` not marked as a date table | FUTURE DEVELOPMENT – V2 | 13 November 2026 | No |
 | B6-5 | Descriptions of all 17 visible measures | NO ISSUE FOUND – VERIFIED | 13 November 2026 | No |
+| B7-A | Inconsistent plant display names across slicers, charts and matrices | FIXED AND VERIFIED | 13 November 2026 | Yes – Power Query display-name step, six Plant slicers and five Reset bookmarks |
 
 ---
 
@@ -737,4 +738,84 @@ All **17 visible measures** had descriptions in the read-only inspection and are
 **B6 does not block V1 publication.** The inspection found no B6 issue requiring a functional fix before release. Current visible KPI measures use standard aggregations, ratios and filter relationships rather than the unused YTD calculations. Prior SQL/Power BI reconciliation evidence is discussed in the A-level audit record; wider channel/budget comparison coverage remains a separate **B9** item.
 
 **No files were changed for B6.** Future work may remove unused hidden measures, harmonize number formats and redesign the date hierarchy/date-table setup, but should be planned and tested as a distinct V2 change rather than introduced during V1 sign-off. This decision records a source-level risk assessment; it does not assert that a date-model migration was experimentally tested.
+
+---
+
+## B7-A – Plant display names
+
+**Status:** FIXED AND VERIFIED
+
+**Decision recorded:** 13 November 2026
+
+**Decided by:** Project owner – the report interface should be English and consistent.
+
+**Scope:** B7-A only. The other B7 observations (month names and chart colours) are not resolved by this decision.
+
+### Original behaviour
+
+The same four plants were shown under two different names, sometimes on the same page:
+
+- **Plant slicers** used the hidden technical key `gold dim_plant[plant_id]` and displayed `PLANT-A` to `PLANT-D`.
+- **Charts, matrices and the `Filter Context` text** used `gold dim_plant[plant_name]` and displayed the Estonian business names `Tehas A` to `Tehas D`.
+
+The values originate in the synthetic source data (`object.csv`: `PLANT-A,Tehas A`, etc.) and reach Power BI unchanged from PostgreSQL `gold.dim_plant`. The mapping was one-to-one, so the risk of misreading figures was low, but the interface was inconsistent and partly non-English.
+
+### Implemented solution
+
+The change was made in Power BI Desktop in two stages.
+
+**Stage 1 – display names (Power Query).** One step was added to the `gold dim_plant` query
+(`powerbi/Pellet_SC_dachboard.SemanticModel/definition/tables/gold dim_plant.tmdl`):
+
+```
+#"Replaced Value" = Table.ReplaceValue(#"Selected Columns","Tehas ","Plant ",Replacer.ReplaceText,{"plant_name"})
+```
+
+`plant_name` now contains `Plant A` to `Plant D`. The technical `plant_id` values `PLANT-A` to `PLANT-D`, the PostgreSQL data, column names, data types and model relationships are unchanged. See also `sql/11_power_query_architecture_validation.md`, section 7.
+
+**Stage 2 – slicers and Reset bookmarks.**
+
+- All six synchronized Plant slicers now use `gold dim_plant[plant_name]`:
+
+  | Page | Slicer visual |
+  |---|---|
+  | V1 Dashboard | `85a1c1dabd7f6583ac37` |
+  | Sales Analysis | `8bfefb7de41bb785f913` |
+  | Production Analysis | `74af32f02df661421243` |
+  | Plant Analysis | `e3c0043749aecf0624ba` |
+  | Product Analysis | `eac6379361b80582832a` |
+  | QA Validation (hidden page) | `555c781e1e2b01fecfcb` |
+
+- All slicer captions display **Plant**. No plant is preselected.
+- All five Reset bookmarks were updated so that the stored Plant slicer state refers to `plant_name` with Plant = All: `Reset - V1 Dashboard`, `Reset - Sales Analysis`, `Reset - Production Analysis`, `Reset -Plant Analysis` and `Reset - Product Analysis`.
+
+### Verification evidence
+
+**Power BI Desktop – functional checks (performed by the project owner):**
+
+- Plant selections synchronized correctly across the report pages.
+- The Reset buttons worked on all five analysis pages and restored Plant = All.
+- The Plant slicer on the hidden QA Validation page was also checked.
+- Charts, matrices and KPI cards showed the new names with unchanged KPI values.
+
+**Read-only source inspection (Claude Code):**
+
+- Stage 1 changed only the `gold dim_plant` partition (+3/−2 lines). `plant_id`, DAX measures, relationships and bookmarks were unchanged at that point.
+- In stage 2, the six slicer diffs were identical: the active field changed from `plant_id` to `plant_name`, and an obsolete `plant_id` expansion state was removed. The synchronization settings (`fieldChanges` and `filterChanges` enabled), captions, sorting and layout were unchanged.
+- Compared with the previous commit, the five Reset bookmarks differ only in the Plant slicer field. The remaining differences are Desktop-generated metadata:
+  - regenerated filter IDs;
+  - reordered but identical filter lists;
+  - empty entries for the Reset action buttons;
+  - an empty "select all" flag (`isInvertedSelectionMode`) on the V1 Dashboard Plant slicer, which is equivalent to Plant = All.
+- The bookmark options are unchanged: Data enabled, Display disabled, all visuals, correct target pages. The KPI selectors, field parameters, Production View, the **Compare production with = Budget** choice, channel filters, Sales matrix drill state and the other B2-2 default states are unchanged. No specific plant value is stored in any bookmark.
+- The semantic model (DAX, relationships, field parameters, calculated tables and culture metadata) was not changed in stage 2. The report start page remains **V1 Dashboard** (`718c030b07cb52bb7067`). `git diff --check` passed.
+
+No DAX calculations, relationships or PostgreSQL data were modified for B7-A.
+
+### Guidance for future audits
+
+- **The slicer synchronization group is still named `plant_id`.** This is an internal group identifier, not the active slicer field. Do not rename it. Renaming would break synchronization between the six slicers.
+- `plant_id` remains the technical key used in relationships. `plant_name` is the user-facing display field.
+- If new plant names are added in the source data, check that the `Tehas ` → `Plant ` replacement still produces the intended English names.
+- If the Plant slicer field is changed again, update all five Reset bookmarks in the same change.
 
