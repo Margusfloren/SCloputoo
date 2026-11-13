@@ -124,13 +124,16 @@ Passing a validation check confirms the specific conditions tested; it does not 
 
 ## Current Status
 
-**V1 core functionality is implemented and tested against the documented checks.** A final quality and documentation review is in progress before public portfolio release.
+| Area | Status |
+|---|---|
+| V1 implementation | Completed |
+| V1 quality audit | Completed |
+| Publication preparation | In progress |
+| V2 development | Planned |
 
-Remaining release preparation includes:
+All original A- and B-level audit findings have documented decisions. Accepted technical debt and limitations, including the documented local database dependency for refreshing the report, are recorded in [`docs/07_quality_assurance/v1_audit_decisions.md`](../docs/07_quality_assurance/v1_audit_decisions.md).
 
-- Final documentation consistency checks
-- Review of project files intended for publication
-- Final GitHub version-control and release preparation
+Not yet completed: updated portfolio screenshots, merging the completed V1 into the `main` branch, and public release of the repository.
 
 ## Future Development
 

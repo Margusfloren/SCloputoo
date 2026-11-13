@@ -16,7 +16,7 @@ The objective is to combine sales and production information into a clear manage
 
 The project is built around a management-level Power BI dashboard supported by PostgreSQL, SQL and Python.
 
-The current version represents **V1** of the project. After the V1 defence, the project will continue as a broader supply chain management solution.
+The current version represents **V1** of the project, which was successfully defended on 9 October 2026. The project is planned to continue as a broader supply chain management solution.
 
 ---
 
@@ -512,7 +512,7 @@ The broader supply chain functionality is planned for the extended version of th
 
 # Extended project roadmap
 
-After the V1 defence, development will continue toward a more complete supply chain management solution.
+V1 was successfully defended on 9 October 2026. Further development is planned toward a more complete supply chain management solution.
 
 Planned areas include the following.
 
@@ -709,16 +709,16 @@ The repository is organized around the main technical parts of the project.
 
 ## Current project status
 
-V1 core functionality is complete.
+| Area | Status |
+|---|---|
+| V1 implementation | Completed |
+| V1 quality audit | Completed – no remaining publication-blocking findings |
+| Publication preparation | In progress |
+| V2 development | Planned |
 
-Current focus:
-- final visual review;
-- QA;
-- documentation;
-- consistency checks;
-- preparation for project defence.
+Current focus: preparing the repository for portfolio publication.
 
-The next major development stage begins after the V1 defence.
+Planned future functionality remains V2 scope and has not been implemented. Audit decisions, accepted technical debt and documented limitations are recorded in [`docs/07_quality_assurance/v1_audit_decisions.md`](../07_quality_assurance/v1_audit_decisions.md).
 
 ---
 

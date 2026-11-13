@@ -3,7 +3,7 @@
 **A practical management dashboard for a simulated, multi-plant pellet supply chain.**
 
 **Tools:** Power BI · DAX · PostgreSQL · SQL · Python · Git/GitHub  
-**Version:** V1 — implemented; final quality review in progress  
+**Version:** V1 — implemented; quality audit completed; publication preparation in progress\
 **Dataset:** Synthetic, Directo-inspired data · 2023–2025
 
 The project brings **sales, production and budget data** into one reporting environment to help management identify deviations, compare plants and products, and examine whether production is aligned with sales.
