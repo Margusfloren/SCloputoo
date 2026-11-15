@@ -3,10 +3,26 @@
 **A practical management dashboard for a simulated, multi-plant pellet supply chain.**
 
 **Tools:** Power BI · DAX · PostgreSQL · SQL · Python · Git/GitHub  
-**Version:** V1 — implemented; quality audit completed; publication preparation in progress\
+**Version:** V1 — completed, quality-audited and published\
 **Dataset:** Synthetic, Directo-inspired data · 2023–2025
 
+**Live Interactive Demo:** [Explore the Dashboard](https://margusfloren.github.io/SCloputoo/)
+
 The project brings **sales, production and budget data** into one reporting environment to help management identify deviations, compare plants and products, and examine whether production is aligned with sales.
+
+## Interactive web demo
+
+The interactive web demo lets visitors explore the dashboard without installing Power BI. It includes:
+
+- five interactive analysis pages and an About page;
+- sales and production KPIs with budget comparisons;
+- year, month, plant and product filtering, with context-specific sales-channel filtering;
+- cross-filtering and highlighting through charts and tables;
+- dynamic analysis selectors, tooltips and reset functionality.
+
+The demo uses **static, aggregated synthetic data** exported from the PostgreSQL Gold layer. It does not connect live to PostgreSQL or Power BI. It is a standalone web version of the V1 report with documented differences, not a one-to-one copy of every Power BI feature. See the [web demo documentation](html-portfolio/README.md).
+
+**[Open the Interactive Dashboard](https://margusfloren.github.io/SCloputoo/)**
 
 ## Dashboard preview
 
