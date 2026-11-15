@@ -1,0 +1,109 @@
+# Publishes the static HTML portfolio (html-portfolio/) to GitHub Pages.
+#
+# Only the files the page needs are deployed: index.html, css/styles.css, js/*.js and
+# data/demo-data.js. tools/, README.md, the JSON copy of the data, the export script and every
+# other project file are NOT part of the Pages site. (Files committed to a public repository are
+# public anyway – limiting the Pages package is not a confidentiality control.)
+#
+# The workflow only copies static files. It never connects to PostgreSQL or any other service.
+
+name: Deploy HTML portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "html-portfolio/index.html"
+      - "html-portfolio/css/**"
+      - "html-portfolio/js/**"
+      - "html-portfolio/data/demo-data.js"
+      - ".github/workflows/deploy-html-portfolio.yml"
+  workflow_dispatch:
+
+# No permissions by default; each job requests only what it needs.
+permissions: {}
+
+# One deployment at a time; a running deployment is allowed to finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # also guards manual runs started on another branch (e.g. dev)
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Assemble site from the required files only
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC="html-portfolio"
+          OUT="${RUNNER_TEMP}/pages-site"
+          FILES=(
+            "index.html"
+            "css/styles.css"
+            "js/calc.js"
+            "js/charts.js"
+            "js/app.js"
+            "data/demo-data.js"
+          )
+          for f in "${FILES[@]}"; do
+            if [ ! -s "$SRC/$f" ]; then
+              echo "::error::Required file missing or empty: $SRC/$f"
+              exit 1
+            fi
+          done
+          rm -rf "$OUT"
+          for f in "${FILES[@]}"; do
+            mkdir -p "$OUT/$(dirname "$f")"
+            cp "$SRC/$f" "$OUT/$f"
+          done
+          # the package must contain exactly the required files
+          expected="$(printf '%s\n' "${FILES[@]}" | sort)"
+          actual="$(cd "$OUT" && find . -type f | sed 's|^\./||' | sort)"
+          if [ "$expected" != "$actual" ]; then
+            echo "::error::Unexpected site contents"
+            diff <(echo "$expected") <(echo "$actual") || true
+            exit 1
+          fi
+          # every local script/stylesheet referenced by index.html must be in the package
+          for ref in $(grep -oE '(src|href)="(css|js|data)/[^"]+"' "$OUT/index.html" | sed -E 's/^(src|href)="//; s/"$//'); do
+            if [ ! -f "$OUT/$ref" ]; then
+              echo "::error::index.html references $ref, which is not in the site package"
+              exit 1
+            fi
+          done
+          echo "SITE_DIR=$OUT" >> "$GITHUB_ENV"
+          echo "Site package:"
+          (cd "$OUT" && find . -type f -exec ls -l {} \;)
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: ${{ env.SITE_DIR }}
+
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

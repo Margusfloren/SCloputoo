@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pellet Supply Chain Dashboard</title>
+  <meta name="description" content="Interactive web demonstration of the Pellet Supply Chain Management Dashboard V1 (Power BI): sales, production and budget performance on synthetic 2023–2025 data.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect x='1' y='7' width='4' height='8' fill='%23D6A84B'/%3E%3Crect x='6' y='3' width='4' height='12' fill='%23A8C9A0'/%3E%3Crect x='11' y='5' width='4' height='10' fill='%23D6A84B'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1>Pellet Supply Chain Management Dashboard</h1>
+        <span class="badge">V1 demo · synthetic data</span>
+      </div>
+      <div class="header-links">
+        <a href="https://github.com/Margusfloren/SCloputoo" target="_blank" rel="noopener">GitHub repository</a>
+      </div>
+      <nav class="tabs" id="tabs" aria-label="Report pages"></nav>
+    </div>
+  </header>
+
+  <main id="main"></main>
+
+  <div class="warn" id="data-missing" hidden>
+    <h2>Demo data file not found</h2>
+    <p>This page needs <code>data/demo-data.js</code>, an aggregated export of the PostgreSQL Gold layer.
+      Create it with <code>python tools/export_demo_data.py</code>. No figures are shown without it – the demo never substitutes invented numbers.</p>
+  </div>
+
+  <footer>
+    Synthetic data · V1 project demonstration · Static aggregated export of the PostgreSQL Gold layer (exported <span id="export-date">–</span>).
+    This web page is an interactive presentation, not live reporting connected to PostgreSQL or Power BI.
+    All volumes in metric tonnes (t); budget = planned volume.
+  </footer>
+
+  <template id="about-template">
+    <article class="about">
+      <h2>About the project</h2>
+      <p class="lede">The Pellet Supply Chain Management Dashboard brings sales, production and budget data for a simulated multi-plant wood-pellet business into one management view. This page is an interactive web presentation of the Power BI V1 report.</p>
+
+      <div class="facts">
+        <div class="fact"><b>Data</b><span>Synthetic, Directo-inspired data, 2023–2025. No real company transactions.</span></div>
+        <div class="fact prod"><b>Version</b><span>V1 – implemented, quality audit completed and documented.</span></div>
+        <div class="fact"><b>Units</b><span>All volumes in metric tonnes (t). Budget means planned volume, not money.</span></div>
+        <div class="fact prod"><b>This web page</b><span>Static demonstration – not connected live to PostgreSQL or Power BI.</span></div>
+      </div>
+
+      <h3>Why the dashboard was built</h3>
+      <p>A company-level total can look close to budget while individual plants, products, sales channels or months tell a different story. The dashboard was built to make those differences visible in one place, so that sales and production are reviewed together rather than in separate reports.</p>
+
+      <h3>Decisions it supports</h3>
+      <ul>
+        <li><strong>Performance:</strong> are sales and production meeting their budgets for the selected period?</li>
+        <li><strong>Drivers:</strong> which months, plants, products and sales channels explain a deviation?</li>
+        <li><strong>Balance:</strong> is production volume in line with what is being sold?</li>
+      </ul>
+
+      <h3>How deviations from budget are identified</h3>
+      <p>Every view shows Actual, Budget, Variance (Actual − Budget) and Attainment (Actual ÷ Budget). Negative variances and attainment below 100% are shown in red. The attainment cards are colour-coded: green within ±5% of budget, gold for 5–10% deviation, red beyond 10%. Hover over any bar or KPI card to see the exact value in tonnes.</p>
+
+      <h3>How production and sales are compared</h3>
+      <p>Sales budgets are planned by sales channel, so channel-level actual-versus-budget comparisons are meaningful. Production is <strong>not</strong> allocated to sales channels. Every production-versus-sales comparison therefore uses <strong>sales across all channels</strong>, even when a single channel is selected for the sales KPIs. Comparing total production with one channel's sales would be misleading. Production versus Sales % shows production as a share of sales; above 100% means production exceeded sales in the period.</p>
+      <p>On the Production Analysis page, a separate panel below the Production vs Sales bars plots this ratio month by month, with a 100% reference line. For a multi-month selection, the period ratio is total production divided by total all-channel sales, not an average of the monthly percentages. It compares volumes only. It is <strong>not</strong> an inventory or stock-coverage measure: opening stock, stock changes and losses are not part of V1.</p>
+
+      <h3>Analysing plants, products and channels</h3>
+      <ul>
+        <li><strong>Sales Analysis</strong> – monthly trend with attainment, and a switchable view by plant, product or channel.</li>
+        <li><strong>Production Analysis</strong> – production against budget and against all-channel sales, by month.</li>
+        <li><strong>Plant Analysis</strong> – plant results, each plant's product mix and its share of total output.</li>
+        <li><strong>Product Analysis</strong> – production against budget and sales for each product.</li>
+      </ul>
+      <p>Year, Month, Plant and Product filters carry over between pages, as the synchronised slicers do in Power BI. The Channel filter applies only on the Overview and Sales Analysis pages. <em>Reset filters</em> restores the default view.</p>
+
+      <h3>Data architecture</h3>
+      <div class="pipeline" aria-label="Data pipeline">
+        <span class="step">Source CSV files</span><span class="arr">→</span>
+        <span class="step">PostgreSQL Bronze</span><span class="arr">→</span>
+        <span class="step">Silver</span><span class="arr">→</span>
+        <span class="step gold">Gold</span><span class="arr">→</span>
+        <span class="step green">Power BI semantic model &amp; report</span>
+      </div>
+      <p>The semantic model has four separate fact tables (sales, sales budget, production, production budget) with shared date, plant and product dimensions, plus a sales-channel dimension that is related to the sales facts only.</p>
+      <p><strong>This web demo</strong> uses a small file of <strong>monthly aggregates</strong> exported read-only from the Gold layer (exported {{EXPORTED}}). Sales and production are aggregated separately and never joined row by row, so quantities cannot be duplicated. The file holds only year, month, plant, product, channel and tonnes. It contains no customer data, invoice numbers, prices, individual transactions or connection details. KPIs are recalculated in the browser with the same logic as the DAX measures.</p>
+
+      <h3>Quality assurance</h3>
+      <table class="qa-table">
+        <thead><tr><th>Check</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>Source CSV → Bronze</td><td>10/10 tables PASS, 8,007 rows, no missing or additional rows under the comparison rules</td></tr>
+          <tr><td>Bronze → Silver → Gold</td><td>Sales and production row-count, structural and quantity reconciliations</td></tr>
+          <tr><td>Gold → Power BI</td><td>Grand totals reconciled; sales by channel and production by plant reconciled with PostgreSQL (audit finding B9)</td></tr>
+          <tr><td>Report behaviour</td><td>Filters, channel rules and reset behaviour tested</td></tr>
+        </tbody>
+      </table>
+      <p>Full-period reference values (2023–2025), which this web demo reproduces from the exported data:</p>
+      <table class="qa-table">
+        <thead><tr><th>KPI</th><th style="text-align:right">Value</th></tr></thead>
+        <tbody>
+          <tr><td>Sales Actual</td><td class="num">2,429,578.7 t</td></tr>
+          <tr><td>Sales Budget</td><td class="num">2,423,099.1 t</td></tr>
+          <tr><td>Sales Attainment</td><td class="num">100.27%</td></tr>
+          <tr><td>Production Actual</td><td class="num">2,406,082.3 t</td></tr>
+          <tr><td>Production Budget</td><td class="num">2,419,001.0 t</td></tr>
+          <tr><td>Production Attainment</td><td class="num">99.47%</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><p>A PASS confirms the specific checks performed, not the business accuracy of synthetic data. The audit decisions and their limitations are documented in the repository.</p></div>
+
+      <h3>Technology</h3>
+      <p>PostgreSQL · SQL · Power BI · DAX · Power Query · Python · Git/GitHub. This web version uses plain HTML, CSS and JavaScript with hand-written SVG charts. It needs no external libraries, CDN, account or server and sends no data to third parties.</p>
+
+      <h3>How this web demo differs from the Power BI report</h3>
+      <ul>
+        <li>It is a static snapshot of aggregated data. It is not refreshed from the database.</li>
+        <li>The data is monthly. Day-level detail and drill-through are not included.</li>
+        <li>Attainment trends are drawn in a separate panel below the volume bars instead of on a secondary axis.</li>
+        <li>The hidden technical QA Validation page of the Power BI report is not included.</li>
+      </ul>
+
+      <p><a href="{{REPO}}" target="_blank" rel="noopener">View the project on GitHub →</a></p>
+    </article>
+  </template>
+
+  <script src="data/demo-data.js"></script>
+  <script src="js/calc.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Optional self-test: open index.html?selftest=1
+    if (/[?&]selftest=1/.test(location.search) || /[?&]fulltest=1/.test(location.search)) {
+      var s = document.createElement("script");
+      s.src = /fulltest/.test(location.search) ? "tools/fulltest.js" : "tools/selftest.js";
+      document.body.appendChild(s);
+    }
+  </script>
+</body>
+</html>
